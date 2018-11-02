@@ -25,6 +25,8 @@ package com.example.joann.pandemic.pandemic;
  *  -playerCity: String
  ************************************/
 
+import com.example.joann.pandemic.game.infoMsg.GameState;
+
 import java.util.ArrayList;
 
 /************************************
@@ -34,7 +36,7 @@ import java.util.ArrayList;
  * cards or pawns yet and it is
  * player 1's turn.
  ************************************/
-public class PandemicGameState {
+public class PandemicGameState extends GameState{
     /* NOTE: The cards a player has will be implemented as an array of general cards
                 in the actual game implementation, but are single GeneralCard objects for now
                 because the object class is empty and we don't have a "getCardName" function
