@@ -1,4 +1,4 @@
-package com.example.joann.pandemic;
+package com.example.joann.pandemic.pandemic;
 /************************************
  * @Kelsi
  * @Joanna

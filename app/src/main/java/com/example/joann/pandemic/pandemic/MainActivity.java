@@ -5,7 +5,7 @@
  @Sarah
 ************************/
 
-package com.example.joann.pandemic;
+package com.example.joann.pandemic.pandemic;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.joann.pandemic.R;
 
 //External citation:
 // https://images-cdn.zmangames.com/us-east-1/filer_public/25/12/251252dd-1338-4f78-b90d-afe073c72363/zm7101_pandemic_rules.pdf
