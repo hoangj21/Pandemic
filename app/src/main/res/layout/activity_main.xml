@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="256dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="Cool Beans"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/runTestButton"
+            android:layout_width="264dp"
+            android:layout_height="145dp"
+            android:text="Run Test"
+            tools:layout_editor_absoluteX="1029dp"
+            tools:layout_editor_absoluteY="617dp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

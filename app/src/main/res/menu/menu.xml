@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/exitGameMenuItem"
+        android:title="exitGameMenuItem" />
+    <item
+        android:id="@+id/restartMenuItem"
+        android:title="restartMenuItem" />
+    <item
+        android:id="@+id/settings"
+        android:title="settings" />
+    <item
+        android:id="@+id/changeAIDifficulty"
+        android:title="changeAIDifficulty" />
+</menu>
