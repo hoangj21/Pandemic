@@ -24,19 +24,16 @@ public class City {
 
     protected String name;
     protected ArrayList<DiseaseCube> diseaseCubes;
-    protected ArrayList<String> adjacentCities;
+    protected ArrayList<City> adjacentCities;
     protected Boolean hasResearchLab;
     protected Boolean isVisited;
 
 
     //Default constructor
-    public City(String name, String name1, String name2, String name3, int count){
-        this.name = name;
+    public City(){
+        //this.name = name;
         diseaseCubes = new ArrayList<DiseaseCube>();
-        adjacentCities = new ArrayList<String>();
-            adjacentCities.add(name1);
-            adjacentCities.add(name2);
-            adjacentCities.add(name3);
+        adjacentCities = new ArrayList<City>();
         hasResearchLab = false;
         isVisited = false;
 
@@ -74,8 +71,13 @@ public class City {
         return diseaseCubes;
     }
 
-    public ArrayList<String> getAdjacentCities() {
+    public ArrayList<City> getAdjacentCities() {
         return adjacentCities;
+    }
+
+    public void setAdjacentCities(City city)
+    {
+        adjacentCities.add(city);
     }
 
     public Boolean getHasResearchLab() {
@@ -86,7 +88,350 @@ public class City {
         return isVisited;
     }
 
-    public String getName() {
-        return name;
+
+
+    //Following two method is all the city start stuff
+
+    public void initiation(){
+    City algiers = new City ();
+    City atlanta = new City ();
+    City baghdad = new City ();
+    City bangkok = new City ();
+    City bejing = new City ();
+    City beunosaires = new City ();
+    City bogota = new City ();
+    City istanbul = new City ();
+    City khartoum = new City ();
+    City hochiminhcity = new City ();
+    City riyadh = new City ();
+    City essen = new City ();
+    City washington = new City ();
+    City moscow = new City ();
+    City newyork = new City ();
+    City taipei = new City ();
+    City tokyo = new City ();
+    City tehran = new City ();
+
+    City jakarta = new City ();
+
+    City cairo = new City ();
+    City chennai = new City ();
+    City paris = new City ();
+    City petersburg = new City ();
+    City saopaulo = new City ();
+    City lagos = new City ();
+    City lima = new City ();
+    City london = new City ();
+    City losangeles = new City ();
+    City delhi = new City ();
+    City johannesburg = new City ();
+    City karachi = new City ();
+    City madrid = new City ();
+    City montreal = new City ();
+    City sanfrancisco = new City ();
+    City kolkata = new City ();
+    City mexicocity = new City ();
+    City santiago = new City ();
+    City sydney = new City ();
+    City mumbai = new City ();
+    City seoul = new City ();
+    City chicago = new City ();
+    City kinshasa = new City ();
+    City miami = new City ();
+    City milan = new City ();
+    City manila = new City ();
+    City shanghai = new City ();
+    City hongkong = new City ();
+    City osaka = new City ();
+
+    algiers.setAdjacentCities(cairo);
+    algiers.setAdjacentCities(istanbul);
+    algiers.setAdjacentCities(paris);
+    algiers.setAdjacentCities(madrid);
+
+    atlanta.setAdjacentCities(chicago);
+    atlanta.setAdjacentCities(washington);
+    atlanta.setAdjacentCities(miami);
+
+    baghdad.setAdjacentCities(tehran);
+    baghdad.setAdjacentCities(karachi);
+    baghdad.setAdjacentCities(riyadh);
+    baghdad.setAdjacentCities(cairo);
+    baghdad.setAdjacentCities(istanbul);
+
+    bangkok.setAdjacentCities(kolkata);
+    bangkok.setAdjacentCities(hongkong);
+    bangkok.setAdjacentCities(hochiminhcity);
+    bangkok.setAdjacentCities(jakarta);
+    bangkok.setAdjacentCities(chennai);
+
+    bejing.setAdjacentCities(seoul);
+    bejing.setAdjacentCities(shanghai);
+
+    beunosaires.setAdjacentCities(saopaulo);
+    beunosaires.setAdjacentCities(bogota);
+
+    bogota.setAdjacentCities(miami);
+    bogota.setAdjacentCities(mexicocity);
+    bogota.setAdjacentCities(lima);
+    bogota.setAdjacentCities(beunosaires);
+    bogota.setAdjacentCities(saopaulo);
+
+    istanbul.setAdjacentCities(algiers);
+    istanbul.setAdjacentCities(milan);
+    istanbul.setAdjacentCities(petersburg);
+    istanbul.setAdjacentCities(moscow);
+    istanbul.setAdjacentCities(baghdad);
+    istanbul.setAdjacentCities(cairo);
+
+    khartoum.setAdjacentCities(cairo);
+    khartoum.setAdjacentCities(johannesburg);
+    khartoum.setAdjacentCities(kinshasa);
+    khartoum.setAdjacentCities(lagos);
+
+    hochiminhcity.setAdjacentCities(manila);
+    hochiminhcity.setAdjacentCities(hongkong);
+    hochiminhcity.setAdjacentCities(bangkok);
+    hochiminhcity.setAdjacentCities(jakarta);
+
+    riyadh.setAdjacentCities(karachi);
+    riyadh.setAdjacentCities(baghdad);
+    riyadh.setAdjacentCities(cairo);
+
+        essen.setAdjacentCities(petersburg);
+        essen.setAdjacentCities(milan);
+        essen.setAdjacentCities(paris);
+        essen.setAdjacentCities(london);
+
+        washington.setAdjacentCities(newyork);
+        washington.setAdjacentCities(montreal);
+        washington.setAdjacentCities(atlanta);
+        washington.setAdjacentCities(miami);
+
+        moscow.setAdjacentCities(tehran);
+        moscow.setAdjacentCities(istanbul);
+        moscow.setAdjacentCities(petersburg);
+
+        newyork.setAdjacentCities(montreal);
+        newyork.setAdjacentCities(washington);
+        newyork.setAdjacentCities(london);
+        newyork.setAdjacentCities(madrid);
+
+        taipei.setAdjacentCities(osaka);
+        taipei.setAdjacentCities(shanghai);
+        taipei.setAdjacentCities(hongkong);
+        taipei.setAdjacentCities(manila);
+
+        tokyo.setAdjacentCities(osaka);
+        tokyo.setAdjacentCities(seoul);
+        tokyo.setAdjacentCities(shanghai);
+        tokyo.setAdjacentCities(sanfrancisco);
+
+        tehran.setAdjacentCities(moscow);
+        tehran.setAdjacentCities(baghdad);
+        tehran.setAdjacentCities(karachi);
+        tehran.setAdjacentCities(delhi);
+
+        //jakarta.setAdjacentCities();
     }
+/*
+    public int caseSwitchName (City city) {
+
+        switch (city) {
+
+            case algiers:
+                return 1; //@drawable/algiers;
+            break;
+
+            case atlanta:
+                return 1; //@drawable/atlanta;
+            break;
+
+            case baghdad:
+                return 1; //@drawable/baghdad;
+            break;
+
+            case bangkok:
+                return 1; //@drawable/bangkok;
+            break;
+
+            case bejing:
+                return 1; //@drawable/bejing;
+            break;
+
+            case beunosaires:
+                return 1; //@drawable/beunosaires;
+            break;
+
+            case bogota:
+                return 1; //@drawable/bogota;
+            break;
+
+            case cairo:
+                return 1; //@drawable/cairo;
+            break;
+
+            case chennai:
+                return 1; //@drawable/chennai;
+            break;
+
+            case chicago:
+                return 1; //@drawable/chicago;
+            break;
+
+            case delhi:
+                return 1; //@drawable/delhi
+            break;
+
+            case essen:
+                return 1; //@drawable/essen
+            break;
+
+            case hochiminhcity:
+                return 1; //@drawable/hochiminhcity;
+            break;
+
+            case hongkong:
+                return 1; //@drawable/hongkong;
+            break;
+
+            case istanbul:
+                return 1; //@drawable/istanbul;
+            break;
+
+            case jakarta:
+                return 1; //@drawable/jakarta;
+            break;
+
+            case johannesburg:
+                return 1; //@drawable/johannesburg;
+            break;
+
+            case karachi:
+                return 1; //@drawable/karachi;
+            break;
+
+            case khartoum:
+                return 1; //@drawable/khartoum;
+            break;
+
+            case kinshasa:
+                return 1; //@drawable/kinshasa;
+            break;
+
+            case kolkata:
+                return 1; //@drawable/kolkata;
+            break;
+
+            case lagos:
+                return 1; //@drawable/lagos;
+            break;
+
+            case lima:
+                return 1; //@drawable/lima;
+            break;
+
+            case london:
+                return 1;// @drawable/london;
+            break;
+
+            case losangeles:
+                return 1; // @drawable/losangeles
+            break;
+
+            case madrid:
+                return 1; // @drawable/madrid
+            break;
+
+            case manila:
+                return 1; // @drawable/manila;
+            break;
+
+            case mexicocity:
+                return 1; // @drawable/mexicocity;
+            break;
+
+            case miami:
+                return 1; // @drawable/miami;
+            break;
+
+            case milan:
+                return 1; // @drawable/milan;
+            break;
+
+            case montreal:
+                return 1; // @drawable/montreal;
+            break;
+
+            case moscow:
+                return 1; // @drawable/moscow;
+            break;
+
+            case mumbai:
+                return 1; // @drawable/mumbai;
+            break;
+
+            case newyork:
+                return 1; // @drawable/newyork;
+            break;
+
+            case osaka:
+                return 1; // @drawable/osaka;
+            break;
+
+            case paris:
+                return 1; // @drawable/paris;
+            break;
+
+            case petersburg:
+                return 1; // @drawable/petersburg;
+            break;
+
+            case riyadh:
+                return 1; // @drawable/riyadh
+            break;
+
+            case sanfrancisco:
+                return 1; // @drawable/sanfrancisco;
+            break;
+
+            case santiago:
+                return 1; //@drawable/santiago;
+            break;
+
+            case saopaulo:
+                return 1; //@drawable/saopaulo;
+            break;
+
+            case seoul:
+                return 1; //@drawable/seoul;
+            break;
+
+            case shanghai:
+                return 1; //@drawable/shanghai
+            break;
+
+            case sydney:
+                return 1; //@drawable/sydney;
+            break;
+
+            case taipei:
+                return 1; //@drawable/taipei;
+            break;
+
+            case tehran:
+                return 1; //@drawable/tehran;
+            break;
+
+            case tokyo:
+                return 1; //@drawable/tokyo;
+            break;
+
+            case washington:
+                return 1; //@drawable/washington;
+            break;
+
+        }
+    }
+*/
 }
