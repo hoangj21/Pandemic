@@ -10,8 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="256dp">
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:layout_width="1300dp"
+            android:layout_height="620dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/map" />
 
         <EditText
             android:id="@+id/editText"
@@ -30,6 +38,102 @@
             android:text="Run Test"
             tools:layout_editor_absoluteX="1029dp"
             tools:layout_editor_absoluteY="617dp" />
+
+        <SurfaceView
+            android:id="@+id/MapView"
+            android:layout_width="900dp"
+            android:layout_height="617dp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="1264dp"
+        android:layout_height="133dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="622dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/MoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Move" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/TreatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Treat" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/CureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Cure" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/BuildButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Build" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/ShareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Share" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/PassButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:text="Pass" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
