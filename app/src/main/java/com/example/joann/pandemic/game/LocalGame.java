@@ -11,6 +11,7 @@ import com.example.joann.pandemic.game.actionMsg.MyNameIsAction;
 import com.example.joann.pandemic.game.actionMsg.ReadyAction;
 import com.example.joann.pandemic.game.actionMsg.TimerAction;
 import com.example.joann.pandemic.game.infoMsg.BindGameInfo;
+import com.example.joann.pandemic.game.infoMsg.GameOverInfo;
 import com.example.joann.pandemic.game.infoMsg.IllegalMoveInfo;
 import com.example.joann.pandemic.game.infoMsg.NotYourTurnInfo;
 import com.example.joann.pandemic.game.infoMsg.StartGameInfo;

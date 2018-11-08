@@ -7,12 +7,15 @@
     tools:context=".pandemic.PandemicMainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:layout_width="1300dp"
@@ -49,11 +52,16 @@
 
 
     <LinearLayout
-        android:layout_width="1264dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
         android:layout_height="133dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="622dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
         <Button
@@ -62,8 +70,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Move" />
+            android:text="Move"
+            android:textColor="@android:color/white" />
 
         <Space
             android:layout_width="10dp"
@@ -76,8 +84,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Treat" />
+            android:text="Treat"
+            android:textColor="@android:color/white" />
 
         <Space
             android:layout_width="10dp"
@@ -90,8 +98,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Cure" />
+            android:text="Cure"
+            android:textColor="@android:color/white" />
 
         <Space
             android:layout_width="10dp"
@@ -104,8 +112,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Build" />
+            android:text="Build"
+            android:textColor="@android:color/white" />
 
         <Space
             android:layout_width="10dp"
@@ -118,8 +126,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Share" />
+            android:text="Share"
+            android:textColor="@android:color/white" />
 
         <Space
             android:layout_width="10dp"
@@ -132,8 +140,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:text="Pass" />
+            android:text="Pass"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

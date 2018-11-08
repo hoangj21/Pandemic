@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 import com.example.joann.pandemic.game.infoMsg.GameInfo;
+import com.example.joann.pandemic.game.util.IPCoder;
 import com.example.joann.pandemic.game.util.NetworkObjectPasser;
 
 import java.util.LinkedList;
