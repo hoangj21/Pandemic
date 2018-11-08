@@ -19,7 +19,7 @@
             android:layout_height="620dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/map" />
+            app:srcCompat="@drawable/pandemicpic" />
 
         <EditText
             android:id="@+id/editText"
