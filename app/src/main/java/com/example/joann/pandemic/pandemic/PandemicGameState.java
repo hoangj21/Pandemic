@@ -172,6 +172,10 @@ public class PandemicGameState extends GameState{
         if(player.getActionsLeft()<=0){
             return false;
         }
+        if(city.getDiseaseCubes().isEmpty())
+        {
+            return false; //no disease cubes there
+        }
         city.removeDiseaseCube();
         player.setActionsLeft(player.getActionsLeft()-1);
         return true;
