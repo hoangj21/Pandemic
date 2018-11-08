@@ -19,6 +19,8 @@ package com.example.joann.pandemic.pandemic;
  *  -curedDiseases: int[]
  ************************************/
 
+import android.app.AlertDialog;
+
 import com.example.joann.pandemic.game.LocalGame;
 import com.example.joann.pandemic.game.infoMsg.GameState;
 
@@ -89,8 +91,6 @@ public class PandemicGameState extends GameState {
 
     }
 
-
-    //PlayerInfo contains information on id of player who's turn it is
     //Moves player to a different city
     public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity) {
 
@@ -100,20 +100,43 @@ public class PandemicGameState extends GameState {
         }
 
         //Drive Case: Move to a city you are connected to.
-        for(City c: desiredCity.adjacentCities){
-
+        for(City c: desiredCity.adjacentCities) { //Iterate through adjacent cities of desired city
+            if (c == currentCity) {
+                player.setCurrentLocation(desiredCity);
+                player.actionTaken();
+                return true;
+            }
         }
 
+        //Direct Flight Case: Move to a city whose card you have.
+            /* PSEUDOCODE
+                1. Iterate through player's hand
+                2. See if card.getCity = desired city
+                3. If so, discard that card and player.setCurrentLocation(desiredCity);
+                4. player.actionTaken(); and return true
+             */
 
+        //Charter Flight Case: Move to a city whose card you have.
+            /* PSEUDOCODE
+                1. Iterate through player's hand
+                2. See if card.getCity = player.getCurrentLocation()
+                3. If so, discard that card and player.setCurrentLocation(desiredCity);
+                4. player.actionTaken(); and return true
+             */
 
-        /*int count = currentCity.getAdjacentCities().size();
-        while (count > 0) {
-            if (desiredCity.equals(currentCity.getAdjacentCities())) {
-                player.setCurrentLocation(desiredCity);
-            }
+        //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
+        if(player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
+            player.setCurrentLocation(desiredCity);
+            player.actionTaken();
+            return true;
+        }
 
-        }*/
-        return true;
+        //If all of these fail (meaning a player clicked on a city they  can't go to), pop
+        //up a dialog box that tells them so and lets them continue to make actions.
+
+        //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        return false;
+
     }
 
     //adds card to player's hand

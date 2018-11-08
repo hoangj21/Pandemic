@@ -43,7 +43,7 @@ public class PlayerCard extends Card{
 
     //getter for all the variables
 
-    public City getisLocation() {
+    public City getLocation() {
         return location;
     }
 

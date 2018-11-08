@@ -26,13 +26,14 @@ public class PlayerInfo {
         protected int playerNumber;
 
         //default constructor
-        public PlayerInfo(int playerNumber, int playerRole, int initActions, City startLoc, PlayerCard card1, PlayerCard card2) {
-            this.playerNumber = playerNumber;
-            this.role = playerRole;
-            this.actionsLeft = initActions;
-            this.currentLocation = startLoc;
-            this.playerHand.add(card1);
-            this.playerHand.add(card2);
+        public PlayerInfo(int playerNum, int playerRole, int initActions, City startLoc, PlayerCard card1, PlayerCard card2) {
+            playerHand = new ArrayList<>();
+            playerNumber = playerNum;
+            role = playerRole;
+            actionsLeft = initActions;
+            currentLocation = startLoc;
+            playerHand.add(card1);
+            playerHand.add(card2);
 
         }
         //copy constructor
@@ -83,12 +84,15 @@ public class PlayerInfo {
             actionsLeft--;
         }
 
-        public boolean addCardToPlayerHand(PlayerCard newCard){
-            if(playerHand.size() >= 7){
-                return false;
-            }
+    public boolean addCardToPlayerHand(PlayerCard newCard){ //THIS IS DIFFERENT... I FIXED IT
+        if(playerHand.size() >= 7){
+            return false;
+        }
+        else{
+            playerHand.add(newCard);
             return true;
         }
+    }
     //Method set to set the number fo actions left in a players turn
     public void setActionsLeft(int actionsLeft) {
         this.actionsLeft = actionsLeft;
