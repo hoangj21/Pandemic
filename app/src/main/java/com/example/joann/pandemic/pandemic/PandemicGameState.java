@@ -93,12 +93,18 @@ public class PandemicGameState extends GameState {
     //PlayerInfo contains information on id of player who's turn it is
     //Moves player to a different city
     public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity) {
+
         //Base Case: Player is trying to move when they have no moves left.
         if (player.getActionsLeft() <= 0) {
             return false;
         }
 
-        //
+        //Drive Case: Move to a city you are connected to.
+        for(City c: desiredCity.adjacentCities){
+
+        }
+
+
 
         /*int count = currentCity.getAdjacentCities().size();
         while (count > 0) {
