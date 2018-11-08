@@ -28,7 +28,7 @@ class MapView extends SurfaceView {
         canvas.drawBitmap(map, 100, 100, myPaint );
 
 
-        Bitmap epidemic_card = BitmapFactory.decodeResource(getResources(), R.drawable.PANDEMICCARDS46);
+        Bitmap epidemic_card = BitmapFactory.decodeResource(getResources(), R.drawable.epidemic);
         map = Bitmap.createScaledBitmap(map, 800, 800, true);
         canvas.drawBitmap(map, 100, 100, myPaint );
 
