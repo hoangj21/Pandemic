@@ -23,7 +23,7 @@ class MapView extends SurfaceView {
         Paint myPaint = new Paint();
         myPaint.setColor(Color.BLUE);
 
-        Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.map);
+        Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
         map = Bitmap.createScaledBitmap(map, 800, 800, true);
         canvas.drawBitmap(map, 100, 100, myPaint );
 
