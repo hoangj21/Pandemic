@@ -13,4 +13,7 @@
     <item
         android:id="@+id/changeAIDifficulty"
         android:title="changeAIDifficulty" />
+    <item
+        android:id="@+id/helpItem"
+        android:title="Help" />
 </menu>
