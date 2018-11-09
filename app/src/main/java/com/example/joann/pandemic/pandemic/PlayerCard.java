@@ -59,8 +59,7 @@ public class PlayerCard extends Card{
         return isEpidemic;
     }
 
-    public static void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard;
-    ){
+    public static void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
         int red = Color.RED;
         int blue = Color.BLUE;
         int black = Color.BLACK;
@@ -239,7 +238,7 @@ public class PlayerCard extends Card{
             lagos.setAdjacentCities(kinshasa);
             lagos.setAdjacentCities(khartoum);
 
-            lima.setAdjacentCities(santiago);\
+            lima.setAdjacentCities(santiago);
             lima.setAdjacentCities(bogota);
             lima.setAdjacentCities(mexicocity);
 
@@ -512,7 +511,7 @@ public class PlayerCard extends Card{
             InfectionCard.add(hochiminhcity_infection);
             InfectionCard.add(riyadh_infection);
             InfectionCard.add(essen_infection);
-            InfectionCard.add(washington_infection;
+            InfectionCard.add(washington_infection);
             InfectionCard.add(moscow_infection);
             InfectionCard.add(newyork_infection);
             InfectionCard.add(taipei_infection);
@@ -541,9 +540,9 @@ public class PlayerCard extends Card{
             InfectionCard.add(mumbai_infection);
             InfectionCard.add(seoul_infection);
             InfectionCard.add(chicago_infection);
-            InfectionCard.add(kinshasa_infection;
+            InfectionCard.add(kinshasa_infection);
             InfectionCard.add(miami_infection);
-            InfectionCard.add(milan_infection;
+            InfectionCard.add(milan_infection);
             InfectionCard.add(manila_infection);
             InfectionCard.add(shanghai_infection);
             InfectionCard.add(hongkong_infection);
