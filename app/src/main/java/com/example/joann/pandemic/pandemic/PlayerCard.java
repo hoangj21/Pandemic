@@ -6,6 +6,8 @@ package com.example.joann.pandemic.pandemic;
  * @Polina
  ************************************/
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 
 /************************************
@@ -57,9 +59,298 @@ public class PlayerCard extends Card{
         return isEpidemic;
     }
 
+    public static void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard;
+    ){
+        int red = Color.RED;
+        int blue = Color.BLUE;
+        int black = Color.BLACK;
+        int yellow = Color.YELLOW;
 
-       public void initiation()
-    {
+            City algiers = new City ();
+            City atlanta = new City ();
+            City baghdad = new City ();
+            City bangkok = new City ();
+            City bejing = new City ();
+            City beunosaires = new City ();
+            City bogota = new City ();
+            City istanbul = new City ();
+            City khartoum = new City ();
+            City hochiminhcity = new City ();
+            City riyadh = new City ();
+            City essen = new City ();
+            City washington = new City ();
+            City moscow = new City ();
+            City newyork = new City ();
+            City taipei = new City ();
+            City tokyo = new City ();
+            City tehran = new City ();
+            City jakarta = new City ();
+            City cairo = new City ();
+            City chennai = new City ();
+            City paris = new City ();
+            City petersburg = new City ();
+            City saopaulo = new City ();
+            City lagos = new City ();
+            City lima = new City ();
+            City london = new City ();
+            City losangeles = new City ();
+            City delhi = new City ();
+            City johannesburg = new City ();
+            City karachi = new City ();
+            City madrid = new City ();
+            City montreal = new City ();
+            City sanfrancisco = new City ();
+            City kolkata = new City ();
+            City mexicocity = new City ();
+            City santiago = new City ();
+            City sydney = new City ();
+            City mumbai = new City ();
+            City seoul = new City ();
+            City chicago = new City ();
+            City kinshasa = new City ();
+            City miami = new City ();
+            City milan = new City ();
+            City manila = new City ();
+            City shanghai = new City ();
+            City hongkong = new City ();
+            City osaka = new City ();
+
+            algiers.setAdjacentCities(cairo);
+            algiers.setAdjacentCities(istanbul);
+            algiers.setAdjacentCities(paris);
+            algiers.setAdjacentCities(madrid);
+
+            atlanta.setAdjacentCities(chicago);
+            atlanta.setAdjacentCities(washington);
+            atlanta.setAdjacentCities(miami);
+
+            baghdad.setAdjacentCities(tehran);
+            baghdad.setAdjacentCities(karachi);
+            baghdad.setAdjacentCities(riyadh);
+            baghdad.setAdjacentCities(cairo);
+            baghdad.setAdjacentCities(istanbul);
+
+            bangkok.setAdjacentCities(kolkata);
+            bangkok.setAdjacentCities(hongkong);
+            bangkok.setAdjacentCities(hochiminhcity);
+            bangkok.setAdjacentCities(jakarta);
+            bangkok.setAdjacentCities(chennai);
+
+            bejing.setAdjacentCities(seoul);
+            bejing.setAdjacentCities(shanghai);
+
+            beunosaires.setAdjacentCities(saopaulo);
+            beunosaires.setAdjacentCities(bogota);
+
+            bogota.setAdjacentCities(miami);
+            bogota.setAdjacentCities(mexicocity);
+            bogota.setAdjacentCities(lima);
+            bogota.setAdjacentCities(beunosaires);
+            bogota.setAdjacentCities(saopaulo);
+
+            istanbul.setAdjacentCities(algiers);
+            istanbul.setAdjacentCities(milan);
+            istanbul.setAdjacentCities(petersburg);
+            istanbul.setAdjacentCities(moscow);
+            istanbul.setAdjacentCities(baghdad);
+            istanbul.setAdjacentCities(cairo);
+
+            khartoum.setAdjacentCities(cairo);
+            khartoum.setAdjacentCities(johannesburg);
+            khartoum.setAdjacentCities(kinshasa);
+            khartoum.setAdjacentCities(lagos);
+
+            hochiminhcity.setAdjacentCities(manila);
+            hochiminhcity.setAdjacentCities(hongkong);
+            hochiminhcity.setAdjacentCities(bangkok);
+            hochiminhcity.setAdjacentCities(jakarta);
+
+            riyadh.setAdjacentCities(karachi);
+            riyadh.setAdjacentCities(baghdad);
+            riyadh.setAdjacentCities(cairo);
+
+            essen.setAdjacentCities(petersburg);
+            essen.setAdjacentCities(milan);
+            essen.setAdjacentCities(paris);
+            essen.setAdjacentCities(london);
+
+            washington.setAdjacentCities(newyork);
+            washington.setAdjacentCities(montreal);
+            washington.setAdjacentCities(atlanta);
+            washington.setAdjacentCities(miami);
+
+            moscow.setAdjacentCities(tehran);
+            moscow.setAdjacentCities(istanbul);
+            moscow.setAdjacentCities(petersburg);
+
+            newyork.setAdjacentCities(montreal);
+            newyork.setAdjacentCities(washington);
+            newyork.setAdjacentCities(london);
+            newyork.setAdjacentCities(madrid);
+
+            taipei.setAdjacentCities(osaka);
+            taipei.setAdjacentCities(shanghai);
+            taipei.setAdjacentCities(hongkong);
+            taipei.setAdjacentCities(manila);
+
+            tokyo.setAdjacentCities(osaka);
+            tokyo.setAdjacentCities(seoul);
+            tokyo.setAdjacentCities(shanghai);
+            tokyo.setAdjacentCities(sanfrancisco);
+
+            tehran.setAdjacentCities(moscow);
+            tehran.setAdjacentCities(baghdad);
+            tehran.setAdjacentCities(karachi);
+            tehran.setAdjacentCities(delhi);
+
+            jakarta.setAdjacentCities(sydney);
+            jakarta.setAdjacentCities(hochiminhcity);
+            jakarta.setAdjacentCities(bangkok);
+            jakarta.setAdjacentCities(chennai);
+
+            cairo.setAdjacentCities(khartoum);
+            cairo.setAdjacentCities(riyadh);
+            cairo.setAdjacentCities(baghdad);
+            cairo.setAdjacentCities(istanbul);
+            cairo.setAdjacentCities(algiers);
+
+            chennai.setAdjacentCities(jakarta);
+            chennai.setAdjacentCities(bangkok);
+            chennai.setAdjacentCities(kolkata);
+            chennai.setAdjacentCities(delhi);
+            chennai.setAdjacentCities(mumbai);
+
+            paris.setAdjacentCities(essen);
+            paris.setAdjacentCities(milan);
+            paris.setAdjacentCities(algiers);
+            paris.setAdjacentCities(madrid);
+            paris.setAdjacentCities(london);
+
+            petersburg.setAdjacentCities(essen);
+            petersburg.setAdjacentCities(istanbul);
+            petersburg.setAdjacentCities(moscow);
+
+            saopaulo.setAdjacentCities(beunosaires);
+            saopaulo.setAdjacentCities(bogota);
+            saopaulo.setAdjacentCities(lagos);
+            saopaulo.setAdjacentCities(madrid);
+
+            lagos.setAdjacentCities(saopaulo);
+            lagos.setAdjacentCities(kinshasa);
+            lagos.setAdjacentCities(khartoum);
+
+            lima.setAdjacentCities(santiago);\
+            lima.setAdjacentCities(bogota);
+            lima.setAdjacentCities(mexicocity);
+
+            london.setAdjacentCities(newyork);
+            london.setAdjacentCities(madrid);
+            london.setAdjacentCities(paris);
+            london.setAdjacentCities(essen);
+
+            losangeles.setAdjacentCities(mexicocity);
+            losangeles.setAdjacentCities(chicago);
+            losangeles.setAdjacentCities(sanfrancisco);
+            losangeles.setAdjacentCities(sydney);
+
+            delhi.setAdjacentCities(tehran);
+            delhi.setAdjacentCities(karachi);
+            delhi.setAdjacentCities(mumbai);
+            delhi.setAdjacentCities(chennai);
+            delhi.setAdjacentCities(kolkata);
+
+            johannesburg.setAdjacentCities(kinshasa);
+            johannesburg.setAdjacentCities(khartoum);
+
+            karachi.setAdjacentCities(riyadh);
+            karachi.setAdjacentCities(baghdad);
+            karachi.setAdjacentCities(tehran);
+            karachi.setAdjacentCities(delhi);
+            karachi.setAdjacentCities(mumbai);
+
+            madrid.setAdjacentCities(saopaulo);
+            madrid.setAdjacentCities(newyork);
+            madrid.setAdjacentCities(london);
+            madrid.setAdjacentCities(paris);
+            madrid.setAdjacentCities(algiers);
+
+            montreal.setAdjacentCities(chicago);
+            montreal.setAdjacentCities(washington);
+            montreal.setAdjacentCities(newyork);
+
+            sanfrancisco.setAdjacentCities(chicago);
+            sanfrancisco.setAdjacentCities(tokyo);
+            sanfrancisco.setAdjacentCities(manila);
+
+            kolkata.setAdjacentCities(delhi);
+            kolkata.setAdjacentCities(chennai);
+            kolkata.setAdjacentCities(bangkok);
+            kolkata.setAdjacentCities(hongkong);
+
+            mexicocity.setAdjacentCities(losangeles);
+            mexicocity.setAdjacentCities(miami);
+            mexicocity.setAdjacentCities(bogota);
+            mexicocity.setAdjacentCities(chicago);
+            mexicocity.setAdjacentCities(lima);
+
+            santiago.setAdjacentCities(lima);
+
+            sydney.setAdjacentCities(jakarta);
+            sydney.setAdjacentCities(manila);
+            sydney.setAdjacentCities(losangeles);
+
+            mumbai.setAdjacentCities(karachi);
+            mumbai.setAdjacentCities(delhi);
+            mumbai.setAdjacentCities(chennai);
+
+            seoul.setAdjacentCities(bejing);
+            seoul.setAdjacentCities(shanghai);
+            seoul.setAdjacentCities(tokyo);
+
+            chicago.setAdjacentCities(sanfrancisco);
+            chicago.setAdjacentCities(losangeles);
+            chicago.setAdjacentCities(mexicocity);
+            chicago.setAdjacentCities(atlanta);
+            chicago.setAdjacentCities(montreal);
+
+            kinshasa.setAdjacentCities(johannesburg);
+            kinshasa.setAdjacentCities(khartoum);
+            kinshasa.setAdjacentCities(lagos);
+
+            miami.setAdjacentCities(atlanta);
+            miami.setAdjacentCities(washington);
+            miami.setAdjacentCities(bogota);
+            miami.setAdjacentCities(mexicocity);
+
+            milan.setAdjacentCities(paris);
+            milan.setAdjacentCities(essen);
+            milan.setAdjacentCities(istanbul);
+
+            manila.setAdjacentCities(hochiminhcity);
+            manila.setAdjacentCities(hongkong);
+            manila.setAdjacentCities(taipei);
+            manila.setAdjacentCities(sydney);
+            manila.setAdjacentCities(sanfrancisco);
+
+            shanghai.setAdjacentCities(bejing);
+            shanghai.setAdjacentCities(seoul);
+            shanghai.setAdjacentCities(tokyo);
+            shanghai.setAdjacentCities(taipei);
+            shanghai.setAdjacentCities(hongkong);
+
+            hongkong.setAdjacentCities(shanghai);
+            hongkong.setAdjacentCities(taipei);
+            hongkong.setAdjacentCities(manila);
+            hongkong.setAdjacentCities(hochiminhcity);
+            hongkong.setAdjacentCities(bangkok);
+            hongkong.setAdjacentCities(kolkata);
+
+            osaka.setAdjacentCities(tokyo);
+            osaka.setAdjacentCities(taipei);
+
+
+
+
         PlayerCard algiers_card = new PlayerCard(algiers, black, false);
         PlayerCard atlanta_card = new PlayerCard(atlanta, blue, false);
         PlayerCard baghdad_card = new PlayerCard(baghdad, black, false);
@@ -110,7 +401,6 @@ public class PlayerCard extends Card{
         PlayerCard osaka_card = new PlayerCard(osaka, red, false);
 
 
-        ArrayList<PlayerCard> playerDeck = new ArrayList<PlayerCard>;
         playerDeck.add(algiers_card);
         playerDeck.add(atlanta_card);
         playerDeck.add(baghdad_card);
@@ -159,6 +449,106 @@ public class PlayerCard extends Card{
         playerDeck.add(shanghai_card);
         playerDeck.add(hongkong_card);
         playerDeck.add(osaka_card);
-    }
+
+
+            InfectionCard algiers_infection = new InfectionCard(algiers, black);
+            InfectionCard atlanta_infection = new InfectionCard(atlanta, blue);
+            InfectionCard baghdad_infection = new InfectionCard(baghdad, black);
+            InfectionCard bangkok_infection = new InfectionCard(bangkok, red);
+            InfectionCard bejing_infection = new InfectionCard(bejing, red);
+            InfectionCard beunosaires_infection = new InfectionCard(beunosaires, yellow);
+            InfectionCard bogota_infection = new InfectionCard(bogota, yellow);
+            InfectionCard istanbul_infection = new InfectionCard(istanbul, black);
+            InfectionCard khartoum_infection = new InfectionCard(khartoum, yellow);
+            InfectionCard hochiminhcity_infection = new InfectionCard(hochiminhcity, red);
+            InfectionCard riyadh_infection = new InfectionCard(riyadh, black);
+            InfectionCard essen_infection = new InfectionCard(essen, blue);
+            InfectionCard washington_infection = new InfectionCard(washington, blue);
+            InfectionCard moscow_infection = new InfectionCard(moscow, black);
+            InfectionCard newyork_infection = new InfectionCard(newyork, blue);
+            InfectionCard taipei_infection = new InfectionCard(taipei, red);
+            InfectionCard tokyo_infection = new InfectionCard(tokyo, red);
+            InfectionCard tehran_infection = new InfectionCard(tehran, black);
+            InfectionCard jakarta_infection = new InfectionCard(jakarta, red);
+            InfectionCard cairo_infection = new InfectionCard(cairo, black);
+            InfectionCard chennai_infection = new InfectionCard(chennai, black);
+            InfectionCard paris_infection = new InfectionCard(paris, blue);
+            InfectionCard petersburg_infection = new InfectionCard(petersburg, blue);
+            InfectionCard saopaulo_infection = new InfectionCard(saopaulo, yellow);
+            InfectionCard lagos_infection = new InfectionCard(lagos, yellow);
+            InfectionCard lima_infection = new InfectionCard(lima, yellow);
+            InfectionCard london_infection = new InfectionCard(london, blue);
+            InfectionCard losangeles_infection = new InfectionCard(losangeles, blue);
+            InfectionCard delhi_infection = new InfectionCard(delhi, black);
+            InfectionCard johannesburg_infection = new InfectionCard(johannesburg, yellow);
+            InfectionCard karachi_infection = new InfectionCard(karachi, black);
+            InfectionCard madrid_infection = new InfectionCard(madrid, yellow);
+            InfectionCard montreal_infection = new InfectionCard(montreal, blue);
+            InfectionCard sanfrancisco_infection = new InfectionCard(sanfrancisco, blue);
+            InfectionCard kolkata_infection = new InfectionCard(kolkata, black);
+            InfectionCard mexicocity_infection = new InfectionCard(mexicocity, yellow);
+            InfectionCard santiago_infection = new InfectionCard(santiago, yellow);
+            InfectionCard sydney_infection = new InfectionCard(sydney, red);
+            InfectionCard mumbai_infection = new InfectionCard(mumbai, black);
+            InfectionCard seoul_infection = new InfectionCard(seoul, red);
+            InfectionCard chicago_infection = new InfectionCard(chicago, blue);
+            InfectionCard kinshasa_infection = new InfectionCard(kinshasa, yellow);
+            InfectionCard miami_infection = new InfectionCard(miami, yellow);
+            InfectionCard milan_infection = new InfectionCard(milan, blue);
+            InfectionCard manila_infection = new InfectionCard(manila, red);
+            InfectionCard shanghai_infection = new InfectionCard(shanghai, red);
+            InfectionCard hongkong_infection = new InfectionCard(hongkong, red);
+            InfectionCard osaka_infection = new InfectionCard(osaka, red);
+
+            InfectionCard.add(algiers_infection);
+            InfectionCard.add(atlanta_infection);
+            InfectionCard.add(baghdad_infection);
+            InfectionCard.add(bangkok_infection);
+            InfectionCard.add(bejing_infection);
+            InfectionCard.add(beunosaires_infection);
+            InfectionCard.add(bogota_infection);
+            InfectionCard.add(istanbul_infection);
+            InfectionCard.add(khartoum_infection);
+            InfectionCard.add(hochiminhcity_infection);
+            InfectionCard.add(riyadh_infection);
+            InfectionCard.add(essen_infection);
+            InfectionCard.add(washington_infection;
+            InfectionCard.add(moscow_infection);
+            InfectionCard.add(newyork_infection);
+            InfectionCard.add(taipei_infection);
+            InfectionCard.add(tokyo_infection);
+            InfectionCard.add(tehran_infection);
+            InfectionCard.add(jakarta_infection);
+            InfectionCard.add(cairo_infection);
+            InfectionCard.add(chennai_infection);
+            InfectionCard.add(paris_infection);
+            InfectionCard.add(petersburg_infection);
+            InfectionCard.add(saopaulo_infection);
+            InfectionCard.add(lagos_infection);
+            InfectionCard.add(lima_infection);
+            InfectionCard.add(london_infection);
+            InfectionCard.add(losangeles_infection);
+            InfectionCard.add(delhi_infection);
+            InfectionCard.add(johannesburg_infection);
+            InfectionCard.add(karachi_infection);
+            InfectionCard.add(madrid_infection);
+            InfectionCard.add(montreal_infection);
+            InfectionCard.add(sanfrancisco_infection);
+            InfectionCard.add(kolkata_infection);
+            InfectionCard.add(mexicocity_infection);
+            InfectionCard.add(santiago_infection);
+            InfectionCard.add(sydney_infection);
+            InfectionCard.add(mumbai_infection);
+            InfectionCard.add(seoul_infection);
+            InfectionCard.add(chicago_infection);
+            InfectionCard.add(kinshasa_infection;
+            InfectionCard.add(miami_infection);
+            InfectionCard.add(milan_infection;
+            InfectionCard.add(manila_infection);
+            InfectionCard.add(shanghai_infection);
+            InfectionCard.add(hongkong_infection);
+            InfectionCard.add(osaka_infection);
 
 }
+}
+

@@ -58,6 +58,10 @@ public class PandemicGameState extends GameState {
         infectionRate = 2;
         outbreakNum = 0;
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
+        init();
+    }
+    private void init(){
+        PlayerCard.initStarterPlayerDecks(playerDeck, infectionDeck);
     }
 
     //copy constructor
