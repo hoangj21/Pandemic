@@ -1,4 +1,6 @@
 package com.example.joann.pandemic.pandemic;
 
-public class PandemicHumanPlayer {
+import com.example.joann.pandemic.game.GameHumanPlayer;
+
+public class PandemicHumanPlayer extends GameHumanPlayer {
 }

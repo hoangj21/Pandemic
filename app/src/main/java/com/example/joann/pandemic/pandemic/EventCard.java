@@ -77,4 +77,11 @@ public class EventCard extends Card
         return airlift;
     }
 
+
+    EventCard resilient_pop_card = new EventCard(true, true, false, false, false, false);
+    EventCard quiet_night_card = new EventCard(true, false, true, false, false, false);
+    EventCard forecast_card = new EventCard(true, false, false, true, false, false);
+    EventCard government_grant_card = new EventCard(true, false, false, false, true, false);
+    EventCard airlift_card = new EventCard(true, false, false, false, false, true);
+
 }

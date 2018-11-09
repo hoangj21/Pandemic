@@ -2,6 +2,7 @@ package com.example.joann.pandemic;
 
 import android.graphics.Color;
 
+import com.example.joann.pandemic.pandemic.Card;
 import com.example.joann.pandemic.pandemic.City;
 import com.example.joann.pandemic.pandemic.PlayerCard;
 import com.example.joann.pandemic.pandemic.PlayerInfo;
@@ -69,5 +70,11 @@ public class ExampleUnitTest {
 
         //current city has research center == desired city has researched center
         assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
+    }
+
+    @Test
+    public void testInfectionRate()
+    {
+
     }
 }

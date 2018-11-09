@@ -24,24 +24,6 @@
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/pandemicpic" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="Cool Beans"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
-
-        <Button
-            android:id="@+id/runTestButton"
-            android:layout_width="264dp"
-            android:layout_height="145dp"
-            android:text="Run Test"
-            tools:layout_editor_absoluteX="1029dp"
-            tools:layout_editor_absoluteY="617dp" />
-
         <SurfaceView
             android:id="@+id/MapView"
             android:layout_width="900dp"
