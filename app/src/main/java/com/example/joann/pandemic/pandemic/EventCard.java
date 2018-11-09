@@ -82,14 +82,14 @@ public class EventCard extends Card
     }
 
 
-    public void initiation() {
+    public static void initEventCard() {
         EventCard resilient_pop_card = new EventCard(true, true, false, false, false, false);
         EventCard quiet_night_card = new EventCard(true, false, true, false, false, false);
         EventCard forecast_card = new EventCard(true, false, false, true, false, false);
         EventCard government_grant_card = new EventCard(true, false, false, false, true, false);
         EventCard airlift_card = new EventCard(true, false, false, false, false, true);
 
-        ArrayList<EventCard> EventCard = new ArrayList<EventCard>;
+        ArrayList<EventCard> EventCard = new ArrayList<EventCard>();
         EventCard.add(resilient_pop_card);
         EventCard.add(quiet_night_card);
         EventCard.add(forecast_card);

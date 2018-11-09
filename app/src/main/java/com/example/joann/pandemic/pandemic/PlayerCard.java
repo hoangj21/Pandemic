@@ -60,10 +60,10 @@ public class PlayerCard extends Card{
     }
 
     public static void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
-        int red = Color.RED;
-        int blue = Color.BLUE;
-        int black = Color.BLACK;
-        int yellow = Color.YELLOW;
+        String red = "Red";
+        String blue = "Blue";
+        String black = "Black";
+        String yellow = "Yellow";
 
             City algiers = new City ();
             City atlanta = new City ();

@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import static com.example.joann.pandemic.pandemic.EventCard.initEventCard;
+import static com.example.joann.pandemic.pandemic.PlayerCard.initStarterPlayerDecks;
+
 /************************************
  * PandemicGameState Constructor
  * Initializes a 2-player game
@@ -62,7 +65,8 @@ public class PandemicGameState extends GameState {
         init();
     }
     private void init(){
-        PlayerCard.initStarterPlayerDecks(playerDeck, infectionDeck);
+        initStarterPlayerDecks(playerDeck, infectionDeck);
+        initEventCard();
     }
 
     //copy constructor
