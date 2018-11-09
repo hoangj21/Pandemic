@@ -92,7 +92,8 @@ public class City {
 
     //Following two method is all the city start stuff
 
-    public void initiation(){
+    public void initiation()
+    {
     City algiers = new City ();
     City atlanta = new City ();
     City baghdad = new City ();
@@ -111,9 +112,7 @@ public class City {
     City taipei = new City ();
     City tokyo = new City ();
     City tehran = new City ();
-
     City jakarta = new City ();
-
     City cairo = new City ();
     City chennai = new City ();
     City paris = new City ();
@@ -232,7 +231,152 @@ public class City {
         tehran.setAdjacentCities(karachi);
         tehran.setAdjacentCities(delhi);
 
-        //jakarta.setAdjacentCities();
+        jakarta.setAdjacentCities(sydney);
+        jakarta.setAdjacentCities(hochiminhcity);
+        jakarta.setAdjacentCities(bangkok);
+        jakarta.setAdjacentCities(chennai);
+
+        cairo.setAdjacentCities(khartoum);
+        cairo.setAdjacentCities(riyadh);
+        cairo.setAdjacentCities(baghdad);
+        cairo.setAdjacentCities(istanbul);
+        cairo.setAdjacentCities(algiers);
+
+        chennai.setAdjacentCities(jakarta);
+        chennai.setAdjacentCities(bangkok);
+        chennai.setAdjacentCities(kolkata);
+        chennai.setAdjacentCities(delhi);
+        chennai.setAdjacentCities(mumbai);
+
+        paris.setAdjacentCities(essen);
+        paris.setAdjacentCities(milan);
+        paris.setAdjacentCities(algiers);
+        paris.setAdjacentCities(madrid);
+        paris.setAdjacentCities(london);
+
+        petersburg.setAdjacentCities(essen);
+        petersburg.setAdjacentCities(istanbul);
+        petersburg.setAdjacentCities(moscow);
+
+        saopaulo.setAdjacentCities(beunosaires);
+        saopaulo.setAdjacentCities(bogota);
+        saopaulo.setAdjacentCities(lagos);
+        saopaulo.setAdjacentCities(madrid);
+
+        lagos.setAdjacentCities(saopaulo);
+        lagos.setAdjacentCities(kinshasa);
+        lagos.setAdjacentCities(khartoum);
+
+        lima.setAdjacentCities(santiago);\
+        lima.setAdjacentCities(bogota);
+        lima.setAdjacentCities(mexicocity);
+
+        london.setAdjacentCities(newyork);
+        london.setAdjacentCities(madrid);
+        london.setAdjacentCities(paris);
+        london.setAdjacentCities(essen);
+
+        losangeles.setAdjacentCities(mexicocity);
+        losangeles.setAdjacentCities(chicago);
+        losangeles.setAdjacentCities(sanfrancisco);
+        losangeles.setAdjacentCities(sydney);
+
+        delhi.setAdjacentCities(tehran);
+        delhi.setAdjacentCities(karachi);
+        delhi.setAdjacentCities(mumbai);
+        delhi.setAdjacentCities(chennai);
+        delhi.setAdjacentCities(kolkata);
+
+        johannesburg.setAdjacentCities(kinshasa);
+        johannesburg.setAdjacentCities(khartoum);
+
+        karachi.setAdjacentCities(riyadh);
+        karachi.setAdjacentCities(baghdad);
+        karachi.setAdjacentCities(tehran);
+        karachi.setAdjacentCities(delhi);
+        karachi.setAdjacentCities(mumbai);
+
+        madrid.setAdjacentCities(saopaulo);
+        madrid.setAdjacentCities(newyork);
+        madrid.setAdjacentCities(london);
+        madrid.setAdjacentCities(paris);
+        madrid.setAdjacentCities(algiers);
+
+        montreal.setAdjacentCities(chicago);
+        montreal.setAdjacentCities(washington);
+        montreal.setAdjacentCities(newyork);
+
+        sanfrancisco.setAdjacentCities(chicago);
+        sanfrancisco.setAdjacentCities(tokyo);
+        sanfrancisco.setAdjacentCities(manila);
+
+        kolkata.setAdjacentCities(delhi);
+        kolkata.setAdjacentCities(chennai);
+        kolkata.setAdjacentCities(bangkok);
+        kolkata.setAdjacentCities(hongkong);
+
+        mexicocity.setAdjacentCities(losangeles);
+        mexicocity.setAdjacentCities(miami);
+        mexicocity.setAdjacentCities(bogota);
+        mexicocity.setAdjacentCities(chicago);
+        mexicocity.setAdjacentCities(lima);
+
+        santiago.setAdjacentCities(lima);
+
+        sydney.setAdjacentCities(jakarta);
+        sydney.setAdjacentCities(manila);
+        sydney.setAdjacentCities(losangeles);
+
+        mumbai.setAdjacentCities(karachi);
+        mumbai.setAdjacentCities(delhi);
+        mumbai.setAdjacentCities(chennai);
+
+        seoul.setAdjacentCities(bejing);
+        seoul.setAdjacentCities(shanghai);
+        seoul.setAdjacentCities(tokyo);
+
+        chicago.setAdjacentCities(sanfrancisco);
+        chicago.setAdjacentCities(losangeles);
+        chicago.setAdjacentCities(mexicocity);
+        chicago.setAdjacentCities(atlanta);
+        chicago.setAdjacentCities(montreal);
+
+        kinshasa.setAdjacentCities(johannesburg);
+        kinshasa.setAdjacentCities(khartoum);
+        kinshasa.setAdjacentCities(lagos);
+
+        miami.setAdjacentCities(atlanta);
+        miami.setAdjacentCities(washington);
+        miami.setAdjacentCities(bogota);
+        miami.setAdjacentCities(mexicocity);
+
+        milan.setAdjacentCities(paris);
+        milan.setAdjacentCities(essen);
+        milan.setAdjacentCities(istanbul);
+
+        manila.setAdjacentCities(hochiminhcity);
+        manila.setAdjacentCities(hongkong);
+        manila.setAdjacentCities(taipei);
+        manila.setAdjacentCities(sydney);
+        manila.setAdjacentCities(sanfrancisco);
+
+        shanghai.setAdjacentCities(bejing);
+        shanghai.setAdjacentCities(seoul);
+        shanghai.setAdjacentCities(tokyo);
+        shanghai.setAdjacentCities(taipei);
+        shanghai.setAdjacentCities(hongkong);
+
+        hongkong.setAdjacentCities(shanghai);
+        hongkong.setAdjacentCities(taipei);
+        hongkong.setAdjacentCities(manila);
+        hongkong.setAdjacentCities(hochiminhcity);
+        hongkong.setAdjacentCities(bangkok);
+        hongkong.setAdjacentCities(kolkata);
+
+        osaka.setAdjacentCities(tokyo);
+        osaka.setAdjacentCities(taipei);
+
+
     }
 /*
     public int caseSwitchName (City city) {
