@@ -45,7 +45,7 @@ public class PandemicGameState extends GameState {
     private int[] curedDiseases;
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
-    private Random randomGenerator;
+    private Random rand = new Random();
 
 
     //default constructor
@@ -158,7 +158,7 @@ public class PandemicGameState extends GameState {
         }
 
         else{
-            int index = randomGenerator.nextInt(playerDeck.size());
+            int index = rand.nextInt(playerDeck.size());
             card = playerDeck.get(index);
             player.addCardToPlayerHand(card);
             //reflect in gui?
@@ -168,8 +168,10 @@ public class PandemicGameState extends GameState {
 
     //draws card from infection deck
     public boolean drawInfectionCard(PlayerInfo player, int infectionRate) {
-        this.infectionDeck.get(0);
-        infectionDeck.remove(0);
+        int index = rand.nextInt(infectionDeck.size());
+        this.infectionDeck.get(index).getLocation().addDiseaseCube();
+        infectionDiscardDeck.add(infectionDeck.get(index));
+        infectionDeck.remove(index);
         return true;
     }
 
