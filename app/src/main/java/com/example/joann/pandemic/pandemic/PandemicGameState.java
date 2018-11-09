@@ -19,6 +19,8 @@ package com.example.joann.pandemic.pandemic;
  *  -curedDiseases: int[]
  ************************************/
 
+import android.util.Log;
+
 import com.example.joann.pandemic.game.infoMsg.GameState;
 
 import java.util.ArrayList;
@@ -142,6 +144,8 @@ public class PandemicGameState extends GameState {
         //up a dialog box that tells them so and lets them continue to make actions.
 
         //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        Log.e("Move ", "Something went wrong in PandemicGameState>Move");
         return false;
 
     }
