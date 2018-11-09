@@ -187,9 +187,11 @@ public class PandemicGameState extends GameState {
     }
 
     //puts a player card in the player discard deck
-    public boolean discardPlayerCard(PlayerInfo player, PlayerCard playerCard) {
-        player.getPlayerHand().remove(playerCard);
-        playerDiscardDeck.add(playerCard);
+    public boolean discardPlayerCard(PlayerInfo player,PlayerCard gc){
+        int index = player.getPlayerHand().indexOf(gc);
+       PlayerCard card = player.getPlayerHand().get(index);
+       playerDiscardDeck.add(card);
+       player.getPlayerHand().remove(index);
         return true;
     }
 
