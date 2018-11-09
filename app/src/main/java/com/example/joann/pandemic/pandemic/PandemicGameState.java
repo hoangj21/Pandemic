@@ -192,12 +192,6 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
-    //removes a card from an infection deck and
-    public boolean discardInfectionCard(PlayerInfo player, int infectionRate) {
-        this.infectionDeck.remove(0);
-        return true;
-    }
-
     //Adds a research station to a specified city
     public boolean buildAResearchStation(PlayerInfo player, City playerCity, PlayerCard gc) {
         //normal, operations expert
@@ -223,12 +217,68 @@ public class PandemicGameState extends GameState {
     }
 
     //Sets state of disease to cured
-    public boolean discoverACure(PlayerInfo player, City playerCity, PlayerCard gc) {
+    public boolean discoverACure(PlayerInfo player) {
         //normal, scientist
         if (player.getActionsLeft() <= 0) {
             return false;
         }
-        curedDiseases[0] = 1;
+        if(player.getCurrentLocation().hasResearchLab == false){
+            return false;
+        }
+        //counters for number of each card color in player hand
+        int numYellow = 0;
+        int numRed = 0;
+        int numBlue = 0;
+        int numBlack = 0;
+
+        //Loop through player hand and count colors
+        for( int i = 0; i< player.getPlayerHand().size(); i++){
+            String color = player.getPlayerHand().get(i).getdiseaseColor();
+            if(color.equals("Yellow")){
+                numYellow++;
+            }
+            if(color.equals("Red")){
+                numRed++;
+            }
+            if(color.equals("Blue")){
+                numBlue++;
+            }
+            if(color.equals("Black")){
+                numBlack++;
+            }
+
+            //sets a disease to cured if player has enough cards of a certain color
+                if(numYellow>=4){
+                    curedDiseases[0] = 1;
+                }
+                if(numRed>=4){
+                    curedDiseases[1] = 1;
+                }
+                if(numBlue>=4){
+                    curedDiseases[2] = 1;
+                }
+                if(numBlack>=4){
+                    curedDiseases[3] = 1;
+                }
+            //Special case for if player role is scientist
+            //Then player only needs 3 cards to cure a disease
+            if(player.role == 2){
+                if(numYellow>=3){
+                    curedDiseases[0] = 1;
+                }
+                if(numRed>=3){
+                    curedDiseases[1] = 1;
+                }
+                if(numBlue>=3){
+                    curedDiseases[2] = 1;
+                }
+                if(numBlack>=3){
+                    curedDiseases[3] = 1;
+                }
+            }
+        }
+
+
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
     }
