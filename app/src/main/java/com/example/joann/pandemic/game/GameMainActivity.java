@@ -23,6 +23,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.game.util.IPCoder;
 import com.example.joann.pandemic.game.util.MessageBox;
 

@@ -6,6 +6,10 @@ package com.example.joann.pandemic.pandemic;
  * @Polina
  ************************************/
 
+import android.util.EventLog;
+
+import java.util.ArrayList;
+
 /******************************************************
 * Object class that creates the the pawn info
  * that determines the pawns id and the role that they have
@@ -78,10 +82,18 @@ public class EventCard extends Card
     }
 
 
-    EventCard resilient_pop_card = new EventCard(true, true, false, false, false, false);
-    EventCard quiet_night_card = new EventCard(true, false, true, false, false, false);
-    EventCard forecast_card = new EventCard(true, false, false, true, false, false);
-    EventCard government_grant_card = new EventCard(true, false, false, false, true, false);
-    EventCard airlift_card = new EventCard(true, false, false, false, false, true);
+    public void initiation() {
+        EventCard resilient_pop_card = new EventCard(true, true, false, false, false, false);
+        EventCard quiet_night_card = new EventCard(true, false, true, false, false, false);
+        EventCard forecast_card = new EventCard(true, false, false, true, false, false);
+        EventCard government_grant_card = new EventCard(true, false, false, false, true, false);
+        EventCard airlift_card = new EventCard(true, false, false, false, false, true);
 
+        ArrayList<EventCard> EventCard = new ArrayList<EventCard>;
+        EventCard.add(resilient_pop_card);
+        EventCard.add(quiet_night_card);
+        EventCard.add(forecast_card);
+        EventCard.add(government_grant_card);
+        EventCard.add(airlift_card);
+    }
 }
