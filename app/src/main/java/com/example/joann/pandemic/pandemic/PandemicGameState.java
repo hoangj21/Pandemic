@@ -24,6 +24,7 @@ import android.util.Log;
 import com.example.joann.pandemic.game.infoMsg.GameState;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /************************************
@@ -170,25 +171,27 @@ public class PandemicGameState extends GameState {
         }
     }
 
-    //draws card from infection deck
-    public boolean drawInfectionCard(PlayerInfo player, int infectionRate) {
+    //draws card from infection deck and infects city
+    public boolean drawInfectionCard() {
         int index = rand.nextInt(infectionDeck.size());
-        this.infectionDeck.get(index).getLocation().addDiseaseCube();
-        infectionDiscardDeck.add(infectionDeck.get(index));
-        infectionDeck.remove(index);
+
+        InfectionCard c = infectionDeck.get(index);
+
+        for(int i = 0; i < infectionRate; i++){
+            c.getLocation().addDiseaseCube(c.getDiseaseColor());
+        }
+        c.getLocation().addDiseaseCube(c.getDiseaseColor());
+        infectionDiscardDeck.add(c);
+        infectionDeck.remove(c);
         return true;
     }
 
     //puts a player card in the player discard deck
-    public boolean discardPlayerCard(PlayerInfo player, PlayerCard playerCard) {
-        player.getPlayerHand().remove(playerCard);
-        playerDiscardDeck.add(playerCard);
-        return true;
-    }
-
-    //removes a card from an infection deck and
-    public boolean discardInfectionCard(PlayerInfo player, int infectionRate) {
-        this.infectionDeck.remove(0);
+    public boolean discardPlayerCard(PlayerInfo player,PlayerCard gc){
+        int index = player.getPlayerHand().indexOf(gc);
+       PlayerCard card = player.getPlayerHand().get(index);
+       playerDiscardDeck.add(card);
+       player.getPlayerHand().remove(index);
         return true;
     }
 
@@ -217,12 +220,68 @@ public class PandemicGameState extends GameState {
     }
 
     //Sets state of disease to cured
-    public boolean discoverACure(PlayerInfo player, City playerCity, PlayerCard gc) {
+    public boolean discoverACure(PlayerInfo player) {
         //normal, scientist
         if (player.getActionsLeft() <= 0) {
             return false;
         }
-        curedDiseases[0] = 1;
+        if(player.getCurrentLocation().hasResearchLab == false){
+            return false;
+        }
+        //counters for number of each card color in player hand
+        int numYellow = 0;
+        int numRed = 0;
+        int numBlue = 0;
+        int numBlack = 0;
+
+        //Loop through player hand and count colors
+        for( int i = 0; i< player.getPlayerHand().size(); i++){
+            String color = player.getPlayerHand().get(i).getdiseaseColor();
+            if(color.equals("Yellow")){
+                numYellow++;
+            }
+            if(color.equals("Red")){
+                numRed++;
+            }
+            if(color.equals("Blue")){
+                numBlue++;
+            }
+            if(color.equals("Black")){
+                numBlack++;
+            }
+
+            //sets a disease to cured if player has enough cards of a certain color
+                if(numYellow>=4){
+                    curedDiseases[0] = 1;
+                }
+                if(numRed>=4){
+                    curedDiseases[1] = 1;
+                }
+                if(numBlue>=4){
+                    curedDiseases[2] = 1;
+                }
+                if(numBlack>=4){
+                    curedDiseases[3] = 1;
+                }
+            //Special case for if player role is scientist
+            //Then player only needs 3 cards to cure a disease
+            if(player.role == 2){
+                if(numYellow>=3){
+                    curedDiseases[0] = 1;
+                }
+                if(numRed>=3){
+                    curedDiseases[1] = 1;
+                }
+                if(numBlue>=3){
+                    curedDiseases[2] = 1;
+                }
+                if(numBlack>=3){
+                    curedDiseases[3] = 1;
+                }
+            }
+        }
+
+
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
     }
@@ -236,19 +295,14 @@ public class PandemicGameState extends GameState {
         return false;
     }
 
-    //Adds disease cube(s) to a city
-    public boolean infect(PlayerInfo player) {
-        //normal, epidemic, outbreak
-        if (player.getActionsLeft() <= 0) {
-            return false;
-        }
-        player.getCurrentLocation().addDiseaseCube("blue");
-        return true;
-    }
-
     //reshuffles infection discard deck, adds back into infection deck
     public boolean intensify(PlayerInfo player) {
         //reshuffling and adding
+        for(int i = 0; i < infectionDiscardDeck.size(); i++){
+            InfectionCard card = infectionDiscardDeck.get(i);
+            infectionDeck.add(card);
+        }
+        Collections.shuffle(infectionDeck);
         return true;
     }
 
