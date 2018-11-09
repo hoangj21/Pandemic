@@ -13,20 +13,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:layout_width="1300dp"
-            android:layout_height="620dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            app:srcCompat="@drawable/pandemicpic" />
 
         <SurfaceView
             android:id="@+id/MapView"
-            android:layout_width="900dp"
+            android:layout_width="match_parent"
             android:layout_height="617dp" />
 
 
