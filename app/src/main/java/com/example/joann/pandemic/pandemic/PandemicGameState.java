@@ -19,12 +19,10 @@ package com.example.joann.pandemic.pandemic;
  *  -curedDiseases: int[]
  ************************************/
 
-import android.app.AlertDialog;
-
-import com.example.joann.pandemic.game.LocalGame;
 import com.example.joann.pandemic.game.infoMsg.GameState;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /************************************
  * PandemicGameState Constructor
@@ -45,10 +43,15 @@ public class PandemicGameState extends GameState {
     private int[] curedDiseases;
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
+    private Random randomGenerator;
 
 
     //default constructor
     PandemicGameState() {
+        playerDeck = new ArrayList<>();
+        playerDiscardDeck = new ArrayList<>();
+        infectionDeck = new ArrayList<>();
+        infectionDiscardDeck = new ArrayList<>();
         numPlayers = 2;
         infectionRate = 2;
         outbreakNum = 0;
@@ -109,20 +112,24 @@ public class PandemicGameState extends GameState {
         }
 
         //Direct Flight Case: Move to a city whose card you have.
-            /* PSEUDOCODE
-                1. Iterate through player's hand
-                2. See if card.getCity = desired city
-                3. If so, discard that card and player.setCurrentLocation(desiredCity);
-                4. player.actionTaken(); and return true
-             */
+        for(PlayerCard p: player.getPlayerHand()){
+            if(p.getLocation() == desiredCity){
+                player.setCurrentLocation(desiredCity);
+                discardPlayerCard(player, p);
+                player.actionTaken();
+                return true;
+            }
+        }
 
         //Charter Flight Case: Move to a city whose card you have.
-            /* PSEUDOCODE
-                1. Iterate through player's hand
-                2. See if card.getCity = player.getCurrentLocation()
-                3. If so, discard that card and player.setCurrentLocation(desiredCity);
-                4. player.actionTaken(); and return true
-             */
+        for(PlayerCard p: player.getPlayerHand()){
+            if(p.getLocation() == player.getCurrentLocation()){
+                player.setCurrentLocation(desiredCity);
+                discardPlayerCard(player, p);
+                player.actionTaken();
+                return true;
+            }
+        }
 
         //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
         if(player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
@@ -139,15 +146,20 @@ public class PandemicGameState extends GameState {
 
     }
 
-    //adds card to player's hand
-    public boolean drawPlayerCard(PlayerInfo player, int numCards) {
-        if (numCards > MAX_CARDS) {
+    //Adds card to player's hand
+    public boolean drawPlayerCard(PlayerInfo player, PlayerCard card) {
+        if(player.getPlayerHand().size() >= 7){
+            //print message?
             return false;
         }
-        player.addCardToPlayerHand(playerDeck.get(0));
-        playerDeck.remove(0);
 
-        return true;
+        else{
+            int index = randomGenerator.nextInt(playerDeck.size());
+            card = playerDeck.get(index);
+            player.addCardToPlayerHand(card);
+            //reflect in gui?
+            return true;
+        }
     }
 
     //draws card from infection deck
@@ -158,10 +170,9 @@ public class PandemicGameState extends GameState {
     }
 
     //puts a player card in the player discard deck
-    public boolean discardPlayerCard(PlayerInfo player, int numCards, PlayerCard playerCards) {
-        if (playerCards == null) {
-            return false;
-        }
+    public boolean discardPlayerCard(PlayerInfo player, PlayerCard playerCard) {
+        player.getPlayerHand().remove(playerCard);
+        playerDiscardDeck.add(playerCard);
         return true;
     }
 

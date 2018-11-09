@@ -6,6 +6,8 @@ package com.example.joann.pandemic.pandemic;
  * @Polina
  ************************************/
 
+import java.util.ArrayList;
+
 /************************************
  * Object class that creates the player card info
  * that determines the player cards info
@@ -54,6 +56,7 @@ public class PlayerCard extends Card{
     public boolean getisItEpidemic() {
         return isEpidemic;
     }
+
 
        public void initiation()
     {
@@ -105,6 +108,57 @@ public class PlayerCard extends Card{
         PlayerCard shanghai_card = new PlayerCard(shanghai, red, false);
         PlayerCard hongkong_card = new PlayerCard(hongkong, red, false);
         PlayerCard osaka_card = new PlayerCard(osaka, red, false);
+
+
+        ArrayList<PlayerCard> playerDeck = new ArrayList<PlayerCard>;
+        playerDeck.add(algiers_card);
+        playerDeck.add(atlanta_card);
+        playerDeck.add(baghdad_card);
+        playerDeck.add(bangkok_card);
+        playerDeck.add(bejing_card);
+        playerDeck.add(beunosaires_card);
+        playerDeck.add(bogota_card);
+        playerDeck.add(istanbul_card);
+        playerDeck.add(khartoum_card);
+        playerDeck.add(hochiminhcity_card);
+        playerDeck.add(riyadh_card);
+        playerDeck.add(essen_card);
+        playerDeck.add(washington_card);
+        playerDeck.add(moscow_card);
+        playerDeck.add(newyork_card);
+        playerDeck.add(taipei_card);
+        playerDeck.add(tokyo_card);
+        playerDeck.add(tehran_card);
+        playerDeck.add(jakarta_card);
+        playerDeck.add(cairo_card);
+        playerDeck.add(chennai_card);
+        playerDeck.add(paris_card);
+        playerDeck.add(petersburg_card);
+        playerDeck.add(saopaulo_card);
+        playerDeck.add(lagos_card);
+        playerDeck.add(lima_card);
+        playerDeck.add(london_card);
+        playerDeck.add(losangeles_card);
+        playerDeck.add(delhi_card);
+        playerDeck.add(johannesburg_card);
+        playerDeck.add(karachi_card);
+        playerDeck.add(madrid_card);
+        playerDeck.add(montreal_card);
+        playerDeck.add(sanfrancisco_card);
+        playerDeck.add(kolkata_card);
+        playerDeck.add(mexicocity_card);
+        playerDeck.add(santiago_card);
+        playerDeck.add(sydney_card);
+        playerDeck.add(mumbai_card);
+        playerDeck.add(seoul_card);
+        playerDeck.add(chicago_card);
+        playerDeck.add(kinshasa_card);
+        playerDeck.add(miami_card);
+        playerDeck.add(milan_card);
+        playerDeck.add(manila_card);
+        playerDeck.add(shanghai_card);
+        playerDeck.add(hongkong_card);
+        playerDeck.add(osaka_card);
     }
 
 }

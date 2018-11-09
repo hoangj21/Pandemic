@@ -7,6 +7,8 @@ package com.example.joann.pandemic.pandemic;
  * @Polina
  ************************************/
 
+import java.util.ArrayList;
+
 /************************************
  * Object class that creates the infection card info
  * that determines the player cards info
@@ -96,6 +98,56 @@ public class InfectionCard extends Card
         InfectionCard shanghai_infection = new InfectionCard(shanghai, red);
         InfectionCard hongkong_infection = new InfectionCard(hongkong, red);
         InfectionCard osaka_infection = new InfectionCard(osaka, red);
+
+        ArrayList<InfectionCard> InfectionCard = new ArrayList<InfectionCard>;
+        InfectionCard.add(algiers_infection);
+        InfectionCard.add(atlanta_infection);
+        InfectionCard.add(baghdad_infection);
+        InfectionCard.add(bangkok_infection);
+        InfectionCard.add(bejing_infection);
+        InfectionCard.add(beunosaires_infection);
+        InfectionCard.add(bogota_infection);
+        InfectionCard.add(istanbul_infection);
+        InfectionCard.add(khartoum_infection);
+        InfectionCard.add(hochiminhcity_infection);
+        InfectionCard.add(riyadh_infection);
+        InfectionCard.add(essen_infection);
+        InfectionCard.add(washington_infection;
+        InfectionCard.add(moscow_infection);
+        InfectionCard.add(newyork_infection);
+        InfectionCard.add(taipei_infection);
+        InfectionCard.add(tokyo_infection);
+        InfectionCard.add(tehran_infection);
+        InfectionCard.add(jakarta_infection);
+        InfectionCard.add(cairo_infection);
+        InfectionCard.add(chennai_infection);
+        InfectionCard.add(paris_infection);
+        InfectionCard.add(petersburg_infection);
+        InfectionCard.add(saopaulo_infection);
+        InfectionCard.add(lagos_infection);
+        InfectionCard.add(lima_infection);
+        InfectionCard.add(london_infection);
+        InfectionCard.add(losangeles_infection);
+        InfectionCard.add(delhi_infection);
+        InfectionCard.add(johannesburg_infection);
+        InfectionCard.add(karachi_infection);
+        InfectionCard.add(madrid_infection);
+        InfectionCard.add(montreal_infection);
+        InfectionCard.add(sanfrancisco_infection);
+        InfectionCard.add(kolkata_infection);
+        InfectionCard.add(mexicocity_infection);
+        InfectionCard.add(santiago_infection);
+        InfectionCard.add(sydney_infection);
+        InfectionCard.add(mumbai_infection);
+        InfectionCard.add(seoul_infection);
+        InfectionCard.add(chicago_infection);
+        InfectionCard.add(kinshasa_infection;
+        InfectionCard.add(miami_infection);
+        InfectionCard.add(milan_infection;
+        InfectionCard.add(manila_infection);
+        InfectionCard.add(shanghai_infection);
+        InfectionCard.add(hongkong_infection);
+        InfectionCard.add(osaka_infection);
     }
 
 }

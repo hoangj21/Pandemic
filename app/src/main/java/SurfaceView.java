@@ -11,7 +11,8 @@ import android.view.SurfaceView;
 
 import com.example.joann.pandemic.R;
 
-class MapView extends SurfaceView {
+class MapView extends SurfaceView
+{
 
     public MapView(Context context, AttributeSet set) {
         super(context, set);
@@ -24,7 +25,7 @@ class MapView extends SurfaceView {
         myPaint.setColor(Color.BLUE);
 
         Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
-        map = Bitmap.createScaledBitmap(map, 800, 800, true);
+        map = Bitmap.createScaledBitmap(map, 500, 500, true);
         canvas.drawBitmap(map, 100, 100, myPaint );
 
 
