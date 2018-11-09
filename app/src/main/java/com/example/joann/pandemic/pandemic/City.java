@@ -28,7 +28,6 @@ public class City {
     protected Boolean hasResearchLab;
     protected Boolean isVisited;
 
-
     //Default constructor
     public City(){
         //this.name = name;
@@ -66,6 +65,7 @@ public class City {
         }
     }
 
+
     //getters and setters for all variables
     public ArrayList<DiseaseCube> getDiseaseCubes() {
         return diseaseCubes;
@@ -90,6 +90,9 @@ public class City {
 
 
 
+    public String getName() {
+        return name;
+    }
     //Following two method is all the city start stuff
 
     public void initiation()

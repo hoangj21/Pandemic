@@ -12,6 +12,7 @@ public class PandemicComputerPlayer extends GameComputerPlayer {
     protected void receiveInfo(GameInfo info) {
         if(info instanceof PandemicGameState) {
             PandemicGameState state = new PandemicGameState((PandemicGameState) info);
+
             if () {
                 return;
             }

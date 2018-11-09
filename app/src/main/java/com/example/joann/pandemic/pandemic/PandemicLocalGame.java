@@ -22,7 +22,7 @@ public class PandemicLocalGame extends LocalGame {
 
     @Override
     protected boolean makeMove(GameAction action) {
-
+        //update state here
 
     }//makeMove
 

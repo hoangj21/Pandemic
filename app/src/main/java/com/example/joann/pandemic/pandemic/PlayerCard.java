@@ -25,11 +25,11 @@ import java.util.ArrayList;
 public class PlayerCard extends Card{
 
     protected City location;
-    protected int diseaseColor;
+    protected String diseaseColor;
     protected boolean isEpidemic;
 
     //Default constructor
-    public PlayerCard(City city, int color, boolean isItEpidemic)
+    public PlayerCard(City city, String color, boolean isItEpidemic)
     {
         location = city;
         diseaseColor = color;
@@ -51,7 +51,7 @@ public class PlayerCard extends Card{
         return location;
     }
 
-    public int getdiseaseColor() {
+    public String getdiseaseColor() {
         return diseaseColor;
     }
 
