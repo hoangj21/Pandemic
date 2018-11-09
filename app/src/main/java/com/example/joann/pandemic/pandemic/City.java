@@ -267,7 +267,7 @@ public class City {
         lagos.setAdjacentCities(kinshasa);
         lagos.setAdjacentCities(khartoum);
 
-        lima.setAdjacentCities(santiago);\
+        lima.setAdjacentCities(santiago);
         lima.setAdjacentCities(bogota);
         lima.setAdjacentCities(mexicocity);
 

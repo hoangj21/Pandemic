@@ -170,12 +170,18 @@ public class PandemicGameState extends GameState {
         }
     }
 
-    //draws card from infection deck
-    public boolean drawInfectionCard(PlayerInfo player, int infectionRate) {
+    //draws card from infection deck and infects city
+    public boolean drawInfectionCard() {
         int index = rand.nextInt(infectionDeck.size());
-        this.infectionDeck.get(index).getLocation().addDiseaseCube();
-        infectionDiscardDeck.add(infectionDeck.get(index));
-        infectionDeck.remove(index);
+
+        InfectionCard c = infectionDeck.get(index);
+
+        for(int i = 0; i < infectionRate; i++){
+            c.getLocation().addDiseaseCube(c.getDiseaseColor());
+        }
+        c.getLocation().addDiseaseCube(c.getDiseaseColor());
+        infectionDiscardDeck.add(c);
+        infectionDeck.remove(c);
         return true;
     }
 

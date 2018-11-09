@@ -22,10 +22,10 @@ public class InfectionCard extends Card
 {
 
     protected City location;
-    protected int diseaseColor;
+    protected String diseaseColor;
 
     //Constructor
-    public InfectionCard(City city, int color)
+    public InfectionCard(City city, String color)
     {
         location = city;
         diseaseColor = color;
@@ -44,7 +44,7 @@ public class InfectionCard extends Card
         return location;
     }
 
-    public int getDiseaseColor() {
+    public String getDiseaseColor() {
         return diseaseColor;
     }
 
