@@ -24,6 +24,7 @@ import android.util.Log;
 import com.example.joann.pandemic.game.infoMsg.GameState;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /************************************
@@ -292,19 +293,14 @@ public class PandemicGameState extends GameState {
         return false;
     }
 
-    //Adds disease cube(s) to a city
-    public boolean infect(PlayerInfo player) {
-        //normal, epidemic, outbreak
-        if (player.getActionsLeft() <= 0) {
-            return false;
-        }
-        player.getCurrentLocation().addDiseaseCube("blue");
-        return true;
-    }
-
     //reshuffles infection discard deck, adds back into infection deck
     public boolean intensify(PlayerInfo player) {
         //reshuffling and adding
+        for(int i = 0; i < infectionDiscardDeck.size(); i++){
+            InfectionCard card = infectionDiscardDeck.get(i);
+            infectionDeck.add(card);
+        }
+        Collections.shuffle(infectionDeck);
         return true;
     }
 
