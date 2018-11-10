@@ -43,6 +43,7 @@ public class PandemicGameState extends GameState {
     private ArrayList<InfectionCard> infectionDeck;
     private ArrayList<PlayerCard> playerDiscardDeck;
     private ArrayList<InfectionCard> infectionDiscardDeck;
+    private ArrayList<ArrayList<PlayerCard>> playerHands;
     private int numPlayers;
     private int infectionRate;
     private int outbreakNum;
@@ -359,6 +360,10 @@ public class PandemicGameState extends GameState {
     /****************************************
      * GETTERS & SETTERS
      ***************************************/
+    public  ArrayList<PlayerCard> getPlayerHand(int playerNum)
+    {
+        return playerHands.get(playerNum);
+        }
 
     public int getNumPlayers() {
         return numPlayers;

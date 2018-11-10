@@ -23,19 +23,21 @@ public class InfectionCard extends Card
 
     protected City location;
     protected String diseaseColor;
+    protected int androidIdInfect;
 
     //Constructor
-    public InfectionCard(City city, String color)
+    public InfectionCard(City city, String color, int aId)
     {
         location = city;
         diseaseColor = color;
+        androidIdInfect = aId;
     }
 
     //Copy constructor
     public InfectionCard(InfectionCard otherCard){
         this.location = otherCard.location;
         this.diseaseColor = otherCard.diseaseColor;
-
+        this.androidIdInfect = otherCard.androidIdInfect;
 
     }
 
@@ -48,6 +50,8 @@ public class InfectionCard extends Card
         return diseaseColor;
     }
 
-
+    public int getAndroidIdInfect(){
+        return androidIdInfect;
+    }
 
 }

@@ -7,6 +7,9 @@ package com.example.joann.pandemic.pandemic;
  ************************************/
 
 import android.graphics.Color;
+import android.graphics.drawable.RippleDrawable;
+
+import com.example.joann.pandemic.R;
 
 import java.util.ArrayList;
 
@@ -27,13 +30,15 @@ public class PlayerCard extends Card{
     protected City location;
     protected String diseaseColor;
     protected boolean isEpidemic;
+    protected int androidId;
 
     //Default constructor
-    public PlayerCard(City city, String color, boolean isItEpidemic)
+    public PlayerCard(City city, String color, boolean isItEpidemic, int aId)
     {
         location = city;
         diseaseColor = color;
         isEpidemic = isItEpidemic;
+        androidId = aId;
 
     }
     //copy constructor
@@ -42,6 +47,7 @@ public class PlayerCard extends Card{
         this.location = new City(playerCard.location);
         this.diseaseColor = playerCard.diseaseColor;
         this.isEpidemic = playerCard.isEpidemic;
+        this.androidId = playerCard.androidId;
 
     }
 
@@ -59,12 +65,18 @@ public class PlayerCard extends Card{
         return isEpidemic;
     }
 
+    public int getAndroidId(){
+        return androidId;
+    }
+
     public static void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
         String red = "Red";
         String blue = "Blue";
         String black = "Black";
         String yellow = "Yellow";
+        String none = "None";
 
+            City epidemic = new City();
             City algiers = new City ();
             City atlanta = new City ();
             City baghdad = new City ();
@@ -350,54 +362,58 @@ public class PlayerCard extends Card{
 
 
 
-        PlayerCard algiers_card = new PlayerCard(algiers, black, false);
-        PlayerCard atlanta_card = new PlayerCard(atlanta, blue, false);
-        PlayerCard baghdad_card = new PlayerCard(baghdad, black, false);
-        PlayerCard bangkok_card = new PlayerCard(bangkok, red, false);
-        PlayerCard bejing_card = new PlayerCard(bejing, red, false);
-        PlayerCard beunosaires_card = new PlayerCard(beunosaires, yellow, false);
-        PlayerCard bogota_card = new PlayerCard(bogota, yellow, false);
-        PlayerCard istanbul_card = new PlayerCard(istanbul, black, false);
-        PlayerCard khartoum_card = new PlayerCard(khartoum, yellow, false);
-        PlayerCard hochiminhcity_card = new PlayerCard(hochiminhcity, red, false);
-        PlayerCard riyadh_card = new PlayerCard(riyadh, black, false);
-        PlayerCard essen_card = new PlayerCard(essen, blue, false);
-        PlayerCard washington_card = new PlayerCard(washington, blue, false);
-        PlayerCard moscow_card = new PlayerCard(moscow, black, false);
-        PlayerCard newyork_card = new PlayerCard(newyork, blue, false);
-        PlayerCard taipei_card = new PlayerCard(taipei, red, false);
-        PlayerCard tokyo_card = new PlayerCard(tokyo, red, false);
-        PlayerCard tehran_card = new PlayerCard(tehran, black, false);
-        PlayerCard jakarta_card = new PlayerCard(jakarta, red, false);
-        PlayerCard cairo_card = new PlayerCard(cairo, black, false);
-        PlayerCard chennai_card = new PlayerCard(chennai, black, false);
-        PlayerCard paris_card = new PlayerCard(paris, blue, false);
-        PlayerCard petersburg_card = new PlayerCard(petersburg, blue, false);
-        PlayerCard saopaulo_card = new PlayerCard(saopaulo, yellow, false);
-        PlayerCard lagos_card = new PlayerCard(lagos, yellow, false);
-        PlayerCard lima_card = new PlayerCard(lima, yellow, false);
-        PlayerCard london_card = new PlayerCard(london, blue, false);
-        PlayerCard losangeles_card = new PlayerCard(losangeles, blue, false);
-        PlayerCard delhi_card = new PlayerCard(delhi, black, false);
-        PlayerCard johannesburg_card = new PlayerCard(johannesburg, yellow, false);
-        PlayerCard karachi_card = new PlayerCard(karachi, black, false);
-        PlayerCard madrid_card = new PlayerCard(madrid, yellow, false);
-        PlayerCard montreal_card = new PlayerCard(montreal, blue, false);
-        PlayerCard sanfrancisco_card = new PlayerCard(sanfrancisco, blue, false);
-        PlayerCard kolkata_card = new PlayerCard(kolkata, black, false);
-        PlayerCard mexicocity_card = new PlayerCard(mexicocity, yellow, false);
-        PlayerCard santiago_card = new PlayerCard(santiago, yellow, false);
-        PlayerCard sydney_card = new PlayerCard(sydney, red, false);
-        PlayerCard mumbai_card = new PlayerCard(mumbai, black, false);
-        PlayerCard seoul_card = new PlayerCard(seoul, red, false);
-        PlayerCard chicago_card = new PlayerCard(chicago, blue, false);
-        PlayerCard kinshasa_card = new PlayerCard(kinshasa, yellow, false);
-        PlayerCard miami_card = new PlayerCard(miami, yellow, false);
-        PlayerCard milan_card = new PlayerCard(milan, blue, false);
-        PlayerCard manila_card = new PlayerCard(manila, red, false);
-        PlayerCard shanghai_card = new PlayerCard(shanghai, red, false);
-        PlayerCard hongkong_card = new PlayerCard(hongkong, red, false);
-        PlayerCard osaka_card = new PlayerCard(osaka, red, false);
+        PlayerCard algiers_card = new PlayerCard(algiers, black, false, R.drawable.algiers);
+        PlayerCard atlanta_card = new PlayerCard(atlanta, blue, false, R.drawable.atlanta);
+        PlayerCard baghdad_card = new PlayerCard(baghdad, black, false, R.drawable.baghidad);
+        PlayerCard bangkok_card = new PlayerCard(bangkok, red, false, R.drawable.bangkok);
+        PlayerCard bejing_card = new PlayerCard(bejing, red, false, R.drawable.bejing);
+        PlayerCard beunosaires_card = new PlayerCard(beunosaires, yellow, false, R.drawable.beunosaires);
+        PlayerCard bogota_card = new PlayerCard(bogota, yellow, false, R.drawable.bogota);
+        PlayerCard istanbul_card = new PlayerCard(istanbul, black, false, R.drawable.istanbul);
+        PlayerCard khartoum_card = new PlayerCard(khartoum, yellow, false, R.drawable.khartoum);
+        PlayerCard hochiminhcity_card = new PlayerCard(hochiminhcity, red, false, R.drawable.hochiminhcity);
+        PlayerCard riyadh_card = new PlayerCard(riyadh, black, false, R.drawable.riyadh);
+        PlayerCard essen_card = new PlayerCard(essen, blue, false, R.drawable.essen);
+        PlayerCard washington_card = new PlayerCard(washington, blue, false, R.drawable.washington);
+        PlayerCard moscow_card = new PlayerCard(moscow, black, false, R.drawable.moscow);
+        PlayerCard newyork_card = new PlayerCard(newyork, blue, false, R.drawable.newyork);
+        PlayerCard taipei_card = new PlayerCard(taipei, red, false, R.drawable.taipei);
+        PlayerCard tokyo_card = new PlayerCard(tokyo, red, false, R.drawable.tokyo);
+        PlayerCard tehran_card = new PlayerCard(tehran, black, false, R.drawable.tehran);
+        PlayerCard jakarta_card = new PlayerCard(jakarta, red, false, R.drawable.jakarta);
+        PlayerCard cairo_card = new PlayerCard(cairo, black, false, R.drawable.cairo);
+        PlayerCard chennai_card = new PlayerCard(chennai, black, false, R.drawable.chennai);
+        PlayerCard paris_card = new PlayerCard(paris, blue, false, R.drawable.paris);
+        PlayerCard petersburg_card = new PlayerCard(petersburg, blue, false, R.drawable.stpetersburg);
+        PlayerCard saopaulo_card = new PlayerCard(saopaulo, yellow, false, R.drawable.saopaulo);
+        PlayerCard lagos_card = new PlayerCard(lagos, yellow, false, R.drawable.lagos);
+        PlayerCard lima_card = new PlayerCard(lima, yellow, false, R.drawable.lima);
+        PlayerCard london_card = new PlayerCard(london, blue, false, R.drawable.london);
+        PlayerCard losangeles_card = new PlayerCard(losangeles, blue, false, R.drawable.losangeles);
+        PlayerCard delhi_card = new PlayerCard(delhi, black, false, R.drawable.delhi);
+        PlayerCard johannesburg_card = new PlayerCard(johannesburg, yellow, false, R.drawable.johannesburg);
+        PlayerCard karachi_card = new PlayerCard(karachi, black, false, R.drawable.karachi);
+        PlayerCard madrid_card = new PlayerCard(madrid, yellow, false, R.drawable.madrid);
+        PlayerCard montreal_card = new PlayerCard(montreal, blue, false, R.drawable.montreal);
+        PlayerCard sanfrancisco_card = new PlayerCard(sanfrancisco, blue, false, R.drawable.sanfrancisco);
+        PlayerCard kolkata_card = new PlayerCard(kolkata, black, false, R.drawable.kolkata);
+        PlayerCard mexicocity_card = new PlayerCard(mexicocity, yellow, false, R.drawable.mexicocity);
+        PlayerCard santiago_card = new PlayerCard(santiago, yellow, false, R.drawable.santiago);
+        PlayerCard sydney_card = new PlayerCard(sydney, red, false, R.drawable.sydney);
+        PlayerCard mumbai_card = new PlayerCard(mumbai, black, false, R.drawable.mumbai);
+        PlayerCard seoul_card = new PlayerCard(seoul, red, false, R.drawable.seoul);
+        PlayerCard chicago_card = new PlayerCard(chicago, blue, false, R.drawable.chicago);
+        PlayerCard kinshasa_card = new PlayerCard(kinshasa, yellow, false, R.drawable.kinshasa);
+        PlayerCard miami_card = new PlayerCard(miami, yellow, false, R.drawable.miami);
+        PlayerCard milan_card = new PlayerCard(milan, blue, false, R.drawable.milan);
+        PlayerCard manila_card = new PlayerCard(manila, red, false, R.drawable.manila);
+        PlayerCard shanghai_card = new PlayerCard(shanghai, red, false, R.drawable.shanghai);
+        PlayerCard hongkong_card = new PlayerCard(hongkong, red, false, R.drawable.hongkong);
+        PlayerCard osaka_card = new PlayerCard(osaka, red, false, R.drawable.osaka);
+        PlayerCard epidemic_1 = new PlayerCard(epidemic, none, true, R.drawable.epidemic);
+        PlayerCard epidemic_2 = new PlayerCard(epidemic, none, true, R.drawable.epidemic);
+        PlayerCard epidemic_3 = new PlayerCard(epidemic, none, true, R.drawable.epidemic);
+        PlayerCard epidemic_4 = new PlayerCard(epidemic, none, true, R.drawable.epidemic);
 
 
         playerDeck.add(algiers_card);
@@ -448,56 +464,60 @@ public class PlayerCard extends Card{
         playerDeck.add(shanghai_card);
         playerDeck.add(hongkong_card);
         playerDeck.add(osaka_card);
+        playerDeck.add(epidemic_1);
+        playerDeck.add(epidemic_2);
+        playerDeck.add(epidemic_3);
+        playerDeck.add(epidemic_4);
 
 
-            InfectionCard algiers_infection = new InfectionCard(algiers, black);
-            InfectionCard atlanta_infection = new InfectionCard(atlanta, blue);
-            InfectionCard baghdad_infection = new InfectionCard(baghdad, black);
-            InfectionCard bangkok_infection = new InfectionCard(bangkok, red);
-            InfectionCard bejing_infection = new InfectionCard(bejing, red);
-            InfectionCard beunosaires_infection = new InfectionCard(beunosaires, yellow);
-            InfectionCard bogota_infection = new InfectionCard(bogota, yellow);
-            InfectionCard istanbul_infection = new InfectionCard(istanbul, black);
-            InfectionCard khartoum_infection = new InfectionCard(khartoum, yellow);
-            InfectionCard hochiminhcity_infection = new InfectionCard(hochiminhcity, red);
-            InfectionCard riyadh_infection = new InfectionCard(riyadh, black);
-            InfectionCard essen_infection = new InfectionCard(essen, blue);
-            InfectionCard washington_infection = new InfectionCard(washington, blue);
-            InfectionCard moscow_infection = new InfectionCard(moscow, black);
-            InfectionCard newyork_infection = new InfectionCard(newyork, blue);
-            InfectionCard taipei_infection = new InfectionCard(taipei, red);
-            InfectionCard tokyo_infection = new InfectionCard(tokyo, red);
-            InfectionCard tehran_infection = new InfectionCard(tehran, black);
-            InfectionCard jakarta_infection = new InfectionCard(jakarta, red);
-            InfectionCard cairo_infection = new InfectionCard(cairo, black);
-            InfectionCard chennai_infection = new InfectionCard(chennai, black);
-            InfectionCard paris_infection = new InfectionCard(paris, blue);
-            InfectionCard petersburg_infection = new InfectionCard(petersburg, blue);
-            InfectionCard saopaulo_infection = new InfectionCard(saopaulo, yellow);
-            InfectionCard lagos_infection = new InfectionCard(lagos, yellow);
-            InfectionCard lima_infection = new InfectionCard(lima, yellow);
-            InfectionCard london_infection = new InfectionCard(london, blue);
-            InfectionCard losangeles_infection = new InfectionCard(losangeles, blue);
-            InfectionCard delhi_infection = new InfectionCard(delhi, black);
-            InfectionCard johannesburg_infection = new InfectionCard(johannesburg, yellow);
-            InfectionCard karachi_infection = new InfectionCard(karachi, black);
-            InfectionCard madrid_infection = new InfectionCard(madrid, yellow);
-            InfectionCard montreal_infection = new InfectionCard(montreal, blue);
-            InfectionCard sanfrancisco_infection = new InfectionCard(sanfrancisco, blue);
-            InfectionCard kolkata_infection = new InfectionCard(kolkata, black);
-            InfectionCard mexicocity_infection = new InfectionCard(mexicocity, yellow);
-            InfectionCard santiago_infection = new InfectionCard(santiago, yellow);
-            InfectionCard sydney_infection = new InfectionCard(sydney, red);
-            InfectionCard mumbai_infection = new InfectionCard(mumbai, black);
-            InfectionCard seoul_infection = new InfectionCard(seoul, red);
-            InfectionCard chicago_infection = new InfectionCard(chicago, blue);
-            InfectionCard kinshasa_infection = new InfectionCard(kinshasa, yellow);
-            InfectionCard miami_infection = new InfectionCard(miami, yellow);
-            InfectionCard milan_infection = new InfectionCard(milan, blue);
-            InfectionCard manila_infection = new InfectionCard(manila, red);
-            InfectionCard shanghai_infection = new InfectionCard(shanghai, red);
-            InfectionCard hongkong_infection = new InfectionCard(hongkong, red);
-            InfectionCard osaka_infection = new InfectionCard(osaka, red);
+            InfectionCard algiers_infection = new InfectionCard(algiers, black, R.drawable.algiers_i);
+            InfectionCard atlanta_infection = new InfectionCard(atlanta, blue, R.drawable.atlanta_i);
+            InfectionCard baghdad_infection = new InfectionCard(baghdad, black, R.drawable.baghdad_i);
+            InfectionCard bangkok_infection = new InfectionCard(bangkok, red, R.drawable.bangkok_i);
+            InfectionCard bejing_infection = new InfectionCard(bejing, red, R.drawable.bejing_i);
+            InfectionCard beunosaires_infection = new InfectionCard(beunosaires, yellow, R.drawable.beunosaires);
+            InfectionCard bogota_infection = new InfectionCard(bogota, yellow, R.drawable.bogota);
+            InfectionCard istanbul_infection = new InfectionCard(istanbul, black, R.drawable.istanbul_i);
+            InfectionCard khartoum_infection = new InfectionCard(khartoum, yellow, R.drawable.khartoum_i);
+            InfectionCard hochiminhcity_infection = new InfectionCard(hochiminhcity, red, R.drawable.hochiminh_i);
+            InfectionCard riyadh_infection = new InfectionCard(riyadh, black, R.drawable.riyadhi);
+            InfectionCard essen_infection = new InfectionCard(essen, blue, R.drawable.essen_i);
+            InfectionCard washington_infection = new InfectionCard(washington, blue, R.drawable.washington_i);
+            InfectionCard moscow_infection = new InfectionCard(moscow, black, R.drawable.moscow_i);
+            InfectionCard newyork_infection = new InfectionCard(newyork, blue, R.drawable.newyork_i);
+            InfectionCard taipei_infection = new InfectionCard(taipei, red, R.drawable.taipei_i);
+            InfectionCard tokyo_infection = new InfectionCard(tokyo, red, R.drawable.tokyo_i);
+            InfectionCard tehran_infection = new InfectionCard(tehran, black, R.drawable.tehran_i);
+            InfectionCard jakarta_infection = new InfectionCard(jakarta, red, R.drawable.jakarta_i);
+            InfectionCard cairo_infection = new InfectionCard(cairo, black, R.drawable.cairo_i);
+            InfectionCard chennai_infection = new InfectionCard(chennai, black, R.drawable.chennai_i);
+            InfectionCard paris_infection = new InfectionCard(paris, blue, R.drawable.paris_i);
+            InfectionCard petersburg_infection = new InfectionCard(petersburg, blue, R.drawable.petersburg_i);
+            InfectionCard saopaulo_infection = new InfectionCard(saopaulo, yellow, R.drawable.saopaulo_i);
+            InfectionCard lagos_infection = new InfectionCard(lagos, yellow, R.drawable.lagos_i);
+            InfectionCard lima_infection = new InfectionCard(lima, yellow, R.drawable.lima_i);
+            InfectionCard london_infection = new InfectionCard(london, blue, R.drawable.london_i);
+            InfectionCard losangeles_infection = new InfectionCard(losangeles, blue, R.drawable.losangeles_i);
+            InfectionCard delhi_infection = new InfectionCard(delhi, black, R.drawable.delhi_i);
+            InfectionCard johannesburg_infection = new InfectionCard(johannesburg, yellow, R.drawable.johannesburg_i);
+            InfectionCard karachi_infection = new InfectionCard(karachi, black, R.drawable.karachi_i);
+            InfectionCard madrid_infection = new InfectionCard(madrid, yellow, R.drawable.madrid_i);
+            InfectionCard montreal_infection = new InfectionCard(montreal, blue, R.drawable.monteal_i);
+            InfectionCard sanfrancisco_infection = new InfectionCard(sanfrancisco, blue, R.drawable.sanfrancisco_i);
+            InfectionCard kolkata_infection = new InfectionCard(kolkata, black, R.drawable.kolkata_i);
+            InfectionCard mexicocity_infection = new InfectionCard(mexicocity, yellow, R.drawable.mexicocity_i);
+            InfectionCard santiago_infection = new InfectionCard(santiago, yellow, R.drawable.santiago_i);
+            InfectionCard sydney_infection = new InfectionCard(sydney, red, R.drawable.sydeny_i);
+            InfectionCard mumbai_infection = new InfectionCard(mumbai, black, R.drawable.mumbai_i);
+            InfectionCard seoul_infection = new InfectionCard(seoul, red, R.drawable.seoul_i);
+            InfectionCard chicago_infection = new InfectionCard(chicago, blue, R.drawable.chicago_i);
+            InfectionCard kinshasa_infection = new InfectionCard(kinshasa, yellow, R.drawable.kinshasa_i);
+            InfectionCard miami_infection = new InfectionCard(miami, yellow, R.drawable.miami);
+            InfectionCard milan_infection = new InfectionCard(milan, blue, R.drawable.milan_i);
+            InfectionCard manila_infection = new InfectionCard(manila, red, R.drawable.manila_i);
+            InfectionCard shanghai_infection = new InfectionCard(shanghai, red, R.drawable.shanghai_i);
+            InfectionCard hongkong_infection = new InfectionCard(hongkong, red, R.drawable.hongkong_i);
+            InfectionCard osaka_infection = new InfectionCard(osaka, red, R.drawable.osaka_i);
 
             InfectionCard.add(algiers_infection);
             InfectionCard.add(atlanta_infection);
