@@ -375,8 +375,7 @@ View.OnClickListener {
 			TableRow row = addPlayer();
 
 			// Set the player name
-			TextView playerName = (TextView) row
-					.findViewById(R.id.playerNameEditText);
+			TextView playerName = (TextView) row.findViewById(R.id.playerNameEditText);
 			playerName.setText(config.getSelName(i));
 
 			// Set the initial selection for the spinner

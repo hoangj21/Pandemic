@@ -37,19 +37,26 @@ import static com.example.joann.pandemic.pandemic.PlayerCard.initStarterPlayerDe
  * cards or pawns yet and it is
  * player 1's turn.
  ************************************/
-
+//NOTE TO US: Roles are represented with ints
+    //0 =
 public class PandemicGameState extends GameState {
     private ArrayList<PlayerCard> playerDeck;
     private ArrayList<InfectionCard> infectionDeck;
     private ArrayList<PlayerCard> playerDiscardDeck;
     private ArrayList<InfectionCard> infectionDiscardDeck;
     private ArrayList<ArrayList<PlayerCard>> playerHands;
+
     private int numPlayers;
     private int infectionRate;
     private int outbreakNum;
     private int[] curedDiseases;
+    private int playerTurn;
+    private int numResearchStations;
+
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
+    private final int MAX_RESEARCH_STATIONS = 6;
+
     private Random rand = new Random();
 
 
@@ -63,6 +70,8 @@ public class PandemicGameState extends GameState {
         infectionRate = 2;
         outbreakNum = 0;
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
+        playerTurn = 0;
+        numResearchStations = 0;
         init();
     }
     private void init(){
@@ -99,6 +108,8 @@ public class PandemicGameState extends GameState {
         this.outbreakNum = otherState.outbreakNum;
         for (int i = 0; i < otherState.curedDiseases.length; i++) {
             this.curedDiseases[i] = otherState.curedDiseases[i];
+        this.playerTurn = otherState.getPlayerTurn();
+        this.numResearchStations = otherState.getNumResearchStations();
         }
 
         //copy players
@@ -203,9 +214,18 @@ public class PandemicGameState extends GameState {
     //Adds a research station to a specified city
     public boolean buildAResearchStation(PlayerInfo player, City playerCity, PlayerCard gc) {
         //normal, operations expert
-        if (player.getActionsLeft() <= 0) {
+
+        if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations>=6) {
             return false;
         }
+
+        if(player.getRole() == 2){
+            player.getCurrentLocation().hasResearchLab = true;
+        }else if( player.getCurrentLocation() == gc.getLocation()){
+            player.getCurrentLocation().hasResearchLab = true;
+            discardPlayerCard(player, gc);
+        }
+        this.numResearchStations++;
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
     }
@@ -256,6 +276,21 @@ public class PandemicGameState extends GameState {
             }
 
             //sets a disease to cured if player has enough cards of a certain color
+                if(numYellow>=5){
+                    curedDiseases[0] = 1;
+                }
+                if(numRed>=5){
+                    curedDiseases[1] = 1;
+                }
+                if(numBlue>=5){
+                    curedDiseases[2] = 1;
+                }
+                if(numBlack>=5){
+                    curedDiseases[3] = 1;
+                }
+            //Special case for if player role is scientist
+            //Then player only needs 3 cards to cure a disease
+            if(player.role == 2){
                 if(numYellow>=4){
                     curedDiseases[0] = 1;
                 }
@@ -266,21 +301,6 @@ public class PandemicGameState extends GameState {
                     curedDiseases[2] = 1;
                 }
                 if(numBlack>=4){
-                    curedDiseases[3] = 1;
-                }
-            //Special case for if player role is scientist
-            //Then player only needs 3 cards to cure a disease
-            if(player.role == 2){
-                if(numYellow>=3){
-                    curedDiseases[0] = 1;
-                }
-                if(numRed>=3){
-                    curedDiseases[1] = 1;
-                }
-                if(numBlue>=3){
-                    curedDiseases[2] = 1;
-                }
-                if(numBlack>=3){
                     curedDiseases[3] = 1;
                 }
             }
@@ -312,6 +332,7 @@ public class PandemicGameState extends GameState {
     }
 
     //trades city card with another player
+    //TODO: Will not be implemented for ALpha Release
     public boolean shareKnowledge(PlayerInfo player) {
         //normal, researcher
         if (player.getActionsLeft() <= 0) {
@@ -322,6 +343,7 @@ public class PandemicGameState extends GameState {
     }
 
     //Activates an event card
+    //TODO: Will not be implemented for Alpha Release
     public boolean playEventCard(PlayerInfo player) {
         if (player.getActionsLeft() <= 0) {
             return false;
@@ -382,6 +404,14 @@ public class PandemicGameState extends GameState {
         return curedDiseases;
     }
 
+    public int getNumResearchStations() {
+        return numResearchStations;
+    }
+
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
     }
@@ -415,5 +445,8 @@ public class PandemicGameState extends GameState {
         this.outbreakNum = outbreakNum;
     }
 
+    public void setPlayerTurn(int playerTurn) {
+        this.playerTurn = playerTurn;
+    }
 }
 
