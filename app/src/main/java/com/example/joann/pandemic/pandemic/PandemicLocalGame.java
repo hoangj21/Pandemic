@@ -6,6 +6,7 @@ import com.example.joann.pandemic.game.actionMsg.GameAction;
 
 import java.util.Random;
 
+
 public class PandemicLocalGame extends LocalGame {
 
     PandemicGameState state;

@@ -5,6 +5,12 @@ import com.example.joann.pandemic.game.infoMsg.GameInfo;
 
 import java.util.Random;
 
+/**
+ * Dumb AI that makes random moves
+ *
+ * @version 11/10/2018
+ */
+
 public class PandemicComputerPlayer extends GameComputerPlayer {
     public PandemicComputerPlayer(String name) {
         super(name);
@@ -21,12 +27,29 @@ public class PandemicComputerPlayer extends GameComputerPlayer {
                 }
                 //delay computer player
                 Random rand = new Random();
-                int action = rand.nextInt(4);
+
+                //variable randomizes AI's action
+                //temporarily set to 3, omitting ShareAction
+                int action = rand.nextInt(3);
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }
+                if (action == 0) {
+                    action = rand.nextInt(4);
+                    MoveAction moveInstance = new MoveAction(this, action);
+                    game.sendAction(moveInstance);
+                }
+                if (action == 1) {
+                    TreatAction treatInstance = new TreatAction(this);
+                    game.sendAction(treatInstance);
+                }
+                if (action == 2) {
+                    BuildAction buildInstance = new BuildAction(this);
+                    game.sendAction(buildInstance);
+                }
+
                 return;
             }
         }
