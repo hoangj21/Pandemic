@@ -80,7 +80,9 @@ public class PandemicGameState extends GameState {
         City city = new City();
         PlayerCard card1 = playerDeck.get(0);
         PlayerCard card2 = playerDeck.get(1);
-        player = new PlayerInfo(0, 0, 4, city, card1, card2);
+        PlayerCard card3 = playerDeck.get(2;
+        PlayerCard card4 = playerDeck.get(3);
+        player = new PlayerInfo(0, 0, 4, city, card1, card2,card3, card4 );
 
         init();
     }
@@ -420,6 +422,7 @@ public class PandemicGameState extends GameState {
         return playerDiscardDeck;
     }
 
+
     public int getMAX_CARDS() {
         return MAX_CARDS;
     }
@@ -455,6 +458,10 @@ public class PandemicGameState extends GameState {
 
     public int getPlayerTurn() {
         return playerTurn;
+    }
+
+    public PlayerInfo getPlayer() {
+        return player;
     }
 
     public void setNumPlayers(int numPlayers) {

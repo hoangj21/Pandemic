@@ -44,7 +44,7 @@ public class PandemicLocalGame extends LocalGame {
     protected void sendUpdatedStateTo(GamePlayer p) {
         PandemicGameState stateCopy = new PandemicGameState(state);
         p.sendInfo(stateCopy);
-        //TODO  You will implement this method
+
 
     }//sendUpdatedSate
 
