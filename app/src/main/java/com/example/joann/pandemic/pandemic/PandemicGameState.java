@@ -52,10 +52,12 @@ public class PandemicGameState extends GameState {
     private int[] curedDiseases;
     private int playerTurn;
     private int numResearchStations;
+    private PlayerInfo player;
 
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
     private final int MAX_RESEARCH_STATIONS = 6;
+
 
     private Random rand = new Random();
 
@@ -72,6 +74,14 @@ public class PandemicGameState extends GameState {
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
         playerTurn = 0;
         numResearchStations = 0;
+
+        //TODO
+        //initializing a player info object with temp values, change later
+        City city = new City();
+        PlayerCard card1 = playerDeck.get(0);
+        PlayerCard card2 = playerDeck.get(1);
+        player = new PlayerInfo(0, 0, 4, city, card1, card2);
+
         init();
     }
     private void init(){

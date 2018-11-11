@@ -18,12 +18,22 @@ public class PandemicLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerId){
 
-
+        return playerId == state.getPlayerTurn();
     }
 
     @Override
     protected boolean makeMove(GameAction action) {
         //update state here
+        if(action instanceof MoveAction) {
+            MoveAction move = (MoveAction) action;
+            int moveType = move.getMoveType();
+            state.movePawn();
+        }
+        if(action instanceof MoveAction) {
+            MoveAction move = (MoveAction) action;
+        }
+
+        return true;
 
     }//makeMove
 
@@ -47,6 +57,17 @@ public class PandemicLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
+        int countCured = 0;
+        for(int i = 0; i<state.getCuredDiseases().length; i++){
+            if(state.getCuredDiseases()[i] == 1 || state.getCuredDiseases()[i] == 2){
+                countCured++;
+            }
+
+        }
+        if(countCured == 4){
+            return("All diseases have been cured, you have won!");
+        }
+        return null;
     }
 
 }
