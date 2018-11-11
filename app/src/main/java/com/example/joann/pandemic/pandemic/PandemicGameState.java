@@ -118,7 +118,7 @@ public class PandemicGameState extends GameState {
     }
 
     //Moves player to a different city
-    public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity) {
+    public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity, int moveType) {
 
         //Base Case: Player is trying to move when they have no moves left.
         if (player.getActionsLeft() <= 0) {
@@ -126,39 +126,46 @@ public class PandemicGameState extends GameState {
         }
 
         //Drive Case: Move to a city you are connected to.
-        for(City c: desiredCity.adjacentCities) { //Iterate through adjacent cities of desired city
-            if (c == currentCity) {
-                player.setCurrentLocation(desiredCity);
-                player.actionTaken();
-                return true;
+        if (moveType == 0) {
+            for (City c : desiredCity.adjacentCities) { //Iterate through adjacent cities of desired city
+                if (c == currentCity) {
+                    player.setCurrentLocation(desiredCity);
+                    player.actionTaken();
+                    return true;
+                }
             }
         }
 
         //Direct Flight Case: Move to a city whose card you have.
-        for(PlayerCard p: player.getPlayerHand()){
-            if(p.getLocation() == desiredCity){
-                player.setCurrentLocation(desiredCity);
-                discardPlayerCard(player, p);
-                player.actionTaken();
-                return true;
+        if (moveType == 1) {
+            for (PlayerCard p : player.getPlayerHand()) {
+                if (p.getLocation() == desiredCity) {
+                    player.setCurrentLocation(desiredCity);
+                    discardPlayerCard(player, p);
+                    player.actionTaken();
+                    return true;
+                }
             }
         }
-
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
-        for(PlayerCard p: player.getPlayerHand()){
-            if(p.getLocation() == player.getCurrentLocation()){
-                player.setCurrentLocation(desiredCity);
-                discardPlayerCard(player, p);
-                player.actionTaken();
-                return true;
+        if (moveType == 2) {
+            for (PlayerCard p : player.getPlayerHand()) {
+                if (p.getLocation() == player.getCurrentLocation()) {
+                    player.setCurrentLocation(desiredCity);
+                    discardPlayerCard(player, p);
+                    player.actionTaken();
+                    return true;
+                }
             }
         }
 
         //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
-        if(player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
-            player.setCurrentLocation(desiredCity);
-            player.actionTaken();
-            return true;
+        if (moveType == 3) {
+            if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
+                player.setCurrentLocation(desiredCity);
+                player.actionTaken();
+                return true;
+            }
         }
 
         //If all of these fail (meaning a player clicked on a city they  can't go to), pop

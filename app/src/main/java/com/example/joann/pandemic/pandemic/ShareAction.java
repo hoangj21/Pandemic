@@ -2,12 +2,12 @@ package com.example.joann.pandemic.pandemic;
 
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 
-public class BuildAction extends GameAction {
-    BuildAction(PandemicHumanPlayer player){
+public class ShareAction extends GameAction {
+    ShareAction(PandemicHumanPlayer player){
         super(player);
 
     }
-    BuildAction(PandemicComputerPlayer player){
+    ShareAction(PandemicComputerPlayer player){
         super(player);
     }
 
