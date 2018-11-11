@@ -144,7 +144,7 @@ public class PandemicGameState extends GameState {
             }
         }
 
-        //Charter Flight Case: Move to a city whose card you have.
+        //Charter Flight Case: Discard the card of the city you are in to move to any city .
         for(PlayerCard p: player.getPlayerHand()){
             if(p.getLocation() == player.getCurrentLocation()){
                 player.setCurrentLocation(desiredCity);
@@ -332,7 +332,7 @@ public class PandemicGameState extends GameState {
     }
 
     //trades city card with another player
-    //TODO: Will not be implemented for ALpha Release
+    //TODO: Will not be implemented for Alpha Release
     public boolean shareKnowledge(PlayerInfo player) {
         //normal, researcher
         if (player.getActionsLeft() <= 0) {
@@ -386,6 +386,34 @@ public class PandemicGameState extends GameState {
     {
         return playerHands.get(playerNum);
         }
+
+    public ArrayList<InfectionCard> getInfectionDeck() {
+        return infectionDeck;
+    }
+
+    public ArrayList<InfectionCard> getInfectionDiscardDeck() {
+        return infectionDiscardDeck;
+    }
+
+    public ArrayList<PlayerCard> getPlayerDeck() {
+        return playerDeck;
+    }
+
+    public ArrayList<PlayerCard> getPlayerDiscardDeck() {
+        return playerDiscardDeck;
+    }
+
+    public int getMAX_CARDS() {
+        return MAX_CARDS;
+    }
+
+    public int getMAX_INFECTION_RATE() {
+        return MAX_INFECTION_RATE;
+    }
+
+    public int getMAX_RESEARCH_STATIONS() {
+        return MAX_RESEARCH_STATIONS;
+    }
 
     public int getNumPlayers() {
         return numPlayers;
