@@ -26,9 +26,9 @@ import java.util.ArrayList;
 // https://images-cdn.zmangames.com/us-east-1/filer_public/25/12/251252dd-1338-4f78-b90d-afe073c72363/zm7101_pandemic_rules.pdf
 //Used for knowing the rules and layout of Pandemic, referenced throughout all code
 public class PandemicMainActivity extends GameMainActivity {
-
+    /*
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,45 +37,31 @@ public class PandemicMainActivity extends GameMainActivity {
             ButtonListener testListener = new ButtonListener();
             testButton.setOnClickListener(testListener);*/
 
-    }
-
-    @Override
-    public void LocalGame createLocalGame(){
-        //do nothing
-    }
-
+    //}
     @Override
     //External Citation:
     //https://developer.android.com/guide/topics/ui/menus
     //Referenced android documentation for how to create menus
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(MenuItem menuItem)
-    {
+
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
         int itemID = menuItem.getItemId();
-        if(itemID == R.id.exitGameMenuItem)
-        {
+        if (itemID == R.id.exitGameMenuItem) {
             //do action
             //surfaceView.invalidate()
             return true;
-        }
-        else if(itemID == R.id.restartMenuItem)
-        {
+        } else if (itemID == R.id.restartMenuItem) {
             //do action
             //surfaceView.invalidate()
             return true;
-        }
-        else if(itemID == R.id.settings)
-        {
+        } else if (itemID == R.id.settings) {
             //do action
             //surfaceView.invalidate()
             return true;
-        }
-        else if (itemID == R.id.changeAIDifficulty)
-        {
+        } else if (itemID == R.id.changeAIDifficulty) {
             //do action
             //surfaceView.invalidate()
             return true;
@@ -83,6 +69,7 @@ public class PandemicMainActivity extends GameMainActivity {
         return false;
     }
 
+    // the port number that this game will use when playing over the network
     private static final int PORT_NUMBER = 2323;
 
     @Override
@@ -95,17 +82,19 @@ public class PandemicMainActivity extends GameMainActivity {
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
                 return new PandemicHumanPlayer(name);
-            }});
+            }
+        });
         playerTypes.add(new GamePlayerType("Computer Player") {
             public GamePlayer createPlayer(String name) {
                 return new PandemicComputerPlayer(name);
-            }});
+            }
+        });
 
         // Create a game configuration class for Pig:
-        GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pandemic", PORT_NUMBER);
+        GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pig", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
         defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
-        defaultConfig.setRemoteData("Remote Human Player", "", 0);
+        //defaultConfig.setRemoteData("Remote Human Player", "", 0);
 
         return defaultConfig;
     }//createDefaultConfig
@@ -113,15 +102,10 @@ public class PandemicMainActivity extends GameMainActivity {
     /**
      * create a local game
      *
-     * @return
-     * 		the local game, a pig game
-     *
-     @Override
-     public LocalGame createLocalGame() {
-     return new PandemicLocalGame();
-     }*/
-
-
+     * @return the local game, a pig game
+     */
+    @Override
+    public LocalGame createLocalGame() {
+        return new PandemicLocalGame();
+    }
 }
-
-
