@@ -18,8 +18,8 @@ import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.game.GameMainActivity;
 import com.example.joann.pandemic.game.GamePlayer;
 import com.example.joann.pandemic.game.LocalGame;
-import com.example.joann.pandemic.game.config.GameConfig;
-import com.example.joann.pandemic.game.config.GamePlayerType;
+import com.example.joann.pandemic.game.GameConfig;
+import com.example.joann.pandemic.game.GamePlayerType;
 import java.util.ArrayList;
 
 //External citation:
@@ -70,7 +70,7 @@ public class PandemicMainActivity extends GameMainActivity {
     }
 
     // the port number that this game will use when playing over the network
-    private static final int PORT_NUMBER = 2323;
+    private static final int PORT_NUMBER = 2278;
 
     @Override
     public GameConfig createDefaultConfig() {
@@ -91,7 +91,7 @@ public class PandemicMainActivity extends GameMainActivity {
         });
 
         // Create a game configuration class for Pig:
-        GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pig", PORT_NUMBER);
+        GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pandemic", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
         defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
         //defaultConfig.setRemoteData("Remote Human Player", "", 0);
