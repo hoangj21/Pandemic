@@ -65,7 +65,7 @@ public class PandemicMainActivity extends GameMainActivity {
             //do action
             //surfaceView.invalidate()
             return true;
-        }87
+        }
         return false;
     }
 
