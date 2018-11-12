@@ -113,7 +113,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
             }
             if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(6))
             {
-                PlayerImageButton.setImageResource(R.drawable.bobota);
+                PlayerImageButton.setImageResource(R.drawable.bogota);
             }
             if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(7))
             {
@@ -310,7 +310,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
                 }
                 if(theState.getPlayerDeck().get(i).getLocation() == theState.getAllCities().get(6))
                 {
-                    PlayerImageButton.setImageResource(R.drawable.bobota);
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                 }
                 if(theState.getPlayerDeck().get(i).getLocation() == theState.getAllCities().get(7))
                 {
@@ -507,7 +507,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
                 }
                 if(theState.getPlayerDiscardDeck().get(i).getLocation() == theState.getAllCities().get(6))
                 {
-                    PlayerImageButton.setImageResource(R.drawable.bobota);
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                 }
                 if(theState.getPlayerDiscardDeck().get(i).getLocation() == theState.getAllCities().get(7))
                 {
@@ -703,7 +703,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
                 }
                 if(theState.getInfectionDeck().get(i).getLocation() == theState.getAllCities().get(6))
                 {
-                    PlayerImageButton.setImageResource(R.drawable.bobota);
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                 }
                 if(theState.getInfectionDeck().get(i).getLocation() == theState.getAllCities().get(7))
                 {
@@ -898,7 +898,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
                 }
                 if(theState.getInfectionDiscardDeck().get(i).getLocation() == theState.getAllCities().get(6))
                 {
-                    PlayerImageButton.setImageResource(R.drawable.bobota);
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                 }
                 if(theState.getInfectionDiscardDeck().get(i).getLocation() == theState.getAllCities().get(7))
                 {
@@ -1076,13 +1076,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
 }
 
-    /**
-     * this method gets called when the user clicks the die or hold button. It
-     * creates a new PigRollAction or PigHoldAction and sends it to the game.
-     *
-     * @param button
-     * 		the button that was clicked
-     */
+
 
     public void onClick(View button) {
 
@@ -1108,8 +1102,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         }
         if(button.getId() == moveButton.getId())
         {
-            MoveAction moveAction = new MoveAction(this, 0);
-            game.sendAction(moveAction);
+            //MoveAction moveAction = new MoveAction(this, 0, city);
+            //game.sendAction(moveAction);
         }
 
         }
