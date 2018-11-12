@@ -117,29 +117,34 @@ public class PandemicGameState extends GameState {
     PandemicGameState(PandemicGameState otherState) {
 
         //copy player deck
+        playerDeck = new ArrayList<PlayerCard>();
         for (int i = 0; i < otherState.playerDeck.size(); i++) {
             PlayerCard card = new PlayerCard(otherState.getPlayerDeck().get(i));
             this.playerDeck.add(card);
         }
 
         //copy infection deck
+        infectionDeck = new ArrayList<InfectionCard>();
         for (int i = 0; i < otherState.infectionDeck.size(); i++) {
             InfectionCard card = new InfectionCard(otherState.getInfectionDeck().get(i));
             this.infectionDeck.add(card);
         }
 
         //copy player discard deck
+        playerDiscardDeck = new ArrayList<PlayerCard>();
         for (int i = 0; i < otherState.playerDiscardDeck.size(); i++) {
             PlayerCard card = new PlayerCard(otherState.getPlayerDiscardDeck().get(i));
             this.playerDiscardDeck.add(card);
         }
 
         //copy infection discard deck
+        infectionDiscardDeck = new ArrayList<InfectionCard>();
         for (int i = 0; i < otherState.infectionDiscardDeck.size(); i++) {
             InfectionCard card = new InfectionCard(otherState.getInfectionDeck().get(i));
             this.infectionDiscardDeck.add(card);
         }
 
+        players = new ArrayList<PlayerInfo>();
         for(int i = 0; i< otherState.getPlayers().size(); i++){
             PlayerInfo otherPlayer = new PlayerInfo(otherState.getPlayers().get(i));
             this.players.add(otherPlayer);
