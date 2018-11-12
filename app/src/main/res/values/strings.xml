@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pandemic</string>
+    <string name="save_config_as_default" />
+    <string name="start_the_game" />
+    <string name="player_name" />
+    <string name="remove_player" />
+    <string name="guest" />
+    <string name="server_ip_code" />
 </resources>
