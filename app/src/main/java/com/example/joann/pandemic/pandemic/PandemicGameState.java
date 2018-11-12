@@ -118,26 +118,31 @@ public class PandemicGameState extends GameState {
 
         //copy player deck
         for (int i = 0; i < otherState.playerDeck.size(); i++) {
-            this.playerDeck.add(new PlayerCard(otherState.playerDeck.get(i)));
+            PlayerCard card = new PlayerCard(otherState.getPlayerDeck().get(i));
+            this.playerDeck.add(card);
         }
 
         //copy infection deck
         for (int i = 0; i < otherState.infectionDeck.size(); i++) {
-            this.infectionDeck.add(new InfectionCard(otherState.infectionDeck.get(i)));
+            InfectionCard card = new InfectionCard(otherState.getInfectionDeck().get(i));
+            this.infectionDeck.add(card);
         }
 
         //copy player discard deck
         for (int i = 0; i < otherState.playerDiscardDeck.size(); i++) {
-            this.playerDiscardDeck.add(new PlayerCard(otherState.playerDiscardDeck.get(i)));
+            PlayerCard card = new PlayerCard(otherState.getPlayerDiscardDeck().get(i));
+            this.playerDiscardDeck.add(card);
         }
 
         //copy infection discard deck
         for (int i = 0; i < otherState.infectionDiscardDeck.size(); i++) {
-            this.infectionDiscardDeck.add(new InfectionCard(otherState.infectionDiscardDeck.get(i)));
+            InfectionCard card = new InfectionCard(otherState.getInfectionDeck().get(i));
+            this.infectionDiscardDeck.add(card);
         }
 
         for(int i = 0; i< otherState.getPlayers().size(); i++){
-            this.players.add(new PlayerInfo(otherState.getPlayers().get(i)));
+            PlayerInfo otherPlayer = new PlayerInfo(otherState.getPlayers().get(i));
+            this.players.add(otherPlayer);
         }
 
         player = new PlayerInfo(otherState.getPlayer());
