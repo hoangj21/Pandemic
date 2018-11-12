@@ -616,6 +616,8 @@ public class PandemicGameState extends GameState {
         City hongkong = new City ();
         City osaka = new City ();
 
+        allCities = new ArrayList<>();
+
         algiers.setAdjacentCities(cairo);
         algiers.setAdjacentCities(istanbul);
         algiers.setAdjacentCities(paris);
