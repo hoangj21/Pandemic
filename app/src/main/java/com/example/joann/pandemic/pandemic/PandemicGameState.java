@@ -270,6 +270,7 @@ public class PandemicGameState extends GameState {
             player.setActionsLeft(player.getActionsLeft() - 1);
             return true;
         }
+        return true;
     }
 
     //removes disease cube(s) at a specified city
