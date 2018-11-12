@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="table_row_vert_pad" />
-    <dimen name="config_horiz_margin" />
-    <dimen name="tab_height" />
-    <dimen name="table_row_horiz_pad" />
-    <dimen name="del_player_button_size" />
-</resources>
