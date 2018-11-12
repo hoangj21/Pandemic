@@ -273,6 +273,10 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
+    public void passAction(PlayerInfo player){
+        player.actionTaken();
+    }
+
     //removes disease cube(s) at a specified city
     public boolean treatDisease(PlayerInfo player, City city) {
         //normal, medic
