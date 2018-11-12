@@ -85,6 +85,7 @@ public class PandemicGameState extends GameState {
         player2.setPlayerNumber(2);
 
         //adding players to array of players
+        players = new ArrayList<PlayerInfo>();
         players.add(player1);
         players.add(player2);
 
