@@ -462,7 +462,7 @@ View.OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.game_main, menu);
+		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}//onCreateOptionsMenu
 
@@ -673,7 +673,7 @@ View.OnClickListener {
 		if (keyCode == KeyEvent.KEYCODE_BACK && !gameIsOver) {
 			// We have seen the back-key pressed, and the game is not over;
 			// confirm with user that whether they want to quit
-			String quitQuestion =
+			/*String quitQuestion =
 					getResources().getString(R.string.dialog_quit_question);
 			String posLabel =
 					getResources().getString(R.string.dialog_quit_label);
@@ -687,7 +687,7 @@ View.OnClickListener {
 					System.exit(0);
 				}},
 				null,
-				this);
+				this);*/
 			// return 'true' because we have handled this event
 			return true;
 		}
@@ -724,7 +724,7 @@ View.OnClickListener {
 	 * 		the label for the local tab header
 	 */
 	private String localTabString() {
-		return this.getResources().getString(R.string.local_tab);
+		return "";//this.getResources().getString(R.string.local_tab);
 	}// localTabString
 
 	/**
@@ -734,7 +734,7 @@ View.OnClickListener {
 	 * 		the label for the remote tab header
 	 */	
 	private String remoteTabString() {
-		return this.getResources().getString(R.string.remote_tab);
+		return "";//this.getResources().getString(R.string.remote_tab);
 	}// remoteTabString
 
 
