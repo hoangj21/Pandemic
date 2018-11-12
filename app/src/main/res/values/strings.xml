@@ -6,4 +6,6 @@
     <string name="remove_player" />
     <string name="guest" />
     <string name="server_ip_code" />
+    <string name="player_type" />
+    <string name="add_player" />
 </resources>
