@@ -427,6 +427,9 @@ public class PandemicGameState extends GameState {
         return playerDiscardDeck;
     }
 
+    public ArrayList<City> getAllCities() {
+        return allCities;
+    }
 
     public int getMAX_CARDS() {
         return MAX_CARDS;
