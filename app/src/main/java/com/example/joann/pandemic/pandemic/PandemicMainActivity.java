@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.example.joann.pandemic.R;
+import com.example.joann.pandemic.game.GameMainActivity;
 import com.example.joann.pandemic.game.GamePlayer;
 import com.example.joann.pandemic.game.LocalGame;
 import com.example.joann.pandemic.game.config.GameConfig;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 //External citation:
 // https://images-cdn.zmangames.com/us-east-1/filer_public/25/12/251252dd-1338-4f78-b90d-afe073c72363/zm7101_pandemic_rules.pdf
 //Used for knowing the rules and layout of Pandemic, referenced throughout all code
-public class PandemicMainActivity extends AppCompatActivity {
+public class PandemicMainActivity extends GameMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,11 @@ public class PandemicMainActivity extends AppCompatActivity {
             ButtonListener testListener = new ButtonListener();
             testButton.setOnClickListener(testListener);*/
 
+    }
+
+    @Override
+    public void LocalGame createLocalGame(){
+        //do nothing
     }
 
     @Override
@@ -77,12 +83,9 @@ public class PandemicMainActivity extends AppCompatActivity {
         return false;
     }
 
+    private static final int PORT_NUMBER = 2323;
 
-
-
-}
-
-    /*@Override
+    @Override
     public GameConfig createDefaultConfig() {
 
         // Define the allowed player types
@@ -99,7 +102,7 @@ public class PandemicMainActivity extends AppCompatActivity {
             }});
 
         // Create a game configuration class for Pig:
-        GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "Pig", PORT_NUMBER);
+        GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pandemic", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
         defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
         defaultConfig.setRemoteData("Remote Human Player", "", 0);
@@ -113,7 +116,12 @@ public class PandemicMainActivity extends AppCompatActivity {
      * @return
      * 		the local game, a pig game
      *
-    @Override
-    public LocalGame createLocalGame() {
-        return new PandemicLocalGame();
-    }*/
+     @Override
+     public LocalGame createLocalGame() {
+     return new PandemicLocalGame();
+     }*/
+
+
+}
+
+
