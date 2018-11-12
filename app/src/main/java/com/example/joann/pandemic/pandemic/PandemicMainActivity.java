@@ -73,7 +73,7 @@ public class PandemicMainActivity extends AppCompatActivity {
             //do action
             //surfaceView.invalidate()
             return true;
-        }
+        }87
         return false;
     }
 

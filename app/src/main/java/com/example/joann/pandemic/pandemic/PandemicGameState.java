@@ -46,7 +46,7 @@ public class PandemicGameState extends GameState {
     private ArrayList<PlayerCard> playerDiscardDeck;
     private ArrayList<InfectionCard> infectionDiscardDeck;
     private ArrayList<City> allCities;
-
+    private ArrayList<PlayerInfo> players;
     private int numPlayers;
     private int infectionRate;
     private int outbreakNum;
@@ -54,6 +54,7 @@ public class PandemicGameState extends GameState {
     private int playerTurn;
     private int numResearchStations;
     private PlayerInfo player;
+    //private PlayerInfo player2;
 
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
@@ -75,24 +76,29 @@ public class PandemicGameState extends GameState {
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
         playerTurn = 0;
         numResearchStations = 0;
-
-        //TODO
-        //initializing a player info object with temp values, change later
-        City city = new City();
-        int index = rand.nextInt(playerDeck.size());
-        PlayerCard card1 = playerDeck.get(index);
-
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card2 = playerDeck.get(index);
-
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card3 = playerDeck.get(index);
-
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card4 = playerDeck.get(index);
-        player = new PlayerInfo(0, 0, 4, city, card1, card2,card3, card4);
-
         init();
+        //TODO
+        //initializing two player info objects
+
+        PlayerInfo player1 = initPlayer();
+        PlayerInfo player2 = initPlayer();
+
+        players.add(player1);
+        players.add(player2);
+
+        //default, set first turn to player1
+        player = player1;
+
+    }
+    private PlayerInfo initPlayer(){
+        //draws 4 random cards and adds them to the player hand
+        //starter city Atlanta is located at AllCities.get(3);
+        PlayerInfo aPlayer = new PlayerInfo(0, 0, 4, allCities.get(3));
+        drawPlayerCard(aPlayer);
+        drawPlayerCard(aPlayer);
+        drawPlayerCard(aPlayer);
+        drawPlayerCard(aPlayer);
+        return aPlayer;
     }
     private void init(){
         initStarterPlayerDecks(playerDeck, infectionDeck);
@@ -122,6 +128,12 @@ public class PandemicGameState extends GameState {
             this.infectionDiscardDeck.add(new InfectionCard(otherState.infectionDiscardDeck.get(i)));
         }
 
+        for(int i = 0; i< otherState.getPlayers().size(); i++){
+            this.players.add(new PlayerInfo(otherState.getPlayers().get(i)));
+        }
+
+        player = new PlayerInfo(otherState.getPlayer());
+
         //copy simple board variables
         this.infectionRate = otherState.infectionRate;
         this.numPlayers = otherState.numPlayers;
@@ -130,6 +142,7 @@ public class PandemicGameState extends GameState {
             this.curedDiseases[i] = otherState.curedDiseases[i];
         this.playerTurn = otherState.getPlayerTurn();
         this.numResearchStations = otherState.getNumResearchStations();
+
         }
 
         //copy players
@@ -199,7 +212,7 @@ public class PandemicGameState extends GameState {
     }
 
     //Adds card to player's hand
-    public boolean drawPlayerCard(PlayerInfo player, PlayerCard card) {
+    public boolean drawPlayerCard(PlayerInfo player) {
         if(player.getPlayerHand().size() >= 7){
             //print message?
             return false;
@@ -207,7 +220,8 @@ public class PandemicGameState extends GameState {
 
         else{
             int index = rand.nextInt(playerDeck.size());
-            card = playerDeck.get(index);
+            PlayerCard card = playerDeck.get(index);
+            playerDeck.remove(index);
             player.addCardToPlayerHand(card);
             //reflect in gui?
             return true;
@@ -487,6 +501,14 @@ public class PandemicGameState extends GameState {
 
     public PlayerInfo getPlayer() {
         return player;
+    }
+
+    public ArrayList<PlayerInfo> getPlayers() {
+        return players;
+    }
+
+    public void setPlayer(PlayerInfo player) {
+        this.player = player;
     }
 
     public void setNumPlayers(int numPlayers) {
