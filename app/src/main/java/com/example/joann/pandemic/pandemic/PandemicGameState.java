@@ -76,27 +76,28 @@ public class PandemicGameState extends GameState {
         playerTurn = 0;
         numResearchStations = 0;
 
-        //TODO
-        //initializing a player info object with temp values, change later
-        City city = new City();
-        int index = rand.nextInt(playerDeck.size());
-        PlayerCard card1 = playerDeck.get(index);
 
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card2 = playerDeck.get(index);
-
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card3 = playerDeck.get(index);
-
-        index = rand.nextInt(playerDeck.size());
-        PlayerCard card4 = playerDeck.get(index);
-        player = new PlayerInfo(0, 0, 4, city, card1, card2,card3, card4);
 
         init();
     }
     private void init(){
         initStarterPlayerDecks(playerDeck, infectionDeck);
         initEventCard();
+        //TODO
+        //initializing a player info object with temp values, change later
+        City city = new City();
+        int index = rand.nextInt(playerDeck.size()-1);
+        PlayerCard card1 = playerDeck.get(index);
+
+        index = rand.nextInt(playerDeck.size()-1);
+        PlayerCard card2 = playerDeck.get(index);
+
+        index = rand.nextInt(playerDeck.size()-1);
+        PlayerCard card3 = playerDeck.get(index);
+
+        index = rand.nextInt(playerDeck.size()-1);
+        PlayerCard card4 = playerDeck.get(index);
+        player = new PlayerInfo(0, 0, 4, city, card1, card2,card3, card4);
     }
 
     //copy constructor
@@ -586,6 +587,8 @@ public class PandemicGameState extends GameState {
         City shanghai = new City ();
         City hongkong = new City ();
         City osaka = new City ();
+
+        allCities = new ArrayList<>();
 
         algiers.setAdjacentCities(cairo);
         algiers.setAdjacentCities(istanbul);

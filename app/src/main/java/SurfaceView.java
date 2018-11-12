@@ -12,12 +12,12 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
 
+import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.pandemic.Card;
 import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
 import com.example.joann.pandemic.pandemic.Pawn;
 import com.example.joann.pandemic.pandemic.PlayerCard;
-import com.example.joann.pandemic.R;
 
 import java.util.ArrayList;
 
@@ -25,9 +25,15 @@ import static android.view.MotionEvent.INVALID_POINTER_ID;
 
 class MapView extends SurfaceView
 {
-    private float mLastTouchX;
-    private float mLastTouchY;
-
+    private float  NYCx = 13/40;
+    private float NYCy = 1/4;
+/*
+    private float distance(int x1, int y1, int x2, int y2)
+    {
+       int distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2));
+       return distance;
+    }
+*/
  protected PandemicGameState state;
  protected int HumanPlayerNum = 0;
  protected ArrayList<Pawn> thePawns;
@@ -96,9 +102,9 @@ class MapView extends SurfaceView
         int i;
 
         Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
-        map = Bitmap.createScaledBitmap(map, 500, 500, true);
+        map = Bitmap.createScaledBitmap(map, 800, 700, false);
         canvas.drawBitmap(map, 100, 100, myPaint );
-
+        /*
         ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
@@ -156,73 +162,25 @@ class MapView extends SurfaceView
             IDDCard = Bitmap.createScaledBitmap(IDDCard, 62, 111, true);
 
             //canvas.drawBitmap(PDCard, 0, )
-        }
-        invalidate();
+        }*/
+
     }
 
-    private int mActivePointerId = INVALID_POINTER_ID;
 
     public boolean onTouchEvent (MotionEvent ev)
     {
-       final int action = MotionEventCompat.getActionMasked(ev);
-
-       switch(action)
+        int touchX = (int)ev.getX();
+        int touchY = (int)ev.getY();
+       if(ev.getAction() == MotionEvent.ACTION_DOWN)
        {
-           case MotionEvent.ACTION_DOWN:
+           int cityX = (int)((NYCx*800)+100);
+           int cityY = (int)((NYCy*800)+100);
+          /* if(distance (touchX, touchY, cityX, cityY) < touchRadius))
            {
-               final int pointerIndex = MotionEventCompat.getActionIndex(ev);
-               final float x = MotionEventCompat.getX(ev, pointerIndex);
-               final float y = MotionEventCompat.getY(ev, pointerIndex);
-
-               mLastTouchX = x;
-               mLastTouchY = y;
-
-               mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
-               break;
-           }
-           case MotionEvent.ACTION_MOVE: {
-               // Find the index of the active pointer and fetch its position
-               final int pointerIndex =
-                       MotionEventCompat.findPointerIndex(ev, mActivePointerId);
-
-               final float x = MotionEventCompat.getX(ev, pointerIndex);
-               final float y = MotionEventCompat.getY(ev, pointerIndex);
-
-               // Remember this touch position for the next move event
-               mLastTouchX = x;
-               mLastTouchY = y;
-
-               break;
-           }
-
-           case MotionEvent.ACTION_UP: {
-               mActivePointerId = INVALID_POINTER_ID;
-               break;
-           }
-
-           case MotionEvent.ACTION_CANCEL: {
-               mActivePointerId = INVALID_POINTER_ID;
-               break;
-           }
-
-           case MotionEvent.ACTION_POINTER_UP: {
-
-               final int pointerIndex = MotionEventCompat.getActionIndex(ev);
-               final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
-
-               if (pointerId == mActivePointerId) {
-                   // This was our active pointer going up. Choose a new
-                   // active pointer and adjust accordingly.
-                   final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-                   mLastTouchX = MotionEventCompat.getX(ev, newPointerIndex);
-                   mLastTouchY = MotionEventCompat.getY(ev, newPointerIndex);
-                   mActivePointerId = MotionEventCompat.getPointerId(ev, newPointerIndex);
-               }
-               break;
-           }
+               canvas.drawCircle(20, 20, 20, Color.BLUE);
+           }*/
        }
-        return true;
-
+       return true;
     }
 
 }

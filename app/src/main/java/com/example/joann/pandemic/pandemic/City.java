@@ -42,6 +42,8 @@ public class City {
     //Copy constructor
     public City(City city){
         this.name = city.name;
+        this.diseaseCubes = new ArrayList<DiseaseCube>();
+        this.adjacentCities = new ArrayList<City>();
         for(int i = 0; i<diseaseCubes.size(); i++){
             this.diseaseCubes.add(i, city.diseaseCubes.get(i));
         }
