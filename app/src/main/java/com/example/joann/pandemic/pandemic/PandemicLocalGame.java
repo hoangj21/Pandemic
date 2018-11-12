@@ -15,12 +15,15 @@ public class PandemicLocalGame extends LocalGame {
         state = new PandemicGameState();
     }
 
+    //Makes sure it is the player's turn before their pawn is moved.
     @Override
     protected boolean canMove(int playerId){
 
         return playerId == state.getPlayerTurn();
     }
 
+
+    //Moves the pawn where the player wants to go and updates the state.
     @Override
     protected boolean makeMove(GameAction action) {
         //update state here
