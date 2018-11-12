@@ -77,12 +77,12 @@ public class PandemicGameState extends GameState {
         playerTurn = 0;
         numResearchStations = 0;
         init();
-        //TODO
-        //initializing two player info objects
 
+        //initializing two player info objects
         PlayerInfo player1 = initPlayer();
         PlayerInfo player2 = initPlayer();
 
+        //adding players to array of players 
         players.add(player1);
         players.add(player2);
 
