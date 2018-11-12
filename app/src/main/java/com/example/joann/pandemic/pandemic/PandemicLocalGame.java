@@ -36,8 +36,7 @@ public class PandemicLocalGame extends LocalGame {
         }
         if(action instanceof BuildAction){
             BuildAction build = (BuildAction) action;
-            PlayerCard card = BuildAction.getCard();
-            state.buildAResearchStation(state.getPlayer(), state.getPlayer().currentLocation,);
+            state.buildAResearchStation(state.getPlayer(), state.getPlayer().currentLocation);
         }
 
         return true;
