@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.Random;
 
 import static com.example.joann.pandemic.pandemic.EventCard.initEventCard;
-import static com.example.joann.pandemic.pandemic.PlayerCard.initStarterPlayerDecks;
+//import static com.example.joann.pandemic.pandemic.PlayerCard.initStarterPlayerDecks;
 
 /************************************
  * PandemicGameState Constructor
@@ -239,22 +239,37 @@ public class PandemicGameState extends GameState {
     }
 
     //Adds a research station to a specified city
-    public boolean buildAResearchStation(PlayerInfo player, City playerCity, PlayerCard gc) {
+    public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
-        if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations>=6) {
+        if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             return false;
         }
+        //Special case for if player role is operations expert
+        //Player does not need card of city to build a research station
+        if (player.getRole() == 1) {
+            player.getCurrentLocation().hasResearchLab = true;
 
-        if(player.getRole() == 2){
-            player.getCurrentLocation().hasResearchLab = true;
-        }else if( player.getCurrentLocation() == gc.getLocation()){
-            player.getCurrentLocation().hasResearchLab = true;
-            discardPlayerCard(player, gc);
+            int index = -1;
+
+            //looping through player hand to search for necessary card
+            for (int i = 0; i < player.getPlayerHand().size(); i++) {
+                if (player.getPlayerHand().get(i).getLocation() == playerCity) {
+                    index = i;
+                }
+            }
+
+            //required card was not found in player's hand
+            if (index == -1) {
+                return false;
+            }
+                player.getCurrentLocation().hasResearchLab = true;
+                discardPlayerCard(player, player.getPlayerHand().get(index));
+
+            this.numResearchStations++;
+            player.setActionsLeft(player.getActionsLeft() - 1);
+            return true;
         }
-        this.numResearchStations++;
-        player.setActionsLeft(player.getActionsLeft() - 1);
-        return true;
     }
 
     //removes disease cube(s) at a specified city
@@ -266,6 +281,7 @@ public class PandemicGameState extends GameState {
         if (city.getDiseaseCubes().isEmpty()) {
             return false; //no disease cubes there
         }
+        if(player.getRole()== 2)
         city.removeDiseaseCube();
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
@@ -317,7 +333,7 @@ public class PandemicGameState extends GameState {
                 }
             //Special case for if player role is scientist
             //Then player only needs 3 cards to cure a disease
-            if(player.role == 2){
+            if(player.role == 3){
                 if(numYellow>=4){
                     curedDiseases[0] = 1;
                 }

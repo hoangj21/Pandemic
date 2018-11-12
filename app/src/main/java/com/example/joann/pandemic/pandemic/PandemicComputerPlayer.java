@@ -37,8 +37,10 @@ public class PandemicComputerPlayer extends GameComputerPlayer {
                     e.printStackTrace();
                 }
                 if (action == 0) {
+                    action = rand.nextInt(state.getPlayer().getCurrentLocation().getAdjacentCities().size());
+                    City city = state.getPlayer().getCurrentLocation().getAdjacentCities().get(action);
                     action = rand.nextInt(4);
-                    MoveAction moveInstance = new MoveAction(this, action);
+                    MoveAction moveInstance = new MoveAction(this, action, city);
                     game.sendAction(moveInstance);
                 }
                 if (action == 1) {
@@ -46,6 +48,7 @@ public class PandemicComputerPlayer extends GameComputerPlayer {
                     game.sendAction(treatInstance);
                 }
                 if (action == 2) {
+
                     BuildAction buildInstance = new BuildAction(this);
                     game.sendAction(buildInstance);
                 }
