@@ -1,3 +1,5 @@
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,26 +10,40 @@ import android.graphics.Paint;
 import android.media.Image;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import android.view.View;
 
 import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.pandemic.Card;
 import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
+import com.example.joann.pandemic.pandemic.Pawn;
 import com.example.joann.pandemic.pandemic.PlayerCard;
 
 import java.util.ArrayList;
 
-class MapView extends SurfaceView
+import static android.view.MotionEvent.INVALID_POINTER_ID;
+
+class MapView extends SurfaceView implements View.OnTouchListener
 {
  protected PandemicGameState state;
  protected int HumanPlayerNum = 0;
+ protected ArrayList<Pawn> thePawns;
+
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
+        thePawns = new ArrayList<Pawn>();
+        setOnTouchListener(this);
     }
 
     public void onDraw(Canvas canvas)
     {
+        Paint pawnPaint = new Paint();
+        pawnPaint.setColor(Color.BLUE);
+        canvas.drawCircle(20, 20, 20, pawnPaint);
+        for(Pawn pawn: thePawns)
+                pawn.draw(canvas);
+
         //COUNTRY DOTS
         Paint circleRedPaint = new Paint();
         circleRedPaint.setColor(Color.RED);
@@ -142,5 +158,71 @@ class MapView extends SurfaceView
         }
         invalidate();
     }
+
+    private int mActivePointerId = INVALID_POINTER_ID;
+
+    public boolean onTouchEvent (MotionEvent ev)
+    {
+       final int action = MotionEventCompat.getActionMasked(ev);
+
+       switch(action)
+       {
+           case MotionEvent.ACTION_DOWN:
+           {
+               final int pointerIndex = MotionEventCompat.getActionIndex(ev);
+               final float x = MotionEventCompat.getX(ev, pointerIndex);
+               final float y = MotionEventCompat.getY(ev, pointerIndex);
+
+               mLastTouchX = x;
+               mLastTouchY = y;
+
+               mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
+               break;
+           }
+           case MotionEvent.ACTION_MOVE: {
+               // Find the index of the active pointer and fetch its position
+               final int pointerIndex =
+                       MotionEventCompat.findPointerIndex(ev, mActivePointerId);
+
+               final float x = MotionEventCompat.getX(ev, pointerIndex);
+               final float y = MotionEventCompat.getY(ev, pointerIndex);
+
+               // Remember this touch position for the next move event
+               mLastTouchX = x;
+               mLastTouchY = y;
+
+               break;
+           }
+
+           case MotionEvent.ACTION_UP: {
+               mActivePointerId = INVALID_POINTER_ID;
+               break;
+           }
+
+           case MotionEvent.ACTION_CANCEL: {
+               mActivePointerId = INVALID_POINTER_ID;
+               break;
+           }
+
+           case MotionEvent.ACTION_POINTER_UP: {
+
+               final int pointerIndex = MotionEventCompat.getActionIndex(ev);
+               final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
+
+               if (pointerId == mActivePointerId) {
+                   // This was our active pointer going up. Choose a new
+                   // active pointer and adjust accordingly.
+                   final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
+                   mLastTouchX = MotionEventCompat.getX(ev, newPointerIndex);
+                   mLastTouchY = MotionEventCompat.getY(ev, newPointerIndex);
+                   mActivePointerId = MotionEventCompat.getPointerId(ev, newPointerIndex);
+               }
+               break;
+           }
+       }
+        return true;
+
+    }
+
 }
 

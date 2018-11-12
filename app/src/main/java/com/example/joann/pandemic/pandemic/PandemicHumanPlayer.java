@@ -29,13 +29,13 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     /* instance variables */
 
     // These variables will reference widgets that will be modified during play
-    //May not need all of these, they are from Pig
-    private TextView    playerScoreTextView = null;
-    private TextView    oppScoreTextView    = null;
-    private TextView    turnTotalTextView   = null;
-    private TextView    messageTextView     = null;
-    private ImageButton PlayerImageButton      = null;
-    private Button      holdButton          = null;
+
+    private Button  buildButton = null;
+    private Button  treatButton = null;
+    private Button  cureButton = null;
+    private Button  shareButton = null;
+    private Button  moveButton = null;
+    private ImageButton PlayerImageButton = null;
 
     // the android activity that we are running
     private GameMainActivity myActivity;
@@ -69,322 +69,466 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         if(info instanceof PandemicGameState) {
             info.setGame(game);
             PandemicGameState theState = (PandemicGameState) info;
-
-            /*if (theState.getID() == 0)
+    /*
+            if (theState.getID() == 0)
             {
-                //View v = this.getWindow().getDecorView().findViewById(R.id.top_gui_layout);
-                //v.setBackgroundColor(Color.RED);
+                View v = this.getWindow().getDecorView().findViewById(R.id.top_gui_layout);
+                v.setBackgroundColor(Color.RED);
 
 
                 playerScoreTextView.setText(String.valueOf(theState.getScore0()));
                 oppScoreTextView.setText(String.valueOf(theState.getScore1()));
                 turnTotalTextView.setText(String.valueOf(theState.getRunningTotal()));
             }
-            /*else {
+            else {
                 playerScoreTextView.setText(String.valueOf(theState.getScore1()));
                 oppScoreTextView.setText(String.valueOf(theState.getScore0()));
                 turnTotalTextView.setText(String.valueOf(theState.getRunningTotal()));
-            }*/
+            }
+*/
 
-
-            switch(theState.getPlayerHand(1)) {
-                case 1: PlayerImageButton.setImageResource(R.drawable.algiers);
+            switch (theState.getPlayer().getPlayerHand()) {
+                case 1:
+                    PlayerImageButton.setImageResource(R.drawable.algiers);
                     break;
-                case 2: PlayerImageButton.setImageResource(R.drawable.atlanta);
+                case 2:
+                    PlayerImageButton.setImageResource(R.drawable.atlanta);
                     break;
-                case 3: PlayerImageButton.setImageResource(R.drawable.baghidad);
+                case 3:
+                    PlayerImageButton.setImageResource(R.drawable.baghidad);
                     break;
-                case 4: PlayerImageButton.setImageResource(R.drawable.bangkok);
+                case 4:
+                    PlayerImageButton.setImageResource(R.drawable.bangkok);
                     break;
-                case 5: PlayerImageButton.setImageResource(R.drawable.bejing);
+                case 5:
+                    PlayerImageButton.setImageResource(R.drawable.bejing);
                     break;
-                case 6: PlayerImageButton.setImageResource(R.drawable.beunosaires);
+                case 6:
+                    PlayerImageButton.setImageResource(R.drawable.beunosaires);
                     break;
-                case 7: PlayerImageButton.setImageResource(R.drawable.bogota);
+                case 7:
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                     break;
-                case 8: PlayerImageButton.setImageResource(R.drawable.cairo);
+                case 8:
+                    PlayerImageButton.setImageResource(R.drawable.cairo);
                     break;
-                case 9: PlayerImageButton.setImageResource(R.drawable.chennai);
+                case 9:
+                    PlayerImageButton.setImageResource(R.drawable.chennai);
                     break;
-                case 10: PlayerImageButton.setImageResource(R.drawable.chicago);
+                case 10:
+                    PlayerImageButton.setImageResource(R.drawable.chicago);
                     break;
-                case 11: PlayerImageButton.setImageResource(R.drawable.delhi);
+                case 11:
+                    PlayerImageButton.setImageResource(R.drawable.delhi);
                     break;
-                case 12: PlayerImageButton.setImageResource(R.drawable.essen);
+                case 12:
+                    PlayerImageButton.setImageResource(R.drawable.essen);
                     break;
-                case 13: PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
+                case 13:
+                    PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
                     break;
-                case 14: PlayerImageButton.setImageResource(R.drawable.hongkong);
+                case 14:
+                    PlayerImageButton.setImageResource(R.drawable.hongkong);
                     break;
-                case 15: PlayerImageButton.setImageResource(R.drawable.istanbul);
+                case 15:
+                    PlayerImageButton.setImageResource(R.drawable.istanbul);
                     break;
-                case 16: PlayerImageButton.setImageResource(R.drawable.jakarta);
+                case 16:
+                    PlayerImageButton.setImageResource(R.drawable.jakarta);
                     break;
-                case 17: PlayerImageButton.setImageResource(R.drawable.johannesburg);
+                case 17:
+                    PlayerImageButton.setImageResource(R.drawable.johannesburg);
                     break;
-                case 18: PlayerImageButton.setImageResource(R.drawable.karachi);
+                case 18:
+                    PlayerImageButton.setImageResource(R.drawable.karachi);
                     break;
-                case 19: PlayerImageButton.setImageResource(R.drawable.khartoum);
+                case 19:
+                    PlayerImageButton.setImageResource(R.drawable.khartoum);
                     break;
-                case 20: PlayerImageButton.setImageResource(R.drawable.kinshasa);
+                case 20:
+                    PlayerImageButton.setImageResource(R.drawable.kinshasa);
                     break;
-                case 21: PlayerImageButton.setImageResource(R.drawable.kolkata);
+                case 21:
+                    PlayerImageButton.setImageResource(R.drawable.kolkata);
                     break;
-                case 22: PlayerImageButton.setImageResource(R.drawable.lagos);
+                case 22:
+                    PlayerImageButton.setImageResource(R.drawable.lagos);
                     break;
-                case 23: PlayerImageButton.setImageResource(R.drawable.lima);
+                case 23:
+                    PlayerImageButton.setImageResource(R.drawable.lima);
                     break;
-                case 24: PlayerImageButton.setImageResource(R.drawable.london);
+                case 24:
+                    PlayerImageButton.setImageResource(R.drawable.london);
                     break;
-                case 25: PlayerImageButton.setImageResource(R.drawable.losangeles);
+                case 25:
+                    PlayerImageButton.setImageResource(R.drawable.losangeles);
                     break;
-                case 26: PlayerImageButton.setImageResource(R.drawable.madrid);
+                case 26:
+                    PlayerImageButton.setImageResource(R.drawable.madrid);
                     break;
-                case 27: PlayerImageButton.setImageResource(R.drawable.manila);
+                case 27:
+                    PlayerImageButton.setImageResource(R.drawable.manila);
                     break;
-                case 28: PlayerImageButton.setImageResource(R.drawable.mexicocity);
+                case 28:
+                    PlayerImageButton.setImageResource(R.drawable.mexicocity);
                     break;
-                case 29: PlayerImageButton.setImageResource(R.drawable.miami);
+                case 29:
+                    PlayerImageButton.setImageResource(R.drawable.miami);
                     break;
-                case 30: PlayerImageButton.setImageResource(R.drawable.milan);
+                case 30:
+                    PlayerImageButton.setImageResource(R.drawable.milan);
                     break;
-                case 31: PlayerImageButton.setImageResource(R.drawable.montreal);
+                case 31:
+                    PlayerImageButton.setImageResource(R.drawable.montreal);
                     break;
-                case 32: PlayerImageButton.setImageResource(R.drawable.moscow);
+                case 32:
+                    PlayerImageButton.setImageResource(R.drawable.moscow);
                     break;
-                case 33: PlayerImageButton.setImageResource(R.drawable.mumbai);
+                case 33:
+                    PlayerImageButton.setImageResource(R.drawable.mumbai);
                     break;
-                case 34: PlayerImageButton.setImageResource(R.drawable.newyork);
+                case 34:
+                    PlayerImageButton.setImageResource(R.drawable.newyork);
                     break;
-                case 35: PlayerImageButton.setImageResource(R.drawable.osaka);
+                case 35:
+                    PlayerImageButton.setImageResource(R.drawable.osaka);
                     break;
-                case 36: PlayerImageButton.setImageResource(R.drawable.paris);
+                case 36:
+                    PlayerImageButton.setImageResource(R.drawable.paris);
                     break;
-                case 37: PlayerImageButton.setImageResource(R.drawable.stpetersburg);
+                case 37:
+                    PlayerImageButton.setImageResource(R.drawable.stpetersburg);
                     break;
-                case 38: PlayerImageButton.setImageResource(R.drawable.riyadh);
+                case 38:
+                    PlayerImageButton.setImageResource(R.drawable.riyadh);
                     break;
-                case 39: PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
+                case 39:
+                    PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
                     break;
-                case 40: PlayerImageButton.setImageResource(R.drawable.santiago);
+                case 40:
+                    PlayerImageButton.setImageResource(R.drawable.santiago);
                     break;
-                case 41: PlayerImageButton.setImageResource(R.drawable.saopaulo);
+                case 41:
+                    PlayerImageButton.setImageResource(R.drawable.saopaulo);
                     break;
-                case 42: PlayerImageButton.setImageResource(R.drawable.seoul);
+                case 42:
+                    PlayerImageButton.setImageResource(R.drawable.seoul);
                     break;
-                case 43: PlayerImageButton.setImageResource(R.drawable.shanghai);
+                case 43:
+                    PlayerImageButton.setImageResource(R.drawable.shanghai);
                     break;
-                case 44: PlayerImageButton.setImageResource(R.drawable.sydney);
+                case 44:
+                    PlayerImageButton.setImageResource(R.drawable.sydney);
                     break;
-                case 45: PlayerImageButton.setImageResource(R.drawable.taipei);
+                case 45:
+                    PlayerImageButton.setImageResource(R.drawable.taipei);
                     break;
-                case 46: PlayerImageButton.setImageResource(R.drawable.tehran);
+                case 46:
+                    PlayerImageButton.setImageResource(R.drawable.tehran);
                     break;
-                case 47: PlayerImageButton.setImageResource(R.drawable.tokyo);
+                case 47:
+                    PlayerImageButton.setImageResource(R.drawable.tokyo);
                     break;
-                case 48: PlayerImageButton.setImageResource(R.drawable.washington);
+                case 48:
+                    PlayerImageButton.setImageResource(R.drawable.washington);
                     break;
             }
-            switch(theState.getPlayerDeck()) {
-                case 1: PlayerImageButton.setImageResource(R.drawable.algiers);
+            switch (theState.getPlayerDeck()) {
+                case 1:
+                    PlayerImageButton.setImageResource(R.drawable.algiers);
                     break;
-                case 2: PlayerImageButton.setImageResource(R.drawable.atlanta);
+                case 2:
+                    PlayerImageButton.setImageResource(R.drawable.atlanta);
                     break;
-                case 3: PlayerImageButton.setImageResource(R.drawable.baghidad);
+                case 3:
+                    PlayerImageButton.setImageResource(R.drawable.baghidad);
                     break;
-                case 4: PlayerImageButton.setImageResource(R.drawable.bangkok);
+                case 4:
+                    PlayerImageButton.setImageResource(R.drawable.bangkok);
                     break;
-                case 5: PlayerImageButton.setImageResource(R.drawable.bejing);
+                case 5:
+                    PlayerImageButton.setImageResource(R.drawable.bejing);
                     break;
-                case 6: PlayerImageButton.setImageResource(R.drawable.beunosaires);
+                case 6:
+                    PlayerImageButton.setImageResource(R.drawable.beunosaires);
                     break;
-                case 7: PlayerImageButton.setImageResource(R.drawable.bogota);
+                case 7:
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
                     break;
-                case 8: PlayerImageButton.setImageResource(R.drawable.cairo);
+                case 8:
+                    PlayerImageButton.setImageResource(R.drawable.cairo);
                     break;
-                case 9: PlayerImageButton.setImageResource(R.drawable.chennai);
+                case 9:
+                    PlayerImageButton.setImageResource(R.drawable.chennai);
                     break;
-                case 10: PlayerImageButton.setImageResource(R.drawable.chicago);
+                case 10:
+                    PlayerImageButton.setImageResource(R.drawable.chicago);
                     break;
-                case 11: PlayerImageButton.setImageResource(R.drawable.delhi);
+                case 11:
+                    PlayerImageButton.setImageResource(R.drawable.delhi);
                     break;
-                case 12: PlayerImageButton.setImageResource(R.drawable.essen);
+                case 12:
+                    PlayerImageButton.setImageResource(R.drawable.essen);
                     break;
-                case 13: PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
+                case 13:
+                    PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
                     break;
-                case 14: PlayerImageButton.setImageResource(R.drawable.hongkong);
+                case 14:
+                    PlayerImageButton.setImageResource(R.drawable.hongkong);
                     break;
-                case 15: PlayerImageButton.setImageResource(R.drawable.istanbul);
+                case 15:
+                    PlayerImageButton.setImageResource(R.drawable.istanbul);
                     break;
-                case 16: PlayerImageButton.setImageResource(R.drawable.jakarta);
+                case 16:
+                    PlayerImageButton.setImageResource(R.drawable.jakarta);
                     break;
-                case 17: PlayerImageButton.setImageResource(R.drawable.johannesburg);
+                case 17:
+                    PlayerImageButton.setImageResource(R.drawable.johannesburg);
                     break;
-                case 18: PlayerImageButton.setImageResource(R.drawable.karachi);
+                case 18:
+                    PlayerImageButton.setImageResource(R.drawable.karachi);
                     break;
-                case 19: PlayerImageButton.setImageResource(R.drawable.khartoum);
+                case 19:
+                    PlayerImageButton.setImageResource(R.drawable.khartoum);
                     break;
-                case 20: PlayerImageButton.setImageResource(R.drawable.kinshasa);
+                case 20:
+                    PlayerImageButton.setImageResource(R.drawable.kinshasa);
                     break;
-                case 21: PlayerImageButton.setImageResource(R.drawable.kolkata);
+                case 21:
+                    PlayerImageButton.setImageResource(R.drawable.kolkata);
                     break;
-                case 22: PlayerImageButton.setImageResource(R.drawable.lagos);
+                case 22:
+                    PlayerImageButton.setImageResource(R.drawable.lagos);
                     break;
-                case 23: PlayerImageButton.setImageResource(R.drawable.lima);
+                case 23:
+                    PlayerImageButton.setImageResource(R.drawable.lima);
                     break;
-                case 24: PlayerImageButton.setImageResource(R.drawable.london);
+                case 24:
+                    PlayerImageButton.setImageResource(R.drawable.london);
                     break;
-                case 25: PlayerImageButton.setImageResource(R.drawable.losangeles);
+                case 25:
+                    PlayerImageButton.setImageResource(R.drawable.losangeles);
                     break;
-                case 26: PlayerImageButton.setImageResource(R.drawable.madrid);
+                case 26:
+                    PlayerImageButton.setImageResource(R.drawable.madrid);
                     break;
-                case 27: PlayerImageButton.setImageResource(R.drawable.manila);
+                case 27:
+                    PlayerImageButton.setImageResource(R.drawable.manila);
                     break;
-                case 28: PlayerImageButton.setImageResource(R.drawable.mexicocity);
+                case 28:
+                    PlayerImageButton.setImageResource(R.drawable.mexicocity);
                     break;
-                case 29: PlayerImageButton.setImageResource(R.drawable.miami);
+                case 29:
+                    PlayerImageButton.setImageResource(R.drawable.miami);
                     break;
-                case 30: PlayerImageButton.setImageResource(R.drawable.milan);
+                case 30:
+                    PlayerImageButton.setImageResource(R.drawable.milan);
                     break;
-                case 31: PlayerImageButton.setImageResource(R.drawable.montreal);
+                case 31:
+                    PlayerImageButton.setImageResource(R.drawable.montreal);
                     break;
-                case 32: PlayerImageButton.setImageResource(R.drawable.moscow);
+                case 32:
+                    PlayerImageButton.setImageResource(R.drawable.moscow);
                     break;
-                case 33: PlayerImageButton.setImageResource(R.drawable.mumbai);
+                case 33:
+                    PlayerImageButton.setImageResource(R.drawable.mumbai);
                     break;
-                case 34: PlayerImageButton.setImageResource(R.drawable.newyork);
+                case 34:
+                    PlayerImageButton.setImageResource(R.drawable.newyork);
                     break;
-                case 35: PlayerImageButton.setImageResource(R.drawable.osaka);
+                case 35:
+                    PlayerImageButton.setImageResource(R.drawable.osaka);
                     break;
-                case 36: PlayerImageButton.setImageResource(R.drawable.paris);
+                case 36:
+                    PlayerImageButton.setImageResource(R.drawable.paris);
                     break;
-                case 37: PlayerImageButton.setImageResource(R.drawable.stpetersburg);
+                case 37:
+                    PlayerImageButton.setImageResource(R.drawable.stpetersburg);
                     break;
-                case 38: PlayerImageButton.setImageResource(R.drawable.riyadh);
+                case 38:
+                    PlayerImageButton.setImageResource(R.drawable.riyadh);
                     break;
-                case 39: PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
+                case 39:
+                    PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
                     break;
-                case 40: PlayerImageButton.setImageResource(R.drawable.santiago);
+                case 40:
+                    PlayerImageButton.setImageResource(R.drawable.santiago);
                     break;
-                case 41: PlayerImageButton.setImageResource(R.drawable.saopaulo);
+                case 41:
+                    PlayerImageButton.setImageResource(R.drawable.saopaulo);
                     break;
-                case 42: PlayerImageButton.setImageResource(R.drawable.seoul);
+                case 42:
+                    PlayerImageButton.setImageResource(R.drawable.seoul);
                     break;
-                case 43: PlayerImageButton.setImageResource(R.drawable.shanghai);
+                case 43:
+                    PlayerImageButton.setImageResource(R.drawable.shanghai);
                     break;
-                case 44: PlayerImageButton.setImageResource(R.drawable.sydney);
+                case 44:
+                    PlayerImageButton.setImageResource(R.drawable.sydney);
                     break;
-                case 45: PlayerImageButton.setImageResource(R.drawable.taipei);
+                case 45:
+                    PlayerImageButton.setImageResource(R.drawable.taipei);
                     break;
-                case 46: PlayerImageButton.setImageResource(R.drawable.tehran);
+                case 46:
+                    PlayerImageButton.setImageResource(R.drawable.tehran);
                     break;
-                case 47: PlayerImageButton.setImageResource(R.drawable.tokyo);
+                case 47:
+                    PlayerImageButton.setImageResource(R.drawable.tokyo);
                     break;
-                case 48: PlayerImageButton.setImageResource(R.drawable.washington);
+                case 48:
+                    PlayerImageButton.setImageResource(R.drawable.washington);
                     break;
+            }
+
+            switch (theState.getPlayerDiscardDeck()) {
+                case 1:
+                    PlayerImageButton.setImageResource(R.drawable.algiers);
+                    break;
+                case 2:
+                    PlayerImageButton.setImageResource(R.drawable.atlanta);
+                    break;
+                case 3:
+                    PlayerImageButton.setImageResource(R.drawable.baghidad);
+                    break;
+                case 4:
+                    PlayerImageButton.setImageResource(R.drawable.bangkok);
+                    break;
+                case 5:
+                    PlayerImageButton.setImageResource(R.drawable.bejing);
+                    break;
+                case 6:
+                    PlayerImageButton.setImageResource(R.drawable.beunosaires);
+                    break;
+                case 7:
+                    PlayerImageButton.setImageResource(R.drawable.bogota);
+                    break;
+                case 8:
+                    PlayerImageButton.setImageResource(R.drawable.cairo);
+                    break;
+                case 9:
+                    PlayerImageButton.setImageResource(R.drawable.chennai);
+                    break;
+                case 10:
+                    PlayerImageButton.setImageResource(R.drawable.chicago);
+                    break;
+                case 11:
+                    PlayerImageButton.setImageResource(R.drawable.delhi);
+                    break;
+                case 12:
+                    PlayerImageButton.setImageResource(R.drawable.essen);
+                    break;
+                case 13:
+                    PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
+                    break;
+                case 14:
+                    PlayerImageButton.setImageResource(R.drawable.hongkong);
+                    break;
+                case 15:
+                    PlayerImageButton.setImageResource(R.drawable.istanbul);
+                    break;
+                case 16:
+                    PlayerImageButton.setImageResource(R.drawable.jakarta);
+                    break;
+                case 17:
+                    PlayerImageButton.setImageResource(R.drawable.johannesburg);
+                    break;
+                case 18:
+                    PlayerImageButton.setImageResource(R.drawable.karachi);
+                    break;
+                case 19:
+                    PlayerImageButton.setImageResource(R.drawable.khartoum);
+                    break;
+                case 20:
+                    PlayerImageButton.setImageResource(R.drawable.kinshasa);
+                    break;
+                case 21:
+                    PlayerImageButton.setImageResource(R.drawable.kolkata);
+                    break;
+                case 22:
+                    PlayerImageButton.setImageResource(R.drawable.lagos);
+                    break;
+                case 23:
+                    PlayerImageButton.setImageResource(R.drawable.lima);
+                    break;
+                case 24:
+                    PlayerImageButton.setImageResource(R.drawable.london);
+                    break;
+                case 25:
+                    PlayerImageButton.setImageResource(R.drawable.losangeles);
+                    break;
+                case 26:
+                    PlayerImageButton.setImageResource(R.drawable.madrid);
+                    break;
+                case 27:
+                    PlayerImageButton.setImageResource(R.drawable.manila);
+                    break;
+                case 28:
+                    PlayerImageButton.setImageResource(R.drawable.mexicocity);
+                    break;
+                case 29:
+                    PlayerImageButton.setImageResource(R.drawable.miami);
+                    break;
+                case 30:
+                    PlayerImageButton.setImageResource(R.drawable.milan);
+                    break;
+                case 31:
+                    PlayerImageButton.setImageResource(R.drawable.montreal);
+                    break;
+                case 32:
+                    PlayerImageButton.setImageResource(R.drawable.moscow);
+                    break;
+                case 33:
+                    PlayerImageButton.setImageResource(R.drawable.mumbai);
+                    break;
+                case 34:
+                    PlayerImageButton.setImageResource(R.drawable.newyork);
+                    break;
+                case 35:
+                    PlayerImageButton.setImageResource(R.drawable.osaka);
+                    break;
+                case 36:
+                    PlayerImageButton.setImageResource(R.drawable.paris);
+                    break;
+                case 37:
+                    PlayerImageButton.setImageResource(R.drawable.stpetersburg);
+                    break;
+                case 38:
+                    PlayerImageButton.setImageResource(R.drawable.riyadh);
+                    break;
+                case 39:
+                    PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
+                    break;
+                case 40:
+                    PlayerImageButton.setImageResource(R.drawable.santiago);
+                    break;
+                case 41:
+                    PlayerImageButton.setImageResource(R.drawable.saopaulo);
+                    break;
+                case 42:
+                    PlayerImageButton.setImageResource(R.drawable.seoul);
+                    break;
+                case 43:
+                    PlayerImageButton.setImageResource(R.drawable.shanghai);
+                    break;
+                case 44:
+                    PlayerImageButton.setImageResource(R.drawable.sydney);
+                    break;
+                case 45:
+                    PlayerImageButton.setImageResource(R.drawable.taipei);
+                    break;
+                case 46:
+                    PlayerImageButton.setImageResource(R.drawable.tehran);
+                    break;
+                case 47:
+                    PlayerImageButton.setImageResource(R.drawable.tokyo);
+                    break;
+                case 48:
+                    PlayerImageButton.setImageResource(R.drawable.washington);
+                    break;
+            }
         }
-
-            switch(theState.getPlayerDiscardDeck()) {
-                case 1: PlayerImageButton.setImageResource(R.drawable.algiers);
-                    break;
-                case 2: PlayerImageButton.setImageResource(R.drawable.atlanta);
-                    break;
-                case 3: PlayerImageButton.setImageResource(R.drawable.baghidad);
-                    break;
-                case 4: PlayerImageButton.setImageResource(R.drawable.bangkok);
-                    break;
-                case 5: PlayerImageButton.setImageResource(R.drawable.bejing);
-                    break;
-                case 6: PlayerImageButton.setImageResource(R.drawable.beunosaires);
-                    break;
-                case 7: PlayerImageButton.setImageResource(R.drawable.bogota);
-                    break;
-                case 8: PlayerImageButton.setImageResource(R.drawable.cairo);
-                    break;
-                case 9: PlayerImageButton.setImageResource(R.drawable.chennai);
-                    break;
-                case 10: PlayerImageButton.setImageResource(R.drawable.chicago);
-                    break;
-                case 11: PlayerImageButton.setImageResource(R.drawable.delhi);
-                    break;
-                case 12: PlayerImageButton.setImageResource(R.drawable.essen);
-                    break;
-                case 13: PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
-                    break;
-                case 14: PlayerImageButton.setImageResource(R.drawable.hongkong);
-                    break;
-                case 15: PlayerImageButton.setImageResource(R.drawable.istanbul);
-                    break;
-                case 16: PlayerImageButton.setImageResource(R.drawable.jakarta);
-                    break;
-                case 17: PlayerImageButton.setImageResource(R.drawable.johannesburg);
-                    break;
-                case 18: PlayerImageButton.setImageResource(R.drawable.karachi);
-                    break;
-                case 19: PlayerImageButton.setImageResource(R.drawable.khartoum);
-                    break;
-                case 20: PlayerImageButton.setImageResource(R.drawable.kinshasa);
-                    break;
-                case 21: PlayerImageButton.setImageResource(R.drawable.kolkata);
-                    break;
-                case 22: PlayerImageButton.setImageResource(R.drawable.lagos);
-                    break;
-                case 23: PlayerImageButton.setImageResource(R.drawable.lima);
-                    break;
-                case 24: PlayerImageButton.setImageResource(R.drawable.london);
-                    break;
-                case 25: PlayerImageButton.setImageResource(R.drawable.losangeles);
-                    break;
-                case 26: PlayerImageButton.setImageResource(R.drawable.madrid);
-                    break;
-                case 27: PlayerImageButton.setImageResource(R.drawable.manila);
-                    break;
-                case 28: PlayerImageButton.setImageResource(R.drawable.mexicocity);
-                    break;
-                case 29: PlayerImageButton.setImageResource(R.drawable.miami);
-                    break;
-                case 30: PlayerImageButton.setImageResource(R.drawable.milan);
-                    break;
-                case 31: PlayerImageButton.setImageResource(R.drawable.montreal);
-                    break;
-                case 32: PlayerImageButton.setImageResource(R.drawable.moscow);
-                    break;
-                case 33: PlayerImageButton.setImageResource(R.drawable.mumbai);
-                    break;
-                case 34: PlayerImageButton.setImageResource(R.drawable.newyork);
-                    break;
-                case 35: PlayerImageButton.setImageResource(R.drawable.osaka);
-                    break;
-                case 36: PlayerImageButton.setImageResource(R.drawable.paris);
-                    break;
-                case 37: PlayerImageButton.setImageResource(R.drawable.stpetersburg);
-                    break;
-                case 38: PlayerImageButton.setImageResource(R.drawable.riyadh);
-                    break;
-                case 39: PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
-                    break;
-                case 40: PlayerImageButton.setImageResource(R.drawable.santiago);
-                    break;
-                case 41: PlayerImageButton.setImageResource(R.drawable.saopaulo);
-                    break;
-                case 42: PlayerImageButton.setImageResource(R.drawable.seoul);
-                    break;
-                case 43: PlayerImageButton.setImageResource(R.drawable.shanghai);
-                    break;
-                case 44: PlayerImageButton.setImageResource(R.drawable.sydney);
-                    break;
-                case 45: PlayerImageButton.setImageResource(R.drawable.taipei);
-                    break;
-                case 46: PlayerImageButton.setImageResource(R.drawable.tehran);
-                    break;
-                case 47: PlayerImageButton.setImageResource(R.drawable.tokyo);
-                    break;
-                case 48: PlayerImageButton.setImageResource(R.drawable.washington);
-                    break;
-            }
-
         else{
-            flash(Color.BLACK, 5);
+            flash(Color.WHITE, 5);
             return;
         }
     //}receiveInfo
@@ -398,33 +542,35 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
      * @param button
      * 		the button that was clicked
      */
+
     public void onClick(View button) {
 
-        BuildAction buildAction = new BuildAction(this);
-        TreatAction treatAction = new TreatAction(this);
-        CureAction cureAction = new CureAction(this);
-        ShareAction shareAction = new ShareAction(this);
-        MoveAction moveAction = new MoveAction(this);
-
-        if(button == buildButton)
+        if(button.getId() == buildButton.getId())
         {
+            BuildAction buildAction = new BuildAction(this);
             game.sendAction(buildAction);
         }
-        if(button == treatButton)
+        if(button.getId() == treatButton.getId())
         {
+            TreatAction treatAction = new TreatAction(this);
             game.sendAction(treatAction);
         }
-        if(button == cureButton)
+        if(button.getId() == cureButton.getId())
         {
+            CureAction cureAction = new CureAction(this);
             game.sendAction(cureAction);
         }
-        if(button == shareButton)
+        if(button.getId() == shareButton.getId())
         {
+            ShareAction shareAction = new ShareAction(this);
             game.sendAction(shareAction);
         }
-        if(button == moveButton)
+        if(button.getId() == moveButton.getId())
         {
+            MoveAction moveAction = new MoveAction(this);
             game.sendAction(moveAction);
+        }
+
         }
         /*PigRollAction rollAction = new PigRollAction(this);
         PigHoldAction holdAction = new PigHoldAction(this);
@@ -443,7 +589,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
      *
      * @param activity
      * 		the activity under which we are running
-     */}
+     */
 
 
     public void setAsGui(GameMainActivity activity) {
@@ -452,22 +598,22 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         myActivity = activity;
 
         // Load the layout resource for our GUI
-        //activity.setContentView(R.layout.pig_layout);
+        activity.setContentView(R.layout.activity_main);
 
         //Initialize the widget reference member variables
-        /*this.playerScoreTextView = (TextView)activity.findViewById(R.id.yourScoreValue);
-        this.oppScoreTextView    = (TextView)activity.findViewById(R.id.oppScoreValue);
+        this.buildButton = (Button)activity.findViewById(R.id.BuildButton);
+        this.treatButton = (Button)activity.findViewById(R.id.TreatButton);
+        this.cureButton = (Button)activity.findViewById(R.id.CureButton);
+        this.shareButton = (Button)activity.findViewById(R.id.ShareButton);
+        this.moveButton = (Button)activity.findViewById(R.id.MoveButton);
 
-        this.turnTotalTextView   = (TextView)activity.findViewById(R.id.turnTotalValue);
-        this.messageTextView     = (TextView)activity.findViewById(R.id.messageTextView);
-        this.dieImageButton      = (ImageButton)activity.findViewById(R.id.dieButton);
-        this.holdButton          = (Button)activity.findViewById(R.id.holdButton);
-
-        //Listen for button presses
-        dieImageButton.setOnClickListener(this);
-        holdButton.setOnClickListener(this);*/
-
+        buildButton.setOnClickListener(this);
+        treatButton.setOnClickListener(this);
+        cureButton.setOnClickListener(this);
+        shareButton.setOnClickListener(this);
+        moveButton.setOnClickListener(this);
     }//setAsGui
+
 
 }// class PigHumanPlayer
 
