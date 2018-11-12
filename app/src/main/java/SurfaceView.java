@@ -12,19 +12,22 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
 
-import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.pandemic.Card;
 import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
 import com.example.joann.pandemic.pandemic.Pawn;
 import com.example.joann.pandemic.pandemic.PlayerCard;
+import com.example.joann.pandemic.R;
 
 import java.util.ArrayList;
 
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
-class MapView extends SurfaceView implements View.OnTouchListener
+class MapView extends SurfaceView
 {
+    private float mLastTouchX;
+    private float mLastTouchY;
+
  protected PandemicGameState state;
  protected int HumanPlayerNum = 0;
  protected ArrayList<Pawn> thePawns;
@@ -32,8 +35,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
-        thePawns = new ArrayList<Pawn>();
-        setOnTouchListener(this);
+
     }
 
     public void onDraw(Canvas canvas)
@@ -41,8 +43,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         Paint pawnPaint = new Paint();
         pawnPaint.setColor(Color.BLUE);
         canvas.drawCircle(20, 20, 20, pawnPaint);
-        for(Pawn pawn: thePawns)
-                pawn.draw(canvas);
+
 
         //COUNTRY DOTS
         Paint circleRedPaint = new Paint();
@@ -98,7 +99,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         map = Bitmap.createScaledBitmap(map, 500, 500, true);
         canvas.drawBitmap(map, 100, 100, myPaint );
 
-        ArrayList<PlayerCard> playerHand = state.getPlayerHand(HumanPlayerNum);
+        ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
             PlayerCard c = playerHand.get(i);
