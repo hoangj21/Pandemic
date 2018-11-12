@@ -80,7 +80,9 @@ public class PandemicGameState extends GameState {
 
         //initializing two player info objects
         PlayerInfo player1 = initPlayer();
+        player1.setPlayerNumber(1);
         PlayerInfo player2 = initPlayer();
+        player2.setPlayerNumber(2);
 
         //adding players to array of players
         players.add(player1);
@@ -91,9 +93,14 @@ public class PandemicGameState extends GameState {
 
     }
     private PlayerInfo initPlayer(){
-        //draws 4 random cards and adds them to the player hand
+
         //starter city Atlanta is located at AllCities.get(3);
-        PlayerInfo aPlayer = new PlayerInfo(0, 0, 4, allCities.get(3));
+        int role = rand.nextInt(4);
+
+        //initializing player
+        PlayerInfo aPlayer = new PlayerInfo(0, role, 4, allCities.get(3));
+
+        //draws 4 random cards and adds them to the player hand
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
