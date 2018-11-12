@@ -41,6 +41,22 @@ public class PandemicLocalGame extends LocalGame {
             BuildAction build = (BuildAction) action;
             state.buildAResearchStation(state.getPlayer(), state.getPlayer().currentLocation);
         }
+        if(action instanceof CureAction){
+            CureAction cure = (CureAction) action;
+            state.discoverACure(state.getPlayer());
+        }
+
+        if(state.getPlayer().actionsLeft == 0){
+            if(state.getPlayerTurn() == 0) {
+                state.setPlayerTurn(1);
+                state.setPlayer(state.getPlayers().get(1));
+            }
+
+            if(state.getPlayerTurn() == 1) {
+                state.setPlayerTurn(0);
+                state.setPlayer(state.getPlayers().get(0));
+            }
+        }
 
         return true;
 

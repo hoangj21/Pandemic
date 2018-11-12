@@ -26,16 +26,13 @@ public class PlayerInfo {
         protected int playerNumber;
 
         //default constructor
-        public PlayerInfo(int playerNum, int playerRole, int initActions, City startLoc, PlayerCard card1, PlayerCard card2, PlayerCard card3, PlayerCard card4) {
+        public PlayerInfo(int playerNum, int playerRole, int initActions, City startLoc) {
             playerHand = new ArrayList<>();
             playerNumber = playerNum;
             role = playerRole;
             actionsLeft = initActions;
             currentLocation = startLoc;
-            playerHand.add(card1);
-            playerHand.add(card2);
-            playerHand.add(card3);
-            playerHand.add(card4);
+
 
         }
         //copy constructor
