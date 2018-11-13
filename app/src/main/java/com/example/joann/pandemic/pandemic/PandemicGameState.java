@@ -156,6 +156,7 @@ public class PandemicGameState extends GameState {
         this.infectionRate = otherState.infectionRate;
         this.numPlayers = otherState.numPlayers;
         this.outbreakNum = otherState.outbreakNum;
+        curedDiseases = new int[4];
         for (int i = 0; i < otherState.curedDiseases.length; i++) {
             this.curedDiseases[i] = otherState.curedDiseases[i];
         this.playerTurn = otherState.getPlayerTurn();
