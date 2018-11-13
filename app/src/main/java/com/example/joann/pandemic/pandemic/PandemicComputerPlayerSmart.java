@@ -65,3 +65,6 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
         }// receiveInfo
     }
 }
+
+
+
