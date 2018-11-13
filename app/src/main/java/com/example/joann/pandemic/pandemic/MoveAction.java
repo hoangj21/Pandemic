@@ -29,6 +29,8 @@ public class MoveAction extends GameAction {
 
     }
 
+
+
     public int getMoveType() {
         return moveType;
     }
