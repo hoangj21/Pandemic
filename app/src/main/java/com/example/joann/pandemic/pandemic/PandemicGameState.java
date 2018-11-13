@@ -332,6 +332,11 @@ public class PandemicGameState extends GameState {
             return false; //no disease cubes there
         }
         if(player.getRole()== 2)
+        {
+            for(int i = 0; i < city.getDiseaseCubes().size(); i++) {
+                city.removeDiseaseCube();
+            }
+        }
         city.removeDiseaseCube();
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
@@ -427,9 +432,31 @@ public class PandemicGameState extends GameState {
     //trades city card with another player
     //TODO: Will not be implemented for Alpha Release
     public boolean shareKnowledge(PlayerInfo player) {
-        //normal, researcher
+        //
         if (player.getActionsLeft() <= 0) {
             return false;
+        }
+        //check if players are both in the same city
+
+        if(players.get(0).currentLocation == players.get(1).currentLocation)
+        {
+            City city = players.get(0).currentLocation;
+            //check if either player has the card of the same city
+            //loop through array
+            for(PlayerCard card: players.get(0).playerHand) {
+                if (card.getLocation() == city) {
+                    //take card/give
+                    players.get(0).playerHand.remove(card);
+                    players.get(1).playerHand.add(card);
+                }
+            }
+            for(PlayerCard card: players.get(1).playerHand) {
+                if (card.getLocation() == city) {
+                    //take card/give
+                    players.get(1).playerHand.remove(card);
+                    players.get(0).playerHand.add(card);
+                }
+            }
         }
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
