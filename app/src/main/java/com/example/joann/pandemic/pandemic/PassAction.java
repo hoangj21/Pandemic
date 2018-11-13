@@ -1,5 +1,6 @@
 package com.example.joann.pandemic.pandemic;
 
+import com.example.joann.pandemic.game.GameComputerPlayer;
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 
 public class PassAction extends GameAction{
@@ -9,7 +10,7 @@ public class PassAction extends GameAction{
 
     }
 
-    PassAction(PandemicComputerPlayerDumb player){
+    PassAction(GameComputerPlayer player){
         super(player);
     }
 
