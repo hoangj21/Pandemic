@@ -37,8 +37,10 @@ public class PlayerInfo {
         }
         //copy constructor
     public PlayerInfo(PlayerInfo otherPlayerInfo){
+         playerHand = new ArrayList<PlayerCard>();
         for(int i = 0; i<otherPlayerInfo.playerHand.size(); i++){
-            this.playerHand.add(new PlayerCard(otherPlayerInfo.playerHand.get(i)));
+            PlayerCard card = new PlayerCard(otherPlayerInfo.getPlayerHand().get(i));
+            this.playerHand.add(new PlayerCard(card));
         }
         this.role = otherPlayerInfo.role;
         this.currentLocation = otherPlayerInfo.currentLocation;
