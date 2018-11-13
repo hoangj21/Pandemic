@@ -19,12 +19,12 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         if (info instanceof PandemicGameState) {
-            PandemicGameState state = new PandemicGameState((PandemicGameState) info);
+                    PandemicGameState state = new PandemicGameState((PandemicGameState) info);
 
-            if (info instanceof PandemicGameState) {
-                if (state.getPlayerTurn() != this.playerNum) {
-                    return;
-                }
+                    if (info instanceof PandemicGameState) {
+                        if (state.getPlayerTurn() != this.playerNum) {
+                            return;
+                        }
                 //delay computer player
                 Random rand = new Random();
 
@@ -40,7 +40,7 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
                     action = rand.nextInt(state.getPlayer().getCurrentLocation().getAdjacentCities().size());
                     City city = state.getPlayer().getCurrentLocation().getAdjacentCities().get(action);
                     action = rand.nextInt(4);
-                    MoveAction moveInstance = new MoveAction(this, action, city);
+                    MoveAction moveInstance = new MoveAction(this, city);
                     game.sendAction(moveInstance);
                 }
                 if (action == 1) {
