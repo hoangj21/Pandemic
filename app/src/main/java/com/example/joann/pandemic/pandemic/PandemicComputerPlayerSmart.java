@@ -23,14 +23,17 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
             if (info instanceof PandemicGameState) {
                 if (state.getPlayerTurn() != this.playerNum) {
                     return;
-                } else {
-
+                }
                     //Check if AI is able to cure a disease.
-                    if(state.getPlayer().getActionsLeft() > 0) {
-                        if (canCureDisease(state) && canMoveToResearchCenter(state) != null) {
-
+                    if(state.getPlayer().getActionsLeft() >= 2) {
+                        if (canCureDisease(state) && canMoveToResearchCenter(state) == state.getPlayer().getCurrentLocation()) {
                             CureAction cure = new CureAction(this);
                             game.sendAction(cure);
+                        }
+
+                        else if(canCureDisease(state) && canMoveToResearchCenter(state) != null) {
+                            MoveAction moveInstance = new MoveAction(this, canMoveToResearchCenter(state));
+                            game.sendAction(moveInstance);
                         }
                     }
 
@@ -69,7 +72,7 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
         }// receiveInfo
 
     }
-}
+
 
 
 
