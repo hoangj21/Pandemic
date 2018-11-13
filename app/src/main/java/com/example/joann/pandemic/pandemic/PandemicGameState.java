@@ -76,7 +76,7 @@ public class PandemicGameState extends GameState {
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
         playerTurn = 0;
         numResearchStations = 0;
-        allCities = new ArrayList<City>();
+        allCities = new ArrayList<>();
         init();
 
         //initializing two player info objects
@@ -86,7 +86,7 @@ public class PandemicGameState extends GameState {
         player2.setPlayerNumber(2);
 
         //adding players to array of players
-        players = new ArrayList<PlayerInfo>();
+        players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
 

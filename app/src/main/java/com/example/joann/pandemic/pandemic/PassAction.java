@@ -9,7 +9,7 @@ public class PassAction extends GameAction{
 
     }
 
-    PassAction(PandemicComputerPlayer player){
+    PassAction(PandemicComputerPlayerDumb player){
         super(player);
     }
 

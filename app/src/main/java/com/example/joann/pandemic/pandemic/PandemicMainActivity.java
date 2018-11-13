@@ -26,8 +26,8 @@ import java.util.ArrayList;
 // https://images-cdn.zmangames.com/us-east-1/filer_public/25/12/251252dd-1338-4f78-b90d-afe073c72363/zm7101_pandemic_rules.pdf
 //Used for knowing the rules and layout of Pandemic, referenced throughout all code
 public class PandemicMainActivity extends GameMainActivity {
-    /*
-    @Override
+
+    /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -87,7 +87,7 @@ public class PandemicMainActivity extends GameMainActivity {
         });
         playerTypes.add(new GamePlayerType("Computer Player") {
             public GamePlayer createPlayer(String name) {
-                return new PandemicComputerPlayer(name);
+                return new PandemicComputerPlayerDumb(name);
             }
         });
 
