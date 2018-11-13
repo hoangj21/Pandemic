@@ -65,7 +65,7 @@ public class PandemicGameState extends GameState {
 
 
     //default constructor
-    PandemicGameState() {
+    public PandemicGameState() {
         playerDeck = new ArrayList<>();
         playerDiscardDeck = new ArrayList<>();
         infectionDeck = new ArrayList<>();
@@ -116,7 +116,7 @@ public class PandemicGameState extends GameState {
     }
 
     //copy constructor
-    PandemicGameState(PandemicGameState otherState) {
+    public PandemicGameState(PandemicGameState otherState) {
 
         //copy player deck
         playerDeck = new ArrayList<PlayerCard>();
@@ -273,6 +273,10 @@ public class PandemicGameState extends GameState {
     //puts a player card in the player discard deck
     public boolean discardPlayerCard(PlayerInfo player,PlayerCard gc){
         int index = player.getPlayerHand().indexOf(gc);
+        if(index < 0)
+        {
+            return false;
+        }
        PlayerCard card = player.getPlayerHand().get(index);
        playerDiscardDeck.add(card);
        player.getPlayerHand().remove(index);
