@@ -464,13 +464,33 @@ public class PandemicGameState extends GameState {
 
     //Activates an event card
     //TODO: Will not be implemented for Alpha Release
+    //TODO: Add event cards to the playerDeck
     public boolean playEventCard(PlayerInfo player) {
         if (player.getActionsLeft() <= 0) {
             return false;
         }
-        //if(role = contingencyPlanner){
-        //do action with different requirements.
-        //}
+/*
+        if(player.playerHand.contains(resilientPopulation))
+        {
+            //remove one infection card from infectionDiscardDeck 4eva
+        }
+        else if (player.playerHand.contains(quietNight))
+        {
+            //don't draw infection cards
+        }
+        else if (player.playerHand.contains(forecast))
+        {
+            //rearrange the top 6 cards of infection deck (shuffle)
+        }
+        else if (player.playerHand.contains(governmentGrant))
+        {
+            //add a research station to any city
+
+        }
+        else if (player.playerHand.contains(airlift))
+        {
+            //move any pawn to any city
+        }*/
         return true;
     }
 
