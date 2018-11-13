@@ -58,7 +58,6 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
 
                 }
 
-                //TODO: implement ability to cure a disease if you have 5 cards of same color
 
                 try {
                     Thread.sleep(1000);
