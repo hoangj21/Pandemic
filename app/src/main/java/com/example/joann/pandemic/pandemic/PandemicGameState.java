@@ -213,7 +213,7 @@ public class PandemicGameState extends GameState {
                     return true;
                 }
             }
-        
+
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
 
             for (PlayerCard p : player.getPlayerHand()) {
