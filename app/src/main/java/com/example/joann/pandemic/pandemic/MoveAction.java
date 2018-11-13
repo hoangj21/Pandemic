@@ -1,5 +1,6 @@
 package com.example.joann.pandemic.pandemic;
 
+import com.example.joann.pandemic.game.GameComputerPlayer;
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 
 /**
@@ -21,7 +22,7 @@ public class MoveAction extends GameAction {
 
     }
 
-    MoveAction(PandemicComputerPlayer player, int moveType, City desiredCity){
+    MoveAction(GameComputerPlayer player, int moveType, City desiredCity){
         super(player);
         this.moveType = moveType;
         this.desiredCity = desiredCity;

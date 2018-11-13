@@ -1,5 +1,6 @@
 package com.example.joann.pandemic.pandemic;
 
+import com.example.joann.pandemic.game.GameComputerPlayer;
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 
 /**
@@ -16,7 +17,7 @@ public class BuildAction extends GameAction {
         super(player);
 
     }
-    BuildAction(PandemicComputerPlayer player){
+    BuildAction(GameComputerPlayer player){
 
         super(player);
 

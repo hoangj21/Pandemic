@@ -11,8 +11,8 @@ import java.util.Random;
  * @version 11/10/2018
  */
 
-public class PandemicComputerPlayer extends GameComputerPlayer {
-    public PandemicComputerPlayer(String name) {
+public class PandemicComputerPlayerDumb extends GameComputerPlayer {
+    public PandemicComputerPlayerDumb(String name) {
         super(name);
     }
 
