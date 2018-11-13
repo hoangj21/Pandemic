@@ -153,7 +153,7 @@ public class PandemicGameState extends GameState {
         }
 
         allCities = new ArrayList<City>();
-        for(int i = 0; i< otherState.getPlayers().size(); i++){
+        for(int i = 0; i< otherState.getAllCities().size(); i++){
             City city = new City(otherState.getAllCities().get(i));
             this.allCities.add(city);
         }
