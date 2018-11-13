@@ -111,7 +111,7 @@ public class PandemicGameState extends GameState {
         return aPlayer;
     }
     private void init(){
-        initStarterPlayerDecks(playerDeck, infectionDeck);
+        initStarterPlayerDecks(playerDeck, infectionDeck, allCities);
         initEventCard();
     }
 
@@ -579,7 +579,7 @@ public class PandemicGameState extends GameState {
         this.playerTurn = playerTurn;
     }
 
-    public void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
+    public void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard, ArrayList<City> allCities){
         String red = "Red";
         String blue = "Blue";
         String black = "Black";
