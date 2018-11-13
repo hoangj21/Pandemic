@@ -39,7 +39,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
     // the android activity that we are running
     private GameMainActivity myActivity;
-
+    private MapView myMapView;
     /**
      * constructor does nothing extra
      */
@@ -69,6 +69,9 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         if(info instanceof PandemicGameState) {
             info.setGame(game);
             PandemicGameState theState = (PandemicGameState) info;
+
+            myMapView.setState(theState);
+            myMapView.postInvalidate();
     /*
             if (theState.getID() == 0)
             {
@@ -1151,6 +1154,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         cureButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
         moveButton.setOnClickListener(this);
+        myMapView = (MapView) myActivity.findViewById(R.id.MapView);
     }//setAsGui
 
 

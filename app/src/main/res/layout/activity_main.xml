@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
-        <SurfaceView xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.example.joann.pandemic.pandemic.MapView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/MapView"
             android:layout_width="match_parent"
             android:layout_height="617dp"

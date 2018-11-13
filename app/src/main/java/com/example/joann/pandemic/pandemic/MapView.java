@@ -1,3 +1,5 @@
+package com.example.joann.pandemic.pandemic;
+
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
@@ -25,19 +27,25 @@ import static android.view.MotionEvent.INVALID_POINTER_ID;
 
 class MapView extends SurfaceView
 {
-    private float  NYCx = 13/40;
-    private float NYCy = 1/4;
-/*
+
+ protected PandemicGameState state;
+ protected int HumanPlayerNum = 0;
+ protected ArrayList<Pawn> thePawns;
+ private float  NYCx = 13/40;
+ private float NYCy = 1/4;
+
+    public void setState (PandemicGameState state)
+    {
+        this.state = state;
+    }
+
+    /*
     private float distance(int x1, int y1, int x2, int y2)
     {
        int distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2));
        return distance;
     }
 */
- protected PandemicGameState state;
- protected int HumanPlayerNum = 0;
- protected ArrayList<Pawn> thePawns;
-
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
@@ -46,6 +54,10 @@ class MapView extends SurfaceView
 
     public void onDraw(Canvas canvas)
     {
+        if(state == null)
+        {
+            return;
+        }
         Paint pawnPaint = new Paint();
         pawnPaint.setColor(Color.BLUE);
         canvas.drawCircle(20, 20, 20, pawnPaint);
@@ -86,14 +98,15 @@ class MapView extends SurfaceView
         canvas.drawCircle(890, 402, 50, blackVile);
 
         //INFECTION RATE SLIDERS
+        /*
         Paint epidemicSlider = new Paint();
         epidemicSlider.setColor(Color.GREEN);
         canvas.drawCircle(900, 402, 50, epidemicSlider);
 
-        Paint outbreakSlider = new Paint();
-        outbreakSlider.setColor(Color.GREEN);
+       Paint outbreakSlider = new Paint();
+       outbreakSlider.setColor(Color.GREEN);
         canvas.drawCircle(950, 402, 50, outbreakSlider);
-
+        */
         //DRAWABLE PLAYER HAND CARDS
         Paint myPaint = new Paint();
         myPaint.setColor(Color.WHITE);
@@ -102,9 +115,9 @@ class MapView extends SurfaceView
         int i;
 
         Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
-        map = Bitmap.createScaledBitmap(map, 800, 700, false);
+        map = Bitmap.createScaledBitmap(map, 800, 700, true);
         canvas.drawBitmap(map, 100, 100, myPaint );
-        /*
+
         ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
@@ -154,15 +167,16 @@ class MapView extends SurfaceView
 
         //DRAWABLE DISCARDING INFECTION DECK
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
-        for(i = 0; i < playerDeck.size(); i++){
+        //for(i = 0; i < playerDeck.size(); i++){
+    if(infectionDiscardDeck.size() > 0) {
+        InfectionCard IDD = infectionDiscardDeck.get(i);
 
-            InfectionCard IDD = infectionDiscardDeck.get(i);
+        Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
+        IDDCard = Bitmap.createScaledBitmap(IDDCard, 62, 111, true);
 
-            Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
-            IDDCard = Bitmap.createScaledBitmap(IDDCard, 62, 111, true);
-
-            //canvas.drawBitmap(PDCard, 0, )
-        }*/
+        //canvas.drawBitmap(PDCard, 0, )
+    }
+        //}
 
     }
 
