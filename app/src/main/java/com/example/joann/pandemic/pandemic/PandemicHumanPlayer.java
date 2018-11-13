@@ -86,6 +86,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
                 turnTotalTextView.setText(String.valueOf(theState.getRunningTotal()));
             }
 */
+
+
         for(int i = 0; i < theState.getPlayer().getPlayerHand().size(); i++){
             if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(0))
             {

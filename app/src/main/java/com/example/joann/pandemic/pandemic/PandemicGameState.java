@@ -76,6 +76,7 @@ public class PandemicGameState extends GameState {
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
         playerTurn = 0;
         numResearchStations = 0;
+        allCities = new ArrayList<City>();
         init();
 
         //initializing two player info objects
@@ -88,6 +89,7 @@ public class PandemicGameState extends GameState {
         players = new ArrayList<PlayerInfo>();
         players.add(player1);
         players.add(player2);
+
 
         //default, set first turn to player1
         player = player1;
@@ -148,6 +150,12 @@ public class PandemicGameState extends GameState {
         for(int i = 0; i< otherState.getPlayers().size(); i++){
             PlayerInfo otherPlayer = new PlayerInfo(otherState.getPlayers().get(i));
             this.players.add(otherPlayer);
+        }
+
+        allCities = new ArrayList<City>();
+        for(int i = 0; i< otherState.getPlayers().size(); i++){
+            City city = new City(otherState.getAllCities().get(i));
+            this.allCities.add(city);
         }
 
         player = new PlayerInfo(otherState.getPlayer());
