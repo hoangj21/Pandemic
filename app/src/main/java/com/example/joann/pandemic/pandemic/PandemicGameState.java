@@ -65,7 +65,7 @@ public class PandemicGameState extends GameState {
 
 
     //default constructor
-    PandemicGameState() {
+    public PandemicGameState() {
         playerDeck = new ArrayList<>();
         playerDiscardDeck = new ArrayList<>();
         infectionDeck = new ArrayList<>();
@@ -116,7 +116,7 @@ public class PandemicGameState extends GameState {
     }
 
     //copy constructor
-    PandemicGameState(PandemicGameState otherState) {
+    public PandemicGameState(PandemicGameState otherState) {
 
         //copy player deck
         playerDeck = new ArrayList<PlayerCard>();
@@ -273,6 +273,10 @@ public class PandemicGameState extends GameState {
     //puts a player card in the player discard deck
     public boolean discardPlayerCard(PlayerInfo player,PlayerCard gc){
         int index = player.getPlayerHand().indexOf(gc);
+        if(index < 0)
+        {
+            return false;
+        }
        PlayerCard card = player.getPlayerHand().get(index);
        playerDiscardDeck.add(card);
        player.getPlayerHand().remove(index);
@@ -328,6 +332,11 @@ public class PandemicGameState extends GameState {
             return false; //no disease cubes there
         }
         if(player.getRole()== 2)
+        {
+            for(int i = 0; i < city.getDiseaseCubes().size(); i++) {
+                city.removeDiseaseCube();
+            }
+        }
         city.removeDiseaseCube();
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
@@ -423,9 +432,31 @@ public class PandemicGameState extends GameState {
     //trades city card with another player
     //TODO: Will not be implemented for Alpha Release
     public boolean shareKnowledge(PlayerInfo player) {
-        //normal, researcher
+        //
         if (player.getActionsLeft() <= 0) {
             return false;
+        }
+        //check if players are both in the same city
+
+        if(players.get(0).currentLocation == players.get(1).currentLocation)
+        {
+            City city = players.get(0).currentLocation;
+            //check if either player has the card of the same city
+            //loop through array
+            for(PlayerCard card: players.get(0).playerHand) {
+                if (card.getLocation() == city) {
+                    //take card/give
+                    players.get(0).playerHand.remove(card);
+                    players.get(1).playerHand.add(card);
+                }
+            }
+            for(PlayerCard card: players.get(1).playerHand) {
+                if (card.getLocation() == city) {
+                    //take card/give
+                    players.get(1).playerHand.remove(card);
+                    players.get(0).playerHand.add(card);
+                }
+            }
         }
         player.setActionsLeft(player.getActionsLeft() - 1);
         return true;
@@ -433,13 +464,33 @@ public class PandemicGameState extends GameState {
 
     //Activates an event card
     //TODO: Will not be implemented for Alpha Release
+    //TODO: Add event cards to the playerDeck
     public boolean playEventCard(PlayerInfo player) {
         if (player.getActionsLeft() <= 0) {
             return false;
         }
-        //if(role = contingencyPlanner){
-        //do action with different requirements.
-        //}
+/*
+        if(player.playerHand.contains(resilientPopulation))
+        {
+            //remove one infection card from infectionDiscardDeck 4eva
+        }
+        else if (player.playerHand.contains(quietNight))
+        {
+            //don't draw infection cards
+        }
+        else if (player.playerHand.contains(forecast))
+        {
+            //rearrange the top 6 cards of infection deck (shuffle)
+        }
+        else if (player.playerHand.contains(governmentGrant))
+        {
+            //add a research station to any city
+
+        }
+        else if (player.playerHand.contains(airlift))
+        {
+            //move any pawn to any city
+        }*/
         return true;
     }
 

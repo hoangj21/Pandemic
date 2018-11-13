@@ -309,10 +309,9 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 			else {
 
 				//If the AI has no moves left, return false.
-					if (state.getPlayer().getActionsLeft() <= 0) {
+					if (state.getPlayer().getActionsLeft() <= 2) {
 						return false;
 					}
-
 
 					//counters for number of each card color in player hand
 					int numYellow = 0;
@@ -361,19 +360,26 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	//Helper method for smart AI
 	protected City canMoveToResearchCenter(PandemicGameState state){
 		//If the AI has no moves left, return a null city.
-		if(state.getPlayer().getActionsLeft() <= 0){
+		if(state.getPlayer().getActionsLeft() <= 2){
 			return null;
 		}
 
 		else{
-			//Iterate through all of the cities.
-			for(City c: state.getAllCities()){
-				//If the city has a research lab...
-				if(c.getHasResearchLab()){
-					//And if the AI can move to the city with the research lab...
-					if(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), c)){
-						//Return the city.
-						return c;
+			//If the current city the AI is in has a research center, just return their city
+			if(state.getPlayer().getCurrentLocation().getHasResearchLab()){
+				return state.getPlayer().getCurrentLocation();
+			}
+
+			else {
+				//Iterate through all of the cities.
+				for (City c : state.getAllCities()) {
+					//If the city has a research lab...
+					if (c.getHasResearchLab()) {
+						//And if the AI can move to the city with the research lab...
+						if (state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), c)) {
+							//Return the city.
+							return c;
+						}
 					}
 				}
 			}

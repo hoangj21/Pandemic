@@ -37,11 +37,11 @@ public class EventCard extends Card
     public EventCard(boolean isItAction, boolean isResilient, boolean isQuietNight, boolean isForecast, boolean isGovernment, boolean isAirlift)
     {
         isAction = isItAction;
-        resilientPopulation = isResilient;
-        quietNight = isQuietNight;
-        forecast = isForecast;
-        governmentGrant = isGovernment;
-        airlift = isAirlift;
+        resilientPopulation = isResilient; //remove one infection card from infectionDiscardDeck 4eva
+        quietNight = isQuietNight;//don't draw infection cards
+        forecast = isForecast; //rearrange the top 6 cards of infection deck (shuffle)
+        governmentGrant = isGovernment; //add a research station to any city
+        airlift = isAirlift; //move any pawn to any city
 
     }
 
