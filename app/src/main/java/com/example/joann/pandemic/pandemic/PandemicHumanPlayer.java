@@ -88,6 +88,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 */
 
 
+
+
         for(int i = 0; i < theState.getPlayer().getPlayerHand().size(); i++){
             if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
             {
