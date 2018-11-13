@@ -29,9 +29,8 @@ public class PandemicLocalGame extends LocalGame {
         //update state here
         if(action instanceof MoveAction) {
             MoveAction move = (MoveAction) action;
-            int moveType = move.getMoveType();
             City desiredCity = move.getDesiredCity();
-            state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), desiredCity, moveType);
+            state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), desiredCity);
         }
         if(action instanceof TreatAction) {
             TreatAction treat = (TreatAction) action;

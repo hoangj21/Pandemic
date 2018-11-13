@@ -1106,7 +1106,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         }
         if(button.getId() == moveButton.getId())
         {
-            //MoveAction moveAction = new MoveAction(this, 0, city);
+            //MoveAction moveAction = new MoveAction(this, city);
             //game.sendAction(moveAction);
         }
 
