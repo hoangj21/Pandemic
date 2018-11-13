@@ -101,7 +101,7 @@ public class PandemicGameState extends GameState {
         int role = rand.nextInt(4);
 
         //initializing player
-        PlayerInfo aPlayer = new PlayerInfo(0, role, 4, allCities.get(3));
+        PlayerInfo aPlayer = new PlayerInfo(0, role, 4, allCities.get(1));
 
         //draws 4 random cards and adds them to the player hand
         drawPlayerCard(aPlayer);
@@ -111,7 +111,7 @@ public class PandemicGameState extends GameState {
         return aPlayer;
     }
     private void init(){
-        initStarterPlayerDecks(playerDeck, infectionDeck, allCities);
+        initStarterPlayerDecks(playerDeck, infectionDeck);
         initEventCard();
     }
 
@@ -579,7 +579,7 @@ public class PandemicGameState extends GameState {
         this.playerTurn = playerTurn;
     }
 
-    public void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard, ArrayList<City> allCities){
+    public void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
         String red = "Red";
         String blue = "Blue";
         String black = "Black";
