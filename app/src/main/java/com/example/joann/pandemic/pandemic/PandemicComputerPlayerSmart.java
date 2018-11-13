@@ -5,10 +5,7 @@ import android.graphics.Point;
 import com.example.joann.pandemic.game.GameComputerPlayer;
 import com.example.joann.pandemic.game.infoMsg.GameInfo;
 
-import java.util.ArrayList;
-
 public class PandemicComputerPlayerSmart extends GameComputerPlayer {
-
 
 
     public PandemicComputerPlayerSmart(String name) {
@@ -26,27 +23,35 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
             if (info instanceof PandemicGameState) {
                 if (state.getPlayerTurn() != this.playerNum) {
                     return;
-                }
+                } else {
 
-                else{
+                    //Check if AI is able to cure a disease.
+                    if(state.getPlayer().getActionsLeft() > 0) {
+                        if (canCureDisease(state) && canMoveToResearchCenter(state) != null) {
 
-                    //get location
+                            CureAction cure = new CureAction(this);
+                            game.sendAction(cure);
+                        }
+                    }
+
+                    //Otherwise, move to adjacent city with most disease cubes
+                    //and
                     int mostDiseaseCubes = 0;
                     City theDesiredCity = null;
 
-                    for(City c: state.getPlayer().getCurrentLocation().getAdjacentCities()){
-                        if(c.getDiseaseCubes().size() > mostDiseaseCubes){
+                    for (City c : state.getPlayer().getCurrentLocation().getAdjacentCities()) {
+                        if (c.getDiseaseCubes().size() > mostDiseaseCubes) {
                             mostDiseaseCubes = c.getDiseaseCubes().size();
                             theDesiredCity = c;
                         }
                     }
 
-                    if(state.getPlayer().getActionsLeft() > 0){
+                    if (state.getPlayer().getActionsLeft() > 0) {
                         MoveAction moveInstance = new MoveAction(this, theDesiredCity);
                         game.sendAction(moveInstance);
                     }
 
-                    for(int i = 0; i < state.getPlayer().getActionsLeft(); i++){
+                    for (int i = 0; i < state.getPlayer().getActionsLeft(); i++) {
                         TreatAction treatInstance = new TreatAction(this);
                         game.sendAction(treatInstance);
                     }
@@ -57,14 +62,16 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
 
                 try {
                     Thread.sleep(1000);
-                }catch(InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
             }
         }// receiveInfo
+
     }
 }
+
 
 
 

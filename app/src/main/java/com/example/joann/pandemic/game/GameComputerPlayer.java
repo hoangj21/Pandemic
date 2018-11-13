@@ -2,6 +2,7 @@ package com.example.joann.pandemic.game;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.example.joann.pandemic.game.actionMsg.GameOverAckAction;
 import com.example.joann.pandemic.game.actionMsg.MyNameIsAction;
@@ -9,11 +10,14 @@ import com.example.joann.pandemic.game.actionMsg.ReadyAction;
 import com.example.joann.pandemic.game.infoMsg.BindGameInfo;
 import com.example.joann.pandemic.game.infoMsg.GameInfo;
 import com.example.joann.pandemic.game.infoMsg.GameOverInfo;
+import com.example.joann.pandemic.game.infoMsg.GameState;
 import com.example.joann.pandemic.game.infoMsg.StartGameInfo;
 import com.example.joann.pandemic.game.infoMsg.TimerInfo;
 import com.example.joann.pandemic.game.util.GameTimer;
 import com.example.joann.pandemic.game.util.MessageBox;
 import com.example.joann.pandemic.game.util.Tickable;
+import com.example.joann.pandemic.pandemic.City;
+import com.example.joann.pandemic.pandemic.PandemicGameState;
 
 
 /**
@@ -295,4 +299,89 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	protected void timerTicked() {
 		// by default, do nothing
 	}
-}// class GameComputerPlayer
+
+	//Helper method for Smart AI
+	protected boolean canCureDisease(PandemicGameState state) {
+			if (state.getPlayer().getActionsLeft() <= 0) {
+				return false;
+			}
+
+			else {
+
+				//If the AI has no moves left, return false.
+					if (state.getPlayer().getActionsLeft() <= 0) {
+						return false;
+					}
+
+
+					//counters for number of each card color in player hand
+					int numYellow = 0;
+					int numRed = 0;
+					int numBlue = 0;
+					int numBlack = 0;
+
+					//Loop through AI hand and count colors
+					for (int j = 0; j < state.getPlayer().getPlayerHand().size(); j++) {
+						String color = state.getPlayer().getPlayerHand().get(j).getdiseaseColor();
+						if (color.equals("Yellow")) {
+							numYellow++;
+						}
+						if (color.equals("Red")) {
+							numRed++;
+						}
+						if (color.equals("Blue")) {
+							numBlue++;
+						}
+						if (color.equals("Black")) {
+							numBlack++;
+						}
+
+						//Return true so the AI can create a cure action.
+						if (numYellow >= 5) {
+							return true;
+						}
+						if (numRed >= 5) {
+							return true;
+						}
+						if (numBlue >= 5) {
+							return true;
+						}
+						if (numBlack >= 5) {
+							return true;
+						}
+					}
+
+
+			}
+
+			return false;
+		}
+
+
+	//Helper method for smart AI
+	protected City canMoveToResearchCenter(PandemicGameState state){
+		//If the AI has no moves left, return a null city.
+		if(state.getPlayer().getActionsLeft() <= 0){
+			return null;
+		}
+
+		else{
+			//Iterate through all of the cities.
+			for(City c: state.getAllCities()){
+				//If the city has a research lab...
+				if(c.getHasResearchLab()){
+					//And if the AI can move to the city with the research lab...
+					if(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), c)){
+						//Return the city.
+						return c;
+					}
+				}
+			}
+		}
+
+		Log.e("GameComputerPlayer: ", "Something went wrong in canMoveToResearchCenter");
+		return null;
+	}
+
+	}
+// class GameComputerPlayer
