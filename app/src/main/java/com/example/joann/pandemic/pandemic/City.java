@@ -59,6 +59,7 @@ public class City {
     //Adds new disease cube to array of disease cubes
     public void addDiseaseCube(String cubeColor){
         DiseaseCube cube = new DiseaseCube(cubeColor);
+        if(diseaseCubes.size() < 3)
         diseaseCubes.add(cube);
 
     }
