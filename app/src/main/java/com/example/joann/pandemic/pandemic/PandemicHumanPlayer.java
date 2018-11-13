@@ -88,198 +88,196 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 */
 
 
-
-
         for(int i = 0; i < theState.getPlayer().getPlayerHand().size(); i++){
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(0))
             {
                  PlayerImageButton.setImageResource(R.drawable.algiers);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(1))
             {
                 PlayerImageButton.setImageResource(R.drawable.atlanta);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(2))
             {
                 PlayerImageButton.setImageResource(R.drawable.baghidad);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(3))
             {
                 PlayerImageButton.setImageResource(R.drawable.bangkok);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(4))
             {
                 PlayerImageButton.setImageResource(R.drawable.bejing);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(5))
             {
                 PlayerImageButton.setImageResource(R.drawable.beunosaires);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(6))
             {
                 PlayerImageButton.setImageResource(R.drawable.bogota);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(7))
             {
                 PlayerImageButton.setImageResource(R.drawable.cairo);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(8))
             {
                 PlayerImageButton.setImageResource(R.drawable.chennai);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(9))
             {
                 PlayerImageButton.setImageResource(R.drawable.chicago);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(10))
             {
                 PlayerImageButton.setImageResource(R.drawable.delhi);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(11))
             {
                 PlayerImageButton.setImageResource(R.drawable.essen);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(12))
             {
                 PlayerImageButton.setImageResource(R.drawable.hochiminhcity);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(13))
             {
                 PlayerImageButton.setImageResource(R.drawable.hongkong);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(14))
             {
                 PlayerImageButton.setImageResource(R.drawable.istanbul);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(15))
             {
                 PlayerImageButton.setImageResource(R.drawable.jakarta);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(16))
             {
                 PlayerImageButton.setImageResource(R.drawable.johannesburg);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(17))
             {
                 PlayerImageButton.setImageResource(R.drawable.karachi);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(18))
             {
                 PlayerImageButton.setImageResource(R.drawable.khartoum);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(19))
             {
                 PlayerImageButton.setImageResource(R.drawable.kinshasa);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(20))
             {
                 PlayerImageButton.setImageResource(R.drawable.kolkata);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(21))
             {
                 PlayerImageButton.setImageResource(R.drawable.lagos);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(22))
             {
                 PlayerImageButton.setImageResource(R.drawable.lima);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(23))
             {
                 PlayerImageButton.setImageResource(R.drawable.london);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(24))
             {
                 PlayerImageButton.setImageResource(R.drawable.losangeles);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(25))
             {
                 PlayerImageButton.setImageResource(R.drawable.madrid);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(26))
             {
                 PlayerImageButton.setImageResource(R.drawable.manila);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(27))
             {
                 PlayerImageButton.setImageResource(R.drawable.mexicocity);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(28))
             {
                 PlayerImageButton.setImageResource(R.drawable.miami);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(29))
             {
                 PlayerImageButton.setImageResource(R.drawable.milan);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(30))
             {
                 PlayerImageButton.setImageResource(R.drawable.montreal);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(31))
             {
                 PlayerImageButton.setImageResource(R.drawable.moscow);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(32))
             {
                 PlayerImageButton.setImageResource(R.drawable.mumbai);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(33))
             {
                 PlayerImageButton.setImageResource(R.drawable.newyork);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(34))
             {
                 PlayerImageButton.setImageResource(R.drawable.osaka);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(35))
             {
                 PlayerImageButton.setImageResource(R.drawable.paris);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(36))
             {
                 PlayerImageButton.setImageResource(R.drawable.stpetersburg);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(37))
             {
                 PlayerImageButton.setImageResource(R.drawable.riyadh);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(38))
             {
                 PlayerImageButton.setImageResource(R.drawable.sanfrancisco);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(39))
             {
                 PlayerImageButton.setImageResource(R.drawable.santiago);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(40))
             {
                 PlayerImageButton.setImageResource(R.drawable.saopaulo);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(41))
             {
                 PlayerImageButton.setImageResource(R.drawable.seoul);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(42))
             {
                 PlayerImageButton.setImageResource(R.drawable.shanghai);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(43))
             {
                 PlayerImageButton.setImageResource(R.drawable.sydney);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(44))
             {
                 PlayerImageButton.setImageResource(R.drawable.taipei);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(45))
             {
                 PlayerImageButton.setImageResource(R.drawable.tehran);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(46))
             {
                 PlayerImageButton.setImageResource(R.drawable.tokyo);
             }
-            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(i))
+            if(theState.getPlayer().getPlayerHand().get(i).getLocation() == theState.getAllCities().get(47))
             {
                 PlayerImageButton.setImageResource(R.drawable.washington);
             }
