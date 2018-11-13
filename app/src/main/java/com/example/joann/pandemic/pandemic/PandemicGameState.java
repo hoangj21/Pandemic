@@ -56,6 +56,14 @@ public class PandemicGameState extends GameState {
     private PlayerInfo player;
     //private PlayerInfo player2;
 
+    //If these go to 0, players have lost the game
+    private int numCubesBlue ;
+    private int numCubesBlack ;
+    private int numCubesRed;
+    private int numCubesYellow;
+    private int numPlayerCardsInDeck; //(add 5 for action cards when they're implemented)
+
+
     private final int MAX_CARDS = 7;
     private final int MAX_INFECTION_RATE = 4;
     private final int MAX_RESEARCH_STATIONS = 6;
@@ -77,6 +85,11 @@ public class PandemicGameState extends GameState {
         playerTurn = 0;
         numResearchStations = 0;
         allCities = new ArrayList<>();
+        numCubesBlue = 24;
+        numCubesBlack = 24;
+        numCubesRed = 24;
+        numCubesYellow = 24;
+        numPlayerCardsInDeck = 48;
         init();
 
         //initializing two player info objects
@@ -170,11 +183,14 @@ public class PandemicGameState extends GameState {
         this.playerTurn = otherState.getPlayerTurn();
         this.numResearchStations = otherState.getNumResearchStations();
 
+        this.numCubesBlue = otherState.numCubesBlue;
+        this.numCubesBlack = otherState.numCubesBlack;
+        this.numCubesRed = otherState.numCubesRed;
+        this.numCubesYellow = otherState.numCubesYellow;
+        this.numPlayerCardsInDeck = otherState.numPlayerCardsInDeck;
+
         }
-
         //copy players
-
-
     }
 
     //Moves player to a different city
@@ -249,6 +265,7 @@ public class PandemicGameState extends GameState {
             int index = rand.nextInt(playerDeck.size());
             PlayerCard card = playerDeck.get(index);
             playerDeck.remove(index);
+            numPlayerCardsInDeck--;
             player.addCardToPlayerHand(card);
             //reflect in gui?
             return true;
@@ -257,16 +274,36 @@ public class PandemicGameState extends GameState {
 
     //draws card from infection deck and infects city
     public boolean drawInfectionCard() {
-        int index = rand.nextInt(infectionDeck.size());
+        //TODO:  Account for outbreak
+        for(int i = 0; i < infectionRate; i++) {
+            int index = rand.nextInt(infectionDeck.size());
 
-        InfectionCard c = infectionDeck.get(index);
+            InfectionCard c = infectionDeck.get(index);
 
-        for(int i = 0; i < infectionRate; i++){
-            c.getLocation().addDiseaseCube(c.getDiseaseColor());
+            //OUTBREAK CHECK
+            if(c.getLocation().getDiseaseCubes().size() == 3)
+            {
+                for(int j = 0; j < c.getLocation().adjacentCities.size(); i++)
+                {
+                    c.getLocation().getAdjacentCities().get(j).addDiseaseCube(c.getDiseaseColor());
+                }
+            }
+
+            else {
+                c.getLocation().addDiseaseCube(c.getDiseaseColor());
+                if (c.getDiseaseColor().equals("Blue")) {
+                    numCubesBlue--;
+                } else if (c.getDiseaseColor().equals("Black")) {
+                    numCubesBlack--;
+                } else if (c.getDiseaseColor().equals("Yellow")) {
+                    numCubesYellow--;
+                } else if (c.getDiseaseColor().equals("Red")) {
+                    numCubesRed--;
+                }
+                infectionDiscardDeck.add(c);
+                infectionDeck.remove(c);
+            }
         }
-        c.getLocation().addDiseaseCube(c.getDiseaseColor());
-        infectionDiscardDeck.add(c);
-        infectionDeck.remove(c);
         return true;
     }
 
@@ -336,6 +373,16 @@ public class PandemicGameState extends GameState {
             for(int i = 0; i < city.getDiseaseCubes().size(); i++) {
                 city.removeDiseaseCube();
             }
+        }
+
+        if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+            numCubesBlue++;
+        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+            numCubesBlack++;
+        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+            numCubesYellow++;
+        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+            numCubesRed++;
         }
         city.removeDiseaseCube();
         player.setActionsLeft(player.getActionsLeft() - 1);
@@ -494,6 +541,15 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
+    public boolean isDiseaseEradicated(){
+        //check if the cure has been found for a disease
+        //check all the cities with the same color so that they don't have any cubes of that color
+        //if all true =  disease eradicated marked
+        //Add checks for future infections
+
+        return true;
+    }
+
     @Override
     public String toString() {
         String fullString;
@@ -560,6 +616,25 @@ public class PandemicGameState extends GameState {
         return numPlayers;
     }
 
+
+    public int getNumCubesBlue(){
+        return numCubesBlue;
+    }
+    public int getNumCubesBlack(){
+        return numCubesBlack;
+    }
+
+    public int getNumCubesRed() {
+        return numCubesRed;
+    }
+
+    public int getNumCubesYellow() {
+        return numCubesYellow;
+    }
+
+    public int getNumPlayerCardsInDeck() {
+        return numPlayerCardsInDeck;
+    }
 
     public int getInfectionRate() {
         return infectionRate;

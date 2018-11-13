@@ -93,6 +93,33 @@ public class PandemicLocalGame extends LocalGame {
         if(countCured == 4){
             return("All diseases have been cured, you have won!");
         }
+
+        //check if game lost
+        if(state.getNumCubesBlack() <= 0)
+        {
+            return("Game Lost");
+        }
+        else if(state.getNumCubesBlue() <= 0)
+        {
+            return("Game Lost");
+        }
+        else if(state.getNumCubesYellow() <= 0)
+        {
+            return("Game Lost");
+        }
+        else if(state.getNumCubesRed() <= 0)
+        {
+            return("Game Lost");
+        }
+        else if(state.getNumPlayerCardsInDeck() <= 0)
+        {
+            return("Game Lost");
+        }
+        else if(state.getOutbreakNum() > 7)
+        {
+            return("Game Lost");
+        }
+
         return null;
     }
 
