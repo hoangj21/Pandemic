@@ -178,7 +178,7 @@ public class PandemicGameState extends GameState {
     }
 
     //Moves player to a different city
-    public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity, int moveType) {
+    public boolean movePawn(PlayerInfo player, City currentCity, City desiredCity) {
 
         //Base Case: Player is trying to move when they have no moves left.
         if (player.getActionsLeft() <= 0) {
@@ -186,7 +186,7 @@ public class PandemicGameState extends GameState {
         }
 
         //Drive Case: Move to a city you are connected to.
-        if (moveType == 0) {
+
             for (City c : desiredCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c == currentCity) {
                     player.setCurrentLocation(desiredCity);
@@ -194,10 +194,17 @@ public class PandemicGameState extends GameState {
                     return true;
                 }
             }
+
+        //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
+
+        if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
+            player.setCurrentLocation(desiredCity);
+            player.actionTaken();
+            return true;
         }
 
         //Direct Flight Case: Move to a city whose card you have.
-        if (moveType == 1) {
+
             for (PlayerCard p : player.getPlayerHand()) {
                 if (p.getLocation() == desiredCity) {
                     player.setCurrentLocation(desiredCity);
@@ -206,9 +213,9 @@ public class PandemicGameState extends GameState {
                     return true;
                 }
             }
-        }
+        
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
-        if (moveType == 2) {
+
             for (PlayerCard p : player.getPlayerHand()) {
                 if (p.getLocation() == player.getCurrentLocation()) {
                     player.setCurrentLocation(desiredCity);
@@ -217,16 +224,9 @@ public class PandemicGameState extends GameState {
                     return true;
                 }
             }
-        }
 
-        //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
-        if (moveType == 3) {
-            if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
-                player.setCurrentLocation(desiredCity);
-                player.actionTaken();
-                return true;
-            }
-        }
+
+
 
         //If all of these fail (meaning a player clicked on a city they  can't go to), pop
         //up a dialog box that tells them so and lets them continue to make actions.
