@@ -11,29 +11,21 @@ import com.example.joann.pandemic.game.actionMsg.GameAction;
  */
 
 public class MoveAction extends GameAction {
-    private int moveType;
     private City desiredCity;
 
 
-
+//What does this constructor do? @Groupmates
     MoveAction(PandemicHumanPlayer player,  City desiredCity){
         super(player);
-        this.moveType = moveType;
 
     }
 
     MoveAction(GameComputerPlayer player, City desiredCity){
         super(player);
-        this.moveType = moveType;
         this.desiredCity = desiredCity;
 
     }
 
-
-
-    public int getMoveType() {
-        return moveType;
-    }
 
     public City getDesiredCity() {
         return desiredCity;

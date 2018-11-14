@@ -8,6 +8,7 @@ import com.example.joann.pandemic.game.infoMsg.GameState;
 import com.example.joann.pandemic.game.infoMsg.NotYourTurnInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -35,6 +36,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private Button  cureButton = null;
     private Button  shareButton = null;
     private Button  moveButton = null;
+    private Button  passButton = null;
     private ImageButton PlayerImageButton = null;
 
     // the android activity that we are running
@@ -1083,47 +1085,38 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
 }
 
-
-
+    /**
+     * this method gets called when the user clicks the die or hold button. It
+     * creates a new PigRollAction or PigHoldAction and sends it to the game.
+     *
+     * @param button
+     * 		the button that was clicked
+     */
     public void onClick(View button) {
+        //MoveAction moveAction = new MoveAction(this);
+        BuildAction buildAction = new BuildAction(this);
+        CureAction cureAction = new CureAction(this);
+        PassAction passAction = new PassAction(this);
+        ShareAction shareAction = new ShareAction(this);
+        TreatAction treatAction = new TreatAction(this);
 
-        if(button.getId() == buildButton.getId())
-        {
-            BuildAction buildAction = new BuildAction(this);
+        if (button == buildButton) {
             game.sendAction(buildAction);
         }
-        if(button.getId() == treatButton.getId())
-        {
-            TreatAction treatAction = new TreatAction(this);
-            game.sendAction(treatAction);
-        }
-        if(button.getId() == cureButton.getId())
-        {
-            CureAction cureAction = new CureAction(this);
+        else if(button == cureButton) {
             game.sendAction(cureAction);
         }
-        if(button.getId() == shareButton.getId())
-        {
-            ShareAction shareAction = new ShareAction(this);
+        else if(button == passButton){
+            game.sendAction(passAction);
+        }
+        else if(button == shareButton){
             game.sendAction(shareAction);
         }
-        if(button.getId() == moveButton.getId())
-        {
-            //MoveAction moveAction = new MoveAction(this, city);
-            //game.sendAction(moveAction);
+        else if(button == treatButton){
+            game.sendAction(treatAction);
         }
+    }
 
-        }
-        /*PigRollAction rollAction = new PigRollAction(this);
-        PigHoldAction holdAction = new PigHoldAction(this);
-
-
-        if (button == holdButton) {
-            game.sendAction(holdAction);
-        }
-        else
-            game.sendAction(rollAction);
-    }// onClick
 
     /**
      * callback method--our game has been chosen/rechosen to be the GUI,
@@ -1148,6 +1141,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         this.cureButton = (Button)activity.findViewById(R.id.CureButton);
         this.shareButton = (Button)activity.findViewById(R.id.ShareButton);
         this.moveButton = (Button)activity.findViewById(R.id.MoveButton);
+        this.passButton = (Button)activity.findViewById(R.id.PassButton);
 
         buildButton.setOnClickListener(this);
         treatButton.setOnClickListener(this);
