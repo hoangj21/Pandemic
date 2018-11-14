@@ -287,6 +287,7 @@ public class PandemicGameState extends GameState {
                 {
                     c.getLocation().getAdjacentCities().get(j).addDiseaseCube(c.getDiseaseColor());
                 }
+                outbreakNum++;
             }
 
             else {
