@@ -79,19 +79,24 @@ public class PandemicMainActivity extends GameMainActivity {
         // Define the allowed player types
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
-        // Pig has two player types:  human and computer
+        // Pandemic has three player types:  human, dumb AI and smart AI.
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
                 return new PandemicHumanPlayer(name);
             }
         });
-        playerTypes.add(new GamePlayerType("Computer Player") {
+        playerTypes.add(new GamePlayerType("Computer Player - Dumb") {
             public GamePlayer createPlayer(String name) {
                 return new PandemicComputerPlayerDumb(name);
             }
         });
+        playerTypes.add(new GamePlayerType("Computer Player - Smart") {
+            public GamePlayer createPlayer(String name) {
+                return new PandemicComputerPlayerSmart(name);
+            }
+        });
 
-        // Create a game configuration class for Pig:
+        // Create a game configuration class for Pandemic:
         GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pandemic", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
         defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
