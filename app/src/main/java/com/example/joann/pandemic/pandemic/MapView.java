@@ -39,13 +39,7 @@ class MapView extends SurfaceView
         this.state = state;
     }
 
-    /*
-    private float distance(int x1, int y1, int x2, int y2)
-    {
-       int distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2));
-       return distance;
-    }
-*/
+
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
@@ -54,48 +48,46 @@ class MapView extends SurfaceView
 
     public void onDraw(Canvas canvas)
     {
+        Paint myPaint = new Paint();
+        myPaint.setColor(Color.WHITE);
         if(state == null)
         {
             return;
         }
+
         Paint pawnPaint = new Paint();
         pawnPaint.setColor(Color.BLUE);
         canvas.drawCircle(20, 20, 20, pawnPaint);
 
 
-        //COUNTRY DOTS
-        Paint circleRedPaint = new Paint();
-        circleRedPaint.setColor(Color.RED);
-        canvas.drawCircle(775, 402, 30, circleRedPaint);
-
-        Paint circleBluePaint = new Paint();
-        circleBluePaint.setColor(Color.BLUE);
-        canvas.drawCircle(500, 402, 30, circleBluePaint);
-
-        Paint circleYellowPaint = new Paint();
-        circleYellowPaint.setColor(Color.YELLOW);
-        canvas.drawCircle(600, 402, 30, circleYellowPaint);
-
-        Paint circleBlackPaint = new Paint();
-        circleBlackPaint.setColor(Color.BLACK);
-        canvas.drawCircle(600, 402, 30, circleBlackPaint);
+        Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
+        map = Bitmap.createScaledBitmap(map, 1500, 1000, true);
+        canvas.drawBitmap(map, 500, 100, myPaint );
 
         //DISEASE VILES
         Paint blueVile = new Paint();
         blueVile.setColor(Color.BLUE);
-        canvas.drawCircle(800, 402, 50, blueVile);
+        canvas.drawCircle(1140, 1030, 30, blueVile);
 
         Paint yellowVile = new Paint();
         yellowVile.setColor(Color.YELLOW);
-        canvas.drawCircle(830, 402, 50, yellowVile);
+        canvas.drawCircle(1015, 1030, 30, yellowVile);
 
         Paint redVile = new Paint();
         redVile.setColor(Color.RED);
-        canvas.drawCircle(860, 402, 50, redVile);
+        canvas.drawCircle(1075, 1030, 30, redVile);
 
         Paint blackVile = new Paint();
         blackVile.setColor(Color.BLACK);
-        canvas.drawCircle(890, 402, 50, blackVile);
+        canvas.drawCircle(1210, 1030, 30, blackVile);
+
+        Paint infectionRate = new Paint();
+        infectionRate.setColor(Color.GREEN);
+        canvas.drawCircle(1470, 330, 30, infectionRate);
+
+        Paint outbreakRate = new Paint();
+        outbreakRate.setColor(Color.GREEN);
+        canvas.drawCircle(620, 650, 30, outbreakRate);
 
         //INFECTION RATE SLIDERS
         /*
@@ -108,15 +100,9 @@ class MapView extends SurfaceView
         canvas.drawCircle(950, 402, 50, outbreakSlider);
         */
         //DRAWABLE PLAYER HAND CARDS
-        Paint myPaint = new Paint();
-        myPaint.setColor(Color.WHITE);
-        int padding = 65;
-        int cardh = 111;
+        int padding = 200;
+        int cardh = 30;
         int i;
-
-        Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
-        map = Bitmap.createScaledBitmap(map, 800, 700, true);
-        canvas.drawBitmap(map, 100, 100, myPaint );
 
         ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
@@ -124,7 +110,7 @@ class MapView extends SurfaceView
             PlayerCard c = playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
-            card = Bitmap.createScaledBitmap(card, 62, 111, true);
+            card = Bitmap.createScaledBitmap(card, 160, 250, true);
 
             canvas.drawBitmap(card, 0, (padding + i*cardh + i*padding), myPaint);
         }
@@ -136,21 +122,23 @@ class MapView extends SurfaceView
             PlayerCard PD = playerDeck.get(i);
 
             Bitmap PDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
-            PDCard = Bitmap.createScaledBitmap(PDCard, 62, 111, true);
+            PDCard = Bitmap.createScaledBitmap(PDCard, 160, 250, true);
 
-            //canvas.drawBitmap(PDCard, 0, )
-        }
+            canvas.drawBitmap(PDCard, 1395, 785, myPaint );
+        } //1395
 
         //DRAWABLE DISCARDING PLAYER DECK
         ArrayList<PlayerCard> playerDiscardDeck = state.getPlayerDiscardDeck();
-        for(i = 0; i < playerDiscardDeck.size(); i++){
+        if(playerDiscardDeck.size() > 0){
 
             PlayerCard PD = playerDiscardDeck.get(i);
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
-            PDDCard = Bitmap.createScaledBitmap(PDDCard, 62, 111, true);
+            PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
+            //canvas.drawBitmap(PDDCard, 100, 100, myPaint );
 
-            //canvas.drawBitmap(PDCard, 0, )
+            canvas.drawBitmap(PDDCard, 1595, 785, myPaint );
+
         }
 
         //DRAWABLE DRAWING INFECTION DECK
@@ -160,26 +148,31 @@ class MapView extends SurfaceView
             InfectionCard ID = infectionDeck.get(i);
 
             Bitmap IDCard = BitmapFactory.decodeResource(getResources(), ID.getAndroidIdInfect());
-            IDCard = Bitmap.createScaledBitmap(IDCard, 62, 111, true);
+            IDCard = Bitmap.createScaledBitmap(IDCard, 240, 140, true);
 
-            //canvas.drawBitmap(PDCard, 0, )
+            canvas.drawBitmap(IDCard, 1390, 160, myPaint );
         }
 
         //DRAWABLE DISCARDING INFECTION DECK
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
-        //for(i = 0; i < playerDeck.size(); i++){
+
     if(infectionDiscardDeck.size() > 0) {
         InfectionCard IDD = infectionDiscardDeck.get(i);
 
         Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
-        IDDCard = Bitmap.createScaledBitmap(IDDCard, 62, 111, true);
+        IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
+        canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
 
         //canvas.drawBitmap(PDCard, 0, )
     }
-        //}
 
     }
-
+    /*
+    private float distance(int x1, int y1, int x2, int y2)
+    {
+        int distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2));
+        return distance;
+    }
 
     public boolean onTouchEvent (MotionEvent ev)
     {
@@ -189,13 +182,13 @@ class MapView extends SurfaceView
        {
            int cityX = (int)((NYCx*800)+100);
            int cityY = (int)((NYCy*800)+100);
-          /* if(distance (touchX, touchY, cityX, cityY) < touchRadius))
+           if(distance (touchX, touchY, cityX, cityY) < touchRadius))
            {
-               canvas.drawCircle(20, 20, 20, Color.BLUE);
-           }*/
+
+           }
        }
        return true;
-    }
+    }*/
 
 }
 
