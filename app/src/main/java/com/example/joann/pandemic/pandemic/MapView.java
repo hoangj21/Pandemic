@@ -132,7 +132,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawBitmap(PDCard, 1395, 785, myPaint );
         } //1395
 
-        //DRAWABLE DISCARDING PLAYER DECK
+        //DRAWABLE DISCARDING PLAYER DECK YES
         ArrayList<PlayerCard> playerDiscardDeck = state.getPlayerDiscardDeck();
         if(playerDiscardDeck.size() > 0){
 
