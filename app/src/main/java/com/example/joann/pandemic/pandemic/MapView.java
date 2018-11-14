@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
-class MapView extends SurfaceView
+class MapView extends SurfaceView implements View.OnTouchListener
 {
 
  protected PandemicGameState state;
@@ -33,6 +33,7 @@ class MapView extends SurfaceView
  protected ArrayList<Pawn> thePawns;
  private float  NYCx = 13/40;
  private float NYCy = 1/4;
+ CityCircle circle;
 
     public void setState (PandemicGameState state)
     {
@@ -43,6 +44,10 @@ class MapView extends SurfaceView
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
+        //OnTouchListener listener = new OnTouchListener()
+
+        setOnTouchListener(this);
+        circle = new CityCircle(0,0);
 
     }
 
@@ -50,10 +55,12 @@ class MapView extends SurfaceView
     {
         Paint myPaint = new Paint();
         myPaint.setColor(Color.WHITE);
+
         if(state == null)
         {
             return;
         }
+
 
         Paint pawnPaint = new Paint();
         pawnPaint.setColor(Color.BLUE);
@@ -165,30 +172,39 @@ class MapView extends SurfaceView
 
         //canvas.drawBitmap(PDCard, 0, )
     }
+        circle.draw(canvas);
 
     }
-    /*
-    private float distance(int x1, int y1, int x2, int y2)
+
+    private double distance(int x1, int y1, int x2, int y2)
     {
-        int distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2));
+        double distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2)));
         return distance;
     }
 
-    public boolean onTouchEvent (MotionEvent ev)
+    public boolean onTouch (View v, MotionEvent ev)
     {
-        int touchX = (int)ev.getX();
-        int touchY = (int)ev.getY();
+
        if(ev.getAction() == MotionEvent.ACTION_DOWN)
        {
+           int touchX = (int)ev.getX();
+           int touchY = (int)ev.getY();
+           CityCircle circle = new CityCircle(touchX, touchY);
+           this.circle = circle;
+
+
            int cityX = (int)((NYCx*800)+100);
            int cityY = (int)((NYCy*800)+100);
+           /*
            if(distance (touchX, touchY, cityX, cityY) < touchRadius))
            {
 
            }
+           */
+           invalidate();
        }
        return true;
-    }*/
+    }
 
 }
 
