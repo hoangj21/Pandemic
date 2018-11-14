@@ -219,7 +219,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
            {
                this.player.needToMakeMove(state.getAllCities().get(14));
                this.Citycircle = circle;
-               invalidate();
+               
            }
 
            int WashcityX = (int)((WASHx*1500)+500);
