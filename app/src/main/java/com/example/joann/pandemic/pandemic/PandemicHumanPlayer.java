@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 /**
  * A GUI for a human to play Pandemic.
@@ -1106,20 +1107,37 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
         if (button == buildButton) {
             game.sendAction(buildAction);
+            //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+
         }
         else if(button == cureButton) {
             game.sendAction(cureAction);
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+
         }
         else if(button == passButton){
             game.sendAction(passAction);
+            //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+
         }
         else if(button == shareButton){
             game.sendAction(shareAction);
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+
         }
         else if(button == treatButton){
             game.sendAction(treatAction);
+            //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
+            int size = theState.getPlayer().getCurrentLocation().diseaseCubes.size();
+            Toast.makeText(button.getContext(), "There are " + size + " disease cubes in this city", Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+
+
         }
         else if(button == moveButton){
+            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
             game.sendAction(moveAction);
         }
     }

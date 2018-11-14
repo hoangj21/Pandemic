@@ -23,4 +23,13 @@ public class CityCircle {
         canvas.drawCircle(x, y, size, myPaint);
 
     }
+
+    public void setMyPaint(int turn) {
+        if(turn == 0){
+            myPaint.setColor(Color.RED);
+        }
+        if(turn == 1){
+            myPaint.setColor(Color.CYAN);
+        }
+    }
 }

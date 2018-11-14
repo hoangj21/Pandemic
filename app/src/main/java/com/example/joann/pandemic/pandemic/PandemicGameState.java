@@ -20,6 +20,7 @@ package com.example.joann.pandemic.pandemic;
  ************************************/
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.game.infoMsg.GameState;
@@ -55,6 +56,7 @@ public class PandemicGameState extends GameState {
     private int numResearchStations;
     private PlayerInfo player;
     private City tappedCity;
+    private String message;
     //private PlayerInfo player2;
 
     //If these go to 0, players have lost the game
@@ -108,6 +110,10 @@ public class PandemicGameState extends GameState {
 
         //default, set first turn to player1
         player = player1;
+
+        message = "";
+
+
 
     }
     private PlayerInfo initPlayer(){
@@ -190,9 +196,11 @@ public class PandemicGameState extends GameState {
         this.numCubesRed = otherState.numCubesRed;
         this.numCubesYellow = otherState.numCubesYellow;
         this.numPlayerCardsInDeck = otherState.numPlayerCardsInDeck;
+        this.message = otherState.message;
 
 
         this.tappedCity = new City(otherState.getTappedCity());
+
         }
         //copy players
     }
@@ -330,6 +338,8 @@ public class PandemicGameState extends GameState {
         //normal, operations expert
 
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
+            this.message = "This move is not legal!";
+
             return false;
         }
         //Special case for if player role is operations expert
@@ -355,12 +365,15 @@ public class PandemicGameState extends GameState {
 
             this.numResearchStations++;
             player.setActionsLeft(player.getActionsLeft() - 1);
+            this.message = "You've built a research station!";
             return true;
         }
         return true;
     }
 
     public void passAction(PlayerInfo player){
+        this.message = "You are passing";
+
         player.actionTaken();
     }
 
@@ -368,9 +381,11 @@ public class PandemicGameState extends GameState {
     public boolean treatDisease(PlayerInfo player, City city) {
         //normal, medic
         if (player.getActionsLeft() <= 0) {
+            this.message = "You have no moves left!";
             return false;
         }
         if (city.getDiseaseCubes().isEmpty()) {
+            this.message = "There are no disease cubes to treat here!";
             return false; //no disease cubes there
         }
         if(player.getRole()== 2)
@@ -590,6 +605,10 @@ public class PandemicGameState extends GameState {
 
     public void setTappedCity(City tappedCity) {
         this.tappedCity = tappedCity;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public ArrayList<InfectionCard> getInfectionDeck() {
@@ -1219,21 +1238,21 @@ public class PandemicGameState extends GameState {
         InfectionCard.add(hongkong_infection);
         InfectionCard.add(osaka_infection);
 
-        allCities.add(algiers);
-        allCities.add(atlanta);
-        allCities.add(baghdad);
-        allCities.add(bangkok);
-        allCities.add(bejing);
-        allCities.add(beunosaires);
-        allCities.add(bogota);
-        allCities.add(istanbul);
-        allCities.add(khartoum);
-        allCities.add(hochiminhcity);
-        allCities.add(riyadh);
-        allCities.add(essen);
-        allCities.add(washington);
-        allCities.add(moscow);
-        allCities.add(newyork);
+        allCities.add(algiers);//0
+        allCities.add(atlanta);//1
+        allCities.add(baghdad);//2
+        allCities.add(bangkok);//3
+        allCities.add(bejing);//4
+        allCities.add(beunosaires);//5
+        allCities.add(bogota);//6
+        allCities.add(istanbul);//7
+        allCities.add(khartoum);//8
+        allCities.add(hochiminhcity);//9
+        allCities.add(riyadh);//10
+        allCities.add(essen);//11
+        allCities.add(washington);//12
+        allCities.add(moscow);//13
+        allCities.add(newyork);//14
         allCities.add(taipei);
         allCities.add(tokyo);
         allCities.add(tehran);
@@ -1267,6 +1286,12 @@ public class PandemicGameState extends GameState {
         allCities.add(shanghai);
         allCities.add(hongkong);
         allCities.add(osaka);
+        allCities.get(1).addDiseaseCube("Blue");
+        allCities.get(15).addDiseaseCube("Blue");
+        allCities.get(1).addDiseaseCube("Blue");
+        allCities.get(15).addDiseaseCube("Blue");
+        numCubesBlue = numCubesBlue-4;
+
 
     }
 }

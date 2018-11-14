@@ -13,6 +13,7 @@ import android.media.Image;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.pandemic.Card;
@@ -69,7 +70,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         map = Bitmap.createScaledBitmap(map, 1500, 1000, true);
         canvas.drawBitmap(map, 500, 100, myPaint );
 
-        //DISEASE VILES
+        //DISEASE VIALS
         Paint blueVile = new Paint();
         blueVile.setColor(Color.BLUE);
         canvas.drawCircle(1140, 1030, 30, blueVile);
@@ -170,9 +171,15 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //canvas.drawBitmap(PDCard, 0, )
     }
+        if(state.getPlayerTurn() == 0){
+            Citycircle.setMyPaint(0);
+        }else{
+            Citycircle.setMyPaint(1);
+        }
         Citycircle.draw(canvas);
 
     }
+    //coordinates of north american cities
     private float  NYCx = (float)980.0/(float)2000.0;
     private float NYCy = (float)441.0/(float)2100.0;
     private float  WASHx = (float)950.0/(float)2000.0;
@@ -196,6 +203,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
        if(ev.getAction() == MotionEvent.ACTION_DOWN)
        {
+           Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
            int touchX = (int)ev.getX();
            int touchY = (int)ev.getY();
            CityCircle circle = new CityCircle(touchX, touchY);
@@ -207,7 +215,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, NYCcityX, NYCcityY) < 500)
            {
-               state.setTappedCity(state.getAllCities().get(5));
+               state.setTappedCity(state.getAllCities().get(14));
                this.Citycircle = circle;
                invalidate();
            }
@@ -217,6 +225,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, WashcityX, WashcityY) < 500)
            {
+
                this.Citycircle = circle;
                invalidate();
            }
@@ -256,6 +265,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
                this.Citycircle = circle;
                invalidate();
            }
+
 
 
        }
