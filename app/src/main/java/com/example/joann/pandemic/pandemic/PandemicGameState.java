@@ -1253,39 +1253,39 @@ public class PandemicGameState extends GameState {
         allCities.add(washington);//12
         allCities.add(moscow);//13
         allCities.add(newyork);//14
-        allCities.add(taipei);
-        allCities.add(tokyo);
-        allCities.add(tehran);
-        allCities.add(jakarta);
-        allCities.add(cairo);
-        allCities.add(chennai);
-        allCities.add(paris);
-        allCities.add(petersburg);
-        allCities.add(saopaulo);
-        allCities.add(lagos);
-        allCities.add(lima);
-        allCities.add(london);
-        allCities.add(losangeles);
-        allCities.add(delhi);
-        allCities.add(johannesburg);
-        allCities.add(karachi);
-        allCities.add(madrid);
-        allCities.add(montreal);
-        allCities.add(sanfrancisco);
-        allCities.add(kolkata);
-        allCities.add(mexicocity);
-        allCities.add(santiago);
-        allCities.add(sydney);
-        allCities.add(mumbai);
-        allCities.add(seoul);
-        allCities.add(chicago);
-        allCities.add(kinshasa);
-        allCities.add(miami);
-        allCities.add(milan);
-        allCities.add(manila);
-        allCities.add(shanghai);
-        allCities.add(hongkong);
-        allCities.add(osaka);
+        allCities.add(taipei);//15
+        allCities.add(tokyo);//16
+        allCities.add(tehran);//17
+        allCities.add(jakarta);//18
+        allCities.add(cairo);//19
+        allCities.add(chennai);//20
+        allCities.add(paris);//21
+        allCities.add(petersburg);//22
+        allCities.add(saopaulo);//23
+        allCities.add(lagos);//24
+        allCities.add(lima);//25
+        allCities.add(london);//26
+        allCities.add(losangeles);//27
+        allCities.add(delhi);//28
+        allCities.add(johannesburg);//29
+        allCities.add(karachi);//30
+        allCities.add(madrid);//31
+        allCities.add(montreal);//32
+        allCities.add(sanfrancisco);//33
+        allCities.add(kolkata);//34
+        allCities.add(mexicocity);//35
+        allCities.add(santiago);//36
+        allCities.add(sydney);//37
+        allCities.add(mumbai);//38
+        allCities.add(seoul);//39
+        allCities.add(chicago);//40
+        allCities.add(kinshasa);//41
+        allCities.add(miami);//42
+        allCities.add(milan);//43
+        allCities.add(manila);//44
+        allCities.add(shanghai);//45
+        allCities.add(hongkong);//46
+        allCities.add(osaka);//47
         allCities.get(1).addDiseaseCube("Blue");
         allCities.get(15).addDiseaseCube("Blue");
         allCities.get(1).addDiseaseCube("Blue");

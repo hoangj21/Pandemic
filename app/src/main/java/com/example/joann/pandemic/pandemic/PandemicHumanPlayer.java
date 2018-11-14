@@ -44,6 +44,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private GameMainActivity myActivity;
     private MapView myMapView;
     private PandemicGameState theState;
+    private City city = new City();
+    private boolean isClicked = false;
     /**
      * constructor does nothing extra
      */
@@ -1098,7 +1100,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
      * 		the button that was clicked
      */
     public void onClick(View button) {
-        MoveAction moveAction = new MoveAction(this, theState.getTappedCity());
+
         BuildAction buildAction = new BuildAction(this);
         CureAction cureAction = new CureAction(this);
         PassAction passAction = new PassAction(this);
@@ -1138,7 +1140,11 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         }
         else if(button == moveButton){
             Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-            game.sendAction(moveAction);
+           // game.sendAction(moveAction);
+            isClicked = true;
+        }
+        else{
+            isClicked = false;
         }
     }
 
@@ -1174,7 +1180,15 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         shareButton.setOnClickListener(this);
         moveButton.setOnClickListener(this);
         myMapView = (MapView) myActivity.findViewById(R.id.MapView);
+        myMapView.setPlayer(this);
     }//setAsGui
+
+    public void needToMakeMove(City city){
+        this.city = city;
+        MoveAction moveAction = new MoveAction(this, city);
+        game.sendAction(moveAction);
+
+    }
 
 
 }// class PigHumanPlayer

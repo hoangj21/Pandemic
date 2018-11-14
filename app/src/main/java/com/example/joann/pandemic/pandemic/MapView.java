@@ -33,6 +33,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
  protected int HumanPlayerNum = 0;
  protected ArrayList<Pawn> thePawns;
  CityCircle Citycircle;
+ private PandemicHumanPlayer player;
+ private final int TOUCHRADIUS = 100;
 
     public void setState (PandemicGameState state)
     {
@@ -213,9 +215,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
            int NYCcityX = (int)((NYCx*1500)+500);
            int NYCcityY = (int)((NYCy*1000)+100);
 
-           if(distance(touchX, touchY, NYCcityX, NYCcityY) < 500)
+           if(distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS)
            {
-               state.setTappedCity(state.getAllCities().get(14));
+               this.player.needToMakeMove(state.getAllCities().get(14));
                this.Citycircle = circle;
                invalidate();
            }
@@ -223,47 +225,52 @@ class MapView extends SurfaceView implements View.OnTouchListener
            int WashcityX = (int)((WASHx*1500)+500);
            int WashcityY = (int)((WASHy*1000)+100);
 
-           if(distance(touchX, touchY, WashcityX, WashcityY) < 500)
+           if(distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS)
            {
 
                this.Citycircle = circle;
+               this.player.needToMakeMove(state.getAllCities().get(12));
                invalidate();
            }
 
            int MontrealcityX = (int)((MONTx*1500)+500);
            int MontrealcityY = (int)((MONTy*1000)+100);
 
-           if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < 500)
+           if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS)
            {
                this.Citycircle = circle;
+               this.player.needToMakeMove(state.getAllCities().get(32));
                invalidate();
            }
-
+           this.player.needToMakeMove(state.getAllCities().get(33));
            int AtlantacityX = (int)((ATLAx*1500)+500);
            int AtlantacityY = (int)((ATLAy*1000)+100);
 
-           if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < 500)
+           if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS)
            {
                this.Citycircle = circle;
+               this.player.needToMakeMove(state.getAllCities().get(1));
                invalidate();
            }
 
            int ChicagocityX = (int)((CHICAx*1500)+500);
            int ChicagocityY = (int)((CHICAy*1000)+100);
 
-           if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < 500)
+           if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS)
            {
                this.Citycircle = circle;
+               this.player.needToMakeMove(state.getAllCities().get(40));
                invalidate();
            }
 
            int SanFrancityX = (int)((SANFRANx*1500)+500);
            int SanFrancityY = (int)((SANFRANy*1000)+100);
 
-           if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < 500)
+           if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS)
            {
                this.Citycircle = circle;
                invalidate();
+               this.player.needToMakeMove(state.getAllCities().get(33));
            }
 
 
@@ -272,5 +279,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
        return true;
     }
 
+    public void setPlayer(PandemicHumanPlayer player) {
+        this.player = player;
+    }
 }
 
