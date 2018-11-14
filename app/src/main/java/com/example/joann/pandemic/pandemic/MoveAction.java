@@ -15,8 +15,10 @@ public class MoveAction extends GameAction {
 
 
 //What does this constructor do? @Groupmates
+    //A constructor is needed for both the human player and the computer player
     MoveAction(PandemicHumanPlayer player,  City desiredCity){
         super(player);
+        this.desiredCity = desiredCity;
 
     }
 

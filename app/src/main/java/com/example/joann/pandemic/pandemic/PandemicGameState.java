@@ -54,6 +54,7 @@ public class PandemicGameState extends GameState {
     private int playerTurn;
     private int numResearchStations;
     private PlayerInfo player;
+    private City tappedCity;
     //private PlayerInfo player2;
 
     //If these go to 0, players have lost the game
@@ -90,6 +91,7 @@ public class PandemicGameState extends GameState {
         numCubesRed = 24;
         numCubesYellow = 24;
         numPlayerCardsInDeck = 48;
+        tappedCity = new City();
         init();
 
         //initializing two player info objects
@@ -189,6 +191,8 @@ public class PandemicGameState extends GameState {
         this.numCubesYellow = otherState.numCubesYellow;
         this.numPlayerCardsInDeck = otherState.numPlayerCardsInDeck;
 
+
+        this.tappedCity = new City(otherState.getTappedCity());
         }
         //copy players
     }
@@ -576,10 +580,17 @@ public class PandemicGameState extends GameState {
         return fullString;
     }
 
+
     /****************************************
      * GETTERS & SETTERS
      ***************************************/
 
+
+    public City getTappedCity() {return tappedCity;}
+
+    public void setTappedCity(City tappedCity) {
+        this.tappedCity = tappedCity;
+    }
 
     public ArrayList<InfectionCard> getInfectionDeck() {
         return infectionDeck;

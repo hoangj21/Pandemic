@@ -18,6 +18,7 @@ public class CityCircle {
         this.y = y;
 
     }
+
     public void draw(Canvas canvas){
         canvas.drawCircle(x, y, size, myPaint);
 

@@ -207,6 +207,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, NYCcityX, NYCcityY) < 500)
            {
+               state.setTappedCity(state.getAllCities().get(5));
                this.Citycircle = circle;
                invalidate();
            }

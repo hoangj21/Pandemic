@@ -42,6 +42,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     // the android activity that we are running
     private GameMainActivity myActivity;
     private MapView myMapView;
+    private PandemicGameState theState;
     /**
      * constructor does nothing extra
      */
@@ -70,7 +71,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
         if(info instanceof PandemicGameState) {
             info.setGame(game);
-            PandemicGameState theState = (PandemicGameState) info;
+            theState= new PandemicGameState();
+            theState = (PandemicGameState) info;
 
             myMapView.setState(theState);
             myMapView.postInvalidate();
@@ -1095,7 +1097,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
      * 		the button that was clicked
      */
     public void onClick(View button) {
-        //MoveAction moveAction = new MoveAction(this);
+        MoveAction moveAction = new MoveAction(this, theState.getTappedCity());
         BuildAction buildAction = new BuildAction(this);
         CureAction cureAction = new CureAction(this);
         PassAction passAction = new PassAction(this);
@@ -1116,6 +1118,9 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         }
         else if(button == treatButton){
             game.sendAction(treatAction);
+        }
+        else if(button == moveButton){
+            game.sendAction(moveAction);
         }
     }
 
