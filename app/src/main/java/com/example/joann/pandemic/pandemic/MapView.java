@@ -31,9 +31,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
  protected PandemicGameState state;
  protected int HumanPlayerNum = 0;
  protected ArrayList<Pawn> thePawns;
- private float  NYCx = 13/40;
- private float NYCy = 1/4;
- CityCircle circle;
+ CityCircle Citycircle;
 
     public void setState (PandemicGameState state)
     {
@@ -47,7 +45,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         //OnTouchListener listener = new OnTouchListener()
 
         setOnTouchListener(this);
-        circle = new CityCircle(0,0);
+       Citycircle = new CityCircle(1000,400);
 
     }
 
@@ -172,10 +170,21 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //canvas.drawBitmap(PDCard, 0, )
     }
-        circle.draw(canvas);
+        Citycircle.draw(canvas);
 
     }
-
+    private float  NYCx = (float)980.0/(float)2000.0;
+    private float NYCy = (float)441.0/(float)2100.0;
+    private float  WASHx = (float)950.0/(float)2000.0;
+    private float WASHy = (float)500.0/(float)2100.0;
+    private float  MONTx = (float)920.0/(float)2000.0;
+    private float MONTy = (float)447.0/(float)2100.0;
+    private float  ATLAx = (float)850.0/(float)2000.0;
+    private float ATLAy = (float)500.0/(float)2100.0;
+    private float  CHICAx = (float)890.0/(float)2000.0;
+    private float CHICAy = (float)447.0/(float)2100.0;
+    private float  SANFRANx = (float)700.0/(float)2000.0;
+    private float SANFRANy = (float)460.0/(float)100.0;
     private double distance(int x1, int y1, int x2, int y2)
     {
         double distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2)));
@@ -193,12 +202,57 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
 
 
-           int cityX = (int)((NYCx*800)+100);
-           int cityY = (int)((NYCy*800)+100);
+           int NYCcityX = (int)((NYCx*1500)+500);
+           int NYCcityY = (int)((NYCy*1000)+100);
 
-           if(distance(touchX, touchY, cityX, cityY) < 100)
+           if(distance(touchX, touchY, NYCcityX, NYCcityY) < 500)
            {
-               this.circle = circle;
+               this.Citycircle = circle;
+               invalidate();
+           }
+
+           int WashcityX = (int)((WASHx*1500)+500);
+           int WashcityY = (int)((WASHy*1000)+100);
+
+           if(distance(touchX, touchY, WashcityX, WashcityY) < 500)
+           {
+               this.Citycircle = circle;
+               invalidate();
+           }
+
+           int MontrealcityX = (int)((MONTx*1500)+500);
+           int MontrealcityY = (int)((MONTy*1000)+100);
+
+           if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < 500)
+           {
+               this.Citycircle = circle;
+               invalidate();
+           }
+
+           int AtlantacityX = (int)((ATLAx*1500)+500);
+           int AtlantacityY = (int)((ATLAy*1000)+100);
+
+           if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < 500)
+           {
+               this.Citycircle = circle;
+               invalidate();
+           }
+
+           int ChicagocityX = (int)((CHICAx*1500)+500);
+           int ChicagocityY = (int)((CHICAy*1000)+100);
+
+           if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < 500)
+           {
+               this.Citycircle = circle;
+               invalidate();
+           }
+
+           int SanFrancityX = (int)((SANFRANx*1500)+500);
+           int SanFrancityY = (int)((SANFRANy*1000)+100);
+
+           if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < 500)
+           {
+               this.Citycircle = circle;
                invalidate();
            }
 

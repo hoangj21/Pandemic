@@ -19,6 +19,7 @@ public class MoveAction extends GameAction {
     MoveAction(PandemicHumanPlayer player,  City desiredCity){
         super(player);
         this.moveType = moveType;
+        this.desiredCity = desiredCity;
 
     }
 

@@ -72,6 +72,8 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
             myMapView.setState(theState);
             myMapView.postInvalidate();
+
+
     /*
             if (theState.getID() == 0)
             {

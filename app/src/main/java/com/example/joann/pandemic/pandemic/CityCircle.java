@@ -7,7 +7,7 @@ import android.graphics.Paint;
 public class CityCircle {
     protected int x;
     protected int y;
-    protected int size = 50;
+    protected int size = 20;
     protected Paint myPaint;
 
     public CityCircle(int x,int y){
