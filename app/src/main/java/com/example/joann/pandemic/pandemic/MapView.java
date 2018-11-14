@@ -190,18 +190,19 @@ class MapView extends SurfaceView implements View.OnTouchListener
            int touchX = (int)ev.getX();
            int touchY = (int)ev.getY();
            CityCircle circle = new CityCircle(touchX, touchY);
-           this.circle = circle;
+
 
 
            int cityX = (int)((NYCx*800)+100);
            int cityY = (int)((NYCy*800)+100);
-           /*
-           if(distance (touchX, touchY, cityX, cityY) < touchRadius))
-           {
 
+           if(distance(touchX, touchY, cityX, cityY) < 100)
+           {
+               this.circle = circle;
+               invalidate();
            }
-           */
-           invalidate();
+
+
        }
        return true;
     }
