@@ -41,7 +41,7 @@ public class EventCard extends Card
         quietNight = isQuietNight;//don't draw infection cards
         forecast = isForecast; //rearrange the top 6 cards of infection deck (shuffle)
         governmentGrant = isGovernment; //add a research station to any city
-        airlift = isAirlift; //move any pawn to any city
+        airlift = isAirlift; //move yourself to any city
 
     }
 
