@@ -33,7 +33,6 @@ public class PandemicLocalGame extends LocalGame {
             MoveAction move = (MoveAction) action;
             City desiredCity = move.getDesiredCity();
             state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), desiredCity);
-
         }
 
         if(action instanceof TreatAction) {
@@ -49,7 +48,7 @@ public class PandemicLocalGame extends LocalGame {
             state.discoverACure(state.getPlayer());
         }
 
-        if(state.getPlayer().actionsLeft == 0){
+        if(state.getPlayer().actionsLeft <= 0){
             if(state.getPlayerTurn() == 0) {
                 state.setPlayerTurn(1);
                 state.getPlayers().get(0).setActionsLeft(4);
