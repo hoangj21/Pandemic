@@ -225,6 +225,7 @@ public class PandemicGameState extends GameState {
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c == desiredCity) {
+                    
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
