@@ -50,10 +50,14 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         setOnTouchListener(this);
 
-        Pawncircle = new CityCircle(800,490);
-        Pawncircle.setMyPaint(0);
-        Opponentcircle = new CityCircle(800, 490);
-        Opponentcircle.setMyPaint(1);
+        Paint paint = new Paint();
+
+        paint.setColor(Color.CYAN);
+        Pawncircle = new CityCircle(800,490, paint) ;
+        //Pawncircle.setMyPaint(0);
+        paint.setColor(Color.MAGENTA);
+        Opponentcircle = new CityCircle(800, 490, paint);
+       // Opponentcircle.setMyPaint(1);
 
     }
 
@@ -219,7 +223,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
                 int touchX = (int) ev.getX();
                 int touchY = (int) ev.getY();
-                CityCircle circle = new CityCircle(touchX, touchY);
+                Paint paint = new Paint();
+                paint.setColor(Color.CYAN);
+                CityCircle circle = new CityCircle(touchX, touchY,paint);
                 final int TOUCHRADIUS = 50;
 
                 //comment remove later

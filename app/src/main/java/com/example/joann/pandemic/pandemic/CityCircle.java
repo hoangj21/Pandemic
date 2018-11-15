@@ -11,17 +11,18 @@ public class CityCircle {
     protected Paint PawnPaint;
     protected Paint OpponentPaint;
 
-    public CityCircle(int x,int y){
+    public CityCircle(int x,int y, Paint paint){
 
         PawnPaint = new Paint();
-        PawnPaint.setColor(Color.CYAN);
+        PawnPaint = paint;
+       // PawnPaint.setColor(Color.CYAN);
         this.x = x;
         this.y = y;
 
         OpponentPaint = new Paint();
         OpponentPaint.setColor(Color.MAGENTA);
-        this.x = x;
-        this.y = y;
+        //this.x = x;
+        //this.y = y;
     }
 
     public void draw(Canvas canvas){
