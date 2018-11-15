@@ -112,10 +112,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         int cardh = 30;
         int i;
 
-        ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
+        ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
-            PlayerCard c = (PlayerCard) playerHand.get(i);
+            PlayerCard c = playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
             card = Bitmap.createScaledBitmap(card, 160, 250, true);
@@ -124,10 +124,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
         //DRAWABLE DRAWING PLAYER DECK
-        ArrayList<Card> playerDeck = state.getPlayerDeck();
+        ArrayList<PlayerCard> playerDeck = state.getPlayerDeck();
         for(i = 0; i < playerDeck.size(); i++){
 
-            PlayerCard PD =(PlayerCard)playerDeck.get(i);
+            PlayerCard PD = playerDeck.get(i);
 
             Bitmap PDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDCard = Bitmap.createScaledBitmap(PDCard, 160, 250, true);
@@ -136,10 +136,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         } //1395
 
         //DRAWABLE DISCARDING PLAYER DECK YES
-        ArrayList<Card> playerDiscardDeck = state.getPlayerDiscardDeck();
+        ArrayList<PlayerCard> playerDiscardDeck = state.getPlayerDiscardDeck();
         if(playerDiscardDeck.size() > 0){
 
-            PlayerCard PD = (PlayerCard)playerDiscardDeck.get(i);
+            PlayerCard PD = playerDiscardDeck.get(i);
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
@@ -175,8 +175,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     }
         if(state.getPlayerTurn() == 0){
             Citycircle.setMyPaint(0);
-        }
-        if(state.getPlayerTurn() == 1){
+        }else{
             Citycircle.setMyPaint(1);
         }
         Citycircle.draw(canvas);
@@ -187,9 +186,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float NYCy = 298;
     private float  WASHx = 423;
     private float WASHy = 362;
-    private float  MONTx = 348;
-    private float MONTy = 296;
-    private float  ATLAx = 304;
+    private float  MONTx = 351;
+    private float MONTy = 317;
+    private float  ATLAx = 297;
     private float ATLAy = 375;
     private float  CHICAx = 255;
     private float CHICAy = 298;
@@ -220,11 +219,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS)
            {
+               Toast.makeText(v.getContext(), "You tapped New York!", Toast.LENGTH_LONG).show();
                this.player.needToMakeMove(state.getAllCities().get(14));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
+               this.Citycircle = circle;
                
            }
 
@@ -233,13 +230,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS)
            {
-
-
+               Toast.makeText(v.getContext(), "You tapped Washington!", Toast.LENGTH_LONG).show();
+               this.Citycircle = circle;
                this.player.needToMakeMove(state.getAllCities().get(12));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
 
            }
 
@@ -248,12 +241,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS)
            {
-
+               this.Citycircle = circle;
+               Toast.makeText(v.getContext(), "You tapped Montreal!", Toast.LENGTH_LONG).show();
                this.player.needToMakeMove(state.getAllCities().get(32));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
 
            }
 
@@ -262,12 +252,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS)
            {
-
+               this.Citycircle = circle;
+               Toast.makeText(v.getContext(), "You tapped Atlanta!", Toast.LENGTH_LONG).show();
                this.player.needToMakeMove(state.getAllCities().get(1));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
 
            }
 
@@ -276,12 +263,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS)
            {
-
+               this.Citycircle = circle;
+               Toast.makeText(v.getContext(), "You tapped Chicago!", Toast.LENGTH_LONG).show();
                this.player.needToMakeMove(state.getAllCities().get(40));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
 
            }
 
@@ -290,12 +274,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
            if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS)
            {
-
+               this.Citycircle = circle;
+               Toast.makeText(v.getContext(), "You tapped SanFrancisco!", Toast.LENGTH_LONG).show();
                this.player.needToMakeMove(state.getAllCities().get(33));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
            }
 
        }
