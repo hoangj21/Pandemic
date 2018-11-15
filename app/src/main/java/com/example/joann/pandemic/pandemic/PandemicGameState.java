@@ -217,17 +217,19 @@ public class PandemicGameState extends GameState {
             return false;
         }
 
-            player.setCurrentLocation(desiredCity);
-            player.setActionsLeft(player.getActionsLeft()-1);
+            //player.setCurrentLocation(desiredCity);
+           // player.setActionsLeft(player.getActionsLeft()-1);
            // return true;
 
         //Drive Case: Move to a city you are connected to.
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
-                if (c == currentCity) {
+                if (c == desiredCity) {
+                    
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
+                    player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -238,6 +240,7 @@ public class PandemicGameState extends GameState {
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
             isLegal = true;
+            player.setActionsLeft(player.getActionsLeft()-1);
             return true;
         }
 
@@ -249,6 +252,7 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
+                    player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -261,6 +265,7 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
+                    player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -275,7 +280,7 @@ public class PandemicGameState extends GameState {
 
         //Log.e("Move ", "Something went wrong in PandemicGameState>Move");
        // isLegal = false;
-        return true;
+        return false;
 
     }
 
@@ -326,6 +331,7 @@ public class PandemicGameState extends GameState {
                     c.getLocation().getAdjacentCities().get(j).addDiseaseCube(c.getDiseaseColor());
                 }
                 outbreakNum++;
+                this.message = "There's been an outbreak!";
             }
 
             else {
@@ -340,6 +346,7 @@ public class PandemicGameState extends GameState {
                     numCubesRed--;
                 }
                 infectionDiscardDeck.add(c);
+                this.message = c.getLocation() + "has been infected!";
                 infectionDeck.remove(c);
             }
         }
@@ -505,6 +512,7 @@ public class PandemicGameState extends GameState {
     public boolean infectE(PlayerInfo player){
         InfectionCard card = infectionDeck.get(0);
         infectionDeck.remove(0);
+        this.message = card.getLocation() + "is now being infected with 3 disease cubes!";
         if(card.getLocation().getDiseaseCubes().size() == 1)
         {
             card.getLocation().addDiseaseCube(card.getDiseaseColor());
@@ -514,6 +522,7 @@ public class PandemicGameState extends GameState {
                 card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
             }
             outbreakNum++;
+            this.message = "OUTBREAK";
             return true;
         }
         else if(card.getLocation().getDiseaseCubes().size() == 2)
@@ -524,6 +533,7 @@ public class PandemicGameState extends GameState {
                 card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
             }
             outbreakNum++;
+            this.message = "OUTBREAK";
             return true;
         }
         if(card.getLocation().getDiseaseCubes().size() == 3)
@@ -533,6 +543,7 @@ public class PandemicGameState extends GameState {
                 card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
             }
             outbreakNum++;
+            this.message = "OUTBREAK";
             return true;
         }
 
@@ -543,6 +554,7 @@ public class PandemicGameState extends GameState {
     public boolean increaseInfectionRate(PlayerInfo player) {
         if (getInfectionRate() < MAX_INFECTION_RATE) {
             setInfectionRate(getInfectionRate() + 1);
+            this.message = "The infection rate goes up by one!";
             return true;
         }
         return false;
@@ -556,6 +568,7 @@ public class PandemicGameState extends GameState {
             infectionDeck.add(card);
         }
         Collections.shuffle(infectionDeck);
+        this.message = "The infection discard deck is reshuffled into the infection deck!";
         return true;
     }
 
@@ -676,6 +689,7 @@ public class PandemicGameState extends GameState {
         {
             if(getNumCubesBlue() == 24) {
                 curedDiseases[0] = 2;
+                this.message = "Blue has been eradicated";
                 return true;
             }
         }
@@ -683,6 +697,7 @@ public class PandemicGameState extends GameState {
         {
             if(getNumCubesBlack() == 24) {
                 curedDiseases[1] = 2;
+                this.message = "Black has been eradicated";
                 return true;
             }
         }
@@ -690,6 +705,7 @@ public class PandemicGameState extends GameState {
         {
             if(getNumCubesRed() == 24) {
                 curedDiseases[2] = 2;
+                this.message = "Red has been eradicated";
                 return true;
             }
         }
@@ -697,6 +713,7 @@ public class PandemicGameState extends GameState {
         {
             if(getNumCubesYellow() == 24) {
                 curedDiseases[3] = 2;
+                this.message = "Yellow has been eradicated";
                 return true;
             }
         }
