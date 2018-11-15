@@ -32,7 +32,7 @@ public class CityCircle {
 
     public void setMyPaint(int turn) {
         if(turn == 0){
-            OpponentPaint.setColor(Color.MAGENTA);
+            PawnPaint.setColor(Color.MAGENTA);
         }
         if(turn == 1){
             PawnPaint.setColor(Color.CYAN);

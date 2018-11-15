@@ -51,7 +51,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
         setOnTouchListener(this);
 
         Pawncircle = new CityCircle(800,490);
+        Pawncircle.setMyPaint(0);
         Opponentcircle = new CityCircle(800, 490);
+        Opponentcircle.setMyPaint(1);
 
     }
 
@@ -66,9 +68,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
 
-        Paint pawnPaint = new Paint();
-        pawnPaint.setColor(Color.BLUE);
-        canvas.drawCircle(20, 20, 20, pawnPaint);
+        //Paint pawnPaint = new Paint();
+      //  pawnPaint.setColor(Color.BLUE);
+       // canvas.drawCircle(20, 20, 20, pawnPaint);
 
 
         Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
@@ -176,12 +178,15 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             //canvas.drawBitmap(PDCard, 0, )
         }
+        /*
         if(state.getPlayerTurn() == 0){
             Pawncircle.setMyPaint(0);
         }
         if(state.getPlayerTurn() == 1){
             Pawncircle.setMyPaint(1);
         }
+        */
+        Opponentcircle.draw(canvas);
         Pawncircle.draw(canvas);
 
     }
@@ -212,7 +217,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 int touchX = (int) ev.getX();
                 int touchY = (int) ev.getY();
                 CityCircle circle = new CityCircle(touchX, touchY);
-                final int TOUCHRADIUS = 100;
+                final int TOUCHRADIUS = 50;
 
                 //comment remove later
                 Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
