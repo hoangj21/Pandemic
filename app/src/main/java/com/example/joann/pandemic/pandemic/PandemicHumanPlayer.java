@@ -1196,6 +1196,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
     public boolean isClicked() {
         return isClicked;
+        //
     }
 }// class PigHumanPlayer
 
