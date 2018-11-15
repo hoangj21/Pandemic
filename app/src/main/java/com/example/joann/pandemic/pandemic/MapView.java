@@ -293,6 +293,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             }
         }
+       player.setIsClicked();
        return true;
     }
 
