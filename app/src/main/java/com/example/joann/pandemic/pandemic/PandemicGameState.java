@@ -1282,7 +1282,7 @@ public class PandemicGameState extends GameState {
         playerDeck.add(epidemic_3);
         playerDeck.add(epidemic_4);
 
-
+/*
         Card resilient_pop_card = new EventCard(true, true, false, false, false, false);
         Card quiet_night_card = new EventCard(true, false, true, false, false, false);
         Card forecast_card = new EventCard(true, false, false, true, false, false);
@@ -1297,7 +1297,7 @@ public class PandemicGameState extends GameState {
 
 
 
-
+*/
         InfectionCard algiers_infection = new InfectionCard(algiers, black, R.drawable.algiers_i);
         InfectionCard atlanta_infection = new InfectionCard(atlanta, blue, R.drawable.atlanta_i);
         InfectionCard baghdad_infection = new InfectionCard(baghdad, black, R.drawable.baghdad_i);
