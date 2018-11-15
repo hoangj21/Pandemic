@@ -212,7 +212,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
            CityCircle circle = new CityCircle(touchX, touchY);
            final int TOUCHRADIUS = 100;
 
-
+           //comment remove later
            Log.i("YouTouched","x:" + (touchX - 500) + " y:" + (touchY -100));
 
            int NYCcityX = (int)((NYCx)+500);
