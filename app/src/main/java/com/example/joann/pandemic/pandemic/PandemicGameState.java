@@ -95,7 +95,7 @@ public class PandemicGameState extends GameState {
         numCubesRed = 24;
         numCubesYellow = 24;
         numPlayerCardsInDeck = 48;
-        tappedCity = new City();
+        tappedCity = new City("");
         init();
 
         //initializing two player info objects
