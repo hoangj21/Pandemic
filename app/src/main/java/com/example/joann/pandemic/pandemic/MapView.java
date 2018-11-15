@@ -114,7 +114,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         */
         //DRAWABLE PLAYER HAND CARDS
         int padding = 200;
-        int cardh = 30;
+        int cardh = 60;
         int i;
 
         ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
@@ -123,7 +123,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             PlayerCard c = (PlayerCard) playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
-            card = Bitmap.createScaledBitmap(card, 160, 250, true);
+            card = Bitmap.createScaledBitmap(card, 200, 250, true);
 
             canvas.drawBitmap(card, 0, (padding + i*cardh + i*padding), myPaint);
         }
