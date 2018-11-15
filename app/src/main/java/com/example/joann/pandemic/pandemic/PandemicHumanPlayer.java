@@ -1198,6 +1198,12 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         return isClicked;
         //
     }
+    public boolean setIsClicked(){
+        if(isClicked==true){
+            isClicked = false;
+        }
+        return isClicked;
+    }
 }// class PigHumanPlayer
 
 
