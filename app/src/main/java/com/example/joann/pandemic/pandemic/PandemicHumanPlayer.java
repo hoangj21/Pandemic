@@ -1139,7 +1139,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
         }
         else if(button == moveButton){
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "Please select a valid city", Toast.LENGTH_LONG).show();
            // game.sendAction(moveAction);
             isClicked = true;
         }
@@ -1184,9 +1184,12 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     }//setAsGui
 
     public void needToMakeMove(City city){
-        this.city = city;
+        //this.city = city;
         MoveAction moveAction = new MoveAction(this, city);
         game.sendAction(moveAction);
+        moveAction.setDesiredCity(city);
+
+
 
     }
 

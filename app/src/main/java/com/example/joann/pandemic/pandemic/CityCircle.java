@@ -22,6 +22,7 @@ public class CityCircle {
     public void draw(Canvas canvas){
         canvas.drawCircle(x, y, size, myPaint);
 
+
     }
 
     public void setMyPaint(int turn) {

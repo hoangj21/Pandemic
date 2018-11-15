@@ -30,7 +30,11 @@ public class PandemicLocalGame extends LocalGame {
         if(action instanceof MoveAction) {
             MoveAction move = (MoveAction) action;
             City desiredCity = move.getDesiredCity();
-            state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), state.getTappedCity());
+            state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), desiredCity);
+
+
+
+
 
         }
         if(action instanceof TreatAction) {
@@ -49,11 +53,11 @@ public class PandemicLocalGame extends LocalGame {
         if(state.getPlayer().actionsLeft == 0){
             if(state.getPlayerTurn() == 0) {
                 state.setPlayerTurn(1);
+                state.getPlayers().get(0).setActionsLeft(4);
                 state.setPlayer(state.getPlayers().get(1));
-            }
-
-            if(state.getPlayerTurn() == 1) {
+            }else if(state.getPlayerTurn() == 1) {
                 state.setPlayerTurn(0);
+                state.getPlayers().get(1).setActionsLeft(4);
                 state.setPlayer(state.getPlayers().get(0));
             }
         }

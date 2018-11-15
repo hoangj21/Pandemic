@@ -57,6 +57,7 @@ public class PandemicGameState extends GameState {
     private PlayerInfo player;
     private City tappedCity;
     private String message;
+    private boolean isLegal;
     //private PlayerInfo player2;
 
     //If these go to 0, players have lost the game
@@ -112,6 +113,7 @@ public class PandemicGameState extends GameState {
         player = player1;
 
         message = "";
+        isLegal = true;
 
 
 
@@ -190,6 +192,7 @@ public class PandemicGameState extends GameState {
             this.curedDiseases[i] = otherState.curedDiseases[i];
         this.playerTurn = otherState.getPlayerTurn();
         this.numResearchStations = otherState.getNumResearchStations();
+        this.isLegal = otherState.isLegal();
 
         this.numCubesBlue = otherState.numCubesBlue;
         this.numCubesBlack = otherState.numCubesBlack;
@@ -210,15 +213,21 @@ public class PandemicGameState extends GameState {
 
         //Base Case: Player is trying to move when they have no moves left.
         if (player.getActionsLeft() <= 0) {
+            isLegal = false;
             return false;
         }
 
+            player.setCurrentLocation(desiredCity);
+            player.setActionsLeft(player.getActionsLeft()-1);
+           // return true;
+
         //Drive Case: Move to a city you are connected to.
 
-            for (City c : desiredCity.adjacentCities) { //Iterate through adjacent cities of desired city
+            for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c == currentCity) {
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
+                    isLegal = true;
                     return true;
                 }
             }
@@ -228,6 +237,7 @@ public class PandemicGameState extends GameState {
         if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
+            isLegal = true;
             return true;
         }
 
@@ -238,6 +248,7 @@ public class PandemicGameState extends GameState {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
+                    isLegal = true;
                     return true;
                 }
             }
@@ -249,6 +260,7 @@ public class PandemicGameState extends GameState {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
+                    isLegal = true;
                     return true;
                 }
             }
@@ -261,8 +273,9 @@ public class PandemicGameState extends GameState {
 
         //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        Log.e("Move ", "Something went wrong in PandemicGameState>Move");
-        return false;
+        //Log.e("Move ", "Something went wrong in PandemicGameState>Move");
+       // isLegal = false;
+        return true;
 
     }
 
@@ -501,6 +514,7 @@ public class PandemicGameState extends GameState {
     public boolean shareKnowledge(PlayerInfo player) {
         //
         if (player.getActionsLeft() <= 0) {
+            isLegal = false;
             return false;
         }
         //check if players are both in the same city
@@ -526,6 +540,7 @@ public class PandemicGameState extends GameState {
             }
         }
         player.setActionsLeft(player.getActionsLeft() - 1);
+        isLegal = true;
         return true;
     }
 
@@ -601,10 +616,16 @@ public class PandemicGameState extends GameState {
      ***************************************/
 
 
+
+
     public City getTappedCity() {return tappedCity;}
 
     public void setTappedCity(City tappedCity) {
         this.tappedCity = tappedCity;
+    }
+
+    public boolean isLegal() {
+        return isLegal;
     }
 
     public String getMessage() {
@@ -1290,7 +1311,13 @@ public class PandemicGameState extends GameState {
         allCities.get(15).addDiseaseCube("Blue");
         allCities.get(1).addDiseaseCube("Blue");
         allCities.get(15).addDiseaseCube("Blue");
-        numCubesBlue = numCubesBlue-4;
+        allCities.get(12).addDiseaseCube("Blue");
+        allCities.get(12).addDiseaseCube("Blue");
+        allCities.get(40).addDiseaseCube("Blue");
+        allCities.get(40).addDiseaseCube("Blue");
+        allCities.get(4).addDiseaseCube("Blue");
+        allCities.get(14).addDiseaseCube("Blue");
+        numCubesBlue = numCubesBlue-10;
 
 
     }

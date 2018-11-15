@@ -12,6 +12,7 @@ import com.example.joann.pandemic.game.actionMsg.GameAction;
 
 public class MoveAction extends GameAction {
     private City desiredCity;
+    private boolean isLegal = false;
 
 
 //What does this constructor do? @Groupmates
@@ -31,5 +32,9 @@ public class MoveAction extends GameAction {
 
     public City getDesiredCity() {
         return desiredCity;
+    }
+
+    public void setDesiredCity(City desiredCity) {
+        this.desiredCity = desiredCity;
     }
 }

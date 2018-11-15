@@ -26,20 +26,22 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
                             return;
                         }
                 //delay computer player
+
                 Random rand = new Random();
 
                 //variable randomizes AI's action
                 //temporarily set to 3, omitting ShareAction
                 int action = rand.nextInt(3);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }
                 if (action == 0) {
-                    action = rand.nextInt(state.getPlayer().getCurrentLocation().getAdjacentCities().size());
+                    int size = state.getPlayer().getCurrentLocation().getAdjacentCities().size();
+                    action = rand.nextInt(size);
                     City city = state.getPlayer().getCurrentLocation().getAdjacentCities().get(action);
-                    action = rand.nextInt(4);
+                    //action = rand.nextInt(4);
                     MoveAction moveInstance = new MoveAction(this, city);
                     game.sendAction(moveInstance);
                 }
