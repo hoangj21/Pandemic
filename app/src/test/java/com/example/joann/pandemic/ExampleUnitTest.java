@@ -16,6 +16,34 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
 
+    @Test
+    public void testIsDiseaseEradicated(){
+        //order of curedDisease will be {blue, black, red, yellow}
+
+        PandemicGameState instance = new PandemicGameState();
+
+
+        int[]curedDisease1 = new int[]{0, 0, 0, 1};
+        instance.setCuredDiseases(curedDisease1);
+        assertTrue(instance.isDiseaseEradicated("Yellow"));
+
+        int[]curedDisease2 = new int[]{0, 0, 1, 0};
+        instance.setCuredDiseases(curedDisease2);
+        assertTrue(instance.isDiseaseEradicated("Red"));
+
+        int[]curedDisease3 = new int[]{0, 1, 0, 0};
+        instance.setCuredDiseases(curedDisease3);
+        assertTrue(instance.isDiseaseEradicated("Black"));
+
+
+        instance.setNumCubesBlue(10);
+
+        int[]curedDisease4 = new int[]{1, 0, 0, 0};
+        instance.setCuredDiseases(curedDisease4);
+        assertFalse(instance.isDiseaseEradicated("Blue"));
+
+    }
+
     //Tests if player can properly discard a card from their hand
     @Test
     public void testPlayerCardDiscarding()

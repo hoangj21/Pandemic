@@ -18,6 +18,7 @@ import com.example.joann.pandemic.game.util.MessageBox;
 import com.example.joann.pandemic.game.util.Tickable;
 import com.example.joann.pandemic.pandemic.City;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
+import com.example.joann.pandemic.pandemic.PlayerCard;
 
 
 /**
@@ -321,7 +322,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 
 					//Loop through AI hand and count colors
 					for (int j = 0; j < state.getPlayer().getPlayerHand().size(); j++) {
-						String color = state.getPlayer().getPlayerHand().get(j).getdiseaseColor();
+						String color = ((PlayerCard)state.getPlayer().getPlayerHand().get(j)).getdiseaseColor();
 						if (color.equals("Yellow")) {
 							numYellow++;
 						}

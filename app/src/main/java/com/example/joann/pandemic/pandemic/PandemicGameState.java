@@ -42,9 +42,9 @@ import static com.example.joann.pandemic.pandemic.EventCard.initEventCard;
 //NOTE TO US: Roles are represented with ints
     //0 =
 public class PandemicGameState extends GameState {
-    private ArrayList<PlayerCard> playerDeck;
+    private ArrayList<Card> playerDeck;
     private ArrayList<InfectionCard> infectionDeck;
-    private ArrayList<PlayerCard> playerDiscardDeck;
+    private ArrayList<Card> playerDiscardDeck;
     private ArrayList<InfectionCard> infectionDiscardDeck;
     private ArrayList<City> allCities;
     private ArrayList<PlayerInfo> players;
@@ -85,6 +85,7 @@ public class PandemicGameState extends GameState {
         numPlayers = 2;
         infectionRate = 2;
         outbreakNum = 0;
+        //order of curedDisease will be {blue, black, red, yellow}
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
         playerTurn = 0;
         numResearchStations = 0;
@@ -135,16 +136,15 @@ public class PandemicGameState extends GameState {
     }
     private void init(){
         initStarterPlayerDecks(playerDeck, infectionDeck);
-        initEventCard();
     }
 
     //copy constructor
     public PandemicGameState(PandemicGameState otherState) {
 
         //copy player deck
-        playerDeck = new ArrayList<PlayerCard>();
+        playerDeck = new ArrayList<Card>();
         for (int i = 0; i < otherState.playerDeck.size(); i++) {
-            PlayerCard card = new PlayerCard(otherState.getPlayerDeck().get(i));
+            PlayerCard card = new PlayerCard((PlayerCard) otherState.getPlayerDeck().get(i));
             this.playerDeck.add(card);
         }
 
@@ -156,9 +156,9 @@ public class PandemicGameState extends GameState {
         }
 
         //copy player discard deck
-        playerDiscardDeck = new ArrayList<PlayerCard>();
+        playerDiscardDeck = new ArrayList<Card>();
         for (int i = 0; i < otherState.playerDiscardDeck.size(); i++) {
-            PlayerCard card = new PlayerCard(otherState.getPlayerDiscardDeck().get(i));
+            PlayerCard card = new PlayerCard((PlayerCard)otherState.getPlayerDiscardDeck().get(i));
             this.playerDiscardDeck.add(card);
         }
 
@@ -243,8 +243,8 @@ public class PandemicGameState extends GameState {
 
         //Direct Flight Case: Move to a city whose card you have.
 
-            for (PlayerCard p : player.getPlayerHand()) {
-                if (p.getLocation() == desiredCity) {
+            for (Card p : player.getPlayerHand()) {
+                if (((PlayerCard)p).getLocation() == desiredCity) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -255,8 +255,8 @@ public class PandemicGameState extends GameState {
 
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
 
-            for (PlayerCard p : player.getPlayerHand()) {
-                if (p.getLocation() == player.getCurrentLocation()) {
+            for (Card p : player.getPlayerHand()) {
+                if (((PlayerCard)p).getLocation() == player.getCurrentLocation()) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -288,7 +288,17 @@ public class PandemicGameState extends GameState {
 
         else{
             int index = rand.nextInt(playerDeck.size());
-            PlayerCard card = playerDeck.get(index);
+            Card card = playerDeck.get(index);
+
+            if(((PlayerCard)card).getisItEpidemic())
+            {
+                playerDeck.remove(index);
+                numPlayerCardsInDeck--;
+                infectE(player);
+                increaseInfectionRate(player);
+                intensify(player);
+                return true;
+            }
             playerDeck.remove(index);
             numPlayerCardsInDeck--;
             player.addCardToPlayerHand(card);
@@ -299,16 +309,19 @@ public class PandemicGameState extends GameState {
 
     //draws card from infection deck and infects city
     public boolean drawInfectionCard() {
-        //TODO:  Account for outbreak
         for(int i = 0; i < infectionRate; i++) {
             int index = rand.nextInt(infectionDeck.size());
 
             InfectionCard c = infectionDeck.get(index);
 
+            if(isDiseaseEradicated(c.diseaseColor)){
+                return true;
+            }
+
             //OUTBREAK CHECK
             if(c.getLocation().getDiseaseCubes().size() == 3)
             {
-                for(int j = 0; j < c.getLocation().adjacentCities.size(); i++)
+                for(int j = 0; j < c.getLocation().adjacentCities.size(); j++)
                 {
                     c.getLocation().getAdjacentCities().get(j).addDiseaseCube(c.getDiseaseColor());
                 }
@@ -334,13 +347,13 @@ public class PandemicGameState extends GameState {
     }
 
     //puts a player card in the player discard deck
-    public boolean discardPlayerCard(PlayerInfo player,PlayerCard gc){
+    public boolean discardPlayerCard(PlayerInfo player,Card gc){
         int index = player.getPlayerHand().indexOf(gc);
         if(index < 0)
         {
             return false;
         }
-       PlayerCard card = player.getPlayerHand().get(index);
+        Card card = player.getPlayerHand().get(index);
        playerDiscardDeck.add(card);
        player.getPlayerHand().remove(index);
         return true;
@@ -364,7 +377,7 @@ public class PandemicGameState extends GameState {
 
             //looping through player hand to search for necessary card
             for (int i = 0; i < player.getPlayerHand().size(); i++) {
-                if (player.getPlayerHand().get(i).getLocation() == playerCity) {
+                if (((PlayerCard)player.getPlayerHand().get(i)).getLocation() == playerCity) {
                     index = i;
                 }
             }
@@ -439,7 +452,7 @@ public class PandemicGameState extends GameState {
 
         //Loop through player hand and count colors
         for( int i = 0; i< player.getPlayerHand().size(); i++){
-            String color = player.getPlayerHand().get(i).getdiseaseColor();
+            String color = ((PlayerCard)player.getPlayerHand().get(i)).getdiseaseColor();
             if(color.equals("Yellow")){
                 numYellow++;
             }
@@ -489,6 +502,43 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
+    public boolean infectE(PlayerInfo player){
+        InfectionCard card = infectionDeck.get(0);
+        infectionDeck.remove(0);
+        if(card.getLocation().getDiseaseCubes().size() == 1)
+        {
+            card.getLocation().addDiseaseCube(card.getDiseaseColor());
+            card.getLocation().addDiseaseCube(card.getDiseaseColor());
+            for(int j = 0; j < card.getLocation().adjacentCities.size(); j++)
+            {
+                card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
+            }
+            outbreakNum++;
+            return true;
+        }
+        else if(card.getLocation().getDiseaseCubes().size() == 2)
+        {
+            card.getLocation().addDiseaseCube(card.getDiseaseColor());
+            for(int j = 0; j < card.getLocation().adjacentCities.size(); j++)
+            {
+                card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
+            }
+            outbreakNum++;
+            return true;
+        }
+        if(card.getLocation().getDiseaseCubes().size() == 3)
+        {
+            for(int j = 0; j < card.getLocation().adjacentCities.size(); j++)
+            {
+                card.getLocation().getAdjacentCities().get(j).addDiseaseCube(card.getDiseaseColor());
+            }
+            outbreakNum++;
+            return true;
+        }
+
+        return true;
+    }
+
     //increases the infection rate
     public boolean increaseInfectionRate(PlayerInfo player) {
         if (getInfectionRate() < MAX_INFECTION_RATE) {
@@ -524,15 +574,15 @@ public class PandemicGameState extends GameState {
             City city = players.get(0).currentLocation;
             //check if either player has the card of the same city
             //loop through array
-            for(PlayerCard card: players.get(0).playerHand) {
-                if (card.getLocation() == city) {
+            for(Card card: players.get(0).playerHand) {
+                if (((PlayerCard)card).getLocation() == city) {
                     //take card/give
                     players.get(0).playerHand.remove(card);
                     players.get(1).playerHand.add(card);
                 }
             }
-            for(PlayerCard card: players.get(1).playerHand) {
-                if (card.getLocation() == city) {
+            for(Card card: players.get(1).playerHand) {
+                if (((PlayerCard)card).getLocation() == city) {
                     //take card/give
                     players.get(1).playerHand.remove(card);
                     players.get(0).playerHand.add(card);
@@ -547,42 +597,110 @@ public class PandemicGameState extends GameState {
     //Activates an event card
     //TODO: Will not be implemented for Alpha Release
     //TODO: Add event cards to the playerDeck
+    boolean quietNightCardUsed = false;
     public boolean playEventCard(PlayerInfo player) {
+
         if (player.getActionsLeft() <= 0) {
             return false;
         }
-/*
-        if(player.playerHand.contains(resilientPopulation))
+        for(Card c : player.playerHand)
         {
-            //remove one infection card from infectionDiscardDeck 4eva
-        }
-        else if (player.playerHand.contains(quietNight))
-        {
-            //don't draw infection cards
-        }
-        else if (player.playerHand.contains(forecast))
-        {
-            //rearrange the top 6 cards of infection deck (shuffle)
-        }
-        else if (player.playerHand.contains(governmentGrant))
-        {
-            //add a research station to any city
+            if(((EventCard)c).getresilientPopulation())
+            {
+                //remove one infection card from infectionDiscardDeck
+                infectionDiscardDeck.remove(0);
+                player.playerHand.remove(c);
+                return true;
+            }
+            else if (((EventCard)c).getquietNight())
+            {
+                //don't draw infection cards
+                quietNightCardUsed = true;
+                player.playerHand.remove(c);
+                return true;
+            }
+            else if (((EventCard)c).getforecast())
+            {
+                //rearrange the top 6 cards of infection deck (shuffle)
+                int size = infectionDeck.size();
+                if(size < 6)
+                {
+                    return false;
+                }
 
-        }
-        else if (player.playerHand.contains(airlift))
-        {
+                ArrayList <InfectionCard> cardsToBeShuffled = new ArrayList<>();
+                cardsToBeShuffled.add(infectionDeck.get(size));
+                infectionDeck.remove(size);
+                cardsToBeShuffled.add(infectionDeck.get(size-1));
+                infectionDeck.remove(size-1);
+                cardsToBeShuffled.add(infectionDeck.get(size-2));
+                infectionDeck.remove(size-2);
+                cardsToBeShuffled.add(infectionDeck.get(size-3));
+                infectionDeck.remove(size-3);
+                cardsToBeShuffled.add(infectionDeck.get(size-4));
+                infectionDeck.remove(size-4);
+                cardsToBeShuffled.add(infectionDeck.get(size-5));
+                infectionDeck.remove(size-5);
+
+                Collections.shuffle(cardsToBeShuffled);
+
+                infectionDeck.addAll(cardsToBeShuffled);
+            }
+
+            else if (((EventCard)c).getGovernment() )
+            {
+            //add a research station to current city
+                this.message = "Tap a city to build a research center!";
+                City city = getTappedCity();
+                if(!city.hasResearchLab)
+                {
+                    city.hasResearchLab = true;
+                }
+                player.playerHand.remove(c);
+            }
+            else if (((EventCard)c).getairlift())
+            {
             //move any pawn to any city
-        }*/
-        return true;
+            //player.currentCity = touchedCity;
+            }
+        }
+        return false;
     }
 
-    public boolean isDiseaseEradicated(){
-        //check if the cure has been found for a disease
-        //check all the cities with the same color so that they don't have any cubes of that color
-        //if all true =  disease eradicated marked
-        //Add checks for future infections
 
-        return true;
+    public boolean isDiseaseEradicated(String color){
+        //check if the cure has been found for a disease
+        //order of curedDisease will be {blue, black, red, yellow}
+
+        if(color.equals("Blue"))
+        {
+            if(getNumCubesBlue() == 24) {
+                curedDiseases[0] = 2;
+                return true;
+            }
+        }
+        else if(color.equals("Black"))
+        {
+            if(getNumCubesBlack() == 24) {
+                curedDiseases[1] = 2;
+                return true;
+            }
+        }
+        else if(color.equals("Red"))
+        {
+            if(getNumCubesRed() == 24) {
+                curedDiseases[2] = 2;
+                return true;
+            }
+        }
+        else if(color.equals("Yellow"))
+        {
+            if(getNumCubesYellow() == 24) {
+                curedDiseases[3] = 2;
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -640,11 +758,11 @@ public class PandemicGameState extends GameState {
         return infectionDiscardDeck;
     }
 
-    public ArrayList<PlayerCard> getPlayerDeck() {
+    public ArrayList<Card> getPlayerDeck() {
         return playerDeck;
     }
 
-    public ArrayList<PlayerCard> getPlayerDiscardDeck() {
+    public ArrayList<Card> getPlayerDiscardDeck() {
         return playerDiscardDeck;
     }
 
@@ -671,6 +789,10 @@ public class PandemicGameState extends GameState {
 
     public int getNumCubesBlue(){
         return numCubesBlue;
+    }
+
+    public void setNumCubesBlue(int n){
+        numCubesBlue = n;
     }
     public int getNumCubesBlack(){
         return numCubesBlack;
@@ -728,7 +850,7 @@ public class PandemicGameState extends GameState {
         this.infectionDeck = infectionDeck;
     }
 
-    public void setPlayerDeck(ArrayList<PlayerCard> playerDeck) {
+    public void setPlayerDeck(ArrayList<Card> playerDeck) {
         this.playerDeck = playerDeck;
     }
 
@@ -736,7 +858,7 @@ public class PandemicGameState extends GameState {
         this.infectionDiscardDeck = infectionDiscardDeck;
     }
 
-    public void setPlayerDiscardDeck(ArrayList<PlayerCard> playerDiscardDeck) {
+    public void setPlayerDiscardDeck(ArrayList<Card> playerDiscardDeck) {
         this.playerDiscardDeck = playerDiscardDeck;
     }
 
@@ -757,7 +879,7 @@ public class PandemicGameState extends GameState {
         this.playerTurn = playerTurn;
     }
 
-    public void initStarterPlayerDecks(ArrayList<PlayerCard> playerDeck, ArrayList<InfectionCard> InfectionCard){
+    public void initStarterPlayerDecks(ArrayList<Card> playerDeck, ArrayList<InfectionCard> InfectionCard){
         String red = "Red";
         String blue = "Blue";
         String black = "Black";
@@ -1159,6 +1281,21 @@ public class PandemicGameState extends GameState {
         playerDeck.add(epidemic_2);
         playerDeck.add(epidemic_3);
         playerDeck.add(epidemic_4);
+
+
+        Card resilient_pop_card = new EventCard(true, true, false, false, false, false);
+        Card quiet_night_card = new EventCard(true, false, true, false, false, false);
+        Card forecast_card = new EventCard(true, false, false, true, false, false);
+        Card government_grant_card = new EventCard(true, false, false, false, true, false);
+        Card airlift_card = new EventCard(true, false, false, false, false, true);
+
+        playerDeck.add(resilient_pop_card);
+        playerDeck.add(quiet_night_card);
+        playerDeck.add(forecast_card);
+        playerDeck.add(government_grant_card);
+        playerDeck.add(airlift_card);
+
+
 
 
         InfectionCard algiers_infection = new InfectionCard(algiers, black, R.drawable.algiers_i);

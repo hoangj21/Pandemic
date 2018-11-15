@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class PlayerInfo {
 
-        protected ArrayList<PlayerCard> playerHand;
+        protected ArrayList<Card> playerHand;
         protected int role;
         protected City currentLocation;
         protected int actionsLeft;
@@ -37,9 +37,9 @@ public class PlayerInfo {
         }
         //copy constructor
     public PlayerInfo(PlayerInfo otherPlayerInfo){
-         playerHand = new ArrayList<PlayerCard>();
+         playerHand = new ArrayList<Card>();
         for(int i = 0; i<otherPlayerInfo.playerHand.size(); i++){
-            PlayerCard card = new PlayerCard(otherPlayerInfo.getPlayerHand().get(i));
+            PlayerCard card = new PlayerCard((PlayerCard)otherPlayerInfo.getPlayerHand().get(i));
             this.playerHand.add(new PlayerCard(card));
         }
         this.role = otherPlayerInfo.role;
@@ -57,11 +57,11 @@ public class PlayerInfo {
         this.playerNumber = playerNumber;
     }
 
-    public ArrayList<PlayerCard> getPlayerHand() {
+    public ArrayList<Card> getPlayerHand() {
         return playerHand;
     }
 
-    public void setPlayerHand(ArrayList<PlayerCard> playerHand) {
+    public void setPlayerHand(ArrayList<Card> playerHand) {
         this.playerHand = playerHand;
     }
 
@@ -85,7 +85,7 @@ public class PlayerInfo {
             actionsLeft--;
         }
 
-    public boolean addCardToPlayerHand(PlayerCard newCard){ //THIS IS DIFFERENT... I FIXED IT
+    public boolean addCardToPlayerHand(Card newCard){ //THIS IS DIFFERENT... I FIXED IT
         if(playerHand.size() >= 7){
             return false;
         }

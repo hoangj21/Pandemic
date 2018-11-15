@@ -112,10 +112,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         int cardh = 30;
         int i;
 
-        ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
+        ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
-            PlayerCard c = playerHand.get(i);
+            PlayerCard c = (PlayerCard) playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
             card = Bitmap.createScaledBitmap(card, 160, 250, true);
@@ -124,10 +124,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
         //DRAWABLE DRAWING PLAYER DECK
-        ArrayList<PlayerCard> playerDeck = state.getPlayerDeck();
+        ArrayList<Card> playerDeck = state.getPlayerDeck();
         for(i = 0; i < playerDeck.size(); i++){
 
-            PlayerCard PD = playerDeck.get(i);
+            PlayerCard PD =(PlayerCard)playerDeck.get(i);
 
             Bitmap PDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDCard = Bitmap.createScaledBitmap(PDCard, 160, 250, true);
@@ -136,10 +136,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         } //1395
 
         //DRAWABLE DISCARDING PLAYER DECK YES
-        ArrayList<PlayerCard> playerDiscardDeck = state.getPlayerDiscardDeck();
+        ArrayList<Card> playerDiscardDeck = state.getPlayerDiscardDeck();
         if(playerDiscardDeck.size() > 0){
 
-            PlayerCard PD = playerDiscardDeck.get(i);
+            PlayerCard PD = (PlayerCard)playerDiscardDeck.get(i);
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
