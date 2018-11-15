@@ -692,6 +692,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
 
             }
+
             for(int i = 0; i < theState.getInfectionDeck().size(); i++){
                 if(theState.getInfectionDeck().get(i).getLocation() == theState.getAllCities().get(0))
                 {

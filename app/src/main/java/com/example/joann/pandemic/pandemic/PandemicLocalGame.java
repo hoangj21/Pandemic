@@ -27,16 +27,15 @@ public class PandemicLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         //update state here
+
+
         if(action instanceof MoveAction) {
             MoveAction move = (MoveAction) action;
             City desiredCity = move.getDesiredCity();
             state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), desiredCity);
 
-
-
-
-
         }
+
         if(action instanceof TreatAction) {
             TreatAction treat = (TreatAction) action;
             state.treatDisease(state.getPlayer(), state.getPlayer().getCurrentLocation());

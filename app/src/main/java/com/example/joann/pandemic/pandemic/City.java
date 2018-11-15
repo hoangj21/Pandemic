@@ -30,8 +30,8 @@ public class City {
 
 
     //Default constructor
-    public City(){
-        //this.name = name;
+    public City(String name){
+        this.name = name;
         diseaseCubes = new ArrayList<DiseaseCube>();
         adjacentCities = new ArrayList<City>();
         hasResearchLab = false;
@@ -55,6 +55,19 @@ public class City {
 
     }
 
+    //@Override
+    public boolean equals(City city) {
+        super.equals(city);
+        if(this.name.equals(city.getName())){
+            return true;
+
+        }
+        return false;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     //Adds new disease cube to array of disease cubes
     public void addDiseaseCube(String cubeColor){
