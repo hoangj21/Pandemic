@@ -30,11 +30,11 @@ import static android.view.MotionEvent.INVALID_POINTER_ID;
 class MapView extends SurfaceView implements View.OnTouchListener
 {
 
- protected PandemicGameState state;
- protected int HumanPlayerNum = 0;
- protected ArrayList<Pawn> thePawns;
- CityCircle Citycircle;
- private PandemicHumanPlayer player;
+    protected PandemicGameState state;
+    protected int HumanPlayerNum = 0;
+    protected ArrayList<Pawn> thePawns;
+    CityCircle Citycircle;
+    private PandemicHumanPlayer player;
 
     public void setState (PandemicGameState state)
     {
@@ -48,7 +48,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         //OnTouchListener listener = new OnTouchListener()
 
         setOnTouchListener(this);
-       Citycircle = new CityCircle(800,490);
+        Citycircle = new CityCircle(800,490);
 
     }
 
@@ -112,10 +112,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         int cardh = 30;
         int i;
 
-        ArrayList<PlayerCard> playerHand = state.getPlayer().getPlayerHand();
+        ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
         for(i = 0; i <  playerHand.size() ; i++){
 
-            PlayerCard c = playerHand.get(i);
+            PlayerCard c = (PlayerCard) playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
             card = Bitmap.createScaledBitmap(card, 160, 250, true);
@@ -124,10 +124,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
         //DRAWABLE DRAWING PLAYER DECK
-        ArrayList<PlayerCard> playerDeck = state.getPlayerDeck();
+        ArrayList<Card> playerDeck = state.getPlayerDeck();
         for(i = 0; i < playerDeck.size(); i++){
 
-            PlayerCard PD = playerDeck.get(i);
+            PlayerCard PD =(PlayerCard)playerDeck.get(i);
 
             Bitmap PDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDCard = Bitmap.createScaledBitmap(PDCard, 160, 250, true);
@@ -136,10 +136,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         } //1395
 
         //DRAWABLE DISCARDING PLAYER DECK YES
-        ArrayList<PlayerCard> playerDiscardDeck = state.getPlayerDiscardDeck();
+        ArrayList<Card> playerDiscardDeck = state.getPlayerDiscardDeck();
         if(playerDiscardDeck.size() > 0){
 
-            PlayerCard PD = playerDiscardDeck.get(i);
+            PlayerCard PD = (PlayerCard)playerDiscardDeck.get(i);
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
@@ -164,18 +164,19 @@ class MapView extends SurfaceView implements View.OnTouchListener
         //DRAWABLE DISCARDING INFECTION DECK
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
 
-    if(infectionDiscardDeck.size() > 0) {
-        InfectionCard IDD = infectionDiscardDeck.get(i);
+        if(infectionDiscardDeck.size() > 0) {
+            InfectionCard IDD = infectionDiscardDeck.get(i);
 
-        Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
-        IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
-        canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
+            Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
+            IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
+            canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
 
-        //canvas.drawBitmap(PDCard, 0, )
-    }
+            //canvas.drawBitmap(PDCard, 0, )
+        }
         if(state.getPlayerTurn() == 0){
             Citycircle.setMyPaint(0);
-        }else{
+        }
+        if(state.getPlayerTurn() == 1){
             Citycircle.setMyPaint(1);
         }
         Citycircle.draw(canvas);
@@ -186,9 +187,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float NYCy = 298;
     private float  WASHx = 423;
     private float WASHy = 362;
-    private float  MONTx = 351;
-    private float MONTy = 317;
-    private float  ATLAx = 297;
+    private float  MONTx = 348;
+    private float MONTy = 296;
+    private float  ATLAx = 304;
     private float ATLAy = 375;
     private float  CHICAx = 255;
     private float CHICAy = 298;
@@ -203,84 +204,102 @@ class MapView extends SurfaceView implements View.OnTouchListener
     public boolean onTouch (View v, MotionEvent ev)
     {
 
-       if(ev.getAction() == MotionEvent.ACTION_DOWN)
-       {
-           Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
-           int touchX = (int)ev.getX();
-           int touchY = (int)ev.getY();
-           CityCircle circle = new CityCircle(touchX, touchY);
-           final int TOUCHRADIUS = 100;
+        if(ev.getAction() == MotionEvent.ACTION_DOWN)
+        {
+            Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
+            int touchX = (int)ev.getX();
+            int touchY = (int)ev.getY();
+            CityCircle circle = new CityCircle(touchX, touchY);
+            final int TOUCHRADIUS = 100;
 
-           //comment remove later
-           Log.i("YouTouched","x:" + (touchX - 500) + " y:" + (touchY -100));
+            //comment remove later
+            Log.i("YouTouched","x:" + (touchX - 500) + " y:" + (touchY -100));
 
-           int NYCcityX = (int)((NYCx)+500);
-           int NYCcityY = (int)((NYCy)+100);
+            int NYCcityX = (int)((NYCx)+500);
+            int NYCcityY = (int)((NYCy)+100);
 
-           if(distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS)
-           {
-               Toast.makeText(v.getContext(), "You tapped New York!", Toast.LENGTH_LONG).show();
-               this.player.needToMakeMove(state.getAllCities().get(14));
-               this.Citycircle = circle;
-               
-           }
+            if(distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS)
+            {
+                this.player.needToMakeMove(state.getAllCities().get(14));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
 
-           int WashcityX = (int)((WASHx)+500);
-           int WashcityY = (int)((WASHy)+100);
+            }
 
-           if(distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS)
-           {
-               Toast.makeText(v.getContext(), "You tapped Washington!", Toast.LENGTH_LONG).show();
-               this.Citycircle = circle;
-               this.player.needToMakeMove(state.getAllCities().get(12));
+            int WashcityX = (int)((WASHx)+500);
+            int WashcityY = (int)((WASHy)+100);
 
-           }
+            if(distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS)
+            {
 
-           int MontrealcityX = (int)((MONTx)+500);
-           int MontrealcityY = (int)((MONTy)+100);
 
-           if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS)
-           {
-               this.Citycircle = circle;
-               Toast.makeText(v.getContext(), "You tapped Montreal!", Toast.LENGTH_LONG).show();
-               this.player.needToMakeMove(state.getAllCities().get(32));
+                this.player.needToMakeMove(state.getAllCities().get(12));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
 
-           }
+            }
 
-           int AtlantacityX = (int)((ATLAx)+500);
-           int AtlantacityY = (int)((ATLAy)+100);
+            int MontrealcityX = (int)((MONTx)+500);
+            int MontrealcityY = (int)((MONTy)+100);
 
-           if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS)
-           {
-               this.Citycircle = circle;
-               Toast.makeText(v.getContext(), "You tapped Atlanta!", Toast.LENGTH_LONG).show();
-               this.player.needToMakeMove(state.getAllCities().get(1));
+            if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS)
+            {
 
-           }
+                this.player.needToMakeMove(state.getAllCities().get(32));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
 
-           int ChicagocityX = (int)((CHICAx)+500);
-           int ChicagocityY = (int)((CHICAy)+100);
+            }
 
-           if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS)
-           {
-               this.Citycircle = circle;
-               Toast.makeText(v.getContext(), "You tapped Chicago!", Toast.LENGTH_LONG).show();
-               this.player.needToMakeMove(state.getAllCities().get(40));
+            int AtlantacityX = (int)((ATLAx)+500);
+            int AtlantacityY = (int)((ATLAy)+100);
 
-           }
+            if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS)
+            {
 
-           int SanFrancityX = (int)((SANFRANx)+500);
-           int SanFrancityY = (int)((SANFRANy)+100);
+                this.player.needToMakeMove(state.getAllCities().get(1));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
 
-           if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS)
-           {
-               this.Citycircle = circle;
-               Toast.makeText(v.getContext(), "You tapped SanFrancisco!", Toast.LENGTH_LONG).show();
-               this.player.needToMakeMove(state.getAllCities().get(33));
-           }
+            }
 
-       }
-       return true;
+            int ChicagocityX = (int)((CHICAx)+500);
+            int ChicagocityY = (int)((CHICAy)+100);
+
+            if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS)
+            {
+
+                this.player.needToMakeMove(state.getAllCities().get(40));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
+
+            }
+
+            int SanFrancityX = (int)((SANFRANx)+500);
+            int SanFrancityY = (int)((SANFRANy)+100);
+
+            if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS)
+            {
+
+                this.player.needToMakeMove(state.getAllCities().get(33));
+                if(state.isLegal()) {
+                    Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
+                    this.Citycircle = circle;
+                }
+            }
+
+        }
+        return true;
     }
 
     public void setPlayer(PandemicHumanPlayer player) {
