@@ -113,6 +113,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
         canvas.drawCircle(950, 402, 50, outbreakSlider);
         */
         //DRAWABLE PLAYER HAND CARDS
+
+        myPaint.setTextSize(60);
+        canvas.drawText("Player Hand: ", 3, 175, myPaint);
         int padding = 200;
         int cardh = 60;
         int i;
@@ -125,7 +128,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
             card = Bitmap.createScaledBitmap(card, 200, 250, true);
 
-            canvas.drawBitmap(card, 0, (padding + i*cardh + i*padding), myPaint);
+            canvas.drawBitmap(card, 130, (padding + i*cardh + i*padding), myPaint);
         }
 
         //DRAWABLE DRAWING PLAYER DECK
