@@ -44,7 +44,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private GameMainActivity myActivity;
     private MapView myMapView;
     private PandemicGameState theState;
-    private City city = new City();
+    private City city = new City("");
     private boolean isClicked = false;
     /**
      * constructor does nothing extra
