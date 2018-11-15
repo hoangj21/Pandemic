@@ -417,25 +417,36 @@ public class PandemicGameState extends GameState {
             this.message = "There are no disease cubes to treat here!";
             return false; //no disease cubes there
         }
-        if(player.getRole()== 2)
-        {
-            for(int i = 0; i < city.getDiseaseCubes().size(); i++) {
-                city.removeDiseaseCube();
+        if (player.getRole() == 2) {
+            for (int i = 0; i < city.getDiseaseCubes().size(); i++) {
+                if (city.removeDiseaseCube()) {
+                    if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+                        numCubesBlue++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                        numCubesBlack++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                        numCubesYellow++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                        numCubesRed++;
+                    }
+                }
             }
+        } else {
+            if (city.removeDiseaseCube()) {
+                if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+                    numCubesBlue++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                    numCubesBlack++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                    numCubesYellow++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                    numCubesRed++;
+                }
+            }
+            player.setActionsLeft(player.getActionsLeft() - 1);
+            return true;
         }
-
-        if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
-            numCubesBlue++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
-            numCubesBlack++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
-            numCubesYellow++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
-            numCubesRed++;
-        }
-        city.removeDiseaseCube();
-        player.setActionsLeft(player.getActionsLeft() - 1);
-        return true;
+        return false;
     }
 
     //Sets state of disease to cured
@@ -567,7 +578,7 @@ public class PandemicGameState extends GameState {
         this.message = "The infection discard deck is reshuffled into the infection deck!";
         return true;
     }
-    
+
 
     //trades city card with another player
     //TODO: Will not be implemented for Alpha Release

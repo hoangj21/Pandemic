@@ -77,10 +77,12 @@ public class City {
             diseaseCubes.add(cube);
 
     }
-    public void removeDiseaseCube(){
+    public boolean removeDiseaseCube(){
         if(diseaseCubes.size()!=0) {
             diseaseCubes.remove(0);
+            return true;
         }
+        return false;
     }
 
     //getters and setters for all variables
