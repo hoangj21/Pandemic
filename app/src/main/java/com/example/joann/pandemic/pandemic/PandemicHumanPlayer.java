@@ -1133,7 +1133,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
             game.sendAction(treatAction);
             //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
             int size = theState.getPlayer().getCurrentLocation().diseaseCubes.size();
-            Toast.makeText(button.getContext(), "There are " + size + " disease cubes in this city", Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "There are " + size + " disease cubes left in this city", Toast.LENGTH_LONG).show();
             Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
 
@@ -1141,6 +1141,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         else if(button == moveButton){
             Toast.makeText(button.getContext(), "Please select a valid city", Toast.LENGTH_LONG).show();
            // game.sendAction(moveAction);
+            Toast.makeText(button.getContext(), "There are " + theState.getPlayer().getCurrentLocation().diseaseCubes.size() + " disease cubes in this city", Toast.LENGTH_LONG).show();
             isClicked = true;
         }
         else{
