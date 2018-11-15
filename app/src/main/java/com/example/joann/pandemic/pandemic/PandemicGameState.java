@@ -567,6 +567,7 @@ public class PandemicGameState extends GameState {
         this.message = "The infection discard deck is reshuffled into the infection deck!";
         return true;
     }
+    
 
     //trades city card with another player
     //TODO: Will not be implemented for Alpha Release
