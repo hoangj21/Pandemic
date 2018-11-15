@@ -183,6 +183,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             Pawncircle.setMyPaint(1);
         }
         Pawncircle.draw(canvas);
+    
 
     }
     //coordinates of north american cities
