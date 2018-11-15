@@ -224,7 +224,7 @@ public class PandemicGameState extends GameState {
         //Drive Case: Move to a city you are connected to.
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
-                if (c == desiredCity) {
+                if (c.equals(desiredCity)) {
                     
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
@@ -247,7 +247,7 @@ public class PandemicGameState extends GameState {
         //Direct Flight Case: Move to a city whose card you have.
 
             for (Card p : player.getPlayerHand()) {
-                if (((PlayerCard)p).getLocation() == desiredCity) {
+                if ((((PlayerCard)p).getLocation()).equals(desiredCity)) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -260,7 +260,7 @@ public class PandemicGameState extends GameState {
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
 
             for (Card p : player.getPlayerHand()) {
-                if (((PlayerCard)p).getLocation() == player.getCurrentLocation()) {
+                if ((((PlayerCard)p).getLocation()).equals(player.getCurrentLocation())) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -720,7 +720,7 @@ public class PandemicGameState extends GameState {
         return false;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         String fullString;
 
@@ -743,7 +743,7 @@ public class PandemicGameState extends GameState {
 
         fullString = diseaseInfo;
         return fullString;
-    }
+    }*/
 
 
     /****************************************

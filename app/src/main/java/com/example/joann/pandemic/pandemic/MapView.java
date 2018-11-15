@@ -218,6 +218,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 int NYCcityY = (int) ((NYCy) + 100);
 
                 if (distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS) {
+                    Toast.makeText(v.getContext(), "You tapped New York!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(14));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
@@ -231,7 +232,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS) {
 
-
+                    Toast.makeText(v.getContext(), "You tapped Washington!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(12));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
@@ -245,6 +246,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS) {
 
+                    Toast.makeText(v.getContext(), "You tapped Montreal!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(32));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
@@ -258,6 +260,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS) {
 
+                    Toast.makeText(v.getContext(), "You tapped Atlanta!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(1));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
@@ -271,6 +274,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS) {
 
+                    Toast.makeText(v.getContext(), "You tapped Chicago!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(40));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
@@ -284,6 +288,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS) {
 
+                    Toast.makeText(v.getContext(), "You tapped San Francisco!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(33));
                     if (state.isLegal()) {
                         Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
