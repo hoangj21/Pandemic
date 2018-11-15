@@ -16,7 +16,6 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
 
     @Override
     protected void receiveInfo(GameInfo info) {
-
         if (info instanceof PandemicGameState) {
             PandemicGameState state = new PandemicGameState((PandemicGameState) info);
 

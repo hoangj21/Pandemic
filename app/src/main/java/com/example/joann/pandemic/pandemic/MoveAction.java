@@ -15,7 +15,6 @@ public class MoveAction extends GameAction {
     private boolean isLegal = false;
 
 
-//What does this constructor do? @Groupmates
     //A constructor is needed for both the human player and the computer player
     MoveAction(PandemicHumanPlayer player,  City desiredCity){
         super(player);
