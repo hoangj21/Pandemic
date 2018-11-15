@@ -203,102 +203,96 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
     public boolean onTouch (View v, MotionEvent ev)
     {
+        if(player.isClicked() == true) {
+            if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+                Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
+                int touchX = (int) ev.getX();
+                int touchY = (int) ev.getY();
+                CityCircle circle = new CityCircle(touchX, touchY);
+                final int TOUCHRADIUS = 100;
 
-       if(ev.getAction() == MotionEvent.ACTION_DOWN)
-       {
-           Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
-           int touchX = (int)ev.getX();
-           int touchY = (int)ev.getY();
-           CityCircle circle = new CityCircle(touchX, touchY);
-           final int TOUCHRADIUS = 100;
+                //comment remove later
+                Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
 
-           //comment remove later
-           Log.i("YouTouched","x:" + (touchX - 500) + " y:" + (touchY -100));
+                int NYCcityX = (int) ((NYCx) + 500);
+                int NYCcityY = (int) ((NYCy) + 100);
 
-           int NYCcityX = (int)((NYCx)+500);
-           int NYCcityY = (int)((NYCy)+100);
+                if (distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS) {
+                    this.player.needToMakeMove(state.getAllCities().get(14));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
 
-           if(distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS)
-           {
-               this.player.needToMakeMove(state.getAllCities().get(14));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
-               
-           }
+                }
 
-           int WashcityX = (int)((WASHx)+500);
-           int WashcityY = (int)((WASHy)+100);
+                int WashcityX = (int) ((WASHx) + 500);
+                int WashcityY = (int) ((WASHy) + 100);
 
-           if(distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS)
-           {
+                if (distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS) {
 
 
-               this.player.needToMakeMove(state.getAllCities().get(12));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
+                    this.player.needToMakeMove(state.getAllCities().get(12));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
 
-           }
+                }
 
-           int MontrealcityX = (int)((MONTx)+500);
-           int MontrealcityY = (int)((MONTy)+100);
+                int MontrealcityX = (int) ((MONTx) + 500);
+                int MontrealcityY = (int) ((MONTy) + 100);
 
-           if(distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS)
-           {
+                if (distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS) {
 
-               this.player.needToMakeMove(state.getAllCities().get(32));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
+                    this.player.needToMakeMove(state.getAllCities().get(32));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
 
-           }
+                }
 
-           int AtlantacityX = (int)((ATLAx)+500);
-           int AtlantacityY = (int)((ATLAy)+100);
+                int AtlantacityX = (int) ((ATLAx) + 500);
+                int AtlantacityY = (int) ((ATLAy) + 100);
 
-           if(distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS)
-           {
+                if (distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS) {
 
-               this.player.needToMakeMove(state.getAllCities().get(1));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
+                    this.player.needToMakeMove(state.getAllCities().get(1));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
 
-           }
+                }
 
-           int ChicagocityX = (int)((CHICAx)+500);
-           int ChicagocityY = (int)((CHICAy)+100);
+                int ChicagocityX = (int) ((CHICAx) + 500);
+                int ChicagocityY = (int) ((CHICAy) + 100);
 
-           if(distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS)
-           {
+                if (distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS) {
 
-               this.player.needToMakeMove(state.getAllCities().get(40));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
+                    this.player.needToMakeMove(state.getAllCities().get(40));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
 
-           }
+                }
 
-           int SanFrancityX = (int)((SANFRANx)+500);
-           int SanFrancityY = (int)((SANFRANy)+100);
+                int SanFrancityX = (int) ((SANFRANx) + 500);
+                int SanFrancityY = (int) ((SANFRANy) + 100);
 
-           if(distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS)
-           {
+                if (distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS) {
 
-               this.player.needToMakeMove(state.getAllCities().get(33));
-               if(state.isLegal()) {
-                   Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
-                   this.Citycircle = circle;
-               }
-           }
+                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    if (state.isLegal()) {
+                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
+                        this.Citycircle = circle;
+                    }
+                }
 
-       }
+            }
+        }
        return true;
     }
 
