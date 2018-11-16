@@ -143,11 +143,6 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText( "The Medic", 2050, 510, myPaint);
         }
 
-        else
-        {
-            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
-            canvas.drawText( "Nothing", 2050, 450, myPaint);
-        }
 
         canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
 
@@ -362,6 +357,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
                         cityTapped = "San Francisco";
                     }
                 }
+
 
             }
 
