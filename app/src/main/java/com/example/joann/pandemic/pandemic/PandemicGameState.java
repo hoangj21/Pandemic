@@ -95,7 +95,7 @@ public class PandemicGameState extends GameState {
         numCubesRed = 24;
         numCubesYellow = 24;
         numPlayerCardsInDeck = 48;
-        //tappedCity = new City();
+        tappedCity = new City();
         init();
 
         //initializing two player info objects
@@ -224,7 +224,8 @@ public class PandemicGameState extends GameState {
         //Drive Case: Move to a city you are connected to.
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
-                if (c.name.equals(desiredCity.name)) {
+                if (c.equals(desiredCity)) {
+                    
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
@@ -246,7 +247,7 @@ public class PandemicGameState extends GameState {
         //Direct Flight Case: Move to a city whose card you have.
 
             for (Card p : player.getPlayerHand()) {
-                if ((((PlayerCard)p).getLocation().name).equals(desiredCity.name)) {
+                if ((((PlayerCard)p).getLocation()).equals(desiredCity)) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -259,7 +260,7 @@ public class PandemicGameState extends GameState {
         //Charter Flight Case: Discard the card of the city you are in to move to any city .
 
             for (Card p : player.getPlayerHand()) {
-                if ((((PlayerCard)p).getLocation().name).equals(player.getCurrentLocation().name)) {
+                if ((((PlayerCard)p).getLocation()).equals(player.getCurrentLocation())) {
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -277,7 +278,7 @@ public class PandemicGameState extends GameState {
 
         //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        Log.e("Move ", "Something went wrong in PandemicGameState>Move");
+        //Log.e("Move ", "Something went wrong in PandemicGameState>Move");
        // isLegal = false;
         return false;
 

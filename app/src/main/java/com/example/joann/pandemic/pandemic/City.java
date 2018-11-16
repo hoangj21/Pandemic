@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class City {
 
-    protected String name = "";
+    protected String name;
     protected ArrayList<DiseaseCube> diseaseCubes;
     protected ArrayList<City> adjacentCities;
     protected Boolean hasResearchLab;
@@ -41,7 +41,6 @@ public class City {
 
     //Copy constructor
     public City(City city){
-        this.name = "";
         this.name = city.name;
         this.diseaseCubes = new ArrayList<DiseaseCube>();
         this.adjacentCities = new ArrayList<City>();
@@ -58,7 +57,7 @@ public class City {
 
     //@Override
     public boolean equals(City city) {
-        //super.equals(city);
+        super.equals(city);
         if(this.name.equals(city.getName())){
             return true;
 
