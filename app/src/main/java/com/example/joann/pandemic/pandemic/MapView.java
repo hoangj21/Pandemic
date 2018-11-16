@@ -237,7 +237,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         Pawncircle.draw(canvas);
 
     }
-    //coordinates of north american cities
+    //coordinates of north american cities...yes
     private float  NYCx = 421;
     private float NYCy = 298;
     private float  WASHx = 423;
