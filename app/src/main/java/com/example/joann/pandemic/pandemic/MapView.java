@@ -30,11 +30,13 @@ import static android.view.MotionEvent.INVALID_POINTER_ID;
 class MapView extends SurfaceView implements View.OnTouchListener
 {
 
- protected PandemicGameState state;
- protected int HumanPlayerNum = 0;
- protected ArrayList<Pawn> thePawns;
- CityCircle Citycircle;
- private PandemicHumanPlayer player;
+    protected PandemicGameState state;
+    protected int HumanPlayerNum = 0;
+    protected ArrayList<Pawn> thePawns;
+    CityCircle Pawncircle;
+    CityCircle Opponentcircle;
+    private PandemicHumanPlayer player;
+    String cityTapped = "";
 
     public void setState (PandemicGameState state)
     {
@@ -48,7 +50,15 @@ class MapView extends SurfaceView implements View.OnTouchListener
         //OnTouchListener listener = new OnTouchListener()
 
         setOnTouchListener(this);
-       Citycircle = new CityCircle(800,490);
+
+        Paint paint = new Paint();
+
+        paint.setColor(Color.CYAN);
+        Pawncircle = new CityCircle(800,490, paint) ;
+        //Pawncircle.setMyPaint(0);
+        paint.setColor(Color.MAGENTA);
+        Opponentcircle = new CityCircle(800, 490, paint);
+       // Opponentcircle.setMyPaint(1);
 
     }
 
@@ -63,9 +73,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
 
-        Paint pawnPaint = new Paint();
-        pawnPaint.setColor(Color.BLUE);
-        canvas.drawCircle(20, 20, 20, pawnPaint);
+        //Paint pawnPaint = new Paint();
+      //  pawnPaint.setColor(Color.BLUE);
+       // canvas.drawCircle(20, 20, 20, pawnPaint);
 
 
         Bitmap map = BitmapFactory.decodeResource(getResources(), R.drawable.pandemicpic);
@@ -107,20 +117,57 @@ class MapView extends SurfaceView implements View.OnTouchListener
        outbreakSlider.setColor(Color.GREEN);
         canvas.drawCircle(950, 402, 50, outbreakSlider);
         */
+
+        //TEXT VIEWS
+        myPaint.setTextSize(60);
+        canvas.drawText("Player Hand: ", 55, 175, myPaint);
+
+        myPaint.setTextSize(40);
+        canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 300, myPaint);
+
+        if (state.getPlayer().role == 1)
+        {
+            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
+            canvas.drawText( "The Operations Expert", 2050, 510, myPaint);
+        }
+
+        else if (state.getPlayer().role == 2)
+        {
+            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
+            canvas.drawText( "The Scientist", 2050, 510, myPaint);
+        }
+
+        else if(state.getPlayer().role == 3)
+        {
+            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
+            canvas.drawText( "The Medic", 2050, 510, myPaint);
+        }
+
+
+        canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
+
         //DRAWABLE PLAYER HAND CARDS
+
         int padding = 200;
-        int cardh = 30;
+        int cardh = 60;
         int i;
 
-        ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
-        for(i = 0; i <  playerHand.size() ; i++){
+        for(i = 0; i <  state.getAllCities().size() ; i++) {
+
+            myPaint.setTextSize(40);
+            canvas.drawText("There are " + state.getAllCities().get(i).getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
+            canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
+        }
+
+            ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
+            for(i = 0; i <  playerHand.size() ; i++){
 
             PlayerCard c = (PlayerCard) playerHand.get(i);
 
             Bitmap card = BitmapFactory.decodeResource(getResources(), c.getAndroidId());
-            card = Bitmap.createScaledBitmap(card, 160, 250, true);
+            card = Bitmap.createScaledBitmap(card, 200, 250, true);
 
-            canvas.drawBitmap(card, 0, (padding + i*cardh + i*padding), myPaint);
+            canvas.drawBitmap(card, 130, (padding + i*cardh + i*padding), myPaint);
         }
 
         //DRAWABLE DRAWING PLAYER DECK
@@ -164,25 +211,56 @@ class MapView extends SurfaceView implements View.OnTouchListener
         //DRAWABLE DISCARDING INFECTION DECK
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
 
-    if(infectionDiscardDeck.size() > 0) {
-        InfectionCard IDD = infectionDiscardDeck.get(i);
+        if(infectionDiscardDeck.size() > 0) {
+            InfectionCard IDD = infectionDiscardDeck.get(i);
 
-        Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
-        IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
-        canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
+            Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
+            IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
+            canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
 
-        //canvas.drawBitmap(PDCard, 0, )
-    }
+            //canvas.drawBitmap(PDCard, 0, )
+        }
+        /*
         if(state.getPlayerTurn() == 0){
-            Citycircle.setMyPaint(0);
+            Pawncircle.setMyPaint(0);
         }
         if(state.getPlayerTurn() == 1){
-            Citycircle.setMyPaint(1);
+            Pawncircle.setMyPaint(1);
         }
-        Citycircle.draw(canvas);
+        */
+
+        if(state.getPlayerTurn()==1){
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(1))){
+                Opponentcircle.setX(304);
+                Opponentcircle.setY(375);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(12))){
+                Opponentcircle.setX(423);
+                Opponentcircle.setY(362);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(14))){
+                Opponentcircle.setX(421);
+                Opponentcircle.setY(298);
+
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(32))){
+                Opponentcircle.setX(348);
+                Opponentcircle.setY(296);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(33))){
+                Opponentcircle.setX(125);
+                Opponentcircle.setY(344);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(40))){
+                Opponentcircle.setX(255);
+                Opponentcircle.setY(298);
+            }
+        }
+        Opponentcircle.draw(canvas);
+        Pawncircle.draw(canvas);
 
     }
-    //coordinates of north american cities
+    //coordinates of north american cities...yes
     private float  NYCx = 421;
     private float NYCy = 298;
     private float  WASHx = 423;
@@ -196,6 +274,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float  SANFRANx = 125;
     private float SANFRANy = 344;
     private double distance(int x1, int y1, int x2, int y2)
+
     {
         double distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2)));
         return distance;
@@ -205,24 +284,32 @@ class MapView extends SurfaceView implements View.OnTouchListener
     {
         if(player.isClicked() == true) {
             if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-                Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), "Your finger is touching the screen! :)", Toast.LENGTH_LONG).show();
                 int touchX = (int) ev.getX();
                 int touchY = (int) ev.getY();
-                CityCircle circle = new CityCircle(touchX, touchY);
-                final int TOUCHRADIUS = 100;
+                Paint paint = new Paint();
+                paint.setColor(Color.CYAN);
+                CityCircle circle = new CityCircle(touchX, touchY,paint);
+                final int TOUCHRADIUS = 50;
 
                 //comment remove later
                 Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
+
+
 
                 int NYCcityX = (int) ((NYCx) + 500);
                 int NYCcityY = (int) ((NYCy) + 100);
 
                 if (distance(touchX, touchY, NYCcityX, NYCcityY) < TOUCHRADIUS) {
-                    Toast.makeText(v.getContext(), "You tapped New York!", Toast.LENGTH_LONG).show();
+
                     this.player.needToMakeMove(state.getAllCities().get(14));
+
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "New York";
+
                     }
 
                 }
@@ -232,11 +319,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, WashcityX, WashcityY) < TOUCHRADIUS) {
 
-                    Toast.makeText(v.getContext(), "You tapped Washington!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(12));
+
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Washington";
                     }
 
                 }
@@ -246,11 +334,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, MontrealcityX, MontrealcityY) < TOUCHRADIUS) {
 
-                    Toast.makeText(v.getContext(), "You tapped Montreal!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(32));
+
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Montreal";
                     }
 
                 }
@@ -260,11 +349,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, AtlantacityX, AtlantacityY) < TOUCHRADIUS) {
 
-                    Toast.makeText(v.getContext(), "You tapped Atlanta!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(1));
+
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Atlanta";
                     }
 
                 }
@@ -274,11 +364,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, ChicagocityX, ChicagocityY) < TOUCHRADIUS) {
 
-                    Toast.makeText(v.getContext(), "You tapped Chicago!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(40));
+
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Chicago";
                     }
 
                 }
@@ -288,18 +379,21 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, SanFrancityX, SanFrancityY) < TOUCHRADIUS) {
 
-                    Toast.makeText(v.getContext(), "You tapped San Francisco!", Toast.LENGTH_LONG).show();
                     this.player.needToMakeMove(state.getAllCities().get(33));
                     if (state.isLegal()) {
-                        Toast.makeText(v.getContext(), "you have " + state.getPlayer().actionsLeft + " moves left", Toast.LENGTH_LONG).show();
-                        this.Citycircle = circle;
+
+                        this.Pawncircle = circle;
+                        cityTapped = "San Francisco";
                     }
                 }
 
+
             }
+
         }
-       player.setIsClicked();
-       return true;
+
+        player.setIsClicked();
+        return true;
     }
 
     public void setPlayer(PandemicHumanPlayer player) {

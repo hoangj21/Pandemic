@@ -95,7 +95,6 @@ public class PandemicGameState extends GameState {
         numCubesRed = 24;
         numCubesYellow = 24;
         numPlayerCardsInDeck = 48;
-        tappedCity = new City();
         init();
 
         //initializing two player info objects
@@ -122,7 +121,7 @@ public class PandemicGameState extends GameState {
     private PlayerInfo initPlayer(){
 
         //starter city Atlanta is located at AllCities.get(3);
-        int role = rand.nextInt(4);
+        int role = rand.nextInt(3)+1;
 
         //initializing player
         PlayerInfo aPlayer = new PlayerInfo(0, role, 4, allCities.get(1));
@@ -200,9 +199,6 @@ public class PandemicGameState extends GameState {
         this.numCubesYellow = otherState.numCubesYellow;
         this.numPlayerCardsInDeck = otherState.numPlayerCardsInDeck;
         this.message = otherState.message;
-
-
-        this.tappedCity = new City(otherState.getTappedCity());
 
         }
         //copy players
@@ -421,25 +417,36 @@ public class PandemicGameState extends GameState {
             this.message = "There are no disease cubes to treat here!";
             return false; //no disease cubes there
         }
-        if(player.getRole()== 2)
-        {
-            for(int i = 0; i < city.getDiseaseCubes().size(); i++) {
-                city.removeDiseaseCube();
+        if (player.getRole() == 2) {
+            for (int i = 0; i < city.getDiseaseCubes().size(); i++) {
+                if (city.removeDiseaseCube()) {
+                    if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+                        numCubesBlue++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                        numCubesBlack++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                        numCubesYellow++;
+                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                        numCubesRed++;
+                    }
+                }
             }
+        } else {
+            if (city.removeDiseaseCube()) {
+                if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+                    numCubesBlue++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                    numCubesBlack++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                    numCubesYellow++;
+                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                    numCubesRed++;
+                }
+            }
+            player.setActionsLeft(player.getActionsLeft() - 1);
+            return true;
         }
-
-        if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
-            numCubesBlue++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
-            numCubesBlack++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
-            numCubesYellow++;
-        } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
-            numCubesRed++;
-        }
-        city.removeDiseaseCube();
-        player.setActionsLeft(player.getActionsLeft() - 1);
-        return true;
+        return false;
     }
 
     //Sets state of disease to cured
@@ -572,6 +579,7 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
+
     //trades city card with another player
     //TODO: Will not be implemented for Alpha Release
     public boolean shareKnowledge(PlayerInfo player) {
@@ -659,7 +667,7 @@ public class PandemicGameState extends GameState {
 
                 infectionDeck.addAll(cardsToBeShuffled);
             }
-
+/*
             else if (((EventCard)c).getGovernment() )
             {
             //add a research station to current city
@@ -675,7 +683,7 @@ public class PandemicGameState extends GameState {
             {
             //move any pawn to any city
             //player.currentCity = touchedCity;
-            }
+            }*/
         }
         return false;
     }
@@ -750,14 +758,6 @@ public class PandemicGameState extends GameState {
      * GETTERS & SETTERS
      ***************************************/
 
-
-
-
-    public City getTappedCity() {return tappedCity;}
-
-    public void setTappedCity(City tappedCity) {
-        this.tappedCity = tappedCity;
-    }
 
     public boolean isLegal() {
         return isLegal;
@@ -1461,6 +1461,10 @@ public class PandemicGameState extends GameState {
         allCities.add(shanghai);//45
         allCities.add(hongkong);//46
         allCities.add(osaka);//47
+
+        chicago.addDiseaseCube("Blue");
+
+
         allCities.get(1).addDiseaseCube("Blue");
         allCities.get(15).addDiseaseCube("Blue");
         allCities.get(1).addDiseaseCube("Blue");

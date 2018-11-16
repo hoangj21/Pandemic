@@ -8,29 +8,43 @@ public class CityCircle {
     protected int x;
     protected int y;
     protected int size = 20;
-    protected Paint myPaint;
+    protected Paint PawnPaint;
+    protected Paint OpponentPaint;
 
-    public CityCircle(int x,int y){
+    public CityCircle(int x,int y, Paint paint){
 
-        myPaint = new Paint();
-        myPaint.setColor(Color.CYAN);
+        PawnPaint = new Paint();
+        PawnPaint = paint;
+       // PawnPaint.setColor(Color.CYAN);
         this.x = x;
         this.y = y;
 
+        OpponentPaint = new Paint();
+        OpponentPaint.setColor(Color.MAGENTA);
+        //this.x = x;
+        //this.y = y;
     }
 
     public void draw(Canvas canvas){
-        canvas.drawCircle(x, y, size, myPaint);
+        canvas.drawCircle(x, y, size, PawnPaint);
 
 
     }
 
     public void setMyPaint(int turn) {
         if(turn == 0){
-            myPaint.setColor(Color.RED);
+            PawnPaint.setColor(Color.MAGENTA);
         }
         if(turn == 1){
-            myPaint.setColor(Color.CYAN);
+            PawnPaint.setColor(Color.CYAN);
         }
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

@@ -44,7 +44,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private GameMainActivity myActivity;
     private MapView myMapView;
     private PandemicGameState theState;
-    private City city = new City();
+    private City city = new City("");
     private boolean isClicked = false;
     /**
      * constructor does nothing extra
@@ -1111,38 +1111,31 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         if (button == buildButton) {
             game.sendAction(buildAction);
             //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
         }
         else if(button == cureButton) {
             game.sendAction(cureAction);
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
         }
         else if(button == passButton){
             game.sendAction(passAction);
             //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
         }
         else if(button == shareButton){
             game.sendAction(shareAction);
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
         }
         else if(button == treatButton){
             game.sendAction(treatAction);
             //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
             int size = theState.getPlayer().getCurrentLocation().diseaseCubes.size();
-            Toast.makeText(button.getContext(), "There are " + size + " disease cubes left in this city", Toast.LENGTH_LONG).show();
-            Toast.makeText(button.getContext(), "you have " + theState.getPlayer().actionsLeft +" moves left", Toast.LENGTH_LONG).show();
 
 
         }
         else if(button == moveButton){
-            Toast.makeText(button.getContext(), "Please select a valid city", Toast.LENGTH_LONG).show();
+            Toast.makeText(button.getContext(), "Please select a city", Toast.LENGTH_SHORT).show();
            // game.sendAction(moveAction);
-            Toast.makeText(button.getContext(), "There are " + theState.getPlayer().getCurrentLocation().diseaseCubes.size() + " disease cubes in this city", Toast.LENGTH_LONG).show();
             isClicked = true;
         }
         else{
@@ -1189,7 +1182,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         //this.city = city;
         MoveAction moveAction = new MoveAction(this, city);
         game.sendAction(moveAction);
-        moveAction.setDesiredCity(city);
+        //moveAction.setDesiredCity(city);
 
 
 
