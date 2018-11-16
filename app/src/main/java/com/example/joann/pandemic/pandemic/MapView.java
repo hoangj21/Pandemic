@@ -233,6 +233,34 @@ class MapView extends SurfaceView implements View.OnTouchListener
             Pawncircle.setMyPaint(1);
         }
         */
+
+        if(state.getPlayerTurn()==1){
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(1))){
+                Opponentcircle.setX(304);
+                Opponentcircle.setY(375);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(12))){
+                Opponentcircle.setX(423);
+                Opponentcircle.setY(362);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(14))){
+                Opponentcircle.setX(421);
+                Opponentcircle.setY(298);
+
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(32))){
+                Opponentcircle.setX(348);
+                Opponentcircle.setY(296);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(33))){
+                Opponentcircle.setX(125);
+                Opponentcircle.setY(344);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(40))){
+                Opponentcircle.setX(255);
+                Opponentcircle.setY(298);
+            }
+        }
         Opponentcircle.draw(canvas);
         Pawncircle.draw(canvas);
 
@@ -251,6 +279,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float  SANFRANx = 125;
     private float SANFRANy = 344;
     private double distance(int x1, int y1, int x2, int y2)
+
     {
         double distance =  Math.sqrt((Math.pow(x1 - x2, 2) + Math.pow(y1-y2, 2)));
         return distance;
