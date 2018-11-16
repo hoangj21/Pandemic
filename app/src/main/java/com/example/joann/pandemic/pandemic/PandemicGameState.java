@@ -121,7 +121,7 @@ public class PandemicGameState extends GameState {
     private PlayerInfo initPlayer(){
 
         //starter city Atlanta is located at AllCities.get(3);
-        int role = rand.nextInt(4);
+        int role = rand.nextInt(3)+1;
 
         //initializing player
         PlayerInfo aPlayer = new PlayerInfo(0, role, 4, allCities.get(1));
