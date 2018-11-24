@@ -114,9 +114,7 @@ public class PandemicGameState extends GameState {
 
         message = "";
         isLegal = true;
-
-
-
+        addingInitialDiseases();
     }
     private PlayerInfo initPlayer(){
 
@@ -135,6 +133,20 @@ public class PandemicGameState extends GameState {
     }
     private void init(){
         initStarterPlayerDecks(playerDeck, infectionDeck);
+    }
+
+    private void addingInitialDiseases(){
+        allCities.get(1).addDiseaseCube("Blue");
+        allCities.get(1).addDiseaseCube("Blue");
+        allCities.get(15).addDiseaseCube("Blue");
+        allCities.get(15).addDiseaseCube("Blue");
+        allCities.get(12).addDiseaseCube("Blue");
+        allCities.get(12).addDiseaseCube("Blue");
+        //allCities.get(40).addDiseaseCube("Blue");
+        //allCities.get(40).addDiseaseCube("Blue");
+        allCities.get(4).addDiseaseCube("Blue");
+        allCities.get(14).addDiseaseCube("Blue");
+        numCubesBlue = numCubesBlue-10;
     }
 
     //copy constructor
@@ -189,6 +201,7 @@ public class PandemicGameState extends GameState {
         curedDiseases = new int[4];
         for (int i = 0; i < otherState.curedDiseases.length; i++) {
             this.curedDiseases[i] = otherState.curedDiseases[i];
+        }
         this.playerTurn = otherState.getPlayerTurn();
         this.numResearchStations = otherState.getNumResearchStations();
         this.isLegal = otherState.isLegal();
@@ -200,6 +213,8 @@ public class PandemicGameState extends GameState {
         this.numPlayerCardsInDeck = otherState.numPlayerCardsInDeck;
         this.message = otherState.message;
 
+        for(int i = 0; i < 48; i++) {
+            this.allCities.get(i).diseaseCubes =  otherState.allCities.get(i).diseaseCubes;
         }
         //copy players
     }
@@ -416,33 +431,35 @@ public class PandemicGameState extends GameState {
             this.message = "There are no disease cubes to treat here!";
             return false; //no disease cubes there
         }
-        if (player.getRole() == 2) {
+        if (player.getRole() == 3) {
             for (int i = 0; i < city.getDiseaseCubes().size(); i++) {
-                if (city.removeDiseaseCube()) {
-                    if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+                String color1 = city.removeDiseaseCube();
+                if (color1 != null) {
+                    if (color1.equals("Blue")) {
                         numCubesBlue++;
-                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                    } else if (color1.equals("Black")) {
                         numCubesBlack++;
-                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                    } else if (color1.equals("Yellow")) {
                         numCubesYellow++;
-                    } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                    } else if (color1.equals("Red")) {
                         numCubesRed++;
                     }
                 }
             }
         } else {
-            if (city.removeDiseaseCube()) {
-                if (city.getDiseaseCubes().get(0).getCubeColor().equals("Blue")) {
+            String color2 = city.removeDiseaseCube();
+            if (color2 != null) {
+                if (color2.equals("Blue")) {
                     numCubesBlue++;
-                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Black")) {
+                } else if (color2.equals("Black")) {
                     numCubesBlack++;
-                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Yellow")) {
+                } else if (color2.equals("Yellow")) {
                     numCubesYellow++;
-                } else if (city.getDiseaseCubes().get(0).getCubeColor().equals("Red")) {
+                } else if (color2.equals("Red")) {
                     numCubesRed++;
                 }
             }
-            player.setActionsLeft(player.getActionsLeft() - 1);
+            player.actionTaken();
             return true;
         }
         return false;
@@ -494,7 +511,7 @@ public class PandemicGameState extends GameState {
                 }
             //Special case for if player role is scientist
             //Then player only needs 3 cards to cure a disease
-            if(player.role == 3){
+            if(player.role == 2){
                 if(numYellow>=4){
                     curedDiseases[0] = 1;
                 }
@@ -1460,21 +1477,6 @@ public class PandemicGameState extends GameState {
         allCities.add(shanghai);//45
         allCities.add(hongkong);//46
         allCities.add(osaka);//47
-
-        chicago.addDiseaseCube("Blue");
-
-
-        allCities.get(1).addDiseaseCube("Blue");
-        allCities.get(15).addDiseaseCube("Blue");
-        allCities.get(1).addDiseaseCube("Blue");
-        allCities.get(15).addDiseaseCube("Blue");
-        allCities.get(12).addDiseaseCube("Blue");
-        allCities.get(12).addDiseaseCube("Blue");
-        allCities.get(40).addDiseaseCube("Blue");
-        allCities.get(40).addDiseaseCube("Blue");
-        allCities.get(4).addDiseaseCube("Blue");
-        allCities.get(14).addDiseaseCube("Blue");
-        numCubesBlue = numCubesBlue-10;
 
 
     }
