@@ -146,18 +146,18 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
 
-        //DRAWABLE PLAYER HAND CARDS
-
-        int padding = 200;
-        int cardh = 60;
         int i;
-
+        //Draws text for disease cubes in the city you tapped on
         for(i = 0; i <  state.getAllCities().size() ; i++) {
 
             myPaint.setTextSize(40);
             canvas.drawText("There are " + state.getAllCities().get(i).getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
             canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
         }
+
+        //DRAWABLE PLAYER HAND CARDS
+        int padding = 200;
+        int cardh = 60;
 
             ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
             for(i = 0; i <  playerHand.size() ; i++){
@@ -261,7 +261,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         Pawncircle.draw(canvas);
 
     }
-    //coordinates of north american cities...yes
+    //coordinates of all blue cities
     private float  NYCx = 421;
     private float NYCy = 298;
     private float  WASHx = 423;
@@ -270,10 +270,22 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float MONTy = 296;
     private float  ATLAx = 304;
     private float ATLAy = 375;
-    private float  CHICAx = 255;
+    private float   CHICAx = 255;
     private float CHICAy = 298;
-    private float  SANFRANx = 125;
+    private float   SANFRANx = 125;
     private float SANFRANy = 344;
+    private float   LONDONx = 653;
+    private float LONDONy = 248;
+    private float   MADRIDx = 640;
+    private float MADRIDy = 344;
+    private float   PARISx = 728;
+    private float PARISy = 309;
+    private float   ESSENx = 744;
+    private float ESSENy = 240;
+    private float   MILANx = 791;
+    private float MILANy = 313;
+    private float   STPETERx = 858;
+    private float STPETERy = 231;
     private double distance(int x1, int y1, int x2, int y2)
 
     {
@@ -385,6 +397,84 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                         this.Pawncircle = circle;
                         cityTapped = "San Francisco";
+                    }
+                }
+
+                int Londonx = (int) ((LONDONx) + 500);
+                int Londony = (int) ((LONDONy) + 100);
+
+                if (distance(touchX, touchY, Londonx, Londony) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(26));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "London";
+                    }
+                }
+
+                int Madridx = (int) ((MADRIDx) + 500);
+                int Madridy = (int) ((MADRIDy) + 100);
+
+                if (distance(touchX, touchY, Madridx, Madridy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(31));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Madrid";
+                    }
+                }
+
+                int Parisx = (int) ((PARISx) + 500);
+                int Parisy = (int) ((PARISy) + 100);
+
+                if (distance(touchX, touchY, Parisx, Parisy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(21));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Paris";
+                    }
+                }
+
+                int Essenx = (int) ((ESSENx) + 500);
+                int Esseny = (int) ((ESSENy) + 100);
+
+                if (distance(touchX, touchY, Essenx, Esseny) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Essen";
+                    }
+                }
+
+                int Milanx = (int) ((MILANx) + 500);
+                int Milany = (int) ((MILANy) + 100);
+
+                if (distance(touchX, touchY, Milanx, Milany) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Milan";
+                    }
+                }
+
+                int StPeterx = (int) ((STPETERx) + 500);
+                int StPetery = (int) ((STPETERy) + 100);
+
+                if (distance(touchX, touchY, StPeterx, StPetery) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "St Petersburg";
                     }
                 }
 
