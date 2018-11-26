@@ -250,7 +250,7 @@ public class PandemicGameState extends GameState {
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
             isLegal = true;
-            player.setActionsLeft(player.getActionsLeft()-1);
+            //player.setActionsLeft(player.getActionsLeft()-1);
             return true;
         }
 
@@ -262,7 +262,7 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
-                    player.setActionsLeft(player.getActionsLeft()-1);
+                    //player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -275,7 +275,7 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
-                    player.setActionsLeft(player.getActionsLeft()-1);
+                    //player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
