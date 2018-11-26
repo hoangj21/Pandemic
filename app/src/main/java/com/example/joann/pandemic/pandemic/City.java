@@ -76,12 +76,13 @@ public class City {
             diseaseCubes.add(cube);
 
     }
-    public boolean removeDiseaseCube(){
+    public String removeDiseaseCube(){
         if(diseaseCubes.size()!=0) {
+            String color = diseaseCubes.get(0).getCubeColor();
             diseaseCubes.remove(0);
-            return true;
+            return color;
         }
-        return false;
+        return null;
     }
 
     //getters and setters for all variables
@@ -105,7 +106,6 @@ public class City {
     public Boolean getVisited() {
         return isVisited;
     }
-
 
 
 }

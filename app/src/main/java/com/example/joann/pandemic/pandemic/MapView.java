@@ -229,31 +229,32 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
         */
 
+        //Redraws the AI's pawn depending on its location
         if(state.getPlayerTurn()==1){
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(1))){
-                Opponentcircle.setX(304);
-                Opponentcircle.setY(375);
+                Opponentcircle.setX((int)ATLAx+500);
+                Opponentcircle.setY((int)ATLAy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(12))){
-                Opponentcircle.setX(423);
-                Opponentcircle.setY(362);
+                Opponentcircle.setX((int)WASHx+500);
+                Opponentcircle.setY((int)WASHy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(14))){
-                Opponentcircle.setX(421);
-                Opponentcircle.setY(298);
+                Opponentcircle.setX((int)NYCx+500);
+                Opponentcircle.setY((int)NYCy+100);
 
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(32))){
-                Opponentcircle.setX(348);
-                Opponentcircle.setY(296);
+                Opponentcircle.setX((int)MONTx+500);
+                Opponentcircle.setY((int)MONTy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(33))){
-                Opponentcircle.setX(125);
-                Opponentcircle.setY(344);
+                Opponentcircle.setX((int)SANFRANx+500);
+                Opponentcircle.setY((int)SANFRANy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(40))){
-                Opponentcircle.setX(255);
-                Opponentcircle.setY(298);
+                Opponentcircle.setX((int)CHICAx+500);
+                Opponentcircle.setY((int)CHICAy+100);
             }
         }
         Opponentcircle.draw(canvas);
