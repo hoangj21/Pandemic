@@ -157,14 +157,18 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText( "The Medic", 2050, 510, myPaint);
         }
 
-
         canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
+
 
         //Draws text for disease cubes in the city you tapped on
 
         myPaint.setTextSize(40);
         canvas.drawText("There are " + state.getPlayer().getCurrentLocation().getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
         canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
+
+        canvas.drawText("There is a research ", 2050, 1100, myPaint);
+        canvas.drawText("station here: " + state.getPlayer().getCurrentLocation().hasResearchLab, 2050, 1160, myPaint);
+
 
         //DRAWABLE PLAYER HAND CARDS
         int i;
