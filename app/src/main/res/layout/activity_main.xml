@@ -99,20 +99,6 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/ShareButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/black"
-            android:text="Share"
-            android:textColor="@android:color/white" />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
             android:id="@+id/PassButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -120,6 +106,12 @@
             android:background="@android:color/black"
             android:text="Pass"
             android:textColor="@android:color/white" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
