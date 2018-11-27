@@ -133,7 +133,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText("It is the AI's turn", 2050, 175, myPaint);
 
             myPaint.setTextSize(60);
-            canvas.drawText("AI Hand: ", 55, 175, myPaint);
+            canvas.drawText("AI Hand : ", 75, 175, myPaint);
         }
 
         myPaint.setTextSize(40);
@@ -160,16 +160,14 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
 
-        int i;
         //Draws text for disease cubes in the city you tapped on
-        for(i = 0; i <  state.getAllCities().size() ; i++) {
 
-            myPaint.setTextSize(40);
-            canvas.drawText("There are " + state.getAllCities().get(i).getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
-            canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
-        }
+        myPaint.setTextSize(40);
+        canvas.drawText("There are " + state.getPlayer().getCurrentLocation().getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
+        canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
 
         //DRAWABLE PLAYER HAND CARDS
+        int i;
         int padding = 200;
         int cardh = 60;
 
@@ -312,7 +310,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(player.isClicked() == true) {
             if (ev.getAction() == MotionEvent.ACTION_DOWN) {
                 //Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
-                Toast.makeText(v.getContext(), "Your finger is touching the screen! :)", Toast.LENGTH_LONG).show();
+                //Toast.makeText(v.getContext(), "Your finger is touching the screen! :)", Toast.LENGTH_LONG).show();
                 int touchX = (int) ev.getX();
                 int touchY = (int) ev.getY();
                 Paint paint = new Paint();
