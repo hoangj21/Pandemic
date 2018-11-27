@@ -260,6 +260,7 @@ public class ExampleUnitTest {
         assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
     }
 
+    //Sarah Schibel wrote this test
     @Test
     public void testCityCp(){
 

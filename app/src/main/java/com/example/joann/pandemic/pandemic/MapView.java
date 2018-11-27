@@ -118,9 +118,23 @@ class MapView extends SurfaceView implements View.OnTouchListener
         canvas.drawCircle(950, 402, 50, outbreakSlider);
         */
 
-        //TEXT VIEWS
-        myPaint.setTextSize(60);
-        canvas.drawText("Player Hand: ", 55, 175, myPaint);
+        //TEXT VIEW
+        if(state.getPlayerTurn() == 0)
+        {
+            myPaint.setTextSize(40);
+            canvas.drawText("It is your turn Player One", 2050, 175, myPaint);
+
+            myPaint.setTextSize(60);
+            canvas.drawText("Player Hand: ", 55, 175, myPaint);
+        }
+        else if(state.getPlayerTurn() == 1)
+        {
+            myPaint.setTextSize(40);
+            canvas.drawText("It is the AI's turn", 2050, 175, myPaint);
+
+            myPaint.setTextSize(60);
+            canvas.drawText("AI Hand: ", 55, 175, myPaint);
+        }
 
         myPaint.setTextSize(40);
         canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 300, myPaint);
