@@ -214,7 +214,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //DRAWABLE DRAWING INFECTION DECK
         ArrayList<InfectionCard> infectionDeck = state.getInfectionDeck();
-        for(i = 0; i < playerDeck.size(); i++){
+        for(i = 0; i < infectionDeck.size(); i++){
 
             InfectionCard ID = infectionDeck.get(i);
 
@@ -228,7 +228,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
 
         if(infectionDiscardDeck.size() > 0) {
-            InfectionCard IDD = infectionDiscardDeck.get(i);
+            InfectionCard IDD = infectionDiscardDeck.get(0);
 
             Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
             IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
