@@ -35,7 +35,6 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private Button  buildButton = null;
     private Button  treatButton = null;
     private Button  cureButton = null;
-    private Button  shareButton = null;
     private Button  moveButton = null;
     private Button  passButton = null;
     private ImageButton PlayerImageButton = null;
@@ -1105,7 +1104,6 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         BuildAction buildAction = new BuildAction(this);
         CureAction cureAction = new CureAction(this);
         PassAction passAction = new PassAction(this);
-        ShareAction shareAction = new ShareAction(this);
         TreatAction treatAction = new TreatAction(this);
 
         if (button == buildButton) {
@@ -1120,10 +1118,6 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         else if(button == passButton){
             game.sendAction(passAction);
             //Toast.makeText(button.getContext(), theState.getMessage(), Toast.LENGTH_LONG).show();
-
-        }
-        else if(button == shareButton){
-            game.sendAction(shareAction);
 
         }
         else if(button == treatButton){
@@ -1165,14 +1159,12 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         this.buildButton = (Button)activity.findViewById(R.id.BuildButton);
         this.treatButton = (Button)activity.findViewById(R.id.TreatButton);
         this.cureButton = (Button)activity.findViewById(R.id.CureButton);
-        this.shareButton = (Button)activity.findViewById(R.id.ShareButton);
         this.moveButton = (Button)activity.findViewById(R.id.MoveButton);
         this.passButton = (Button)activity.findViewById(R.id.PassButton);
 
         buildButton.setOnClickListener(this);
         treatButton.setOnClickListener(this);
         cureButton.setOnClickListener(this);
-        shareButton.setOnClickListener(this);
         moveButton.setOnClickListener(this);
         passButton.setOnClickListener(this);
         myMapView = (MapView) myActivity.findViewById(R.id.MapView);
