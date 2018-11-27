@@ -35,20 +35,26 @@ public class PandemicLocalGame extends LocalGame {
             state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), move.getDesiredCity());
         }
 
-        if(action instanceof TreatAction) {
+        else if(action instanceof TreatAction) {
             //TreatAction treat = (TreatAction) action;
             state.treatDisease(state.getPlayer(), state.getPlayer().getCurrentLocation());
         }
-        if(action instanceof BuildAction){
+        else if(action instanceof BuildAction){
             BuildAction build = (BuildAction) action;
             state.buildAResearchStation(state.getPlayer(), state.getPlayer().currentLocation);
         }
-        if(action instanceof CureAction){
+        else if(action instanceof CureAction){
             CureAction cure = (CureAction) action;
             state.discoverACure(state.getPlayer());
         }
+        else if(action instanceof PassAction){
+            PassAction cure = (PassAction) action;
+            state.passAction(state.getPlayer());
+        }
 
         if(state.getPlayer().actionsLeft <= 0){
+            state.drawInfectionCard();
+
             if(state.getPlayerTurn() == 0) {
                 state.setPlayerTurn(1);
                 state.getPlayers().get(0).setActionsLeft(4);

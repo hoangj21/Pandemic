@@ -1174,6 +1174,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         cureButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
         moveButton.setOnClickListener(this);
+        passButton.setOnClickListener(this);
         myMapView = (MapView) myActivity.findViewById(R.id.MapView);
         myMapView.setPlayer(this);
     }//setAsGui
@@ -1199,6 +1200,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         return isClicked;
     }
 }// class PigHumanPlayer
+
 
 
 

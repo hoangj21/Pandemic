@@ -1,6 +1,7 @@
 package com.example.joann.pandemic;
 
 import com.example.joann.pandemic.pandemic.City;
+import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
 import com.example.joann.pandemic.pandemic.PlayerCard;
 import com.example.joann.pandemic.pandemic.PlayerInfo;
@@ -16,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
 
+    //Tests if eradication test works properly
+    // -Polina G.
     @Test
     public void testIsDiseaseEradicated(){
         //order of curedDisease will be {blue, black, red, yellow}
@@ -45,12 +48,13 @@ public class ExampleUnitTest {
     }
 
     //Tests if player can properly discard a card from their hand
+    // -Polina G.
     @Test
     public void testPlayerCardDiscarding()
     {
-        City london = new City();
-        City paris = new City();
-        City stPetersburg = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
+        City stPetersburg = new City("St Petersburg");
 
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
@@ -68,14 +72,14 @@ public class ExampleUnitTest {
         assertTrue(instance.discardPlayerCard(pInfo, card2));
         assertTrue(instance.discardPlayerCard(pInfo, card3));
         assertFalse(instance.discardPlayerCard(pInfo, card1));
-
     }
 
     //Tests the Player Info copy constructor
+    // -Polina G.
     @Test
     public void testPlayerInfoCp(){
 
-        City london = new City();
+        City london = new City("London");
         PlayerInfo pInfo = new PlayerInfo(1, 1, 1, london);
         PlayerInfo pInfo2 = new PlayerInfo(pInfo);
 
@@ -83,10 +87,10 @@ public class ExampleUnitTest {
         assertEquals(pInfo.getActionsLeft(), pInfo2.getActionsLeft());
         assertEquals(pInfo.getPlayerHand(), pInfo2.getPlayerHand());
         assertEquals(pInfo.getRole(), pInfo2.getRole());
-
     }
 
     //tests the gamestate copy constructor
+    // -Polina G.
     @Test
     public void testGameStateCp(){
         PandemicGameState instance = new PandemicGameState();
@@ -98,6 +102,7 @@ public class ExampleUnitTest {
     }
 
     //Tests if pass function works
+    // -Sarah S.
     @Test
     public void testPass(){
         PandemicGameState instance = new PandemicGameState();
@@ -109,10 +114,11 @@ public class ExampleUnitTest {
     }
 
     //tests to make sure the disease count in cities works
+    // -Joanna H.
     @Test
     public void testCityDiseaseCount(){
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
 
         london.addDiseaseCube("blue");
         assertEquals(1, london.getDiseaseCubes().size());
@@ -130,16 +136,17 @@ public class ExampleUnitTest {
     }
 
     //tests player hand to make sure it hold and handle cards
+    // -Kelsi C.
     @Test
     public void testPlayerHand(){
-        City london = new City();
-        City paris = new City();
-        City stPetersburg = new City();
-        City washington = new City();
-        City chicago = new City();
-        City newYork = new City();
-        City montreal = new City();
-        City essen = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
+        City stPetersburg = new City("St Petersburg");
+        City washington = new City("Washington");
+        City chicago = new City("Chicago");
+        City newYork = new City("New York");
+        City montreal = new City("Montreal");
+        City essen = new City("Essen");
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
@@ -169,36 +176,24 @@ public class ExampleUnitTest {
     }
 
     //tests if treat disease function works properly
+    // -Sarah S.
     @Test
     public void testTreatDisease() {
         PandemicGameState instance = new PandemicGameState();
         PlayerInfo pInfo = instance.getPlayer();
         int diseaseCubeCount = pInfo.getCurrentLocation().getDiseaseCubes().size();
         instance.treatDisease(pInfo, pInfo.getCurrentLocation());
-        assertEquals(pInfo.getCurrentLocation().getDiseaseCubes().size(), diseaseCubeCount);
-
-    }
-
-    //tests to make sure drawing infection cards works
-    @Test
-    public void testDrawInfection()
-    {
-        PandemicGameState instance = new PandemicGameState();
-
-        instance.drawInfectionCard();
-       // assertEquals(1, instance.getInfectionDiscardDeck().size());
-
-        instance.drawInfectionCard();
-       // assertEquals(2, instance.getInfectionDiscardDeck().size());
+        assertEquals(pInfo.getCurrentLocation().getDiseaseCubes().size(), diseaseCubeCount - 1);
 
     }
 
     //tests movement to an adjacent city
+    // - Johanna H.
     @Test
     public void testMovePawn()
     {
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
         City desiredCity = london;
@@ -211,10 +206,11 @@ public class ExampleUnitTest {
     }
 
     //tests movement by discarding a card
+    // -Joanna H.
     @Test
     public void testMovePawn2()
     {
-        City london = new City();
+        City london = new City("London");
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         City desiredCity = london;
 
@@ -223,10 +219,11 @@ public class ExampleUnitTest {
     }
 
     //tests movement to any city by discarding card of the current city player is in
+    // -Kelsi C.
     @Test
     public void testMovePawn3()
     {
-        City paris = new City();
+        City paris = new City("Paris");
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
         City currentCity = paris;
 
@@ -235,16 +232,32 @@ public class ExampleUnitTest {
     }
 
     // tests research center movement:  current city has research center == desired city has researched center
+    // -Kelsi C.
     @Test
     public void testMovePawn4()
     {
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
         City desiredCity = london;
         City currentCity = paris;
 
         //current city has research center == desired city has researched center
         assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
+    }
+
+
+    //Sarah Schibel wrote this test
+    @Test
+    public void testCityCp(){
+
+        City pInfo = new City("London");
+        City pInfo2 = new City("London");
+
+        assertEquals(pInfo.getName(), pInfo2.getName());
+        assertEquals(pInfo.getAdjacentCities(), pInfo2.getAdjacentCities());
+        assertEquals(pInfo.getDiseaseCubes(), pInfo2.getDiseaseCubes());
+        assertEquals(pInfo.getHasResearchLab(), pInfo2.getHasResearchLab());
+
     }
 
 

@@ -118,9 +118,23 @@ class MapView extends SurfaceView implements View.OnTouchListener
         canvas.drawCircle(950, 402, 50, outbreakSlider);
         */
 
-        //TEXT VIEWS
-        myPaint.setTextSize(60);
-        canvas.drawText("Player Hand: ", 55, 175, myPaint);
+        //TEXT VIEW
+        if(state.getPlayerTurn() == 0)
+        {
+            myPaint.setTextSize(40);
+            canvas.drawText("It is your turn Player One", 2050, 175, myPaint);
+
+            myPaint.setTextSize(60);
+            canvas.drawText("Player Hand: ", 55, 175, myPaint);
+        }
+        else if(state.getPlayerTurn() == 1)
+        {
+            myPaint.setTextSize(40);
+            canvas.drawText("It is the AI's turn", 2050, 175, myPaint);
+
+            myPaint.setTextSize(60);
+            canvas.drawText("AI Hand : ", 75, 175, myPaint);
+        }
 
         myPaint.setTextSize(40);
         canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 300, myPaint);
@@ -143,19 +157,21 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText( "The Medic", 2050, 510, myPaint);
         }
 
-
         canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
 
-        int i;
-        //Draws text for disease cubes in the city you tapped on
-        for(i = 0; i <  state.getAllCities().size() ; i++) {
 
-            myPaint.setTextSize(40);
-            canvas.drawText("There are " + state.getAllCities().get(i).getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
-            canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
-        }
+        //Draws text for disease cubes in the city you tapped on
+
+        myPaint.setTextSize(40);
+        canvas.drawText("There are " + state.getPlayer().getCurrentLocation().getDiseaseCubes().size() + " Disease cubes", 2050, 900, myPaint);
+        canvas.drawText("left in " + cityTapped, 2050, 960, myPaint);
+
+        canvas.drawText("There is a research ", 2050, 1100, myPaint);
+        canvas.drawText("station here: " + state.getPlayer().getCurrentLocation().hasResearchLab, 2050, 1160, myPaint);
+
 
         //DRAWABLE PLAYER HAND CARDS
+        int i;
         int padding = 200;
         int cardh = 60;
 
@@ -198,7 +214,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //DRAWABLE DRAWING INFECTION DECK
         ArrayList<InfectionCard> infectionDeck = state.getInfectionDeck();
-        for(i = 0; i < playerDeck.size(); i++){
+        for(i = 0; i < infectionDeck.size(); i++){
 
             InfectionCard ID = infectionDeck.get(i);
 
@@ -212,7 +228,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
 
         if(infectionDiscardDeck.size() > 0) {
-            InfectionCard IDD = infectionDiscardDeck.get(i);
+            InfectionCard IDD = infectionDiscardDeck.get(0);
 
             Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
             IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
@@ -298,7 +314,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(player.isClicked() == true) {
             if (ev.getAction() == MotionEvent.ACTION_DOWN) {
                 //Toast.makeText(v.getContext(), "You are touching the GUI!", Toast.LENGTH_LONG).show();
-                Toast.makeText(v.getContext(), "Your finger is touching the screen! :)", Toast.LENGTH_LONG).show();
+                //Toast.makeText(v.getContext(), "Your finger is touching the screen! :)", Toast.LENGTH_LONG).show();
                 int touchX = (int) ev.getX();
                 int touchY = (int) ev.getY();
                 Paint paint = new Paint();

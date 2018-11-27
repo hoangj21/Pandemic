@@ -13,11 +13,11 @@ public class SmartAITest {
     @Test
     public void testSmartAI()
     {
-        City london = new City();
-        City paris = new City();
-        City stPetersburg = new City();
-        City atlanta = new City();
-        City essen = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
+        City stPetersburg = new City("St Petersburg");
+        City atlanta = new City("Atlanta");
+        City essen = new City("Essen");
 
         PandemicComputerPlayerSmart ai = new PandemicComputerPlayerSmart("Dave");
         PandemicComputerPlayerSmart ai2 = new PandemicComputerPlayerSmart("Carl");
