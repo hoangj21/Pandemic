@@ -599,42 +599,6 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
-
-    //trades city card with another player
-    //TODO: Will not be implemented for Alpha Release
-    public boolean shareKnowledge(PlayerInfo player) {
-        //
-        if (player.getActionsLeft() <= 0) {
-            isLegal = false;
-            return false;
-        }
-        //check if players are both in the same city
-
-        if(players.get(0).currentLocation == players.get(1).currentLocation)
-        {
-            City city = players.get(0).currentLocation;
-            //check if either player has the card of the same city
-            //loop through array
-            for(Card card: players.get(0).playerHand) {
-                if (((PlayerCard)card).getLocation() == city) {
-                    //take card/give
-                    players.get(0).playerHand.remove(card);
-                    players.get(1).playerHand.add(card);
-                }
-            }
-            for(Card card: players.get(1).playerHand) {
-                if (((PlayerCard)card).getLocation() == city) {
-                    //take card/give
-                    players.get(1).playerHand.remove(card);
-                    players.get(0).playerHand.add(card);
-                }
-            }
-        }
-        player.setActionsLeft(player.getActionsLeft() - 1);
-        isLegal = true;
-        return true;
-    }
-
     //Activates an event card
     //TODO: Will not be implemented for Alpha Release
     //TODO: Add event cards to the playerDeck
