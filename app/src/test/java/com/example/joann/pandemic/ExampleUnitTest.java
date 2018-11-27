@@ -1,6 +1,7 @@
 package com.example.joann.pandemic;
 
 import com.example.joann.pandemic.pandemic.City;
+import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
 import com.example.joann.pandemic.pandemic.PlayerCard;
 import com.example.joann.pandemic.pandemic.PlayerInfo;
@@ -48,9 +49,9 @@ public class ExampleUnitTest {
     @Test
     public void testPlayerCardDiscarding()
     {
-        City london = new City();
-        City paris = new City();
-        City stPetersburg = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
+        City stPetersburg = new City("St Petersburg");
 
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
@@ -75,7 +76,7 @@ public class ExampleUnitTest {
     @Test
     public void testPlayerInfoCp(){
 
-        City london = new City();
+        City london = new City("London");
         PlayerInfo pInfo = new PlayerInfo(1, 1, 1, london);
         PlayerInfo pInfo2 = new PlayerInfo(pInfo);
 
@@ -111,8 +112,8 @@ public class ExampleUnitTest {
     //tests to make sure the disease count in cities works
     @Test
     public void testCityDiseaseCount(){
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
 
         london.addDiseaseCube("blue");
         assertEquals(1, london.getDiseaseCubes().size());
@@ -132,14 +133,14 @@ public class ExampleUnitTest {
     //tests player hand to make sure it hold and handle cards
     @Test
     public void testPlayerHand(){
-        City london = new City();
-        City paris = new City();
-        City stPetersburg = new City();
-        City washington = new City();
-        City chicago = new City();
-        City newYork = new City();
-        City montreal = new City();
-        City essen = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
+        City stPetersburg = new City("St Petersburg");
+        City washington = new City("Washington");
+        City chicago = new City("Chicago");
+        City newYork = new City("New York");
+        City montreal = new City("Montreal");
+        City essen = new City("Essen");
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
@@ -197,8 +198,8 @@ public class ExampleUnitTest {
     @Test
     public void testMovePawn()
     {
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
         City desiredCity = london;
@@ -214,7 +215,7 @@ public class ExampleUnitTest {
     @Test
     public void testMovePawn2()
     {
-        City london = new City();
+        City london = new City("London");
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         City desiredCity = london;
 
@@ -226,7 +227,7 @@ public class ExampleUnitTest {
     @Test
     public void testMovePawn3()
     {
-        City paris = new City();
+        City paris = new City("Paris");
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
         City currentCity = paris;
 
@@ -238,13 +239,38 @@ public class ExampleUnitTest {
     @Test
     public void testMovePawn4()
     {
-        City london = new City();
-        City paris = new City();
+        City london = new City("London");
+        City paris = new City("Paris");
         City desiredCity = london;
         City currentCity = paris;
 
         //current city has research center == desired city has researched center
         assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
+    }
+
+    @Test
+    public void testMovePawn5()
+    {
+        City london = new City("London");
+        City paris = new City("Paris`");
+        City desiredCity = london;
+        City currentCity = paris;
+
+        //current city has research center == desired city has researched center
+        assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
+    }
+
+    @Test
+    public void testCityCp(){
+
+        City pInfo = new City("London");
+        City pInfo2 = new City("London");
+
+        assertEquals(pInfo.getName(), pInfo2.getName());
+        assertEquals(pInfo.getAdjacentCities(), pInfo2.getAdjacentCities());
+        assertEquals(pInfo.getDiseaseCubes(), pInfo2.getDiseaseCubes());
+        assertEquals(pInfo.getHasResearchLab(), pInfo2.getHasResearchLab());
+
     }
 
 
