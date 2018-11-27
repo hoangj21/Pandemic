@@ -432,8 +432,10 @@ public class PandemicGameState extends GameState {
             return false; //no disease cubes there
         }
         if (player.getRole() == 3) {
+            player.actionTaken();
             for (int i = 0; i < city.getDiseaseCubes().size(); i++) {
                 String color1 = city.removeDiseaseCube();
+                this.message = "Disease cube removed!";
                 if (color1 != null) {
                     if (color1.equals("Blue")) {
                         numCubesBlue++;
@@ -447,7 +449,9 @@ public class PandemicGameState extends GameState {
                 }
             }
         } else {
+            player.actionTaken();
             String color2 = city.removeDiseaseCube();
+            this.message = "Disease cube removed!";
             if (color2 != null) {
                 if (color2.equals("Blue")) {
                     numCubesBlue++;
@@ -459,7 +463,7 @@ public class PandemicGameState extends GameState {
                     numCubesRed++;
                 }
             }
-            player.actionTaken();
+
             return true;
         }
         return false;
