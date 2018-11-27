@@ -47,6 +47,10 @@ public class PandemicLocalGame extends LocalGame {
             CureAction cure = (CureAction) action;
             state.discoverACure(state.getPlayer());
         }
+        else if(action instanceof PassAction){
+            PassAction cure = (PassAction) action;
+            state.passAction(state.getPlayer());
+        }
 
         if(state.getPlayer().actionsLeft <= 0){
             if(state.getPlayerTurn() == 0) {
