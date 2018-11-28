@@ -31,7 +31,7 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
 
                 //variable randomizes AI's action
                 //temporarily set to 3, omitting ShareAction
-                int action = rand.nextInt(3);
+                int action = rand.nextInt(4);
                 try {
                     Thread.sleep(3000);
                 }catch(InterruptedException e){
@@ -45,14 +45,19 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
                     MoveAction moveInstance = new MoveAction(this, city);
                     game.sendAction(moveInstance);
                 }
-                if (action == 1) {
+                else if (action == 1) {
                     TreatAction treatInstance = new TreatAction(this);
                     game.sendAction(treatInstance);
                 }
-                if (action == 2) {
+                else if (action == 2) {
 
                     BuildAction buildInstance = new BuildAction(this);
                     game.sendAction(buildInstance);
+                }
+                else {
+
+                    PassAction passInstance = new PassAction(this);
+                    game.sendAction(passInstance);
                 }
 
                 return;
