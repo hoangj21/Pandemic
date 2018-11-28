@@ -36,7 +36,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     CityCircle Pawncircle;
     CityCircle Opponentcircle;
     private PandemicHumanPlayer player;
-    String cityTapped = "";
+    String cityTapped = "Atlanta";
 
     public void setState (PandemicGameState state)
     {
