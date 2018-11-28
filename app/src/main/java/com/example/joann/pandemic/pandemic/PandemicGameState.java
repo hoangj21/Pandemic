@@ -136,17 +136,27 @@ public class PandemicGameState extends GameState {
     }
 
     private void addingInitialDiseases(){
+        //initial infection and research lab
+        allCities.get(1).hasResearchLab = true;
+
         allCities.get(1).addDiseaseCube("Blue");
         allCities.get(1).addDiseaseCube("Blue");
+        allCities.get(1).addDiseaseCube("Blue");
+
         allCities.get(15).addDiseaseCube("Blue");
         allCities.get(15).addDiseaseCube("Blue");
+        allCities.get(15).addDiseaseCube("Blue");
+
         allCities.get(12).addDiseaseCube("Blue");
         allCities.get(12).addDiseaseCube("Blue");
-        //allCities.get(40).addDiseaseCube("Blue");
-        //allCities.get(40).addDiseaseCube("Blue");
+
         allCities.get(4).addDiseaseCube("Blue");
+        allCities.get(4).addDiseaseCube("Blue");
+
         allCities.get(14).addDiseaseCube("Blue");
-        numCubesBlue = numCubesBlue-10;
+
+        allCities.get(22).addDiseaseCube("Blue");
+        numCubesBlue = numCubesBlue-12;
     }
 
     //copy constructor
@@ -228,9 +238,6 @@ public class PandemicGameState extends GameState {
             return false;
         }
 
-            //player.setCurrentLocation(desiredCity);
-           // player.setActionsLeft(player.getActionsLeft()-1);
-           // return true;
 
         //Drive Case: Move to a city you are connected to.
 
@@ -250,7 +257,6 @@ public class PandemicGameState extends GameState {
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
             isLegal = true;
-            //player.setActionsLeft(player.getActionsLeft()-1);
             return true;
         }
 
@@ -262,7 +268,6 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
-                    //player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -275,7 +280,6 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, p);
                     player.actionTaken();
                     isLegal = true;
-                    //player.setActionsLeft(player.getActionsLeft()-1);
                     return true;
                 }
             }
@@ -651,23 +655,6 @@ public class PandemicGameState extends GameState {
 
                 infectionDeck.addAll(cardsToBeShuffled);
             }
-/*
-            else if (((EventCard)c).getGovernment() )
-            {
-            //add a research station to current city
-                this.message = "Tap a city to build a research center!";
-                City city = getTappedCity();
-                if(!city.hasResearchLab)
-                {
-                    city.hasResearchLab = true;
-                }
-                player.playerHand.remove(c);
-            }
-            else if (((EventCard)c).getairlift())
-            {
-            //move any pawn to any city
-            //player.currentCity = touchedCity;
-            }*/
         }
         return false;
     }
