@@ -384,6 +384,7 @@ public class PandemicGameState extends GameState {
     public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
+        player.actionTaken();
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             this.message = "This move is not legal!";
 
