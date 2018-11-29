@@ -393,7 +393,8 @@ public class PandemicGameState extends GameState {
         //Player does not need card of city to build a research station
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
-
+            return true;
+        }
             int index = -1;
 
             //looping through player hand to search for necessary card
@@ -414,8 +415,8 @@ public class PandemicGameState extends GameState {
             player.setActionsLeft(player.getActionsLeft() - 1);
             this.message = "You've built a research station!";
             return true;
-        }
-        return true;
+
+
     }
 
     public void passAction(PlayerInfo player){
