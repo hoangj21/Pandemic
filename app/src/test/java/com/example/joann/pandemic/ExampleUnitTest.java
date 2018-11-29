@@ -251,7 +251,7 @@ public class ExampleUnitTest {
     public void testCityCp(){
 
         City pInfo = new City("London");
-        City pInfo2 = new City("London");
+        City pInfo2 = pInfo;
 
         assertEquals(pInfo.getName(), pInfo2.getName());
         assertEquals(pInfo.getAdjacentCities(), pInfo2.getAdjacentCities());
@@ -260,5 +260,33 @@ public class ExampleUnitTest {
 
     }
 
+
+    @Test
+    public void testMovePawn5(){
+        //default location at start is Atlanta
+        PandemicGameState state = new PandemicGameState();
+
+        //Checks to see if you can travel back to Atlanta from the initial point (Atlanta)
+        City atlanta = state.getAllCities().get(1);
+        assertTrue(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), atlanta));
+        assertEquals(state.getPlayer().getCurrentLocation().getName(), atlanta.getName());
+
+        //Checks adjacent city for Atlanta which is Chicago
+        City chicago = state.getAllCities().get(40);
+        assertTrue(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), chicago));//does it believe that it worked
+        assertEquals(state.getPlayer().getCurrentLocation().getName(), chicago.getName());//actually test that it worked
+
+        //Checks if sanFran is adjacent city from SF
+        City sanfran = state.getAllCities().get(33);
+        assertTrue(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), sanfran));
+        assertEquals(state.getPlayer().getCurrentLocation().getName(), sanfran.getName());
+        //assertEquals(state.getPlayer().getCurrentLocation().getName(), chicago.getName());
+
+        //Checks to make sure that Osaka is not an adjacent city to San Fran
+        City osaka = state.getAllCities().get(47);
+        assertFalse(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), osaka));
+        assertEquals(state.getPlayer().getCurrentLocation().getName(), sanfran.getName());
+
+    }
 
 }
