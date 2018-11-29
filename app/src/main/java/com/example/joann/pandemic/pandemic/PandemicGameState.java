@@ -318,7 +318,6 @@ public class PandemicGameState extends GameState {
             if(((PlayerCard)card).getisItEpidemic())
             {
                 playerDeck.remove(index);
-                playerDiscardDeck.add(0,(PlayerCard)card);
                 numPlayerCardsInDeck--;
                 infectE(player);
                 increaseInfectionRate(player);
@@ -391,7 +390,7 @@ public class PandemicGameState extends GameState {
     public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
-
+        player.actionTaken();
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             this.message = "This move is not legal!";
 
@@ -401,7 +400,6 @@ public class PandemicGameState extends GameState {
         //Player does not need card of city to build a research station
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
-            player.actionTaken();
             return true;
         }
             int index = -1;
@@ -423,7 +421,6 @@ public class PandemicGameState extends GameState {
             this.numResearchStations++;
             player.setActionsLeft(player.getActionsLeft() - 1);
             this.message = "You've built a research station!";
-        player.actionTaken();
             return true;
 
 
@@ -1171,7 +1168,8 @@ public class PandemicGameState extends GameState {
 
 
 
-
+        //NOTE: some cities are spelled wrong here because there were typos in the image file names
+        //DO NOT CHANGE THE CITY NAMES HERE UNTIL THE TYPOS ARE FIXED IN THE FILE NAMES
         PlayerCard algiers_card = new PlayerCard(algiers, black, false, R.drawable.algiers);
         PlayerCard atlanta_card = new PlayerCard(atlanta, blue, false, R.drawable.atlanta);
         PlayerCard baghdad_card = new PlayerCard(baghdad, black, false, R.drawable.baghidad);
@@ -1300,7 +1298,7 @@ public class PandemicGameState extends GameState {
         InfectionCard baghdad_infection = new InfectionCard(baghdad, black, R.drawable.baghdad_i);
         InfectionCard bangkok_infection = new InfectionCard(bangkok, red, R.drawable.bangkok_i);
         InfectionCard bejing_infection = new InfectionCard(bejing, red, R.drawable.bejing_i);
-        InfectionCard beunosaires_infection = new InfectionCard(beunosaires, yellow, R.drawable.beunosaires);
+        InfectionCard beunosaires_infection = new InfectionCard(beunosaires, yellow, R.drawable.buenosaires_i);
         InfectionCard bogota_infection = new InfectionCard(bogota, yellow, R.drawable.bogota_i);
         InfectionCard istanbul_infection = new InfectionCard(istanbul, black, R.drawable.istanbul_i);
         InfectionCard khartoum_infection = new InfectionCard(khartoum, yellow, R.drawable.khartoum_i);

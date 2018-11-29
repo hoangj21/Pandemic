@@ -235,7 +235,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             InfectionCard IDD = infectionDiscardDeck.get(0);
 
             Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
-            IDDCard = Bitmap.createScaledBitmap(IDDCard, 160, 250, true);
+            IDDCard = Bitmap.createScaledBitmap(IDDCard, 240, 140, true);
             canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
 
             //canvas.drawBitmap(PDCard, 0, )
