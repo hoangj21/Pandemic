@@ -1271,6 +1271,7 @@ public class PandemicGameState extends GameState {
         playerDeck.add(epidemic_2);
         playerDeck.add(epidemic_3);
         playerDeck.add(epidemic_4);
+        Collections.shuffle(playerDeck);
 
 /*
         Card resilient_pop_card = new EventCard(true, true, false, false, false, false);
@@ -1385,6 +1386,8 @@ public class PandemicGameState extends GameState {
         InfectionCard.add(shanghai_infection);
         InfectionCard.add(hongkong_infection);
         InfectionCard.add(osaka_infection);
+        Collections.shuffle(infectionDeck);
+
 
         allCities.add(algiers);//0
         allCities.add(atlanta);//1
