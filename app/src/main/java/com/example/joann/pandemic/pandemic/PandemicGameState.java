@@ -402,27 +402,22 @@ public class PandemicGameState extends GameState {
             player.getCurrentLocation().hasResearchLab = true;
             return true;
         }
-            int index = -1;
 
             //looping through player hand to search for necessary card
             for (int i = 0; i < player.getPlayerHand().size(); i++) {
-                if (((PlayerCard)player.getPlayerHand().get(i)).getLocation() == playerCity) {
-                    index = i;
+                if (((PlayerCard)player.getPlayerHand().get(i)).getLocation().equals(playerCity)){
+
+                    player.getCurrentLocation().hasResearchLab = true;
+                    discardPlayerCard(player, player.getPlayerHand().get(i));
+                    this.numResearchStations++;
+                    player.setActionsLeft(player.getActionsLeft() - 1);
+                    this.message = "You've built a research station!";
+                    return true;
+
                 }
             }
 
-            //required card was not found in player's hand
-            if (index == -1) {
                 return false;
-            }
-                player.getCurrentLocation().hasResearchLab = true;
-                discardPlayerCard(player, player.getPlayerHand().get(index));
-
-            this.numResearchStations++;
-            player.setActionsLeft(player.getActionsLeft() - 1);
-            this.message = "You've built a research station!";
-            return true;
-
 
     }
 
