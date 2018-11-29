@@ -238,6 +238,12 @@ public class PandemicGameState extends GameState {
             return false;
         }
 
+        //Don't let the user try to move to a city that they are already located at
+        if(player.getCurrentLocation().equals(desiredCity)==true){
+            isLegal = false;
+            return false;
+        }
+
 
         //Drive Case: Move to a city you are connected to.
 
@@ -384,6 +390,7 @@ public class PandemicGameState extends GameState {
     public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
+        player.actionTaken();
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             this.message = "This move is not legal!";
 
@@ -393,7 +400,8 @@ public class PandemicGameState extends GameState {
         //Player does not need card of city to build a research station
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
-
+            return true;
+        }
             int index = -1;
 
             //looping through player hand to search for necessary card
@@ -414,8 +422,8 @@ public class PandemicGameState extends GameState {
             player.setActionsLeft(player.getActionsLeft() - 1);
             this.message = "You've built a research station!";
             return true;
-        }
-        return true;
+
+
     }
 
     public void passAction(PlayerInfo player){
@@ -895,7 +903,7 @@ public class PandemicGameState extends GameState {
         City jakarta = new City ("jakarta");
         City cairo = new City ("cairo");
         City chennai = new City ("chennai");
-        City paris = new City ("pairs");
+        City paris = new City ("paris");
         City petersburg = new City ("petersburg");
         City saopaulo = new City ("saopaulo");
         City lagos = new City ("lagos");
