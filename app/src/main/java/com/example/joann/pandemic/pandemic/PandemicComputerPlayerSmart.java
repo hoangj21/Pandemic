@@ -7,8 +7,8 @@ import com.example.joann.pandemic.game.infoMsg.GameInfo;
 
 public class PandemicComputerPlayerSmart extends GameComputerPlayer {
 
-    City theDesiredCity = null;
-    boolean desiredCityIsNull = true;
+    private City theDesiredCity = null;
+    private boolean desiredCityIsNull = true;
 
 
     public PandemicComputerPlayerSmart(String name) {
@@ -28,7 +28,7 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
                 }
 
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(2000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }
@@ -65,18 +65,33 @@ public class PandemicComputerPlayerSmart extends GameComputerPlayer {
                 }
 
                     if (state.getPlayer().getActionsLeft() > 0) {
+                        try {
+                            Thread.sleep(3000);
+                        }catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
                         MoveAction moveInstance = new MoveAction(this, theDesiredCity);
                         game.sendAction(moveInstance);
                     }
 
                     for (int i = 0; i < state.getPlayer().getActionsLeft(); i++) {
                         if(state.getPlayer().getCurrentLocation().getDiseaseCubes().size() > 0) {
+                            try {
+                                Thread.sleep(2000);
+                            }catch(InterruptedException e){
+                                e.printStackTrace();
+                            }
                             TreatAction treatInstance = new TreatAction(this);
                             game.sendAction(treatInstance);
                         }
                     }
 
                     for (int i = 0; i < state.getPlayer().getActionsLeft(); i++){
+                        try {
+                            Thread.sleep(2000);
+                        }catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
                             PassAction passAction = new PassAction(this);
                             game.sendAction(passAction);
                     }
