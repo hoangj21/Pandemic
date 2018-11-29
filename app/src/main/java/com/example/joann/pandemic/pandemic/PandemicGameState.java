@@ -238,6 +238,12 @@ public class PandemicGameState extends GameState {
             return false;
         }
 
+        //Don't let the user try to move to a city that they are already located at
+        if(player.getCurrentLocation().equals(desiredCity)==true){
+            isLegal = false;
+            return false;
+        }
+
 
         //Drive Case: Move to a city you are connected to.
 
