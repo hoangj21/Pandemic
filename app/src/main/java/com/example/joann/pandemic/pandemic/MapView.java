@@ -306,6 +306,85 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float MILANy = 313;
     private float   STPETERx = 858;
     private float STPETERy = 231;
+
+    //coordinates of all yellow cities
+    private float LAx = 135;
+    private float LAy = 442;
+    private float MEXICOCITYx = 240;
+    private float MEXICOCITYy = 491;
+    private float MIAMIx = 371;
+    private float MIAMIy = 471;
+    private float BOGOTAx = 358;
+    private float BOGOTAy = 575;
+    private float LIMAx = 328;
+    private float LIMAy = 678;
+    private float SANTIAGOx = 337;
+    private float SANTIAGOy = 780;
+    private float BUENOSAIRESx = 458;
+    private float BUENOSAIRESy = 757;
+    private float SAOPAULOx = 499;
+    private float SAOPAULOy = 688;
+    private float LAGOSx = 735;
+    private float LAGOSy = 542;
+    private float KHARTOUMx = 834;
+    private float KHARTOUMy = 529;
+    private float KINSHASAx = 753;
+    private float KINsHASAy = 622;
+    private float JOHANNESBURGx = 828;
+    private float JOHANNESBURGy = 740;
+
+    //coordinates of all black cities
+    private float ALGIERSx = 747;
+    private float ALGIERSy = 407;
+    private float ISTANBULx = 834;
+    private float ISTANBULy = 340;
+    private float MOSCOWx = 916;
+    private float MOSCOWy = 296;
+    private float TEHRANx = 982;
+    private float TEHRANy = 344;
+    private float BAGHDADx = 899;
+    private float BAGHDADy = 396;
+    private float CAIROx = 828;
+    private float CAIROy = 418;
+    private float RIYADHx = 918;
+    private float RIYADHy = 501;
+    private float KARACHIx = 998;
+    private float KARACHIy = 424;
+    private float DELHIx = 1082;
+    private float DELHIy = 405;
+    private float KOLKATAx = 1149;
+    private float KOLKATAy = 444;
+    private float MUMBAIx = 1018;
+    private float MUMBAIy = 524;
+    private float CHENNAIx = 1085;
+    private float CHENNAIy = 571;
+
+    //coordinates of all red cities
+    private float BEIJINGx = 1206;
+    private float BEIJINGy = 319;
+    private float SEOULx = 1303;
+    private float SEOULy = 304;
+    private float TOKYOx = 1367;
+    private float TOKYOy = 362;
+    private float SHANGHAIx = 1211;
+    private float SHANGHAIy = 387;
+    private float TAIPEIx = 1302;
+    private float TAIPEIy = 450;
+    private float OSAKAx = 1381;
+    private float OSAKAy = 432;
+    private float HONGKONGx = 1218;
+    private float HONGKONGy = 469;
+    private float BANGKOKx = 1168;
+    private float BANGKOKy = 518;
+    private float JAKARTAx = 1161;
+    private float JAKARTAy = 635;
+    private float HOCHIMINHx = 1226;
+    private float HOCHIMINHy = 588;
+    private float MANILAx = 1324;
+    private float MANILAy = 570;
+    private float SYDNEYx = 1389;
+    private float SYDNEYy = 777;
+
     private double distance(int x1, int y1, int x2, int y2)
 
     {
