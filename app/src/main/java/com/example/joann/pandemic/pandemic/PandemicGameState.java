@@ -335,16 +335,16 @@ public class PandemicGameState extends GameState {
     //draws card from infection deck and infects city
     public boolean drawInfectionCard() {
         for(int i = 0; i < infectionRate; i++) {
-            int index = rand.nextInt(infectionDeck.size());
+            //int index = rand.nextInt(infectionDeck.size());
 
-            InfectionCard c = infectionDeck.get(index);
+            InfectionCard c = infectionDeck.get(0);
 
             if(isDiseaseEradicated(c.diseaseColor)){
                 return true;
             }
 
             //OUTBREAK CHECK
-            if(c.getLocation().getDiseaseCubes().size() == 3)
+            if(c.getLocation().getDiseaseCubes().size() >= 3)
             {
                 for(int j = 0; j < c.getLocation().adjacentCities.size(); j++)
                 {
@@ -353,7 +353,6 @@ public class PandemicGameState extends GameState {
                 outbreakNum++;
                 this.message = "There's been an outbreak!";
             }
-
             else {
                 c.getLocation().addDiseaseCube(c.getDiseaseColor());
                 if (c.getDiseaseColor().equals("Blue")) {
@@ -365,10 +364,11 @@ public class PandemicGameState extends GameState {
                 } else if (c.getDiseaseColor().equals("Red")) {
                     numCubesRed--;
                 }
-                infectionDiscardDeck.add(c);
-                this.message = c.getLocation() + "has been infected!";
-                infectionDeck.remove(c);
+
             }
+            infectionDiscardDeck.add(c);
+            this.message = c.getLocation() + "has been infected!";
+            infectionDeck.remove(c);
         }
         return true;
     }
@@ -412,6 +412,9 @@ public class PandemicGameState extends GameState {
                     this.numResearchStations++;
                     player.setActionsLeft(player.getActionsLeft() - 1);
                     this.message = "You've built a research station!";
+                    
+                    playerDiscardDeck.add( player.getPlayerHand().get(i));
+                    player.getPlayerHand().remove(i);
                     return true;
 
                 }
