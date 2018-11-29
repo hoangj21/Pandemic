@@ -464,7 +464,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, Essenx, Esseny) < TOUCHRADIUS) {
 
-                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    this.player.needToMakeMove(state.getAllCities().get(11));
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
@@ -477,7 +477,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, Milanx, Milany) < TOUCHRADIUS) {
 
-                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    this.player.needToMakeMove(state.getAllCities().get(43));
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
@@ -490,7 +490,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, StPeterx, StPetery) < TOUCHRADIUS) {
 
-                    this.player.needToMakeMove(state.getAllCities().get(33));
+                    this.player.needToMakeMove(state.getAllCities().get(22));
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
