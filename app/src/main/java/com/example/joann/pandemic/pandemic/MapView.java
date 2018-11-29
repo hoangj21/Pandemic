@@ -123,6 +123,9 @@ class MapView extends SurfaceView implements View.OnTouchListener
         {
             myPaint.setTextSize(40);
             canvas.drawText("It is your turn Player One", 2050, 175, myPaint);
+            myPaint.setTextSize(37);
+            canvas.drawText("(Blue Dot)", 2050, 220, myPaint);
+
 
             myPaint.setTextSize(60);
             canvas.drawText("Player Hand: ", 55, 175, myPaint);
@@ -133,6 +136,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
         {
             myPaint.setTextSize(40);
             canvas.drawText("It is the AI's turn", 2050, 175, myPaint);
+            myPaint.setTextSize(37);
+            canvas.drawText("(Pink Dot)", 2050, 220, myPaint);
 
             myPaint.setTextSize(60);
             canvas.drawText("AI Hand : ", 75, 175, myPaint);
@@ -141,7 +146,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
         myPaint.setTextSize(40);
-        canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 300, myPaint);
+        canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 320, myPaint);
 
         if (state.getPlayer().role == 1)
         {

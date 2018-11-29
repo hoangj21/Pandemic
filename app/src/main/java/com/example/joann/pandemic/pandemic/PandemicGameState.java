@@ -1331,7 +1331,7 @@ public class PandemicGameState extends GameState {
         InfectionCard seoul_infection = new InfectionCard(seoul, red, R.drawable.seoul_i);
         InfectionCard chicago_infection = new InfectionCard(chicago, blue, R.drawable.chicago_i);
         InfectionCard kinshasa_infection = new InfectionCard(kinshasa, yellow, R.drawable.kinshasa_i);
-        InfectionCard miami_infection = new InfectionCard(miami, yellow, R.drawable.miami);
+        InfectionCard miami_infection = new InfectionCard(miami, yellow, R.drawable.miami_i);
         InfectionCard milan_infection = new InfectionCard(milan, blue, R.drawable.milan_i);
         InfectionCard manila_infection = new InfectionCard(manila, red, R.drawable.manila_i);
         InfectionCard shanghai_infection = new InfectionCard(shanghai, red, R.drawable.shanghai_i);
