@@ -437,9 +437,8 @@ public class PandemicGameState extends GameState {
         }
         if (player.getRole() == 3) {
             player.actionTaken();
-            for (int i = 0; i < city.getDiseaseCubes().size(); i++) {
+            while(city.getDiseaseCubes().size() > 0) {
                 String color1 = city.removeDiseaseCube();
-                this.message = "Disease cube removed!";
                 if (color1 != null) {
                     if (color1.equals("Blue")) {
                         numCubesBlue++;

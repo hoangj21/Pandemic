@@ -126,6 +126,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             myPaint.setTextSize(60);
             canvas.drawText("Player Hand: ", 55, 175, myPaint);
+
+            cityTapped = state.getPlayer().getCurrentLocation().getName();
         }
         else if(state.getPlayerTurn() == 1)
         {
@@ -134,6 +136,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             myPaint.setTextSize(60);
             canvas.drawText("AI Hand : ", 75, 175, myPaint);
+
+            cityTapped = state.getPlayer().getCurrentLocation().getName();
         }
 
         myPaint.setTextSize(40);
