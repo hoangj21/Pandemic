@@ -895,7 +895,7 @@ public class PandemicGameState extends GameState {
         City jakarta = new City ("jakarta");
         City cairo = new City ("cairo");
         City chennai = new City ("chennai");
-        City paris = new City ("pairs");
+        City paris = new City ("paris");
         City petersburg = new City ("petersburg");
         City saopaulo = new City ("saopaulo");
         City lagos = new City ("lagos");
