@@ -390,7 +390,7 @@ public class PandemicGameState extends GameState {
     public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
-        player.actionTaken();
+
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             this.message = "This move is not legal!";
 
@@ -400,6 +400,7 @@ public class PandemicGameState extends GameState {
         //Player does not need card of city to build a research station
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
+            player.actionTaken();
             return true;
         }
 
@@ -412,9 +413,10 @@ public class PandemicGameState extends GameState {
                     this.numResearchStations++;
                     player.setActionsLeft(player.getActionsLeft() - 1);
                     this.message = "You've built a research station!";
-                    
+
                     playerDiscardDeck.add( player.getPlayerHand().get(i));
                     player.getPlayerHand().remove(i);
+                    player.actionTaken();
                     return true;
 
                 }
