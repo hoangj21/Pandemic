@@ -194,7 +194,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         ArrayList<Card> playerDeck = state.getPlayerDeck();
         for(i = 0; i < playerDeck.size(); i++){
 
-            PlayerCard PD =(PlayerCard)playerDeck.get(i);
+            PlayerCard PD =(PlayerCard)playerDeck.get(0);
 
             Bitmap PDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDCard = Bitmap.createScaledBitmap(PDCard, 160, 250, true);
@@ -206,7 +206,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         ArrayList<Card> playerDiscardDeck = state.getPlayerDiscardDeck();
         if(playerDiscardDeck.size() > 0){
 
-            PlayerCard PD = (PlayerCard)playerDiscardDeck.get(i);
+            PlayerCard PD = (PlayerCard)playerDiscardDeck.get(0);
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PD.getAndroidId());
             PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
@@ -220,7 +220,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         ArrayList<InfectionCard> infectionDeck = state.getInfectionDeck();
         for(i = 0; i < infectionDeck.size(); i++){
 
-            InfectionCard ID = infectionDeck.get(i);
+            InfectionCard ID = infectionDeck.get(0);
 
             Bitmap IDCard = BitmapFactory.decodeResource(getResources(), ID.getAndroidIdInfect());
             IDCard = Bitmap.createScaledBitmap(IDCard, 240, 140, true);
@@ -574,6 +574,47 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                         this.Pawncircle = circle;
                         cityTapped = "St Petersburg";
+                    }
+                }
+
+
+                int LosAngelesx = (int) ((LAx) + 500);
+                int LosAngelesy = (int) ((LAy) + 100);
+
+                if (distance(touchX, touchY, LosAngelesx, LosAngelesy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(22));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Los Angeles";
+                    }
+                }
+
+
+                int MexicoCityx = (int) ((MEXICOCITYx) + 500);
+                int MexicoCityy = (int) ((MEXICOCITYy) + 100);
+
+                if (distance(touchX, touchY, MexicoCityx, MexicoCityy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(22));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Mexico City";
+                    }
+                }
+
+                int Miamix = (int) ((MIAMIx) + 500);
+                int Miamiy  = (int) ((MIAMIy) + 100);
+
+                if (distance(touchX, touchY, Miamix, Miamiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(22));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Miami";
                     }
                 }
 
