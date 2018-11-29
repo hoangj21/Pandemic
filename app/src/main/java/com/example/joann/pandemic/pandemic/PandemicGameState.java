@@ -318,6 +318,7 @@ public class PandemicGameState extends GameState {
             if(((PlayerCard)card).getisItEpidemic())
             {
                 playerDeck.remove(index);
+                playerDiscardDeck.add(0,(PlayerCard)card);
                 numPlayerCardsInDeck--;
                 infectE(player);
                 increaseInfectionRate(player);
@@ -390,7 +391,7 @@ public class PandemicGameState extends GameState {
     public boolean buildAResearchStation(PlayerInfo player, City playerCity) {
         //normal, operations expert
 
-        player.actionTaken();
+
         if (player.getActionsLeft() <= 0 || playerCity.hasResearchLab == true || this.numResearchStations >= 6) {
             this.message = "This move is not legal!";
 
@@ -400,6 +401,7 @@ public class PandemicGameState extends GameState {
         //Player does not need card of city to build a research station
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
+            player.actionTaken();
             return true;
         }
             int index = -1;
@@ -421,6 +423,7 @@ public class PandemicGameState extends GameState {
             this.numResearchStations++;
             player.setActionsLeft(player.getActionsLeft() - 1);
             this.message = "You've built a research station!";
+        player.actionTaken();
             return true;
 
 
@@ -1168,8 +1171,7 @@ public class PandemicGameState extends GameState {
 
 
 
-        //NOTE: some cities are spelled wrong here because there were typos in the image file names
-        //DO NOT CHANGE THE CITY NAMES HERE UNTIL THE TYPOS ARE FIXED IN THE FILE NAMES
+
         PlayerCard algiers_card = new PlayerCard(algiers, black, false, R.drawable.algiers);
         PlayerCard atlanta_card = new PlayerCard(atlanta, blue, false, R.drawable.atlanta);
         PlayerCard baghdad_card = new PlayerCard(baghdad, black, false, R.drawable.baghidad);
