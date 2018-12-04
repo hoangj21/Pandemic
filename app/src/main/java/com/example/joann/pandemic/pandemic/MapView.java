@@ -623,6 +623,437 @@ class MapView extends SurfaceView implements View.OnTouchListener
                     }
                 }
 
+                int Bogotax = (int) ((BOGOTAx) + 500);
+                int Bogotay  = (int) ((BOGOTAy) + 100);
+
+                if (distance(touchX, touchY, Bogotax, Bogotay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(6));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Bogota";
+                    }
+                }
+
+                int Limax = (int) ((LIMAx) + 500);
+                int Limay  = (int) ((LIMAy) + 100);
+
+                if (distance(touchX, touchY, Limax, Limay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(25));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Lima";
+                    }
+                }
+
+                int Santiagox = (int) ((SANTIAGOx) + 500);
+                int Santiagoy  = (int) ((SANTIAGOy) + 100);
+
+                if (distance(touchX, touchY, Santiagox, Santiagoy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(36));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Santiago";
+                    }
+                }
+
+                int BuenosAiresx = (int) ((BUENOSAIRESx) + 500);
+                int BuenosAiresy  = (int) ((BUENOSAIRESy) + 100);
+
+                if (distance(touchX, touchY, BuenosAiresx, BuenosAiresy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(6));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Buenos Aires";
+                    }
+                }
+
+                int SaoPaulox = (int) ((SAOPAULOx) + 500);
+                int SaoPauloy  = (int) ((SAOPAULOy) + 100);
+
+                if (distance(touchX, touchY, SaoPaulox, SaoPauloy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(23));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Sao Paulo";
+                    }
+                }
+
+                int Lagosx = (int) ((LAGOSx) + 500);
+                int Lagosy  = (int) ((LAGOSy) + 100);
+
+                if (distance(touchX, touchY, Lagosx, Lagosy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(24));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Lagos";
+                    }
+                }
+
+                int Khartoumx = (int) ((KHARTOUMx) + 500);
+                int Khartoumy  = (int) ((KHARTOUMy) + 100);
+
+                if (distance(touchX, touchY, Khartoumx, Khartoumy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(8));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Khartoum";
+                    }
+                }
+
+                int Kinshasax = (int) ((KINSHASAx) + 500);
+                int Kinshasay  = (int) ((KINsHASAy) + 100);
+
+                if (distance(touchX, touchY, Kinshasax, Kinshasay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(41));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Kinshasa";
+                    }
+                }
+
+                int Johannesburgx = (int) ((JOHANNESBURGx) + 500);
+                int Johannesburgy  = (int) ((JOHANNESBURGy) + 100);
+
+                if (distance(touchX, touchY, Johannesburgx, Johannesburgy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(29));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Johannesburg";
+                    }
+                }
+
+                //BLACK CITY PLACEMENT
+
+                int Algiersx = (int) ((ALGIERSx) + 500);
+                int Algiersy  = (int) ((ALGIERSy) + 100);
+
+                if (distance(touchX, touchY, Algiersx, Algiersy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(0));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Algiers";
+                    }
+                }
+
+                int Istanbulx = (int) ((ISTANBULx) + 500);
+                int Istanbuly  = (int) ((ISTANBULy) + 100);
+
+                if (distance(touchX, touchY, Istanbulx, Istanbuly) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(7));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Istanbul";
+                    }
+                }
+
+                int Moscowx = (int) ((MOSCOWx) + 500);
+                int Moscowy  = (int) ((MOSCOWy) + 100);
+
+                if (distance(touchX, touchY, Moscowx, Moscowy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(13));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Moscow";
+                    }
+                }
+
+                int Tehranx = (int) ((TEHRANx) + 500);
+                int Tehrany  = (int) ((TEHRANy) + 100);
+
+                if (distance(touchX, touchY, Tehranx, Tehrany) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(17));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Tehran";
+                    }
+                }
+
+                int Baghdadx = (int) ((BAGHDADx) + 500);
+                int Baghdady  = (int) ((BAGHDADy) + 100);
+
+                if (distance(touchX, touchY, Baghdadx, Baghdady) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(2));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Baghdad";
+                    }
+                }
+
+                int Cairox = (int) ((CAIROx) + 500);
+                int Cairoy  = (int) ((CAIROy) + 100);
+
+                if (distance(touchX, touchY, Cairox, Cairoy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(19));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Cairo";
+                    }
+                }
+
+                int Riyadhx = (int) ((RIYADHx) + 500);
+                int Riyadhy  = (int) ((RIYADHy) + 100);
+
+                if (distance(touchX, touchY, Riyadhx, Riyadhy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(10));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Riyadh";
+                    }
+                }
+
+                int Karachix = (int) ((KARACHIx) + 500);
+                int Karachiy  = (int) ((KARACHIy) + 100);
+
+                if (distance(touchX, touchY, Karachix, Karachiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(30));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Karachi";
+                    }
+                }
+
+                int Delhix = (int) ((DELHIx) + 500);
+                int Delhiy  = (int) ((DELHIy) + 100);
+
+                if (distance(touchX, touchY, Delhix, Delhiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(28));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Delhi";
+                    }
+                }
+
+                int Kolkatax = (int) ((KOLKATAx) + 500);
+                int Kolkatay  = (int) ((KOLKATAy) + 100);
+
+                if (distance(touchX, touchY, Kolkatax, Kolkatay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(34));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "kolkata";
+                    }
+                }
+
+                int Mumbaix = (int) ((MUMBAIx) + 500);
+                int Mumbaiy  = (int) ((MUMBAIy) + 100);
+
+                if (distance(touchX, touchY, Mumbaix, Mumbaiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(38));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Mumbai";
+                    }
+                }
+
+                int Chennaix = (int) ((CHENNAIx) + 500);
+                int Chennaiy  = (int) ((CHENNAIy) + 100);
+
+                if (distance(touchX, touchY, Chennaix, Chennaiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(20));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Chennai";
+                    }
+                }
+
+                //RED CITIES
+                int Beijingx = (int) ((BEIJINGx) + 500);
+                int Beijingy  = (int) ((BEIJINGy) + 100);
+
+                if (distance(touchX, touchY, Beijingx, Beijingy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(4));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Beijing";
+                    }
+                }
+
+                int Seoulx = (int) ((SEOULx) + 500);
+                int Seouly  = (int) ((SEOULy) + 100);
+
+                if (distance(touchX, touchY, Seoulx, Seouly) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(39));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Seoul";
+                    }
+                }
+
+                int Tokyox = (int) ((TOKYOx) + 500);
+                int Tokyoy  = (int) ((TOKYOy) + 100);
+
+                if (distance(touchX, touchY, Tokyox, Tokyoy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(16));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Tokyo";
+                    }
+                }
+
+                int Shanghaix = (int) ((SHANGHAIx) + 500);
+                int Shanghaiy  = (int) ((SHANGHAIy) + 100);
+
+                if (distance(touchX, touchY, Shanghaix, Shanghaiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(45));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Shanghai";
+                    }
+                }
+
+                int Taipeix = (int) ((TAIPEIx) + 500);
+                int Taipeiy  = (int) ((TAIPEIy) + 100);
+
+                if (distance(touchX, touchY, Taipeix, Taipeiy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(15));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Taipei";
+                    }
+                }
+
+                int Osakax = (int) ((OSAKAx) + 500);
+                int Osakay  = (int) ((OSAKAy) + 100);
+
+                if (distance(touchX, touchY, Osakax, Osakay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(47));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Osaka";
+                    }
+                }
+
+                int HongKongx = (int) ((HONGKONGx) + 500);
+                int HongKongy  = (int) ((HONGKONGy) + 100);
+
+                if (distance(touchX, touchY, HongKongx, HongKongy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(46));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Hong Kong";
+                    }
+                }
+
+                int Bangkokx = (int) ((BANGKOKx) + 500);
+                int Bangkoky  = (int) ((BANGKOKy) + 100);
+
+                if (distance(touchX, touchY, Bangkokx, Bangkoky) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(3));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Bangkok";
+                    }
+                }
+
+                int Jakartax = (int) ((JAKARTAx) + 500);
+                int Jakartay  = (int) ((JAKARTAy) + 100);
+
+                if (distance(touchX, touchY, Jakartax, Jakartay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(18));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Jakarta";
+                    }
+                }
+
+                int HoChiMinhx = (int) ((HOCHIMINHx) + 500);
+                int HoChiminhy  = (int) ((HOCHIMINHy) + 100);
+
+                if (distance(touchX, touchY, HoChiMinhx, HoChiminhy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(9));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Ho Chi Minh";
+                    }
+                }
+
+                int Manilax = (int) ((MANILAx) + 500);
+                int Manilay  = (int) ((MANILAy) + 100);
+
+                if (distance(touchX, touchY, Manilax, Manilay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(15));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Taipei";
+                    }
+                }
+
+                int Sydneyx = (int) ((SYDNEYx) + 500);
+                int Sydneyy  = (int) ((SYDNEYy) + 100);
+
+                if (distance(touchX, touchY, Sydneyx, Sydneyy) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(37));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "Sydeny";
+                    }
+                }
 
             }
 
