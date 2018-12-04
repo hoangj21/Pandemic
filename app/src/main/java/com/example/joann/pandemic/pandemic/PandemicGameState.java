@@ -128,7 +128,7 @@ public class PandemicGameState extends GameState {
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
-        drawPlayerCard(aPlayer);
+        //drawPlayerCard(aPlayer);
         return aPlayer;
     }
     private void init(){
@@ -326,7 +326,9 @@ public class PandemicGameState extends GameState {
             }
             playerDeck.remove(index);
             numPlayerCardsInDeck--;
+            Log.i("numPlayerCardsInDeck", " num  " + numPlayerCardsInDeck);
             player.addCardToPlayerHand(card);
+            Log.i("DRAWN", "card1 :  " + ((PlayerCard) card).getLocation().name + " Player : " + player.playerNumber);
             //reflect in gui?
             return true;
         }
@@ -383,6 +385,8 @@ public class PandemicGameState extends GameState {
         Card card = player.getPlayerHand().get(index);
        playerDiscardDeck.add(card);
        player.getPlayerHand().remove(index);
+        Log.i("DISCARD", " :  " + ((PlayerCard)gc).getLocation().name);
+
         return true;
     }
 

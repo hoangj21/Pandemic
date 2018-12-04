@@ -1,5 +1,7 @@
 package com.example.joann.pandemic;
 
+import android.util.Log;
+
 import com.example.joann.pandemic.pandemic.City;
 import com.example.joann.pandemic.pandemic.InfectionCard;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
@@ -16,6 +18,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
 
     //Tests if eradication test works properly
     // -Polina G.
@@ -65,12 +68,25 @@ public class ExampleUnitTest {
         PlayerInfo pInfo = instance.getPlayer();
 
         pInfo.addCardToPlayerHand(card1);
+        //assertEquals(pInfo.getPlayerHand().get(1), card1);
+
+
         pInfo.addCardToPlayerHand(card2);
+        assertEquals(pInfo.getPlayerHand().size(), 6);
+
         pInfo.addCardToPlayerHand(card3);
+        assertEquals(pInfo.getPlayerHand().size(), 7);
+
 
         assertTrue(instance.discardPlayerCard(pInfo, card1));
+        assertEquals(pInfo.getPlayerHand().size(), 6);
+
         assertTrue(instance.discardPlayerCard(pInfo, card2));
+        assertEquals(pInfo.getPlayerHand().size(), 5);
+
         assertTrue(instance.discardPlayerCard(pInfo, card3));
+        assertEquals(pInfo.getPlayerHand().size(), 4);
+
         assertFalse(instance.discardPlayerCard(pInfo, card1));
     }
 
@@ -173,6 +189,8 @@ public class ExampleUnitTest {
 
         pInfo.addCardToPlayerHand(card8);
         assertEquals(7, pInfo.getPlayerHand().size());
+
+
     }
 
     //tests if treat disease function works properly
