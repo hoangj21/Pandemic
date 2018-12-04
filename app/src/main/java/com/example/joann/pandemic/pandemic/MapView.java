@@ -128,7 +128,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
 
             myPaint.setTextSize(60);
-            canvas.drawText("Player Hand: ", 55, 175, myPaint);
+            canvas.drawText("Player Hand: ", 55, 80, myPaint);
 
             cityTapped = state.getPlayer().getCurrentLocation().getName();
         }
@@ -140,7 +140,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText("(Pink Dot)", 2050, 220, myPaint);
 
             myPaint.setTextSize(60);
-            canvas.drawText("AI Hand : ", 75, 175, myPaint);
+            canvas.drawText("AI Hand : ", 75, 80, myPaint);
 
             cityTapped = state.getPlayer().getCurrentLocation().getName();
         }
@@ -181,8 +181,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //DRAWABLE PLAYER HAND CARDS
         int i;
-        int padding = 200;
-        int cardh = 60;
+        int padding = 100;
+        int cardh = 80;
 
             ArrayList<Card> playerHand = state.getPlayer().getPlayerHand();
             for(i = 0; i <  playerHand.size() ; i++){
@@ -1051,7 +1051,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
-                        cityTapped = "Sydeny";
+                        cityTapped = "Sydney";
                     }
                 }
 
