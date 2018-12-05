@@ -256,18 +256,133 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //Redraws the AI's pawn depending on its location
         if(state.getPlayerTurn()==1){
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(0))){
+                Opponentcircle.setX((int)ALGIERSx+500);
+                Opponentcircle.setY((int)ALGIERSy+100);
+            }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(1))){
                 Opponentcircle.setX((int)ATLAx+500);
                 Opponentcircle.setY((int)ATLAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(2))){
+                Opponentcircle.setX((int)ATLAx+500);
+                Opponentcircle.setY((int)ATLAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(3))){
+                Opponentcircle.setX((int)BANGKOKx+500);
+                Opponentcircle.setY((int)BANGKOKy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(4))){
+                Opponentcircle.setX((int)BEIJINGx+500);
+                Opponentcircle.setY((int)BEIJINGy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(5))){
+                Opponentcircle.setX((int)BUENOSAIRESx+500);
+                Opponentcircle.setY((int)BUENOSAIRESy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(6))){
+                Opponentcircle.setX((int)BOGOTAx+500);
+                Opponentcircle.setY((int)BOGOTAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(7))){
+                Opponentcircle.setX((int)ISTANBULx+500);
+                Opponentcircle.setY((int)ISTANBULy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(8))){
+                Opponentcircle.setX((int)KHARTOUMx+500);
+                Opponentcircle.setY((int)KHARTOUMy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(9))){
+                Opponentcircle.setX((int)HOCHIMINHx+500);
+                Opponentcircle.setY((int)HOCHIMINHy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(10))){
+                Opponentcircle.setX((int)RIYADHx+500);
+                Opponentcircle.setY((int)RIYADHy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(11))){
+                Opponentcircle.setX((int)ESSENx+500);
+                Opponentcircle.setY((int)ESSENy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(12))){
                 Opponentcircle.setX((int)WASHx+500);
                 Opponentcircle.setY((int)WASHy+100);
             }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(13))){
+                Opponentcircle.setX((int)MOSCOWx+500);
+                Opponentcircle.setY((int)MOSCOWy+100);
+            }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(14))){
                 Opponentcircle.setX((int)NYCx+500);
                 Opponentcircle.setY((int)NYCy+100);
-
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(15))){
+                Opponentcircle.setX((int)TAIPEIx+500);
+                Opponentcircle.setY((int)TAIPEIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(16))){
+                Opponentcircle.setX((int)TOKYOx+500);
+                Opponentcircle.setY((int)TOKYOy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(17))){
+                Opponentcircle.setX((int)TEHRANx+500);
+                Opponentcircle.setY((int)TEHRANy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(18))){
+                Opponentcircle.setX((int)JAKARTAx+500);
+                Opponentcircle.setY((int)JAKARTAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(19))){
+                Opponentcircle.setX((int)CAIROx+500);
+                Opponentcircle.setY((int)CAIROy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(20))){
+                Opponentcircle.setX((int)CHENNAIx+500);
+                Opponentcircle.setY((int)CHENNAIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(21))){
+                Opponentcircle.setX((int)PARISx+500);
+                Opponentcircle.setY((int)PARISy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(22))){
+                Opponentcircle.setX((int)STPETERx+500);
+                Opponentcircle.setY((int)STPETERy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(23))){
+                Opponentcircle.setX((int)SAOPAULOx+500);
+                Opponentcircle.setY((int)SAOPAULOy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(24))){
+                Opponentcircle.setX((int)LAGOSx+500);
+                Opponentcircle.setY((int)LAGOSy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(25))){
+                Opponentcircle.setX((int)LIMAx+500);
+                Opponentcircle.setY((int)LIMAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(26))){
+                Opponentcircle.setX((int)LONDONx+500);
+                Opponentcircle.setY((int)LONDONy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(27))){
+                Opponentcircle.setX((int)LAx+500);
+                Opponentcircle.setY((int)LAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(28))){
+                Opponentcircle.setX((int)DELHIx+500);
+                Opponentcircle.setY((int)DELHIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(29))){
+                Opponentcircle.setX((int)JOHANNESBURGx+500);
+                Opponentcircle.setY((int)JOHANNESBURGy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(30))){
+                Opponentcircle.setX((int)KARACHIx+500);
+                Opponentcircle.setY((int)KARACHIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(31))){
+                Opponentcircle.setX((int)MADRIDx+500);
+                Opponentcircle.setY((int)MADRIDy+100);
             }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(32))){
                 Opponentcircle.setX((int)MONTx+500);
@@ -277,9 +392,61 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 Opponentcircle.setX((int)SANFRANx+500);
                 Opponentcircle.setY((int)SANFRANy+100);
             }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(34))){
+                Opponentcircle.setX((int)KOLKATAx+500);
+                Opponentcircle.setY((int)KOLKATAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(35))){
+                Opponentcircle.setX((int)MEXICOCITYx+500);
+                Opponentcircle.setY((int)MEXICOCITYy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(36))){
+                Opponentcircle.setX((int)SANTIAGOx+500);
+                Opponentcircle.setY((int)SANTIAGOy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(37))){
+                Opponentcircle.setX((int)SYDNEYx+500);
+                Opponentcircle.setY((int)SYDNEYy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(38))){
+                Opponentcircle.setX((int)MUMBAIx+500);
+                Opponentcircle.setY((int)MUMBAIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(39))){
+                Opponentcircle.setX((int)SEOULx+500);
+                Opponentcircle.setY((int)SEOULy+100);
+            }
             if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(40))){
                 Opponentcircle.setX((int)CHICAx+500);
                 Opponentcircle.setY((int)CHICAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(41))){
+                Opponentcircle.setX((int)KINSHASAx+500);
+                Opponentcircle.setY((int)KINsHASAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(42))){
+                Opponentcircle.setX((int)MIAMIx+500);
+                Opponentcircle.setY((int)MIAMIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(43))){
+                Opponentcircle.setX((int)MILANx+500);
+                Opponentcircle.setY((int)MILANy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(44))){
+                Opponentcircle.setX((int)MANILAx+500);
+                Opponentcircle.setY((int)MANILAy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(45))){
+                Opponentcircle.setX((int)SHANGHAIx+500);
+                Opponentcircle.setY((int)SHANGHAIy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(46))){
+                Opponentcircle.setX((int)HONGKONGx+500);
+                Opponentcircle.setY((int)HONGKONGy+100);
+            }
+            if(state.getPlayer().getCurrentLocation().equals(state.getAllCities().get(47))){
+                Opponentcircle.setX((int)OSAKAx+500);
+                Opponentcircle.setY((int)OSAKAy+100);
             }
         }
         Opponentcircle.draw(canvas);
