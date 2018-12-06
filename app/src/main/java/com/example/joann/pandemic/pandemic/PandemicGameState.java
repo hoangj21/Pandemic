@@ -516,37 +516,113 @@ public class PandemicGameState extends GameState {
             if(color.equals("Black")){
                 numBlack++;
             }
+        }
 
             //sets a disease to cured if player has enough cards of a certain color
                 if(numYellow>=5){
+
                     curedDiseases[0] = 1;
+                    numYellow = 0;
+                    //remove the amount of cards needed to perform the cure
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numYellow == 5)
+                                break;
+                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Yellow")){
+                                player.getPlayerHand().remove(j);
+                                numYellow++;
+                            }
+                        }
+
                 }
                 if(numRed>=5){
                     curedDiseases[1] = 1;
+                    numRed = 0;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numRed == 5)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Red")){
+                            player.getPlayerHand().remove(j);
+                            numRed++;
+                        }
+                    }
                 }
                 if(numBlue>=5){
                     curedDiseases[2] = 1;
+                    numBlue = 0;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numBlue == 5)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Blue")){
+                            player.getPlayerHand().remove(j);
+                            numBlue++;
+                        }
+                    }
                 }
                 if(numBlack>=5){
                     curedDiseases[3] = 1;
+                    numBlack = 0;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numBlack == 5)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Black")){
+                            player.getPlayerHand().remove(j);
+                            numBlack++;
+                        }
+                    }
                 }
             //Special case for if player role is scientist
             //Then player only needs 3 cards to cure a disease
             if(player.role == 2){
                 if(numYellow>=4){
                     curedDiseases[0] = 1;
+                    numYellow = 0;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numYellow == 4)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Yellow")){
+                            player.getPlayerHand().remove(j);
+                            numYellow++;
+                        }
+                    }
+
                 }
                 if(numRed>=4){
                     curedDiseases[1] = 1;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numRed == 4)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Red")){
+                            player.getPlayerHand().remove(j);
+                            numRed++;
+                        }
+                    }
                 }
                 if(numBlue>=4){
                     curedDiseases[2] = 1;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numBlue == 4)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Blue")){
+                            player.getPlayerHand().remove(j);
+                            numBlue++;
+                        }
+                    }
                 }
                 if(numBlack>=4){
                     curedDiseases[3] = 1;
+                    numBlack = 0;
+                    for(int j = 0; j < player.getPlayerHand().size(); j++){
+                        if(numBlack == 4)
+                            break;
+                        if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Black")){
+                            player.getPlayerHand().remove(j);
+                            numBlack++;
+                        }
+                    }
+
                 }
             }
-        }
+
 
 
         player.setActionsLeft(player.getActionsLeft() - 1);
