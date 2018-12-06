@@ -141,27 +141,30 @@ public class PandemicGameState extends GameState {
         allCities.get(1).hasResearchLab = true;
 
         allCities.get(1).addDiseaseCube("Blue");
-
-        allCities.get(1).addDiseaseCube("Blue");
-        allCities.get(1).addDiseaseCube("Blue");
-
-
         allCities.get(15).addDiseaseCube("Blue");
-        allCities.get(15).addDiseaseCube("Blue");
-        allCities.get(15).addDiseaseCube("Blue");
-
         allCities.get(12).addDiseaseCube("Blue");
-        allCities.get(12).addDiseaseCube("Blue");
-
         allCities.get(4).addDiseaseCube("Blue");
-        allCities.get(4).addDiseaseCube("Blue");
-
         allCities.get(14).addDiseaseCube("Blue");
-
         allCities.get(22).addDiseaseCube("Blue");
+        numCubesBlue = numCubesBlue-6;
 
-        numCubesBlue = numCubesBlue-12;
+        allCities.get(3).addDiseaseCube("Red");
+        allCities.get(9).addDiseaseCube("Red");
+        allCities.get(15).addDiseaseCube("Red");
+        allCities.get(16).addDiseaseCube("Red");
+        numCubesRed = numCubesRed - 4;
 
+        allCities.get(5).addDiseaseCube("Yellow");
+        allCities.get(6).addDiseaseCube("Yellow");
+        allCities.get(25).addDiseaseCube("Yellow");
+        allCities.get(35).addDiseaseCube("Yellow");
+        numCubesYellow = numCubesYellow-4;
+
+        allCities.get(0).addDiseaseCube("Black");
+        allCities.get(7).addDiseaseCube("Black");
+        allCities.get(10).addDiseaseCube("Black");
+        allCities.get(28).addDiseaseCube("Black");
+        numCubesBlack = numCubesBlack-4;
     }
 
     //copy constructor
@@ -755,7 +758,7 @@ public class PandemicGameState extends GameState {
 
         if(color.equals("Blue"))
         {
-            if(getNumCubesBlue() == 24 && curedDiseases[0] ==1) {
+            if(getNumCubesBlue() == 24 && curedDiseases[0] == 1) {
                 curedDiseases[0] = 2;
                 this.message = "Blue has been eradicated";
                 return true;
@@ -763,7 +766,7 @@ public class PandemicGameState extends GameState {
         }
         else if(color.equals("Black"))
         {
-            if(getNumCubesBlack() == 24 && curedDiseases[1] ==2) {
+            if(getNumCubesBlack() == 24 && curedDiseases[1] == 1) {
                 curedDiseases[1] = 2;
                 this.message = "Black has been eradicated";
                 return true;
@@ -771,7 +774,7 @@ public class PandemicGameState extends GameState {
         }
         else if(color.equals("Red"))
         {
-            if(getNumCubesRed() == 24 && curedDiseases[2] ==1) {
+            if(getNumCubesRed() == 24 && curedDiseases[2] == 1) {
                 curedDiseases[2] = 2;
                 this.message = "Red has been eradicated";
                 return true;
@@ -779,7 +782,7 @@ public class PandemicGameState extends GameState {
         }
         else if(color.equals("Yellow"))
         {
-            if(getNumCubesYellow() == 24 && curedDiseases[3] ==1) {
+            if(getNumCubesYellow() == 24 && curedDiseases[3] == 1) {
                 curedDiseases[3] = 2;
                 this.message = "Yellow has been eradicated";
                 return true;
