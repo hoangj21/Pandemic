@@ -83,7 +83,7 @@ public class PandemicGameState extends GameState {
         infectionDeck = new ArrayList<>();
         infectionDiscardDeck = new ArrayList<>();
         numPlayers = 2;
-        infectionRate = 2;
+        infectionRate = 0;
         outbreakNum = 0;
         //order of curedDisease will be {blue, black, red, yellow}
         curedDiseases = new int[]{0, 0, 0, 0}; //1 = cured, 2 = eradicated
