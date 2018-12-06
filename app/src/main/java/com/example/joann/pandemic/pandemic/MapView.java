@@ -79,51 +79,51 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
         //DISEASE VIALS
 
-        if(state.getCuredDiseases()[3] == 0) {
+        if(state.getCuredDiseases()[0] == 0) {
             Paint yellowVile = new Paint();
             yellowVile.setColor(Color.YELLOW);
             canvas.drawCircle(1015, 1030, 25, yellowVile);
         }
 
-        if(state.getCuredDiseases()[3] == 1) {
+        if(state.getCuredDiseases()[0] == 1) {
             Paint yellowVile = new Paint();
             yellowVile.setColor(Color.YELLOW);
-            canvas.drawCircle(1015, 1000, 25, yellowVile);
+            canvas.drawCircle(1015, 980, 25, yellowVile);
         }
 
-        if(state.getCuredDiseases()[2] == 0) {
+        if(state.getCuredDiseases()[1] == 0) {
             Paint redVile = new Paint();
             redVile.setColor(Color.RED);
             canvas.drawCircle(1075, 1030, 25, redVile);
         }
 
-        if(state.getCuredDiseases()[2] == 1) {
+        if(state.getCuredDiseases()[1] == 1) {
             Paint redVile = new Paint();
             redVile.setColor(Color.RED);
-            canvas.drawCircle(1075, 1000, 25, redVile);
+            canvas.drawCircle(1075, 980, 25, redVile);
         }
 
-        if(state.getCuredDiseases()[1] == 0) {
+        if(state.getCuredDiseases()[2] == 0) {
+            Paint blueVile = new Paint();
+            blueVile.setColor(Color.BLUE);
+            canvas.drawCircle(1140, 1030, 25, blueVile);
+        }
+        if(state.getCuredDiseases()[2] == 1){
+            Paint blueVile = new Paint();
+            blueVile.setColor(Color.BLUE);
+            canvas.drawCircle(1140, 980, 25, blueVile);
+        }
+
+        if(state.getCuredDiseases()[3] == 0) {
             Paint blackVile = new Paint();
             blackVile.setColor(Color.BLACK);
             canvas.drawCircle(1210, 1030, 25, blackVile);
         }
 
-        if(state.getCuredDiseases()[1] == 1) {
+        if(state.getCuredDiseases()[3] == 1) {
             Paint blackVile = new Paint();
             blackVile.setColor(Color.BLACK);
-            canvas.drawCircle(1210, 1000, 25, blackVile);
-        }
-
-        if(state.getCuredDiseases()[0] == 0) {
-            Paint blueVile = new Paint();
-            blueVile.setColor(Color.BLUE);
-            canvas.drawCircle(1140, 1030, 25, blueVile);
-        }
-        if(state.getCuredDiseases()[0] == 1){
-            Paint blueVile = new Paint();
-            blueVile.setColor(Color.BLUE);
-            canvas.drawCircle(1140, 1000, 25, blueVile);
+            canvas.drawCircle(1210, 980, 25, blackVile);
         }
 
         //INFECTION RATE SLIDERS
