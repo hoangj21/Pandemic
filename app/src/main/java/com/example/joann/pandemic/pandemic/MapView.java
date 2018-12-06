@@ -99,24 +99,65 @@ class MapView extends SurfaceView implements View.OnTouchListener
         blackVile.setColor(Color.BLACK);
         canvas.drawCircle(1210, 1030, 30, blackVile);
 
+        //INFECTION RATE SLIDERS
         Paint infectionRate = new Paint();
         infectionRate.setColor(Color.GREEN);
-        canvas.drawCircle(1470, 330, 30, infectionRate);
+
+        if(state.getInfectionRate() == 1){
+            canvas.drawCircle(1461, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 2){
+            canvas.drawCircle(1515, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 3){
+            canvas.drawCircle(1565, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 4){
+            canvas.drawCircle(1620, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 5){
+            canvas.drawCircle(1670, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 6){
+            canvas.drawCircle(1720, 330, 25, infectionRate);}
+
+        if(state.getInfectionRate() == 7){
+            canvas.drawCircle(1770, 330, 25, infectionRate);}
+
 
         Paint outbreakRate = new Paint();
         outbreakRate.setColor(Color.GREEN);
-        canvas.drawCircle(620, 650, 30, outbreakRate);
 
-        //INFECTION RATE SLIDERS
-        /*
-        Paint epidemicSlider = new Paint();
-        epidemicSlider.setColor(Color.GREEN);
-        canvas.drawCircle(900, 402, 50, epidemicSlider);
+        if(state.getOutbreakNum() == 1){
+        canvas.drawCircle(620, 654, 25, outbreakRate);}
 
-       Paint outbreakSlider = new Paint();
-       outbreakSlider.setColor(Color.GREEN);
-        canvas.drawCircle(950, 402, 50, outbreakSlider);
-        */
+        if(state.getOutbreakNum() == 2){
+        canvas.drawCircle(673, 710, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 3){
+        canvas.drawCircle(620, 742, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 4){
+        canvas.drawCircle(673, 780, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 5){
+        canvas.drawCircle(620, 827, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 6){
+        canvas.drawCircle(673, 870, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 7){
+        canvas.drawCircle(620, 900, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 8){
+        canvas.drawCircle(673, 940, 25, outbreakRate);}
+
+        if(state.getOutbreakNum() == 10){
+        canvas.drawCircle(620, 978, 25, outbreakRate);}
+
+
+
+
 
         //TEXT VIEW
         if(state.getPlayerTurn() == 0)
@@ -245,14 +286,6 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             //canvas.drawBitmap(PDCard, 0, )
         }
-        /*
-        if(state.getPlayerTurn() == 0){
-            Pawncircle.setMyPaint(0);
-        }
-        if(state.getPlayerTurn() == 1){
-            Pawncircle.setMyPaint(1);
-        }
-        */
 
         //Redraws the AI's pawn depending on its location
         if(state.getPlayerTurn()==1){
@@ -578,8 +611,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 final int TOUCHRADIUS = 50;
 
                 //comment remove later
-                Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
-
+               // Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
+                Log.i("YouTouched", "x:" + (touchX) + " y:" + (touchY));
 
 
                 int NYCcityX = (int) ((NYCx) + 500);
