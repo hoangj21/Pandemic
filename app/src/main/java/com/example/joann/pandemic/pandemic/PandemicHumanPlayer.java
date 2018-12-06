@@ -6,9 +6,12 @@ import com.example.joann.pandemic.R;
 import com.example.joann.pandemic.game.infoMsg.GameInfo;
 import com.example.joann.pandemic.game.infoMsg.GameState;
 import com.example.joann.pandemic.game.infoMsg.NotYourTurnInfo;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -37,6 +40,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     private Button  cureButton = null;
     private Button  moveButton = null;
     private Button  passButton = null;
+    private Button  quitButton = null;
     private ImageButton PlayerImageButton = null;
 
     // the android activity that we are running
@@ -78,26 +82,6 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
 
             myMapView.setState(theState);
             myMapView.postInvalidate();
-
-
-    /*
-            if (theState.getID() == 0)
-            {
-                View v = this.getWindow().getDecorView().findViewById(R.id.top_gui_layout);
-                v.setBackgroundColor(Color.RED);
-
-
-                playerScoreTextView.setText(String.valueOf(theState.getScore0()));
-                oppScoreTextView.setText(String.valueOf(theState.getScore1()));
-                turnTotalTextView.setText(String.valueOf(theState.getRunningTotal()));
-            }
-            else {
-                playerScoreTextView.setText(String.valueOf(theState.getScore1()));
-                oppScoreTextView.setText(String.valueOf(theState.getScore0()));
-                turnTotalTextView.setText(String.valueOf(theState.getRunningTotal()));
-            }
-*/
-
 
 
 
@@ -1132,6 +1116,9 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
            // game.sendAction(moveAction);
             isClicked = true;
         }
+        else if(button == quitButton){
+            myActivity.finish();
+        }
         else{
             isClicked = false;
         }
@@ -1161,12 +1148,14 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         this.cureButton = (Button)activity.findViewById(R.id.CureButton);
         this.moveButton = (Button)activity.findViewById(R.id.MoveButton);
         this.passButton = (Button)activity.findViewById(R.id.PassButton);
+        this.quitButton = (Button)activity.findViewById(R.id.QuitButton);
 
         buildButton.setOnClickListener(this);
         treatButton.setOnClickListener(this);
         cureButton.setOnClickListener(this);
         moveButton.setOnClickListener(this);
         passButton.setOnClickListener(this);
+        quitButton.setOnClickListener(this);
         myMapView = (MapView) myActivity.findViewById(R.id.MapView);
         myMapView.setPlayer(this);
     }//setAsGui
