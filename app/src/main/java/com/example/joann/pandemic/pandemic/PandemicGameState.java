@@ -128,7 +128,7 @@ public class PandemicGameState extends GameState {
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
         drawPlayerCard(aPlayer);
-        //drawPlayerCard(aPlayer);
+        drawPlayerCard(aPlayer);
         return aPlayer;
     }
     private void init(){
@@ -137,11 +137,14 @@ public class PandemicGameState extends GameState {
 
     private void addingInitialDiseases(){
         //initial infection and research lab
+
         allCities.get(1).hasResearchLab = true;
 
         allCities.get(1).addDiseaseCube("Blue");
+
         allCities.get(1).addDiseaseCube("Blue");
         allCities.get(1).addDiseaseCube("Blue");
+
 
         allCities.get(15).addDiseaseCube("Blue");
         allCities.get(15).addDiseaseCube("Blue");
@@ -156,7 +159,9 @@ public class PandemicGameState extends GameState {
         allCities.get(14).addDiseaseCube("Blue");
 
         allCities.get(22).addDiseaseCube("Blue");
+
         numCubesBlue = numCubesBlue-12;
+
     }
 
     //copy constructor
@@ -179,7 +184,7 @@ public class PandemicGameState extends GameState {
         //copy player discard deck
         playerDiscardDeck = new ArrayList<Card>();
         for (int i = 0; i < otherState.playerDiscardDeck.size(); i++) {
-            PlayerCard card = new PlayerCard((PlayerCard)otherState.getPlayerDiscardDeck().get(i));
+            PlayerCard card = new PlayerCard((PlayerCard) otherState.getPlayerDiscardDeck().get(i));
             this.playerDiscardDeck.add(card);
         }
 
@@ -188,6 +193,7 @@ public class PandemicGameState extends GameState {
         for (int i = 0; i < otherState.infectionDiscardDeck.size(); i++) {
             InfectionCard card = new InfectionCard(otherState.getInfectionDeck().get(i));
             this.infectionDiscardDeck.add(card);
+
         }
 
         players = new ArrayList<PlayerInfo>();
@@ -249,7 +255,7 @@ public class PandemicGameState extends GameState {
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c.equals(desiredCity)) {
-                    
+
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
@@ -326,9 +332,7 @@ public class PandemicGameState extends GameState {
             }
             playerDeck.remove(index);
             numPlayerCardsInDeck--;
-            Log.i("numPlayerCardsInDeck", " num  " + numPlayerCardsInDeck);
             player.addCardToPlayerHand(card);
-            Log.i("DRAWN", "card1 :  " + ((PlayerCard) card).getLocation().name + " Player : " + player.playerNumber);
             //reflect in gui?
             return true;
         }
@@ -385,8 +389,6 @@ public class PandemicGameState extends GameState {
         Card card = player.getPlayerHand().get(index);
        playerDiscardDeck.add(card);
        player.getPlayerHand().remove(index);
-        Log.i("DISCARD", " :  " + ((PlayerCard)gc).getLocation().name);
-
         return true;
     }
 
