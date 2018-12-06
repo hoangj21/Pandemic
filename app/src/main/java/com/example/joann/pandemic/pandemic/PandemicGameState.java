@@ -260,7 +260,7 @@ public class PandemicGameState extends GameState {
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c.equals(desiredCity)) {
-                    message = "you have moved to" + desiredCity.getName();
+                    message = "you have moved to " + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
@@ -271,7 +271,7 @@ public class PandemicGameState extends GameState {
         //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
 
         if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
-            message = "you have moved to" + desiredCity.getName();
+            message = "you have moved to " + desiredCity.getName();
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
             isLegal = true;
@@ -282,7 +282,7 @@ public class PandemicGameState extends GameState {
 
             for (Card p : player.getPlayerHand()) {
                 if ((((PlayerCard)p).getLocation()).equals(desiredCity)) {
-                    message = "you have moved to" + desiredCity.getName();
+                    message = "you have moved to " + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -295,7 +295,7 @@ public class PandemicGameState extends GameState {
 
             for (Card p : player.getPlayerHand()) {
                 if ((((PlayerCard)p).getLocation()).equals(player.getCurrentLocation())) {
-                    message = "you have moved to" + desiredCity.getName();
+                    message = "you have moved to " + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
