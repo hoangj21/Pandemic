@@ -83,45 +83,46 @@ class MapView extends SurfaceView implements View.OnTouchListener
         canvas.drawBitmap(map, 500, 100, myPaint );
 
         //DISEASE VIALS
+
         Paint blueVile = new Paint();
         blueVile.setColor(Color.BLUE);
-        canvas.drawCircle(1140, 1030, 30, blueVile);
+        canvas.drawCircle(1140, 1030, 25, blueVile);
 
         Paint yellowVile = new Paint();
         yellowVile.setColor(Color.YELLOW);
-        canvas.drawCircle(1015, 1030, 30, yellowVile);
+        canvas.drawCircle(1015, 1030, 25, yellowVile);
 
         Paint redVile = new Paint();
         redVile.setColor(Color.RED);
-        canvas.drawCircle(1075, 1030, 30, redVile);
+        canvas.drawCircle(1075, 1030, 25, redVile);
 
         Paint blackVile = new Paint();
         blackVile.setColor(Color.BLACK);
-        canvas.drawCircle(1210, 1030, 30, blackVile);
+        canvas.drawCircle(1210, 1030, 25, blackVile);
 
         //INFECTION RATE SLIDERS
         Paint infectionRate = new Paint();
         infectionRate.setColor(Color.GREEN);
 
-        if(state.getInfectionRate() == 1){
+        if(state.getInfectionRate() == 2){
             canvas.drawCircle(1461, 330, 25, infectionRate);}
 
         if(state.getInfectionRate() == 2){
             canvas.drawCircle(1515, 330, 25, infectionRate);}
 
-        if(state.getInfectionRate() == 3){
+        if(state.getInfectionRate() == 2){
             canvas.drawCircle(1565, 330, 25, infectionRate);}
 
-        if(state.getInfectionRate() == 4){
+        if(state.getInfectionRate() == 3){
             canvas.drawCircle(1620, 330, 25, infectionRate);}
 
-        if(state.getInfectionRate() == 5){
+        if(state.getInfectionRate() == 3){
             canvas.drawCircle(1670, 330, 25, infectionRate);}
 
-        if(state.getInfectionRate() == 6){
+        if(state.getInfectionRate() == 4){
             canvas.drawCircle(1720, 330, 25, infectionRate);}
 
-        if(state.getInfectionRate() == 7){
+        if(state.getInfectionRate() == 4){
             canvas.drawCircle(1770, 330, 25, infectionRate);}
 
 
@@ -525,10 +526,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float LIMAy = 678;
     private float SANTIAGOx = 337;
     private float SANTIAGOy = 780;
-    private float BUENOSAIRESx = 458;
-    private float BUENOSAIRESy = 757;
-    private float SAOPAULOx = 499;
-    private float SAOPAULOy = 688;
+    private float BUENOSAIRESx = 446;
+    private float BUENOSAIRESy = 780;
+    private float SAOPAULOx = 522;
+    private float SAOPAULOy = 668;
     private float LAGOSx = 735;
     private float LAGOSy = 542;
     private float KHARTOUMx = 834;
@@ -611,8 +612,8 @@ class MapView extends SurfaceView implements View.OnTouchListener
                 final int TOUCHRADIUS = 50;
 
                 //comment remove later
-               // Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
-                Log.i("YouTouched", "x:" + (touchX) + " y:" + (touchY));
+                Log.i("YouTouched", "x:" + (touchX - 500) + " y:" + (touchY - 100));
+                //Log.i("YouTouched", "x:" + (touchX) + " y:" + (touchY));
 
 
                 int NYCcityX = (int) ((NYCx) + 500);
@@ -867,7 +868,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, BuenosAiresx, BuenosAiresy) < TOUCHRADIUS) {
 
-                    this.player.needToMakeMove(state.getAllCities().get(6));
+                    this.player.needToMakeMove(state.getAllCities().get(5));
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
@@ -1059,18 +1060,6 @@ class MapView extends SurfaceView implements View.OnTouchListener
                     }
                 }
 
-                int Kolkatax = (int) ((KOLKATAx) + 500);
-                int Kolkatay  = (int) ((KOLKATAy) + 100);
-
-                if (distance(touchX, touchY, Kolkatax, Kolkatay) < TOUCHRADIUS) {
-
-                    this.player.needToMakeMove(state.getAllCities().get(34));
-                    if (state.isLegal()) {
-
-                        this.Pawncircle = circle;
-                        cityTapped = "kolkata";
-                    }
-                }
 
                 int Mumbaix = (int) ((MUMBAIx) + 500);
                 int Mumbaiy  = (int) ((MUMBAIy) + 100);
@@ -1111,6 +1100,20 @@ class MapView extends SurfaceView implements View.OnTouchListener
                         cityTapped = "Beijing";
                     }
                 }
+
+                int Kolkatax = (int) ((KOLKATAx) + 500);
+                int Kolkatay  = (int) ((KOLKATAy) + 100);
+
+                if (distance(touchX, touchY, Kolkatax, Kolkatay) < TOUCHRADIUS) {
+
+                    this.player.needToMakeMove(state.getAllCities().get(34));
+                    if (state.isLegal()) {
+
+                        this.Pawncircle = circle;
+                        cityTapped = "kolkata";
+                    }
+                }
+
 
                 int Seoulx = (int) ((SEOULx) + 500);
                 int Seouly  = (int) ((SEOULy) + 100);
@@ -1234,7 +1237,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
                 if (distance(touchX, touchY, Manilax, Manilay) < TOUCHRADIUS) {
 
-                    this.player.needToMakeMove(state.getAllCities().get(15));
+                    this.player.needToMakeMove(state.getAllCities().get(26));
                     if (state.isLegal()) {
 
                         this.Pawncircle = circle;
