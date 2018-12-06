@@ -38,12 +38,9 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
                     e.printStackTrace();
                 }
                 if (action == 0) {
-                    int size = state.getPlayer().getCurrentLocation().getAdjacentCities().size();
-                    action = rand.nextInt(size);
-                    City city = state.getPlayer().getCurrentLocation().getAdjacentCities().get(action);
-                    //action = rand.nextInt(4);
-                    MoveAction moveInstance = new MoveAction(this, city);
-                    game.sendAction(moveInstance);
+                    PassAction passInstance = new PassAction(this);
+                    game.sendAction(passInstance);
+
                 }
                 else if (action == 1) {
                     TreatAction treatInstance = new TreatAction(this);
@@ -55,9 +52,13 @@ public class PandemicComputerPlayerDumb extends GameComputerPlayer {
                     game.sendAction(buildInstance);
                 }
                 else {
+                     int size = state.getPlayer().getCurrentLocation().getAdjacentCities().size();
+                     action = rand.nextInt(size);
+                     City city = state.getPlayer().getCurrentLocation().getAdjacentCities().get(action);
+                     //action = rand.nextInt(4);
+                     MoveAction moveInstance = new MoveAction(this, city);
+                     game.sendAction(moveInstance);
 
-                    PassAction passInstance = new PassAction(this);
-                    game.sendAction(passInstance);
                 }
 
                 return;
