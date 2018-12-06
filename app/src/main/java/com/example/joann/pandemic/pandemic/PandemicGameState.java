@@ -316,7 +316,7 @@ public class PandemicGameState extends GameState {
     //Adds card to player's hand
     public boolean drawPlayerCard(PlayerInfo player) {
         if(player.getPlayerHand().size() >= 7){
-            //print message?
+            message = "you have the max amount of cards";
             return false;
         }
 
@@ -410,6 +410,7 @@ public class PandemicGameState extends GameState {
         if (player.getRole() == 1) {
             player.getCurrentLocation().hasResearchLab = true;
             player.actionTaken();
+            this.message = "Built a research station!";
             return true;
         }
 
@@ -421,7 +422,7 @@ public class PandemicGameState extends GameState {
                     discardPlayerCard(player, player.getPlayerHand().get(i));
                     this.numResearchStations++;
                     player.setActionsLeft(player.getActionsLeft() - 1);
-                    this.message = "You've built a research station!";
+                    this.message = "Built a research station!";
 
                     playerDiscardDeck.add( player.getPlayerHand().get(i));
                     player.getPlayerHand().remove(i);
@@ -436,7 +437,7 @@ public class PandemicGameState extends GameState {
     }
 
     public void passAction(PlayerInfo player){
-        this.message = "You are passing";
+        this.message = "You Passing";
 
         player.actionTaken();
     }
@@ -449,7 +450,7 @@ public class PandemicGameState extends GameState {
             return false;
         }
         if (city.getDiseaseCubes().isEmpty()) {
-            this.message = "There are no disease cubes to treat here!";
+            this.message = "No disease cubes to treat";
             return false; //no disease cubes there
         }
         if (player.getRole() == 3) {
@@ -635,7 +636,7 @@ public class PandemicGameState extends GameState {
     public boolean infectE(PlayerInfo player){
         InfectionCard card = infectionDeck.get(0);
         infectionDeck.remove(0);
-        this.message = card.getLocation() + "is now being infected with 3 disease cubes!";
+        this.message = card.getLocation() + "is being infected!";
         if(card.getLocation().getDiseaseCubes().size() == 1)
         {
             card.getLocation().addDiseaseCube(card.getDiseaseColor());
@@ -677,7 +678,7 @@ public class PandemicGameState extends GameState {
     public boolean increaseInfectionRate(PlayerInfo player) {
         if (getInfectionRate() < MAX_INFECTION_RATE) {
             setInfectionRate(getInfectionRate() + 1);
-            this.message = "The infection rate goes up by one!";
+            this.message = "The infection rate went up!";
             return true;
         }
         return false;
@@ -691,7 +692,7 @@ public class PandemicGameState extends GameState {
             infectionDeck.add(card);
         }
         Collections.shuffle(infectionDeck);
-        this.message = "The infection discard deck is reshuffled into the infection deck!";
+        this.message = "The infection deck has been reshuffled!";
         return true;
     }
 
