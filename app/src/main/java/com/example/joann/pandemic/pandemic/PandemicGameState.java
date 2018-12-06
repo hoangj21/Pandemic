@@ -318,7 +318,7 @@ public class PandemicGameState extends GameState {
         }
 
         else{
-            int index = rand.nextInt(playerDeck.size());
+            int index = 0;
             Card card = playerDeck.get(index);
 
             if(((PlayerCard)card).getisItEpidemic())
