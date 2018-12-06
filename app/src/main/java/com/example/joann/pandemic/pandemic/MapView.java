@@ -184,13 +184,16 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
 
         //TEXT VIEW
+
         if(state.getPlayerTurn() == 0)
         {
             myPaint.setTextSize(40);
-            canvas.drawText("It is your turn Player One", 2050, 175, myPaint);
+            canvas.drawText("It is your turn Player One", 2050, 205, myPaint);
             myPaint.setTextSize(37);
-            canvas.drawText("(Blue Dot)", 2050, 220, myPaint);
+            canvas.drawText("(Blue Dot)", 2050, 250, myPaint);
 
+            canvas.drawText("Action made: ", 2050, 80, myPaint);
+            canvas.drawText(state.getMessage(), 2050, 120, myPaint);
 
             myPaint.setTextSize(60);
             canvas.drawText("Player Hand: ", 55, 80, myPaint);
@@ -200,9 +203,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
         else if(state.getPlayerTurn() == 1)
         {
             myPaint.setTextSize(40);
-            canvas.drawText("It is the AI's turn", 2050, 175, myPaint);
+            canvas.drawText("It is the AI's turn", 2050, 205, myPaint);
             myPaint.setTextSize(37);
-            canvas.drawText("(Pink Dot)", 2050, 220, myPaint);
+            canvas.drawText("(Pink Dot)", 2050, 250, myPaint);
+
+            canvas.drawText("Action made: ", 2050, 80, myPaint);
+            canvas.drawText(state.getMessage(), 2050, 120, myPaint);
 
             myPaint.setTextSize(60);
             canvas.drawText("AI Hand : ", 75, 80, myPaint);
@@ -211,27 +217,27 @@ class MapView extends SurfaceView implements View.OnTouchListener
         }
 
         myPaint.setTextSize(40);
-        canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 320, myPaint);
+        canvas.drawText( "You have " + state.getPlayer().actionsLeft + " moves left", 2050, 350, myPaint);
 
         if (state.getPlayer().role == 1)
         {
-            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
-            canvas.drawText( "The Operations Expert", 2050, 510, myPaint);
+            canvas.drawText( "Your role is: ", 2050, 490, myPaint);
+            canvas.drawText( "The Operations Expert", 2050, 550, myPaint);
         }
 
         else if (state.getPlayer().role == 2)
         {
-            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
-            canvas.drawText( "The Scientist", 2050, 510, myPaint);
+            canvas.drawText( "Your role is: ", 2050, 490, myPaint);
+            canvas.drawText( "The Scientist", 2050, 550, myPaint);
         }
 
         else if(state.getPlayer().role == 3)
         {
-            canvas.drawText( "Your role is: ", 2050, 450, myPaint);
-            canvas.drawText( "The Medic", 2050, 510, myPaint);
+            canvas.drawText( "Your role is: ", 2050, 490, myPaint);
+            canvas.drawText( "The Medic", 2050, 550, myPaint);
         }
 
-        canvas.drawText("You are in: " + cityTapped, 2050, 700, myPaint);
+        canvas.drawText("You are in: " + cityTapped, 2050, 720, myPaint);
 
 
         //Draws text for disease cubes in the city you tapped on
