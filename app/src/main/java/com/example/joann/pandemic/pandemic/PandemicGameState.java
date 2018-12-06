@@ -243,12 +243,14 @@ public class PandemicGameState extends GameState {
 
         //Base Case: Player is trying to move when they have no moves left.
         if (player.getActionsLeft() <= 0) {
+            message = "This move is illegal!";
             isLegal = false;
             return false;
         }
 
         //Don't let the user try to move to a city that they are already located at
         if(player.getCurrentLocation().equals(desiredCity)==true){
+            message = "This move is illegal";
             isLegal = false;
             return false;
         }
@@ -258,7 +260,7 @@ public class PandemicGameState extends GameState {
 
             for (City c : currentCity.adjacentCities) { //Iterate through adjacent cities of desired city
                 if (c.equals(desiredCity)) {
-
+                    message = "you have moved to" + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     player.actionTaken();
                     isLegal = true;
@@ -269,6 +271,7 @@ public class PandemicGameState extends GameState {
         //Shuttle Flight: Move from a city with a research station to any other city that has a research station.
 
         if (player.getCurrentLocation().getHasResearchLab() && desiredCity.getHasResearchLab()) {
+            message = "you have moved to" + desiredCity.getName();
             player.setCurrentLocation(desiredCity);
             player.actionTaken();
             isLegal = true;
@@ -279,6 +282,7 @@ public class PandemicGameState extends GameState {
 
             for (Card p : player.getPlayerHand()) {
                 if ((((PlayerCard)p).getLocation()).equals(desiredCity)) {
+                    message = "you have moved to" + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -291,6 +295,7 @@ public class PandemicGameState extends GameState {
 
             for (Card p : player.getPlayerHand()) {
                 if ((((PlayerCard)p).getLocation()).equals(player.getCurrentLocation())) {
+                    message = "you have moved to" + desiredCity.getName();
                     player.setCurrentLocation(desiredCity);
                     discardPlayerCard(player, p);
                     player.actionTaken();
@@ -524,12 +529,13 @@ public class PandemicGameState extends GameState {
 
             //sets a disease to cured if player has enough cards of a certain color
                 if(numYellow>=5){
+                    message = "you have cured a disease!";
 
                     curedDiseases[0] = 1;
                     numYellow = 0;
                     //remove the amount of cards needed to perform the cure
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numYellow == 5)
+                        if(numYellow > 5)
                                 break;
                          if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Yellow")){
                                 player.getPlayerHand().remove(j);
@@ -539,10 +545,11 @@ public class PandemicGameState extends GameState {
 
                 }
                 if(numRed>=5){
+                    message = "you have cured a disease!";
                     curedDiseases[1] = 1;
                     numRed = 0;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numRed == 5)
+                        if(numRed > 5)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Red")){
                             player.getPlayerHand().remove(j);
@@ -551,10 +558,11 @@ public class PandemicGameState extends GameState {
                     }
                 }
                 if(numBlue>=5){
+                    message = "you have cured a disease!";
                     curedDiseases[2] = 1;
                     numBlue = 0;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numBlue == 5)
+                        if(numBlue > 5)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Blue")){
                             player.getPlayerHand().remove(j);
@@ -563,10 +571,11 @@ public class PandemicGameState extends GameState {
                     }
                 }
                 if(numBlack>=5){
+                    message = "you have cured a disease!";
                     curedDiseases[3] = 1;
                     numBlack = 0;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numBlack == 5)
+                        if(numBlack > 5)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Black")){
                             player.getPlayerHand().remove(j);
@@ -578,10 +587,11 @@ public class PandemicGameState extends GameState {
             //Then player only needs 3 cards to cure a disease
             if(player.role == 2){
                 if(numYellow>=4){
+                    message = "you have cured a disease!";
                     curedDiseases[0] = 1;
                     numYellow = 0;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numYellow == 4)
+                        if(numYellow > 4)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Yellow")){
                             player.getPlayerHand().remove(j);
@@ -591,9 +601,10 @@ public class PandemicGameState extends GameState {
 
                 }
                 if(numRed>=4){
+                    message = "you have cured a disease!";
                     curedDiseases[1] = 1;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numRed == 4)
+                        if(numRed > 4)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Red")){
                             player.getPlayerHand().remove(j);
@@ -602,9 +613,10 @@ public class PandemicGameState extends GameState {
                     }
                 }
                 if(numBlue>=4){
+                    message = "you have cured a disease!";
                     curedDiseases[2] = 1;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numBlue == 4)
+                        if(numBlue > 4)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Blue")){
                             player.getPlayerHand().remove(j);
@@ -613,10 +625,11 @@ public class PandemicGameState extends GameState {
                     }
                 }
                 if(numBlack>=4){
+                    message = "you have cured a disease!";
                     curedDiseases[3] = 1;
                     numBlack = 0;
                     for(int j = 0; j < player.getPlayerHand().size(); j++){
-                        if(numBlack == 4)
+                        if(numBlack > 4)
                             break;
                         if(((PlayerCard)player.getPlayerHand().get(j)).getdiseaseColor().equals("Black")){
                             player.getPlayerHand().remove(j);
