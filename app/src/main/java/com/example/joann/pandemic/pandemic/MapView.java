@@ -47,18 +47,12 @@ class MapView extends SurfaceView implements View.OnTouchListener
     public MapView(Context context, AttributeSet set) {
         super(context, set);
         setWillNotDraw(false);
-        //OnTouchListener listener = new OnTouchListener()
-
         setOnTouchListener(this);
-
         Paint paint = new Paint();
-
         paint.setColor(Color.CYAN);
         Pawncircle = new CityCircle(800,490, paint) ;
-        //Pawncircle.setMyPaint(0);
         paint.setColor(Color.MAGENTA);
         Opponentcircle = new CityCircle(800, 490, paint);
-       // Opponentcircle.setMyPaint(1);
 
     }
 
@@ -77,8 +71,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         map = Bitmap.createScaledBitmap(map, 1500, 1000, true);
         canvas.drawBitmap(map, 500, 100, myPaint );
 
-        //DISEASE VIALS
-
+        //DISEASE VIALS DRAWINGS
         if(state.getCuredDiseases()[0] == 0) {
             Paint yellowVile = new Paint();
             yellowVile.setColor(Color.YELLOW);
@@ -88,7 +81,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(state.getCuredDiseases()[0] == 1) {
             Paint yellowVile = new Paint();
             yellowVile.setColor(Color.YELLOW);
-            canvas.drawCircle(1015, 980, 25, yellowVile);
+            canvas.drawCircle(1015, 965, 25, yellowVile);
         }
 
         if(state.getCuredDiseases()[1] == 0) {
@@ -100,7 +93,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(state.getCuredDiseases()[1] == 1) {
             Paint redVile = new Paint();
             redVile.setColor(Color.RED);
-            canvas.drawCircle(1075, 980, 25, redVile);
+            canvas.drawCircle(1075, 965, 25, redVile);
         }
 
         if(state.getCuredDiseases()[2] == 0) {
@@ -111,7 +104,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(state.getCuredDiseases()[2] == 1){
             Paint blueVile = new Paint();
             blueVile.setColor(Color.BLUE);
-            canvas.drawCircle(1140, 980, 25, blueVile);
+            canvas.drawCircle(1140, 965, 25, blueVile);
         }
 
         if(state.getCuredDiseases()[3] == 0) {
@@ -123,10 +116,10 @@ class MapView extends SurfaceView implements View.OnTouchListener
         if(state.getCuredDiseases()[3] == 1) {
             Paint blackVile = new Paint();
             blackVile.setColor(Color.BLACK);
-            canvas.drawCircle(1210, 980, 25, blackVile);
+            canvas.drawCircle(1210, 965, 25, blackVile);
         }
 
-        //INFECTION RATE SLIDERS
+        //INFECTION RATE SLIDERS DRAWINGS
         Paint infectionRate = new Paint();
         infectionRate.setColor(Color.GREEN);
 
@@ -152,6 +145,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawCircle(1770, 330, 25, infectionRate);}
 
 
+        //OUTBREAK SLIDERS DRAWINGS
         Paint outbreakRate = new Paint();
         outbreakRate.setColor(Color.GREEN);
 
@@ -183,8 +177,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         canvas.drawCircle(620, 978, 25, outbreakRate);}
 
 
-        //TEXT VIEW
-
+        //TEXT VIEWS FOR DIFFERENT ITEMS OF THE GAME
         if(state.getPlayerTurn() == 0)
         {
             myPaint.setTextSize(40);
@@ -285,8 +278,6 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             Bitmap PDDCard = BitmapFactory.decodeResource(getResources(), PDD.getAndroidId());
             PDDCard = Bitmap.createScaledBitmap(PDDCard, 160, 250, true);
-            //canvas.drawBitmap(PDDCard, 100, 100, myPaint );
-
             canvas.drawBitmap(PDDCard, 1595, 785, myPaint );
 
         }
@@ -299,21 +290,19 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             Bitmap IDCard = BitmapFactory.decodeResource(getResources(), ID.getAndroidIdInfect());
             IDCard = Bitmap.createScaledBitmap(IDCard, 240, 140, true);
-
             canvas.drawBitmap(IDCard, 1390, 160, myPaint );
         }
 
         //DRAWABLE DISCARDING INFECTION DECK
         ArrayList<InfectionCard> infectionDiscardDeck = state.getInfectionDiscardDeck();
-
         if(infectionDiscardDeck.size() > 0) {
+
             InfectionCard IDD = infectionDiscardDeck.get(0);
 
             Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
             IDDCard = Bitmap.createScaledBitmap(IDDCard, 240, 140, true);
             canvas.drawBitmap(IDDCard, 16130, 150, myPaint );
 
-            //canvas.drawBitmap(PDCard, 0, )
         }
 
         //Redraws the AI's pawn depending on its location
@@ -515,6 +504,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         Pawncircle.draw(canvas);
 
     }
+    //COORDINATES FOR ALL CITY LOCATIONS
     //coordinates of all blue cities
     private float  NYCx = 421;
     private float NYCy = 300;
@@ -619,6 +609,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     private float SYDNEYx = 1389;
     private float SYDNEYy = 777;
 
+    //DISTANCE OF CITIES
     private double distance(int x1, int y1, int x2, int y2)
 
     {
@@ -626,6 +617,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
         return distance;
     }
 
+    //TAPPING POINTS OF THE CITIES
     public boolean onTouch (View v, MotionEvent ev)
     {
         if(player.isClicked() == true) {
