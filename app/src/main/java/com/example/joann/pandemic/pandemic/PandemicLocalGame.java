@@ -4,7 +4,6 @@ import com.example.joann.pandemic.game.GamePlayer;
 import com.example.joann.pandemic.game.LocalGame;
 import com.example.joann.pandemic.game.actionMsg.GameAction;
 
-import java.util.Random;
 
 
 public class PandemicLocalGame extends LocalGame {
@@ -26,29 +25,23 @@ public class PandemicLocalGame extends LocalGame {
     //Moves the pawn where the player wants to go and updates the state.
     @Override
     protected boolean makeMove(GameAction action) {
+
         //update state here
-
-
         if(action instanceof MoveAction) {
             MoveAction move = (MoveAction) action;
-            //City desiredCity = move.getDesiredCity();
             state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), move.getDesiredCity());
         }
 
         else if(action instanceof TreatAction) {
-            //TreatAction treat = (TreatAction) action;
             state.treatDisease(state.getPlayer(), state.getPlayer().getCurrentLocation());
         }
         else if(action instanceof BuildAction){
-            //BuildAction build = (BuildAction) action;
             state.buildAResearchStation(state.getPlayer(), state.getPlayer().currentLocation);
         }
         else if(action instanceof CureAction){
-            //CureAction cure = (CureAction) action;
             state.discoverACure(state.getPlayer());
         }
         else if(action instanceof PassAction){
-            //PassAction cure = (PassAction) action;
             state.passAction(state.getPlayer());
         }
 
