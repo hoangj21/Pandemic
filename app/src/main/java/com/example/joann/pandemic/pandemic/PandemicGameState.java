@@ -61,8 +61,8 @@ public class PandemicGameState extends GameState {
     //private PlayerInfo player2;
 
     //If these go to 0, players have lost the game
-    private int numCubesBlue ;
-    private int numCubesBlack ;
+    private int numCubesBlue;
+    private int numCubesBlack;
     private int numCubesRed;
     private int numCubesYellow;
     private int numPlayerCardsInDeck; //(add 5 for action cards when they're implemented)
@@ -460,6 +460,7 @@ public class PandemicGameState extends GameState {
         }
         if (player.getRole() == 3) {
             player.actionTaken();
+            this.message = "Disease cube removed!";
             while(city.getDiseaseCubes().size() > 0) {
                 String color1 = city.removeDiseaseCube();
                 if (color1 != null) {
@@ -981,54 +982,54 @@ public class PandemicGameState extends GameState {
         String none = "None";
 
         City epidemic = new City("epidemic");
-        City algiers = new City ("algiers");
-        City atlanta = new City ("atlanta");
-        City baghdad = new City ("baghdad");
-        City bangkok = new City ("bangkok");
-        City bejing = new City ("beijing");
-        City beunosaires = new City ("beunosaires");
-        City bogota = new City ("bogota");
-        City istanbul = new City ("istanbul");
-        City khartoum = new City ("khartoum");
-        City hochiminhcity = new City ("hochimincity");
-        City riyadh = new City ("riyadh");
-        City essen = new City ("essen");
-        City washington = new City ("washington");
-        City moscow = new City ("moscow");
-        City newyork = new City ("newyork");
-        City taipei = new City ("taipei");
-        City tokyo = new City ("tokyo");
-        City tehran = new City ("tehran");
-        City jakarta = new City ("jakarta");
-        City cairo = new City ("cairo");
-        City chennai = new City ("chennai");
-        City paris = new City ("paris");
-        City petersburg = new City ("petersburg");
-        City saopaulo = new City ("saopaulo");
-        City lagos = new City ("lagos");
-        City lima = new City ("lima");
-        City london = new City ("london");
-        City losangeles = new City ("losangeles");
-        City delhi = new City ("dehli");
-        City johannesburg = new City ("johannesburg");
-        City karachi = new City ("karachi");
-        City madrid = new City ("madrid");
-        City montreal = new City ("montreal");
-        City sanfrancisco = new City ("sanfrancisco");
-        City kolkata = new City ("kolkata");
-        City mexicocity = new City ("mexicocity");
-        City santiago = new City ("santiago");
-        City sydney = new City ("sydney");
-        City mumbai = new City ("mumbai");
-        City seoul = new City ("seoul");
-        City chicago = new City ("chicago");
-        City kinshasa = new City ("kinshasa");
-        City miami = new City ("miami");
-        City milan = new City ("milan");
-        City manila = new City ("manila");
-        City shanghai = new City ("shanghai");
-        City hongkong = new City ("hongkong");
-        City osaka = new City ("osaka");
+        City algiers = new City ("Algiers");
+        City atlanta = new City ("Atlanta");
+        City baghdad = new City ("Baghdad");
+        City bangkok = new City ("Bangkok");
+        City bejing = new City ("Beijing");
+        City beunosaires = new City ("Beunos Aires");
+        City bogota = new City ("Bogota");
+        City istanbul = new City ("Istanbul");
+        City khartoum = new City ("Khartoum");
+        City hochiminhcity = new City ("Hochimincity");
+        City riyadh = new City ("Riyadh");
+        City essen = new City ("Essen");
+        City washington = new City ("Washington");
+        City moscow = new City ("Moscow");
+        City newyork = new City ("New York");
+        City taipei = new City ("Taipei");
+        City tokyo = new City ("Tokyo");
+        City tehran = new City ("Tehran");
+        City jakarta = new City ("Jakarta");
+        City cairo = new City ("Cairo");
+        City chennai = new City ("Chennai");
+        City paris = new City ("Paris");
+        City petersburg = new City ("Petersburg");
+        City saopaulo = new City ("Sao Paulo");
+        City lagos = new City ("Lagos");
+        City lima = new City ("Lima");
+        City london = new City ("London");
+        City losangeles = new City ("Los Angeles");
+        City delhi = new City ("Dehli");
+        City johannesburg = new City ("Johannesburg");
+        City karachi = new City ("Karachi");
+        City madrid = new City ("Madrid");
+        City montreal = new City ("Montreal");
+        City sanfrancisco = new City ("San Francisco");
+        City kolkata = new City ("Kolkata");
+        City mexicocity = new City ("Mexico City");
+        City santiago = new City ("Santiago");
+        City sydney = new City ("Sydney");
+        City mumbai = new City ("Mumbai");
+        City seoul = new City ("Seoul");
+        City chicago = new City ("Chicago");
+        City kinshasa = new City ("Kinshasa");
+        City miami = new City ("Miami");
+        City milan = new City ("Milan");
+        City manila = new City ("Manila");
+        City shanghai = new City ("Shanghai");
+        City hongkong = new City ("Hong Kong");
+        City osaka = new City ("Osaka");
 
         allCities = new ArrayList<>();
 

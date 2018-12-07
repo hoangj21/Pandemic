@@ -193,7 +193,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
             canvas.drawText("(Blue Dot)", 2050, 250, myPaint);
 
             canvas.drawText("Action made: ", 2050, 80, myPaint);
-            canvas.drawText(state.getMessage(), 2050, 120, myPaint);
+            canvas.drawText(state.getMessage(), 2030, 120, myPaint);
 
             myPaint.setTextSize(60);
             canvas.drawText("Player Hand: ", 55, 80, myPaint);
@@ -311,7 +311,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
 
             Bitmap IDDCard = BitmapFactory.decodeResource(getResources(), IDD.getAndroidIdInfect());
             IDDCard = Bitmap.createScaledBitmap(IDDCard, 240, 140, true);
-            canvas.drawBitmap(IDDCard, 1670, 150, myPaint );
+            canvas.drawBitmap(IDDCard, 16130, 150, myPaint );
 
             //canvas.drawBitmap(PDCard, 0, )
         }
