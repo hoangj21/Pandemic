@@ -18,8 +18,6 @@ class MapView extends SurfaceView implements View.OnTouchListener
 {
 
     protected PandemicGameState state;
-    protected int HumanPlayerNum = 0;
-    protected ArrayList<Pawn> thePawns;
     CityCircle Pawncircle;
     CityCircle Opponentcircle;
     private PandemicHumanPlayer player;
