@@ -102,6 +102,9 @@ public class City {
     public Boolean getHasResearchLab() {
         return hasResearchLab;
     }
+    public void setHasResearchLab(boolean t) {
+        hasResearchLab = t;
+    }
 
     public Boolean getVisited() {
         return isVisited;

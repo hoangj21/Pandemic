@@ -2,8 +2,10 @@ package com.example.joann.pandemic;
 
 import android.util.Log;
 
+import com.example.joann.pandemic.pandemic.Card;
 import com.example.joann.pandemic.pandemic.City;
 import com.example.joann.pandemic.pandemic.InfectionCard;
+import com.example.joann.pandemic.pandemic.PandemicComputerPlayerDumb;
 import com.example.joann.pandemic.pandemic.PandemicGameState;
 import com.example.joann.pandemic.pandemic.PlayerCard;
 import com.example.joann.pandemic.pandemic.PlayerInfo;
@@ -24,29 +26,28 @@ public class ExampleUnitTest {
     // -Polina G.
     @Test
     public void testIsDiseaseEradicated(){
-        //order of curedDisease will be {blue, black, red, yellow}
 
-        PandemicGameState instance = new PandemicGameState();
+        PandemicGameState state = new PandemicGameState();
 
+        //check to make sure disease are not eradicated at the start
+        assertFalse(state.isDiseaseEradicated("Black"));
 
-        int[]curedDisease1 = new int[]{0, 0, 0, 1};
-        instance.setCuredDiseases(curedDisease1);
-        assertTrue(instance.isDiseaseEradicated("Yellow"));
+        //check to make sure disease are not eradicated at the start
+        assertFalse(state.isDiseaseEradicated("Red"));
 
-        int[]curedDisease2 = new int[]{0, 0, 1, 0};
-        instance.setCuredDiseases(curedDisease2);
-        assertTrue(instance.isDiseaseEradicated("Red"));
+        //check to make sure disease are not eradicated at the start
+        assertFalse(state.isDiseaseEradicated("Yellow"));
 
-        int[]curedDisease3 = new int[]{0, 1, 0, 0};
-        instance.setCuredDiseases(curedDisease3);
-        assertTrue(instance.isDiseaseEradicated("Black"));
+        //make sure its not only based on number of blue cubes
+        state.setNumCubesBlue(24);
+        assertFalse(state.isDiseaseEradicated("Blue"));
 
+        //cure blue
+        int [] cure1 = new int []{0,0,1,0};
+        state.setCuredDiseases(cure1);
 
-        instance.setNumCubesBlue(10);
-
-        int[]curedDisease4 = new int[]{1, 0, 0, 0};
-        instance.setCuredDiseases(curedDisease4);
-        assertFalse(instance.isDiseaseEradicated("Blue"));
+        //check if eradication works
+        assertTrue(state.isDiseaseEradicated("Blue"));
 
     }
 
@@ -55,54 +56,38 @@ public class ExampleUnitTest {
     @Test
     public void testPlayerCardDiscarding()
     {
-        City london = new City("London");
-        City paris = new City("Paris");
-        City stPetersburg = new City("St Petersburg");
+        PandemicGameState state = new PandemicGameState();
+        state.getPlayer().getPlayerHand().removeAll(state.getPlayer().getPlayerHand());
+
+        City london = state.getAllCities().get(26);
+        City paris = state.getAllCities().get(21);
+        City stPetersburg = state.getAllCities().get(22);
 
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
         PlayerCard card3 = new PlayerCard(stPetersburg, "blue", false, R.drawable.stpetersburg);
 
-        PandemicGameState instance = new PandemicGameState();
-        PlayerInfo pInfo = instance.getPlayer();
 
-        pInfo.addCardToPlayerHand(card1);
-        //assertEquals(pInfo.getPlayerHand().get(1), card1);
+        state.getPlayer().addCardToPlayerHand(card1);
+        state.getPlayer().addCardToPlayerHand(card2);
 
+        assertEquals(state.getPlayer().getPlayerHand().size(), 2);
 
-        pInfo.addCardToPlayerHand(card2);
-        assertEquals(pInfo.getPlayerHand().size(), 6);
-
-        pInfo.addCardToPlayerHand(card3);
-        assertEquals(pInfo.getPlayerHand().size(), 7);
+        state.getPlayer().addCardToPlayerHand(card3);
+        assertEquals(state.getPlayer().getPlayerHand().size(), 3);
 
 
-        assertTrue(instance.discardPlayerCard(pInfo, card1));
-        assertEquals(pInfo.getPlayerHand().size(), 6);
+        assertTrue(state.discardPlayerCard(state.getPlayer(), card1));
+        assertEquals(state.getPlayer().getPlayerHand().size(), 2);
 
-        assertTrue(instance.discardPlayerCard(pInfo, card2));
-        assertEquals(pInfo.getPlayerHand().size(), 5);
+        assertTrue(state.discardPlayerCard(state.getPlayer(), card2));
+        assertEquals(state.getPlayer().getPlayerHand().size(), 1);
 
-        assertTrue(instance.discardPlayerCard(pInfo, card3));
-        assertEquals(pInfo.getPlayerHand().size(), 4);
+        assertTrue(state.discardPlayerCard(state.getPlayer(), card3));
+        assertEquals(state.getPlayer().getPlayerHand().size(), 0);
 
-        assertFalse(instance.discardPlayerCard(pInfo, card1));
-    }
-
-    //Tests the Player Info copy constructor
-    // -Polina G.
-    @Test
-    public void testPlayerInfoCp(){
-
-        City london = new City("London");
-        PlayerInfo pInfo = new PlayerInfo(1, 1, 1, london);
-        PlayerInfo pInfo2 = new PlayerInfo(pInfo);
-
-        assertEquals(pInfo.getCurrentLocation(), pInfo2.getCurrentLocation());
-        assertEquals(pInfo.getActionsLeft(), pInfo2.getActionsLeft());
-        assertEquals(pInfo.getPlayerHand(), pInfo2.getPlayerHand());
-        assertEquals(pInfo.getRole(), pInfo2.getRole());
+        assertFalse(state.discardPlayerCard(state.getPlayer(), card1));
     }
 
     //tests the gamestate copy constructor
@@ -121,48 +106,68 @@ public class ExampleUnitTest {
     // -Sarah S.
     @Test
     public void testPass(){
-        PandemicGameState instance = new PandemicGameState();
-        PlayerInfo pInfo = instance.getPlayer();
+        PandemicGameState state = new PandemicGameState();
 
-        assertEquals(4, pInfo.getActionsLeft());
-        instance.passAction(pInfo);
-        assertEquals(3, pInfo.getActionsLeft());
+        assertEquals(4, state.getPlayer().getActionsLeft());
+        state.passAction(state.getPlayer());
+        assertEquals(3, state.getPlayer().getActionsLeft());
     }
 
-    //tests to make sure the disease count in cities works
-    // -Joanna H.
     @Test
-    public void testCityDiseaseCount(){
-        City london = new City("London");
-        City paris = new City("Paris");
+    public void testCureFunction(){
 
-        london.addDiseaseCube("blue");
-        assertEquals(1, london.getDiseaseCubes().size());
-        london.addDiseaseCube("blue");
-        assertEquals(2, london.getDiseaseCubes().size());
-        london.addDiseaseCube("blue");
-        assertEquals(3, london.getDiseaseCubes().size());
-        london.addDiseaseCube("blue");
-        assertEquals(3, london.getDiseaseCubes().size());
+        PandemicGameState state = new PandemicGameState();
 
-        assertFalse(paris.getVisited());
+        //player starts with 4 cards so cure should not work
+        state.discoverACure(state.getPlayer());
+        assertEquals(state.getCuredDiseases()[0], 0);
+        assertEquals(state.getCuredDiseases()[1], 0);
+        assertEquals(state.getCuredDiseases()[2], 0);
+        assertEquals(state.getCuredDiseases()[3], 0);
 
-        london.removeDiseaseCube();
-        assertEquals(2, london.getDiseaseCubes().size());
+        //so that player can have 5 blue cards in their deck
+        state.getPlayer().getPlayerHand().remove(1);
+        state.getPlayer().getPlayerHand().remove(0);
+
+        //inserting the cards needed
+        City london = state.getAllCities().get(26);
+        City paris = state.getAllCities().get(21);
+        City stPetersburg = state.getAllCities().get(22);
+        City washington = state.getAllCities().get(12);
+        City chicago = state.getAllCities().get(40);
+
+        PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
+        PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
+        PlayerCard card3 = new PlayerCard(stPetersburg, "blue", false, R.drawable.stpetersburg);
+        PlayerCard card4 = new PlayerCard(washington, "blue", false, R.drawable.washington);
+        PlayerCard card5 = new PlayerCard(chicago, "blue", false, R.drawable.chicago);
+
+        state.getPlayer().getPlayerHand().add(card1);
+        state.getPlayer().getPlayerHand().add(card2);
+        state.getPlayer().getPlayerHand().add(card3);
+        state.getPlayer().getPlayerHand().add(card4);
+        state.getPlayer().getPlayerHand().add(card5);
+
+        //check to that cure was discovered
+        assertTrue(state.discoverACure(state.getPlayer()));
+
     }
 
     //tests player hand to make sure it hold and handle cards
     // -Kelsi C.
     @Test
     public void testPlayerHand(){
-        City london = new City("London");
-        City paris = new City("Paris");
-        City stPetersburg = new City("St Petersburg");
-        City washington = new City("Washington");
-        City chicago = new City("Chicago");
-        City newYork = new City("New York");
-        City montreal = new City("Montreal");
-        City essen = new City("Essen");
+
+        PandemicGameState state = new PandemicGameState();
+
+        City london = state.getAllCities().get(26);
+        City paris = state.getAllCities().get(21);
+        City stPetersburg = state.getAllCities().get(22);
+        City washington = state.getAllCities().get(12);
+        City chicago = state.getAllCities().get(40);
+        City newYork = state.getAllCities().get(14);
+        City montreal = state.getAllCities().get(32);
+        City essen = state.getAllCities().get(11);
 
         PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
         PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
@@ -173,23 +178,17 @@ public class ExampleUnitTest {
         PlayerCard card7 = new PlayerCard(montreal, "blue", false, R.drawable.montreal);
         PlayerCard card8 = new PlayerCard(essen, "blue", false, R.drawable.essen);
 
-        PlayerInfo pInfo = new PlayerInfo(1,2,3,london);
+        assertTrue(state.getPlayer().addCardToPlayerHand(card1));
+        state.getPlayer().addCardToPlayerHand(card2);
+        state.getPlayer().addCardToPlayerHand(card3);
+        state.getPlayer().addCardToPlayerHand(card4);
+        state.getPlayer().addCardToPlayerHand(card5);
+        state.getPlayer().addCardToPlayerHand(card6);
+        state.getPlayer().addCardToPlayerHand(card7);
+        assertEquals(7, state.getPlayer().getPlayerHand().size());
 
-        assertEquals(0, pInfo.getPlayerHand().size());
-
-
-        assertTrue(pInfo.addCardToPlayerHand(card1));
-        pInfo.addCardToPlayerHand(card2);
-        pInfo.addCardToPlayerHand(card3);
-        pInfo.addCardToPlayerHand(card4);
-        pInfo.addCardToPlayerHand(card5);
-        pInfo.addCardToPlayerHand(card6);
-        pInfo.addCardToPlayerHand(card7);
-        assertEquals(7, pInfo.getPlayerHand().size());
-
-        pInfo.addCardToPlayerHand(card8);
-        assertEquals(7, pInfo.getPlayerHand().size());
-
+        state.getPlayer().addCardToPlayerHand(card8);
+        assertEquals(7, state.getPlayer().getPlayerHand().size());
 
     }
 
@@ -197,70 +196,72 @@ public class ExampleUnitTest {
     // -Sarah S.
     @Test
     public void testTreatDisease() {
-        PandemicGameState instance = new PandemicGameState();
-        PlayerInfo pInfo = instance.getPlayer();
-        int diseaseCubeCount = pInfo.getCurrentLocation().getDiseaseCubes().size();
-        instance.treatDisease(pInfo, pInfo.getCurrentLocation());
-        assertEquals(pInfo.getCurrentLocation().getDiseaseCubes().size(), diseaseCubeCount - 1);
+        //default location is Atlanta
+        PandemicGameState state = new PandemicGameState();
+        City atlanta = state.getAllCities().get(1);
+        state.getPlayer().setPlayerNumber(3);
 
+        //check to make sure a disease cube is removed from city
+        assertTrue(state.treatDisease(state.getPlayer(),state.getPlayer().getCurrentLocation()));
+        assertEquals(state.getPlayer().getCurrentLocation().getDiseaseCubes().size(), atlanta.getDiseaseCubes().size());
+
+        //check to make sure if no disease cubes are left, nothing happens
+        assertFalse(state.treatDisease(state.getPlayer(),state.getPlayer().getCurrentLocation()));
+        assertEquals(state.getPlayer().getCurrentLocation().getDiseaseCubes().size(), atlanta.getDiseaseCubes().size());
+        assertEquals(state.getPlayer().getCurrentLocation().getDiseaseCubes().size(), 0);
     }
 
-    //tests movement to an adjacent city
-    // - Johanna H.
-    @Test
-    public void testMovePawn()
-    {
-        City london = new City("London");
-        City paris = new City("Paris");
-        PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
-        PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
-        City desiredCity = london;
-        PlayerInfo pInfo = new PlayerInfo(1,2,3,london);
-        pInfo.addCardToPlayerHand(card1);
-        pInfo.addCardToPlayerHand(card2);
-
-        //desired city !in adjacent city array
-        assertEquals(desiredCity, pInfo.getCurrentLocation());
-    }
-
-    //tests movement by discarding a card
+    //tests movement by discarding a card (aka flight)
     // -Joanna H.
     @Test
-    public void testMovePawn2()
+    public void testMovePawn1()
     {
-        City london = new City("London");
-        PlayerCard card1 = new PlayerCard(london, "blue", false, R.drawable.london);
-        City desiredCity = london;
+        //default location is Atlanta
+        PandemicGameState state = new PandemicGameState();
 
-        //desired city == playerCard
-        assertEquals(desiredCity, card1.getLocation());
-    }
+        //checks if player can move to a location by discarding card from player hand (atlanta -> player card in index 1)
+        City atlanta = state.getAllCities().get(1);
+        City london = state.getAllCities().get(26);
+        PlayerCard p = new PlayerCard(london, "blue", false, R.drawable.london);
+        state.getPlayer().addCardToPlayerHand(p);
 
-    //tests movement to any city by discarding card of the current city player is in
-    // -Kelsi C.
-    @Test
-    public void testMovePawn3()
-    {
-        City paris = new City("Paris");
-        PlayerCard card2 = new PlayerCard(paris, "blue", false, R.drawable.paris);
-        City currentCity = paris;
+        assertTrue(state.movePawn(state.getPlayer(),atlanta,(p).getLocation()));
+        assertEquals(state.getPlayer().getCurrentLocation(),(p).getLocation());
 
-        //current city == playerCard
-        assertEquals(currentCity, card2.getLocation());
+        //check so that player can't move to another city if no card in deck (reset to atlanta)
+        state.getPlayer().setCurrentLocation(atlanta);
+        state.getPlayer().getPlayerHand().removeAll(state.getPlayer().getPlayerHand());
+        assertFalse(state.movePawn(state.getPlayer(),atlanta,(p).getLocation()));
+        assertEquals(state.getPlayer().getCurrentLocation(), atlanta);
+
     }
 
     // tests research center movement:  current city has research center == desired city has researched center
     // -Kelsi C.
     @Test
-    public void testMovePawn4()
+    public void testMovePawn2()
     {
-        City london = new City("London");
-        City paris = new City("Paris");
-        City desiredCity = london;
-        City currentCity = paris;
+        //default location is Atlanta (Only Atlanta begins with a research center)
+        PandemicGameState state = new PandemicGameState();
+        state.getPlayer().setPlayerNumber(1);
+        state.getPlayer().getPlayerHand().removeAll(state.getPlayer().getPlayerHand());
 
-        //current city has research center == desired city has researched center
-        assertEquals(currentCity.getHasResearchLab(), desiredCity.getHasResearchLab());
+        //check if player can move from atlanta to atlanta
+        City atlanta = state.getAllCities().get(1);
+        assertFalse(state.movePawn(state.getPlayer(),atlanta, atlanta));
+
+        //check to make sure you can't move from one research center to a city without a research center
+        //(from atlanta to baghdad)
+        City baghdad = state.getAllCities().get(2);
+        assertFalse(state.movePawn(state.getPlayer(),atlanta,baghdad));
+        assertEquals(state.getPlayer().getCurrentLocation(),atlanta);
+
+        // check if player can move from one location with research center
+        // to another city with a research center (from baghdad to atlanta)
+        baghdad.setHasResearchLab(true);
+        assertTrue(state.movePawn(state.getPlayer(),atlanta,baghdad));
+        assertEquals(state.getPlayer().getCurrentLocation(),baghdad);
+
     }
 
 
@@ -268,25 +269,24 @@ public class ExampleUnitTest {
     @Test
     public void testCityCp(){
 
-        City pInfo = new City("London");
+        PandemicGameState state = new PandemicGameState();
+        City pInfo = state.getAllCities().get(1);
         City pInfo2 = pInfo;
 
         assertEquals(pInfo.getName(), pInfo2.getName());
         assertEquals(pInfo.getAdjacentCities(), pInfo2.getAdjacentCities());
         assertEquals(pInfo.getDiseaseCubes(), pInfo2.getDiseaseCubes());
         assertEquals(pInfo.getHasResearchLab(), pInfo2.getHasResearchLab());
-
     }
 
-
     @Test
-    public void testMovePawn5(){
+    public void testMovePawn3(){
         //default location at start is Atlanta
         PandemicGameState state = new PandemicGameState();
 
         //Checks to see if you can travel back to Atlanta from the initial point (Atlanta)
         City atlanta = state.getAllCities().get(1);
-        assertTrue(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), atlanta));
+        assertFalse(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), atlanta));
         assertEquals(state.getPlayer().getCurrentLocation().getName(), atlanta.getName());
 
         //Checks adjacent city for Atlanta which is Chicago
@@ -302,8 +302,30 @@ public class ExampleUnitTest {
 
         //Checks to make sure that Osaka is not an adjacent city to San Fran
         City osaka = state.getAllCities().get(47);
+        state.getPlayer().getPlayerHand().removeAll(state.getPlayer().getPlayerHand());
         assertFalse(state.movePawn(state.getPlayer(), state.getPlayer().getCurrentLocation(), osaka));
         assertEquals(state.getPlayer().getCurrentLocation().getName(), sanfran.getName());
+
+    }
+
+    @Test
+    public void testMovePawn4(){
+        //default location is Atlanta
+        PandemicGameState state = new PandemicGameState();
+
+        //tests if discarding card of current city, lets you go anywhere
+        City atlanta = state.getAllCities().get(1);
+        City buenosaires = state.getAllCities().get(5);
+        City milan = state.getAllCities().get(43);
+        PlayerCard card1 = new PlayerCard(atlanta, "blue", false, R.drawable.atlanta);
+
+        state.getPlayer().addCardToPlayerHand(card1);
+
+        assertTrue(state.movePawn(state.getPlayer(),atlanta, buenosaires));
+
+        //tests if you don't have current city's card, can't go anywhere
+        state.getPlayer().getPlayerHand().removeAll(state.getPlayer().getPlayerHand());
+        assertFalse(state.movePawn(state.getPlayer(), buenosaires, milan));
 
     }
 
