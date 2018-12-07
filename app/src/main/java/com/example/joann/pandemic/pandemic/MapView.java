@@ -1,6 +1,5 @@
 package com.example.joann.pandemic.pandemic;
 
-import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
@@ -10,22 +9,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.media.Image;
 import android.util.AttributeSet;
-import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Toast;
-
 import com.example.joann.pandemic.R;
-import com.example.joann.pandemic.pandemic.Card;
-import com.example.joann.pandemic.pandemic.InfectionCard;
-import com.example.joann.pandemic.pandemic.PandemicGameState;
-import com.example.joann.pandemic.pandemic.Pawn;
-import com.example.joann.pandemic.pandemic.PlayerCard;
-
 import java.util.ArrayList;
-
-import static android.view.MotionEvent.INVALID_POINTER_ID;
 
 class MapView extends SurfaceView implements View.OnTouchListener
 {
