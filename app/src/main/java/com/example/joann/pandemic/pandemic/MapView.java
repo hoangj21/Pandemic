@@ -517,7 +517,7 @@ class MapView extends SurfaceView implements View.OnTouchListener
     }
     //coordinates of all blue cities
     private float  NYCx = 421;
-    private float NYCy = 280;
+    private float NYCy = 300;
     private float  WASHx = 423;
     private float WASHy = 362;
     private float  MONTx = 348;
