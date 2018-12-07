@@ -39,8 +39,7 @@ import static com.example.joann.pandemic.pandemic.EventCard.initEventCard;
  * cards or pawns yet and it is
  * player 1's turn.
  ************************************/
-//NOTE TO US: Roles are represented with ints
-    //0 =
+
 public class PandemicGameState extends GameState {
     private ArrayList<Card> playerDeck;
     private ArrayList<InfectionCard> infectionDeck;
@@ -58,8 +57,7 @@ public class PandemicGameState extends GameState {
     private City tappedCity;
     private String message;
     private boolean isLegal;
-    //private PlayerInfo player2;
-
+  
     //If these go to 0, players have lost the game
     private int numCubesBlue;
     private int numCubesBlack;
@@ -168,7 +166,7 @@ public class PandemicGameState extends GameState {
     }
 
     //copy constructor
-    public PandemicGameState(PandemicGameState otherState) {
+    public PandemicGameState(PandemicGameState otherState){
 
         //copy player deck
         playerDeck = new ArrayList<Card>();
@@ -712,62 +710,6 @@ public class PandemicGameState extends GameState {
         return true;
     }
 
-    //Activates an event card
-    //TODO: Will not be implemented for Alpha Release
-    //TODO: Add event cards to the playerDeck
-    boolean quietNightCardUsed = false;
-    public boolean playEventCard(PlayerInfo player) {
-
-        if (player.getActionsLeft() <= 0) {
-            return false;
-        }
-        for(Card c : player.playerHand)
-        {
-            if(((EventCard)c).getresilientPopulation())
-            {
-                //remove one infection card from infectionDiscardDeck
-                infectionDiscardDeck.remove(0);
-                player.playerHand.remove(c);
-                return true;
-            }
-            else if (((EventCard)c).getquietNight())
-            {
-                //don't draw infection cards
-                quietNightCardUsed = true;
-                player.playerHand.remove(c);
-                return true;
-            }
-            else if (((EventCard)c).getforecast())
-            {
-                //rearrange the top 6 cards of infection deck (shuffle)
-                int size = infectionDeck.size();
-                if(size < 6)
-                {
-                    return false;
-                }
-
-                ArrayList <InfectionCard> cardsToBeShuffled = new ArrayList<>();
-                cardsToBeShuffled.add(infectionDeck.get(size));
-                infectionDeck.remove(size);
-                cardsToBeShuffled.add(infectionDeck.get(size-1));
-                infectionDeck.remove(size-1);
-                cardsToBeShuffled.add(infectionDeck.get(size-2));
-                infectionDeck.remove(size-2);
-                cardsToBeShuffled.add(infectionDeck.get(size-3));
-                infectionDeck.remove(size-3);
-                cardsToBeShuffled.add(infectionDeck.get(size-4));
-                infectionDeck.remove(size-4);
-                cardsToBeShuffled.add(infectionDeck.get(size-5));
-                infectionDeck.remove(size-5);
-
-                Collections.shuffle(cardsToBeShuffled);
-
-                infectionDeck.addAll(cardsToBeShuffled);
-            }
-        }
-        return false;
-    }
-
 
     public boolean isDiseaseEradicated(String color){
         //check if the cure has been found for a disease
@@ -808,36 +750,17 @@ public class PandemicGameState extends GameState {
         return false;
     }
 
-    /*@Override
-    public String toString() {
-        String fullString;
 
-        int curedCount = 0;
-        int eCount = 0;
-        int oCount = 0;
-        String diseaseInfo = "";
-        for (int i = 0; i < 4; i++) {
-            if (curedDiseases[i] == 1) {
-                curedCount++;
-                diseaseInfo = "\nNumber of cured diseases: " + curedCount;
-            } else if (curedDiseases[i] == 2) {
-                eCount++;
-                diseaseInfo = diseaseInfo + "\nNumber of eradicated diseases: " + eCount;
-            } else if (curedDiseases[i] == 0) {
-                oCount++;
-                diseaseInfo = diseaseInfo + "\nNumber of diseases that are still rampaging: " + oCount;
-            }
-        }
-
-        fullString = diseaseInfo;
-        return fullString;
-    }*/
 
 
     /****************************************
      * GETTERS & SETTERS
      ***************************************/
 
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public boolean isLegal() {
         return isLegal;

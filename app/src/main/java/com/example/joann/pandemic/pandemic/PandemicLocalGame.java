@@ -53,6 +53,7 @@ public class PandemicLocalGame extends LocalGame {
         }
 
         if(state.getPlayer().actionsLeft <= 0){
+            state.setMessage("Switching turns");
             state.drawPlayerCard(state.getPlayer());
             state.drawPlayerCard(state.getPlayer());
             state.drawInfectionCard();
