@@ -440,7 +440,7 @@ public class PandemicGameState extends GameState {
     }
 
     public void passAction(PlayerInfo player){
-        this.message = "You Passing";
+        this.message = "You're Passing";
 
         player.actionTaken();
     }
