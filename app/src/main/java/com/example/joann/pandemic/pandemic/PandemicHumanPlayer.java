@@ -84,7 +84,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
             myMapView.postInvalidate();
 
 
-
+        // for all for loops, checking which city the card is so the GUI can display the card
         for(int i = 0; i < theState.getPlayer().getPlayerHand().size(); i++){
             if(((PlayerCard)theState.getPlayer().getPlayerHand().get(i)).getLocation() == theState.getAllCities().get(i))
             {
@@ -1161,18 +1161,12 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
     }//setAsGui
 
     public void needToMakeMove(City city){
-        //this.city = city;
         MoveAction moveAction = new MoveAction(this, city);
         game.sendAction(moveAction);
-        //moveAction.setDesiredCity(city);
-
-
-
     }
 
     public boolean isClicked() {
         return isClicked;
-        //
     }
     public boolean setIsClicked(){
         if(isClicked==true){
@@ -1180,7 +1174,7 @@ public class PandemicHumanPlayer extends GameHumanPlayer implements OnClickListe
         }
         return isClicked;
     }
-}// class PigHumanPlayer
+}// class PandemicHumanPlayer
 
 
 
